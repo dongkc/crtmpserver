@@ -19,7 +19,7 @@
 
 
 #ifndef _BASETIMERPROTOCOL_H
-#define	_BASETIMERPROTOCOL_H
+#define  _BASETIMERPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
@@ -28,22 +28,22 @@ class IOTimer;
 class DLLEXP BaseTimerProtocol
 : public BaseProtocol {
 private:
-	IOTimer *_pTimer;
+  IOTimer *_pTimer;
 public:
-	BaseTimerProtocol();
-	virtual ~BaseTimerProtocol();
+  BaseTimerProtocol();
+  virtual ~BaseTimerProtocol();
 
-	virtual IOHandler *GetIOHandler();
-	virtual void SetIOHandler(IOHandler *pIOHandler);
+  virtual IOHandler *GetIOHandler();
+  virtual void SetIOHandler(IOHandler *pIOHandler);
 
-	virtual bool EnqueueForTimeEvent(uint32_t seconds);
+  virtual bool EnqueueForTimeEvent(uint32_t seconds);
 
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
 };
 
-#endif	/* _BASETIMERPROTOCOL_H */
+#endif  /* _BASETIMERPROTOCOL_H */
 
 

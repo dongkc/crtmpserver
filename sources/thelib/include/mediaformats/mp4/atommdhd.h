@@ -26,25 +26,25 @@
 class AtomMDHD
 : public VersionedAtom {
 private:
-	uint64_t _creationTime;
-	uint64_t _modificationTime;
-	uint32_t _timeScale;
-	uint64_t _duration;
-	uint16_t _language;
-	uint16_t _quality;
+  uint64_t _creationTime;
+  uint64_t _modificationTime;
+  uint32_t _timeScale;
+  uint64_t _duration;
+  uint16_t _language;
+  uint16_t _quality;
 public:
-	AtomMDHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomMDHD();
+  AtomMDHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomMDHD();
 
-	uint32_t GetTimeScale();
+  uint32_t GetTimeScale();
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 private:
-	bool ReadDataVersion0();
-	bool ReadDataVersion1();
+  bool ReadDataVersion0();
+  bool ReadDataVersion1();
 };
 
-#endif	/* _ATOMMDHD_H */
+#endif  /* _ATOMMDHD_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

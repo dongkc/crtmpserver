@@ -25,23 +25,23 @@
 #include "mediaformats/mp4/versionedatom.h"
 
 struct SEGMENTRUNENTRY {
-	uint32_t firstSegment;
-	uint32_t fragmentsPerSegment;
+  uint32_t firstSegment;
+  uint32_t fragmentsPerSegment;
 };
 
 class AtomASRT
 : public VersionedAtom {
 private:
-	uint8_t _qualityEntryCount;
-	vector<string> _qualitySegmentUrlModifiers;
-	uint32_t _segmentRunEntryCount;
-	vector<SEGMENTRUNENTRY> _segmentRunEntryTable;
+  uint8_t _qualityEntryCount;
+  vector<string> _qualitySegmentUrlModifiers;
+  uint32_t _segmentRunEntryCount;
+  vector<SEGMENTRUNENTRY> _segmentRunEntryTable;
 public:
-	AtomASRT(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomASRT();
+  AtomASRT(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomASRT();
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
-#endif	/* _ATOMASRT_H */
+#endif  /* _ATOMASRT_H */
 #endif /* HAS_MEDIA_MP4 */

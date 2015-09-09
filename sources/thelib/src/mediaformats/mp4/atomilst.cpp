@@ -24,53 +24,53 @@
 
 AtomILST::AtomILST(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : BoxAtom(pDocument, type, size, start) {
-	_metadata.IsArray(false);
+  _metadata.IsArray(false);
 }
 
 AtomILST::~AtomILST() {
 }
 
 Variant &AtomILST::GetMetadata() {
-	return _metadata;
+  return _metadata;
 }
 
 bool AtomILST::AtomCreated(BaseAtom *pAtom) {
-	if ((pAtom->GetTypeNumeric() >> 24) == 0xa9) {
-		AtomMetaField *pField = (AtomMetaField *) pAtom;
-		_metadata[pField->GetName()] = pField->GetValue();
-		return true;
-	}
-	switch (pAtom->GetTypeNumeric()) {
-		case A_AART:
-		case A_COVR:
-		case A_CPIL:
-		case A_DESC:
-		case A_DISK:
-		case A_GNRE:
-		case A_PGAP:
-		case A_TMPO:
-		case A_TRKN:
-		case A_TVEN:
-		case A_TVES:
-		case A_TVSH:
-		case A_TVSN:
-		case A_SONM:
-		case A_SOAL:
-		case A_SOAR:
-		case A_SOAA:
-		case A_SOCO:
-		case A_SOSN:
-		{
-			AtomMetaField *pField = (AtomMetaField *) pAtom;
-			_metadata[pField->GetName()] = pField->GetValue();
-			return true;
-		}
-		default:
-		{
-			FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
-			return false;
-		}
-	}
+  if ((pAtom->GetTypeNumeric() >> 24) == 0xa9) {
+    AtomMetaField *pField = (AtomMetaField *) pAtom;
+    _metadata[pField->GetName()] = pField->GetValue();
+    return true;
+  }
+  switch (pAtom->GetTypeNumeric()) {
+    case A_AART:
+    case A_COVR:
+    case A_CPIL:
+    case A_DESC:
+    case A_DISK:
+    case A_GNRE:
+    case A_PGAP:
+    case A_TMPO:
+    case A_TRKN:
+    case A_TVEN:
+    case A_TVES:
+    case A_TVSH:
+    case A_TVSN:
+    case A_SONM:
+    case A_SOAL:
+    case A_SOAR:
+    case A_SOAA:
+    case A_SOCO:
+    case A_SOSN:
+    {
+      AtomMetaField *pField = (AtomMetaField *) pAtom;
+      _metadata[pField->GetName()] = pField->GetValue();
+      return true;
+    }
+    default:
+    {
+      FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
+      return false;
+    }
+  }
 }
 
 #endif /* HAS_MEDIA_MP4 */

@@ -19,12 +19,12 @@
 
 
 #ifndef _ADMIN_H
-#define	_ADMIN_H
+#define  _ADMIN_H
 
 #include "common.h"
 
 extern "C" DLLEXP BaseClientApplication *GetApplication_admin(Variant configuration);
 
-#endif	/* _ADMIN_H */
+#endif  /* _ADMIN_H */
 
 

@@ -19,30 +19,30 @@
 
 #ifdef HAS_MEDIA_MP4
 #ifndef _ATOMTREX_H
-#define	_ATOMTREX_H
+#define  _ATOMTREX_H
 
 #include "mediaformats/mp4/versionedatom.h"
 
 class AtomTREX
 : public VersionedAtom {
 private:
-	uint32_t _trackID;
-	uint32_t _defaultSampleDescriptionIndex;
-	uint32_t _defaultSampleDuration;
-	uint32_t _defaultSampleSize;
-	uint32_t _defaultSampleFlags;
+  uint32_t _trackID;
+  uint32_t _defaultSampleDescriptionIndex;
+  uint32_t _defaultSampleDuration;
+  uint32_t _defaultSampleSize;
+  uint32_t _defaultSampleFlags;
 public:
-	AtomTREX(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomTREX();
-	uint32_t GetTrackID();
-	uint32_t GetDefaultSampleDescriptionIndex();
-	uint32_t GetDefaultSampleDuration();
-	uint32_t GetDefaultSampleSize();
-	uint32_t GetDefaultSampleFlags();
+  AtomTREX(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomTREX();
+  uint32_t GetTrackID();
+  uint32_t GetDefaultSampleDescriptionIndex();
+  uint32_t GetDefaultSampleDuration();
+  uint32_t GetDefaultSampleSize();
+  uint32_t GetDefaultSampleFlags();
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
 
-#endif	/* _ATOMTREX_H */
+#endif  /* _ATOMTREX_H */
 #endif /* HAS_MEDIA_MP4 */

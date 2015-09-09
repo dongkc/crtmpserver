@@ -18,7 +18,7 @@
  */
 
 #ifndef _MONITORAPPLICATION_H
-#define	_MONITORAPPLICATION_H
+#define  _MONITORAPPLICATION_H
 
 #include "application/baseclientapplication.h"
 
@@ -27,14 +27,14 @@ class MonitorRTMPProtocolHandler;
 class MonitorApplication
 : public BaseClientApplication {
 private:
-	MonitorRTMPProtocolHandler *_pRTMPHandler;
+  MonitorRTMPProtocolHandler *_pRTMPHandler;
 public:
-	MonitorApplication(Variant &configuration);
-	virtual ~MonitorApplication();
+  MonitorApplication(Variant &configuration);
+  virtual ~MonitorApplication();
 private:
 
 };
 
 
-#endif	/* _MONITORAPPLICATION_H */
+#endif  /* _MONITORAPPLICATION_H */
 

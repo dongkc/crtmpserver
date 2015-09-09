@@ -19,7 +19,7 @@
 
 #ifdef HAS_PROTOCOL_RAWHTTPSTREAM
 #ifndef _OUTNETRAWSTREAM_H
-#define	_OUTNETRAWSTREAM_H
+#define  _OUTNETRAWSTREAM_H
 
 #include "streaming/baseoutnetstream.h"
 
@@ -28,27 +28,27 @@ class InboundRawHTTPStreamProtocol;
 class OutNetRawStream
 : public BaseOutNetStream {
 private:
-	uint64_t _bytesCount;
-	uint64_t _packetsCount;
+  uint64_t _bytesCount;
+  uint64_t _packetsCount;
 public:
-	OutNetRawStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
-			string name);
-	virtual ~OutNetRawStream();
+  OutNetRawStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
+      string name);
+  virtual ~OutNetRawStream();
 
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
-	virtual void SignalAttachedToInStream();
-	virtual void SignalDetachedFromInStream();
-	virtual void SignalStreamCompleted();
-	virtual bool SignalPlay(double &absoluteTimestamp, double &length);
-	virtual bool SignalPause();
-	virtual bool SignalResume();
-	virtual bool SignalSeek(double &absoluteTimestamp);
-	virtual bool SignalStop();
-	virtual bool FeedData(uint8_t *pData, uint32_t dataLength,
-			uint32_t processedLength, uint32_t totalLength,
-			double absoluteTimestamp, bool isAudio);
-	virtual bool IsCompatibleWithType(uint64_t type);
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  virtual void SignalAttachedToInStream();
+  virtual void SignalDetachedFromInStream();
+  virtual void SignalStreamCompleted();
+  virtual bool SignalPlay(double &absoluteTimestamp, double &length);
+  virtual bool SignalPause();
+  virtual bool SignalResume();
+  virtual bool SignalSeek(double &absoluteTimestamp);
+  virtual bool SignalStop();
+  virtual bool FeedData(uint8_t *pData, uint32_t dataLength,
+      uint32_t processedLength, uint32_t totalLength,
+      double absoluteTimestamp, bool isAudio);
+  virtual bool IsCompatibleWithType(uint64_t type);
 };
 
-#endif	/* _OUTNETRAWSTREAM_H */
+#endif  /* _OUTNETRAWSTREAM_H */
 #endif /* HAS_PROTOCOL_RAWHTTPSTREAM */

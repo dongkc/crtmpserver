@@ -30,51 +30,51 @@ IgnoredAtom::~IgnoredAtom() {
 }
 
 bool IgnoredAtom::IsIgnored() {
-	return true;
+  return true;
 }
 
 bool IgnoredAtom::Read() {
-	return SkipRead(
-			(_type != A_SKIP)
-			&& (_type != A_FREE)
-			&& (_type != A_MDAT)
-			&& (_type != A_IODS)
-			&& (_type != A_WIDE)
-			&& (_type != A_TREF)
-			&& (_type != A_TMCD)
-			&& (_type != A_TAPT)
-			&& (_type != A_STPS)
-			&& (_type != A_SDTP)
-			&& (_type != A_RTP)
-			&& (_type != A_PASP)
-			&& (_type != A_LOAD)
-			&& (_type != A_HNTI)
-			&& (_type != A_HINV)
-			&& (_type != A_HINF)
-			&& (_type != A_GMHD)
-			&& (_type != A_GSHH)
-			&& (_type != A_GSPM)
-			&& (_type != A_GSPU)
-			&& (_type != A_GSSD)
-			&& (_type != A_GSST)
-			&& (_type != A_GSTD)
-			&& (_type != A_EDTS)
-			&& (_type != A_ALLF)
-			&& (_type != A_SELO)
-			&& (_type != A_WLOC)
-			&& (_type != A_ALIS)
-			&& (_type != A_BTRT)
-			&& (_type != A_BTRT)
-			&& (_type != A_CHAN)
-			&& (_type != A_COLR)
-			&& (_type != A_CSLG)
-			&& (_type != A_____)
-			&& (_type != A_UUID)
-			);
+  return SkipRead(
+      (_type != A_SKIP)
+      && (_type != A_FREE)
+      && (_type != A_MDAT)
+      && (_type != A_IODS)
+      && (_type != A_WIDE)
+      && (_type != A_TREF)
+      && (_type != A_TMCD)
+      && (_type != A_TAPT)
+      && (_type != A_STPS)
+      && (_type != A_SDTP)
+      && (_type != A_RTP)
+      && (_type != A_PASP)
+      && (_type != A_LOAD)
+      && (_type != A_HNTI)
+      && (_type != A_HINV)
+      && (_type != A_HINF)
+      && (_type != A_GMHD)
+      && (_type != A_GSHH)
+      && (_type != A_GSPM)
+      && (_type != A_GSPU)
+      && (_type != A_GSSD)
+      && (_type != A_GSST)
+      && (_type != A_GSTD)
+      && (_type != A_EDTS)
+      && (_type != A_ALLF)
+      && (_type != A_SELO)
+      && (_type != A_WLOC)
+      && (_type != A_ALIS)
+      && (_type != A_BTRT)
+      && (_type != A_BTRT)
+      && (_type != A_CHAN)
+      && (_type != A_COLR)
+      && (_type != A_CSLG)
+      && (_type != A_____)
+      && (_type != A_UUID)
+      );
 }
 
 string IgnoredAtom::Hierarchy(uint32_t indent) {
-	return string(4 * indent, ' ') + GetTypeString();
+  return string(4 * indent, ' ') + GetTypeString();
 }
 
 #endif /* HAS_MEDIA_MP4 */

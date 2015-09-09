@@ -24,35 +24,35 @@
 
 AtomTRAF::AtomTRAF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : BoxAtom(pDocument, type, size, start) {
-	_pTFHD = NULL;
+  _pTFHD = NULL;
 }
 
 AtomTRAF::~AtomTRAF() {
 }
 
 uint32_t AtomTRAF::GetId() {
-	if (_pTFHD != NULL)
-		return _pTFHD->GetTrackId();
-	return 0;
+  if (_pTFHD != NULL)
+    return _pTFHD->GetTrackId();
+  return 0;
 }
 
 vector<AtomTRUN *> &AtomTRAF::GetRuns() {
-	return _runs;
+  return _runs;
 }
 
 bool AtomTRAF::AtomCreated(BaseAtom *pAtom) {
-	switch (pAtom->GetTypeNumeric()) {
-		case A_TFHD:
-			_pTFHD = (AtomTFHD *) pAtom;
-			return true;
-		case A_TRUN:
-			ADD_VECTOR_END(_runs, (AtomTRUN *) pAtom);
-			return true;
-		default:
-		{
-			FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
-			return false;
-		}
-	}
+  switch (pAtom->GetTypeNumeric()) {
+    case A_TFHD:
+      _pTFHD = (AtomTFHD *) pAtom;
+      return true;
+    case A_TRUN:
+      ADD_VECTOR_END(_runs, (AtomTRUN *) pAtom);
+      return true;
+    default:
+    {
+      FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
+      return false;
+    }
+  }
 }
 #endif /* HAS_MEDIA_MP4 */

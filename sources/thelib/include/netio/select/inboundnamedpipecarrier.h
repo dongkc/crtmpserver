@@ -19,26 +19,26 @@
 
 #ifdef NET_SELECT
 #ifndef _INBOUNDNAMEDPIPECARRIER_H
-#define	_INBOUNDNAMEDPIPECARRIER_H
+#define  _INBOUNDNAMEDPIPECARRIER_H
 
 #include "netio/select/iohandler.h"
 
 class InboundNamedPipeCarrier
 : public IOHandler {
 private:
-	string _path;
+  string _path;
 public:
-	InboundNamedPipeCarrier(int32_t fd, string path);
-	virtual ~InboundNamedPipeCarrier();
+  InboundNamedPipeCarrier(int32_t fd, string path);
+  virtual ~InboundNamedPipeCarrier();
 
-	static InboundNamedPipeCarrier *Create(string path, uint16_t mode);
+  static InboundNamedPipeCarrier *Create(string path, uint16_t mode);
 
-	virtual bool SignalOutputData();
-	virtual bool OnEvent(select_event &event);
-	virtual operator string();
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  virtual bool SignalOutputData();
+  virtual bool OnEvent(select_event &event);
+  virtual operator string();
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
 };
 
-#endif	/* _INBOUNDNAMEDPIPECARRIER_H */
+#endif  /* _INBOUNDNAMEDPIPECARRIER_H */
 #endif /* NET_SELECT */
 

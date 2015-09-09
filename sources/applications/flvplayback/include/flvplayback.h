@@ -19,10 +19,10 @@
 
 
 #ifndef _FLVPLAYBACK_H
-#define	_FLVPLAYBACK_H
+#define  _FLVPLAYBACK_H
 
 extern "C" DLLEXP BaseClientApplication *GetApplication_flvplayback(Variant configuration);
 
-#endif	/* _FLVPLAYBACK_H */
+#endif  /* _FLVPLAYBACK_H */
 
 

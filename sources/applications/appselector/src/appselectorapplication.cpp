@@ -29,47 +29,47 @@ using namespace app_appselector;
 AppSelectorApplication::AppSelectorApplication(Variant &configuration)
 : BaseClientApplication(configuration) {
 #ifdef HAS_PROTOCOL_RTMP
-	_pRTMPHandler = NULL;
+  _pRTMPHandler = NULL;
 #endif /* HAS_PROTOCOL_RTMP */
 #ifdef HAS_PROTOCOL_HTTP
-	_pHTTPHandler = NULL;
+  _pHTTPHandler = NULL;
 #endif /* HAS_PROTOCOL_HTTP */
 }
 
 AppSelectorApplication::~AppSelectorApplication() {
 #ifdef HAS_PROTOCOL_RTMP
-	UnRegisterAppProtocolHandler(PT_INBOUND_RTMP);
-	UnRegisterAppProtocolHandler(PT_OUTBOUND_RTMP);
-	if (_pRTMPHandler != NULL) {
-		delete _pRTMPHandler;
-		_pRTMPHandler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_INBOUND_RTMP);
+  UnRegisterAppProtocolHandler(PT_OUTBOUND_RTMP);
+  if (_pRTMPHandler != NULL) {
+    delete _pRTMPHandler;
+    _pRTMPHandler = NULL;
+  }
 #endif /* HAS_PROTOCOL_RTMP */
 #ifdef HAS_PROTOCOL_HTTP
-	UnRegisterAppProtocolHandler(PT_INBOUND_HTTP);
-	UnRegisterAppProtocolHandler(PT_OUTBOUND_HTTP);
-	if (_pHTTPHandler != NULL) {
-		delete _pHTTPHandler;
-		_pHTTPHandler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_INBOUND_HTTP);
+  UnRegisterAppProtocolHandler(PT_OUTBOUND_HTTP);
+  if (_pHTTPHandler != NULL) {
+    delete _pHTTPHandler;
+    _pHTTPHandler = NULL;
+  }
 #endif /* HAS_PROTOCOL_HTTP */
 }
 
 bool AppSelectorApplication::Initialize() {
-	if (!BaseClientApplication::Initialize()) {
-		FATAL("Unable to initialize application");
-		return false;
-	}
+  if (!BaseClientApplication::Initialize()) {
+    FATAL("Unable to initialize application");
+    return false;
+  }
 #ifdef HAS_PROTOCOL_RTMP
-	_pRTMPHandler = new RTMPAppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_INBOUND_RTMP, _pRTMPHandler);
-	RegisterAppProtocolHandler(PT_INBOUND_RTMPS_DISC, _pRTMPHandler);
-	RegisterAppProtocolHandler(PT_OUTBOUND_RTMP, _pRTMPHandler);
+  _pRTMPHandler = new RTMPAppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_INBOUND_RTMP, _pRTMPHandler);
+  RegisterAppProtocolHandler(PT_INBOUND_RTMPS_DISC, _pRTMPHandler);
+  RegisterAppProtocolHandler(PT_OUTBOUND_RTMP, _pRTMPHandler);
 #endif /* HAS_PROTOCOL_RTMP */
 #ifdef HAS_PROTOCOL_HTTP
-	_pHTTPHandler = new HTTPAppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_INBOUND_HTTP_FOR_RTMP, _pHTTPHandler);
-	RegisterAppProtocolHandler(PT_OUTBOUND_HTTP_FOR_RTMP, _pHTTPHandler);
+  _pHTTPHandler = new HTTPAppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_INBOUND_HTTP_FOR_RTMP, _pHTTPHandler);
+  RegisterAppProtocolHandler(PT_OUTBOUND_HTTP_FOR_RTMP, _pHTTPHandler);
 #endif /* HAS_PROTOCOL_HTTP */
-	return true;
+  return true;
 }

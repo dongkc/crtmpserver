@@ -19,7 +19,7 @@
 
 #ifdef HAS_LUA
 #ifndef _LUAUTILS_H
-#define	_LUAUTILS_H
+#define  _LUAUTILS_H
 
 struct lua_State;
 #include "platform/platform.h"
@@ -31,13 +31,13 @@ DLLEXP void DestroyLuaState(lua_State *pLuaState);
 DLLEXP bool PopVariant(lua_State *pLuaState, Variant &variant, int32_t idx = 1, bool pop = true);
 DLLEXP bool PopStack(lua_State *pLuaState, Variant &variant);
 DLLEXP bool PushVariant(lua_State *pLuaState, Variant &variant,
-		bool substituteNullables = false);
+    bool substituteNullables = false);
 DLLEXP bool EvalLuaExpression(lua_State *pLuaState, string expression);
 DLLEXP bool LoadLuaScriptFromFile(string file, lua_State *pLuaState, bool pCall = true);
 DLLEXP bool LoadLuaScriptFromString(string luaScript, lua_State *pLuaState, bool pCall = true);
 DLLEXP bool ReadLuaFile(string fileName, string section, Variant &configuration);
 DLLEXP bool ReadLuaString(string script, string section, Variant &configuration);
 
-#endif	/* _LUAUTILS_H */
+#endif  /* _LUAUTILS_H */
 #endif /* HAS_LUA */
 

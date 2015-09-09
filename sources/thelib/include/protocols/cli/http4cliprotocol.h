@@ -18,28 +18,28 @@
  */
 
 #ifndef _HTTP4CLIPROTOCOL_H
-#define	_HTTP4CLIPROTOCOL_H
+#define  _HTTP4CLIPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
 class HTTP4CLIProtocol
 : public BaseProtocol {
 private:
-	IOBuffer _localInputBuffer;
-	IOBuffer _localOutputBuffer;
+  IOBuffer _localInputBuffer;
+  IOBuffer _localOutputBuffer;
 public:
-	HTTP4CLIProtocol();
-	virtual ~HTTP4CLIProtocol();
+  HTTP4CLIProtocol();
+  virtual ~HTTP4CLIProtocol();
 
-	virtual bool Initialize(Variant &parameters);
-	virtual bool EnqueueForOutbound();
-	virtual IOBuffer * GetOutputBuffer();
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool Initialize(Variant &parameters);
+  virtual bool EnqueueForOutbound();
+  virtual IOBuffer * GetOutputBuffer();
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
 };
 
 
-#endif	/* _HTTP4CLIPROTOCOL_H */
+#endif  /* _HTTP4CLIPROTOCOL_H */
 

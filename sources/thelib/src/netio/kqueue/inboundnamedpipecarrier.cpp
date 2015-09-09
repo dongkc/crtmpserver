@@ -25,78 +25,78 @@
 
 InboundNamedPipeCarrier::InboundNamedPipeCarrier(int32_t fd, string path)
 : IOHandler(fd, fd, IOHT_INBOUNDNAMEDPIPE_CARRIER) {
-	_path = path;
+  _path = path;
 }
 
 InboundNamedPipeCarrier::~InboundNamedPipeCarrier() {
-	deleteFile(_path);
+  deleteFile(_path);
 }
 
 InboundNamedPipeCarrier *InboundNamedPipeCarrier::Create(string path,
-		uint16_t mode) {
-	if (mkfifo(STR(path), mode) != 0) {
-		int err = errno;
-		FATAL("Unable to create named pipe %s with mode %u: (%d) %s",
-				STR(path), (uint32_t) mode, err, strerror(err));
-		return NULL;
-	}
+    uint16_t mode) {
+  if (mkfifo(STR(path), mode) != 0) {
+    int err = errno;
+    FATAL("Unable to create named pipe %s with mode %u: (%d) %s",
+        STR(path), (uint32_t) mode, err, strerror(err));
+    return NULL;
+  }
 
-	int32_t fd = open(STR(path), O_RDONLY | O_NONBLOCK);
-	if (fd < 0) {
-		int err = errno;
-		FATAL("Unable to open named pipe %s: (%d) %s",
-				STR(path), err, strerror(err));
-		deleteFile(path);
-		return NULL;
-	}
+  int32_t fd = open(STR(path), O_RDONLY | O_NONBLOCK);
+  if (fd < 0) {
+    int err = errno;
+    FATAL("Unable to open named pipe %s: (%d) %s",
+        STR(path), err, strerror(err));
+    deleteFile(path);
+    return NULL;
+  }
 
-	InboundNamedPipeCarrier *pResult = new InboundNamedPipeCarrier(fd, path);
+  InboundNamedPipeCarrier *pResult = new InboundNamedPipeCarrier(fd, path);
 
-	if (!IOHandlerManager::EnableReadData(pResult)) {
-		FATAL("Unable to enable read event on the named pipe");
-		delete pResult;
-		return NULL;
-	}
+  if (!IOHandlerManager::EnableReadData(pResult)) {
+    FATAL("Unable to enable read event on the named pipe");
+    delete pResult;
+    return NULL;
+  }
 
-	return pResult;
+  return pResult;
 }
 
 bool InboundNamedPipeCarrier::SignalOutputData() {
-	NYIR;
+  NYIR;
 }
 
 bool InboundNamedPipeCarrier::OnEvent(struct kevent &event) {
-	if (_pProtocol == NULL) {
-		ASSERT("This pipe has no upper protocols");
-		return false;
-	}
+  if (_pProtocol == NULL) {
+    ASSERT("This pipe has no upper protocols");
+    return false;
+  }
 
-	int32_t recvAmount = 0;
+  int32_t recvAmount = 0;
 
-	switch (event.filter) {
-		case EVFILT_READ:
-		{
-			IOBuffer *pInputBuffer = _pProtocol->GetInputBuffer();
-			o_assert(pInputBuffer != NULL);
-			if (!pInputBuffer->ReadFromPipe(event.ident, event.data, recvAmount)) {
-				FATAL("Unable to read data");
-				return false;
-			}
+  switch (event.filter) {
+    case EVFILT_READ:
+    {
+      IOBuffer *pInputBuffer = _pProtocol->GetInputBuffer();
+      o_assert(pInputBuffer != NULL);
+      if (!pInputBuffer->ReadFromPipe(event.ident, event.data, recvAmount)) {
+        FATAL("Unable to read data");
+        return false;
+      }
 
-			return _pProtocol->SignalInputData(recvAmount);
-		}
-		default:
-		{
-			ASSERT("Invalid state: %hu", event.filter);
-			return false;
-		}
-	}
+      return _pProtocol->SignalInputData(recvAmount);
+    }
+    default:
+    {
+      ASSERT("Invalid state: %hu", event.filter);
+      return false;
+    }
+  }
 }
 
 InboundNamedPipeCarrier::operator string() {
-	if (_pProtocol != NULL)
-		return STR(*_pProtocol);
-	return format("INP(%d)", _inboundFd);
+  if (_pProtocol != NULL)
+    return STR(*_pProtocol);
+  return format("INP(%d)", _inboundFd);
 }
 
 void InboundNamedPipeCarrier::GetStats(Variant &info, uint32_t namespaceId) {

@@ -26,16 +26,16 @@
 class AtomNULL
 : public BaseAtom {
 public:
-	AtomNULL(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomNULL();
+  AtomNULL(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomNULL();
 
-	virtual bool IsIgnored();
+  virtual bool IsIgnored();
 
-	virtual bool Read();
-	string Hierarchy(uint32_t indent);
+  virtual bool Read();
+  string Hierarchy(uint32_t indent);
 };
 
-#endif	/* _ATOMNULL_H */
+#endif  /* _ATOMNULL_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

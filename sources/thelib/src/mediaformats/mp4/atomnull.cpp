@@ -29,15 +29,15 @@ AtomNULL::~AtomNULL() {
 }
 
 bool AtomNULL::IsIgnored() {
-	return true;
+  return true;
 }
 
 bool AtomNULL::Read() {
-	return SkipRead(false);
+  return SkipRead(false);
 }
 
 string AtomNULL::Hierarchy(uint32_t indent) {
-	return string(4 * indent, ' ') + "null";
+  return string(4 * indent, ' ') + "null";
 }
 
 

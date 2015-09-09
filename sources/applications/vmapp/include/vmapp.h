@@ -18,11 +18,11 @@
  */
 
 #ifndef _VMAPP_H
-#define	_VMAPP_H
+#define  _VMAPP_H
 
 #include "common.h"
 
 extern "C" DLLEXP BaseClientApplication *GetApplication_vmapp(Variant configuration);
 
-#endif	/* _VMAPP_H */
+#endif  /* _VMAPP_H */
 

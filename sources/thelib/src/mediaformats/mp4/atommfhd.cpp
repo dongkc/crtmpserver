@@ -21,19 +21,19 @@
 #include "mediaformats/mp4/atommfhd.h"
 
 AtomMFHD::AtomMFHD(MP4Document *pDocument, uint32_t type, uint64_t size,
-		uint64_t start)
+    uint64_t start)
 : VersionedAtom(pDocument, type, size, start) {
-	_sequenceNumber = 0;
+  _sequenceNumber = 0;
 }
 
 AtomMFHD::~AtomMFHD() {
 }
 
 bool AtomMFHD::ReadData() {
-	if (!ReadInt32(_sequenceNumber)) {
-		FATAL("Unable to read creation time");
-		return false;
-	}
-	return true;
+  if (!ReadInt32(_sequenceNumber)) {
+    FATAL("Unable to read creation time");
+    return false;
+  }
+  return true;
 }
 #endif /* HAS_MEDIA_MP4 */

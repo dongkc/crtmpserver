@@ -19,30 +19,30 @@
 
 
 #ifndef _HTTPBUFFERPROTOCOL_H
-#define	_HTTPBUFFERPROTOCOL_H
+#define  _HTTPBUFFERPROTOCOL_H
 
 #include "protocols/genericprotocol.h"
 
 namespace app_applestreamingclient {
 
-	class HTTPBufferProtocol
-	: public GenericProtocol {
-	private:
-		double _lastTimestamp;
-		double _lastAmount;
-		bool _isEncrypted;
-	public:
-		HTTPBufferProtocol();
-		virtual ~HTTPBufferProtocol();
+  class HTTPBufferProtocol
+  : public GenericProtocol {
+  private:
+    double _lastTimestamp;
+    double _lastAmount;
+    bool _isEncrypted;
+  public:
+    HTTPBufferProtocol();
+    virtual ~HTTPBufferProtocol();
 
-		virtual bool AllowFarProtocol(uint64_t type);
-		virtual bool AllowNearProtocol(uint64_t type);
-		virtual bool SignalInputData(int32_t recvAmount);
-		virtual bool SignalInputData(IOBuffer &buffer);
+    virtual bool AllowFarProtocol(uint64_t type);
+    virtual bool AllowNearProtocol(uint64_t type);
+    virtual bool SignalInputData(int32_t recvAmount);
+    virtual bool SignalInputData(IOBuffer &buffer);
 
-		bool TransferCompleted();
-	};
+    bool TransferCompleted();
+  };
 }
 
-#endif	/* _HTTPBUFFERPROTOCOL_H */
+#endif  /* _HTTPBUFFERPROTOCOL_H */
 

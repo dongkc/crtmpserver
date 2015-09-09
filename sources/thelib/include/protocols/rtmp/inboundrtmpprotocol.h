@@ -20,31 +20,31 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _INBOUNDRTMPPROTOCOL_H
-#define	_INBOUNDRTMPPROTOCOL_H
+#define  _INBOUNDRTMPPROTOCOL_H
 
 #include "protocols/rtmp/basertmpprotocol.h"
 
 class DLLEXP InboundRTMPProtocol
 : public BaseRTMPProtocol {
 private:
-	RC4_KEY*_pKeyIn;
-	RC4_KEY*_pKeyOut;
-	uint8_t *_pOutputBuffer;
-	uint32_t _currentFPVersion;
-	uint8_t _handshakeScheme;
+  RC4_KEY*_pKeyIn;
+  RC4_KEY*_pKeyOut;
+  uint8_t *_pOutputBuffer;
+  uint32_t _currentFPVersion;
+  uint8_t _handshakeScheme;
 public:
-	InboundRTMPProtocol();
-	virtual ~InboundRTMPProtocol();
+  InboundRTMPProtocol();
+  virtual ~InboundRTMPProtocol();
 protected:
-	virtual bool PerformHandshake(IOBuffer &buffer);
+  virtual bool PerformHandshake(IOBuffer &buffer);
 private:
-	bool ValidateClient(IOBuffer &inputBuffer);
-	bool ValidateClientScheme(IOBuffer &inputBuffer, uint8_t scheme);
-	bool PerformHandshake(IOBuffer &buffer, bool encrypted);
-	bool PerformSimpleHandshake(IOBuffer &buffer);
-	bool PerformComplexHandshake(IOBuffer &buffer, bool encrypted);
+  bool ValidateClient(IOBuffer &inputBuffer);
+  bool ValidateClientScheme(IOBuffer &inputBuffer, uint8_t scheme);
+  bool PerformHandshake(IOBuffer &buffer, bool encrypted);
+  bool PerformSimpleHandshake(IOBuffer &buffer);
+  bool PerformComplexHandshake(IOBuffer &buffer, bool encrypted);
 };
 
-#endif	/* _INBOUNDRTMPPROTOCOL_H */
+#endif  /* _INBOUNDRTMPPROTOCOL_H */
 #endif /* HAS_PROTOCOL_RTMP */
 

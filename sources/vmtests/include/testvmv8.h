@@ -19,19 +19,19 @@
 
 #ifdef HAS_V8
 #ifndef _TESTVMV8_H
-#define	_TESTVMV8_H
+#define  _TESTVMV8_H
 
 #include "vmv8/basevmv8.h"
 
 class TestVMV8
 : public BaseVMV8 {
 public:
-	TestVMV8();
-	virtual ~TestVMV8();
+  TestVMV8();
+  virtual ~TestVMV8();
 private:
 
 };
 
 
-#endif	/* _TESTVMV8_H */
-#endif	/* HAS_V8 */
+#endif  /* _TESTVMV8_H */
+#endif  /* HAS_V8 */

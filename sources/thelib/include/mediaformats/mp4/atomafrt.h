@@ -25,26 +25,26 @@
 #include "mediaformats/mp4/versionedatom.h"
 
 struct FRAGMENTRUNENTRY {
-	uint32_t firstFragment;
-	uint64_t firstFragmentTimestamp;
-	uint32_t fragmentDuration;
-	uint8_t discontinuityIndicator;
+  uint32_t firstFragment;
+  uint64_t firstFragmentTimestamp;
+  uint32_t fragmentDuration;
+  uint8_t discontinuityIndicator;
 };
 
 class AtomAFRT
 : public VersionedAtom {
 private:
-	uint32_t _timeScale;
-	uint8_t _qualityEntryCount;
-	vector<string> _qualitySegmentUrlModifiers;
-	uint32_t _fragmentRunEntryCount;
-	vector<FRAGMENTRUNENTRY> _fragmentRunEntryTable;
+  uint32_t _timeScale;
+  uint8_t _qualityEntryCount;
+  vector<string> _qualitySegmentUrlModifiers;
+  uint32_t _fragmentRunEntryCount;
+  vector<FRAGMENTRUNENTRY> _fragmentRunEntryTable;
 public:
-	AtomAFRT(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomAFRT();
+  AtomAFRT(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomAFRT();
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
-#endif	/* _ATOMAFRT_H */
+#endif  /* _ATOMAFRT_H */
 #endif /* HAS_MEDIA_MP4 */

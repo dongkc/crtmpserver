@@ -19,20 +19,20 @@
 
 #ifdef HAS_PROTOCOL_RTP
 #ifndef _BASECONNECTIVITY_H
-#define	_BASECONNECTIVITY_H
+#define  _BASECONNECTIVITY_H
 
 #include "common.h"
 
 class DLLEXP BaseConnectivity {
 public:
-	BaseConnectivity();
-	virtual ~BaseConnectivity();
+  BaseConnectivity();
+  virtual ~BaseConnectivity();
 
-	static uint32_t ToRTPTS(struct timeval &tv, uint32_t rate);
-	static uint32_t ToRTPTS(double milliseconds, uint32_t rate);
+  static uint32_t ToRTPTS(struct timeval &tv, uint32_t rate);
+  static uint32_t ToRTPTS(double milliseconds, uint32_t rate);
 };
 
 
-#endif	/* _BASECONNECTIVITY_H */
+#endif  /* _BASECONNECTIVITY_H */
 #endif /* HAS_PROTOCOL_RTP */
 

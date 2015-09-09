@@ -19,21 +19,21 @@
 
 #ifdef HAS_PROTOCOL_HTTP
 #ifndef _HTTPAPPPROTOCOLHANDLER_H
-#define	_HTTPAPPPROTOCOLHANDLER_H
+#define  _HTTPAPPPROTOCOLHANDLER_H
 
 #include "protocols/http/basehttpprotocolhandler.h"
 
 namespace app_flvplayback {
 
-	class HTTPAppProtocolHandler
-	: public BaseHTTPAppProtocolHandler {
-	public:
-		HTTPAppProtocolHandler(Variant &configuration);
-		virtual ~HTTPAppProtocolHandler();
-	};
+  class HTTPAppProtocolHandler
+  : public BaseHTTPAppProtocolHandler {
+  public:
+    HTTPAppProtocolHandler(Variant &configuration);
+    virtual ~HTTPAppProtocolHandler();
+  };
 }
 
-#endif	/* _HTTPAPPPROTOCOLHANDLER_H */
-#endif	/* HAS_PROTOCOL_HTTP */
+#endif  /* _HTTPAPPPROTOCOLHANDLER_H */
+#endif  /* HAS_PROTOCOL_HTTP */
 
 

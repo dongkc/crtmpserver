@@ -26,22 +26,22 @@
 class AtomHDLR
 : public VersionedAtom {
 private:
-	uint32_t _componentType;
-	uint32_t _componentSubType;
-	uint32_t _componentManufacturer;
-	uint32_t _componentFlags;
-	uint32_t _componentFlagsMask;
-	string _componentName;
+  uint32_t _componentType;
+  uint32_t _componentSubType;
+  uint32_t _componentManufacturer;
+  uint32_t _componentFlags;
+  uint32_t _componentFlagsMask;
+  string _componentName;
 public:
-	AtomHDLR(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomHDLR();
-	uint32_t GetComponentSubType();
-	virtual string Hierarchy(uint32_t indent);
+  AtomHDLR(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomHDLR();
+  uint32_t GetComponentSubType();
+  virtual string Hierarchy(uint32_t indent);
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
-#endif	/* _ATOMHDLR_H */
+#endif  /* _ATOMHDLR_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

@@ -19,78 +19,78 @@
 
 
 #ifndef _STRAMCAPABILITIES_H
-#define	_STRAMCAPABILITIES_H
+#define  _STRAMCAPABILITIES_H
 
 #include "streaming/codectypes.h"
 
 struct _VIDEO_AVC {
-	uint8_t *_pSPS;
-	uint16_t _spsLength;
-	uint8_t *_pPPS;
-	uint16_t _ppsLength;
-	uint32_t _rate;
-	Variant _SPSInfo;
-	Variant _PPSInfo;
-	uint32_t _width;
-	uint32_t _height;
-	uint32_t _widthOverride;
-	uint32_t _heightOverride;
+  uint8_t *_pSPS;
+  uint16_t _spsLength;
+  uint8_t *_pPPS;
+  uint16_t _ppsLength;
+  uint32_t _rate;
+  Variant _SPSInfo;
+  Variant _PPSInfo;
+  uint32_t _width;
+  uint32_t _height;
+  uint32_t _widthOverride;
+  uint32_t _heightOverride;
 
-	DLLEXP _VIDEO_AVC();
-	DLLEXP virtual ~_VIDEO_AVC();
-	bool Init(const uint8_t *pSPS, uint32_t spsLength, const uint8_t *pPPS, uint32_t ppsLength);
-	void Clear();
+  DLLEXP _VIDEO_AVC();
+  DLLEXP virtual ~_VIDEO_AVC();
+  bool Init(const uint8_t *pSPS, uint32_t spsLength, const uint8_t *pPPS, uint32_t ppsLength);
+  void Clear();
 
-	bool Serialize(IOBuffer & dest);
-	static bool Deserialize(IOBuffer &src, _VIDEO_AVC & dest);
-	DLLEXP operator string();
+  bool Serialize(IOBuffer & dest);
+  static bool Deserialize(IOBuffer &src, _VIDEO_AVC & dest);
+  DLLEXP operator string();
 };
 
 struct _AUDIO_AAC {
-	uint8_t *_pAAC;
-	uint32_t _aacLength;
-	uint8_t _audioObjectType;
-	uint8_t _sampleRateIndex;
-	uint32_t _sampleRate;
-	uint8_t _channelConfigurationIndex;
+  uint8_t *_pAAC;
+  uint32_t _aacLength;
+  uint8_t _audioObjectType;
+  uint8_t _sampleRateIndex;
+  uint32_t _sampleRate;
+  uint8_t _channelConfigurationIndex;
 
-	DLLEXP _AUDIO_AAC();
-	DLLEXP virtual ~_AUDIO_AAC();
-	bool Init(const uint8_t *pBuffer, uint32_t length);
-	void Clear();
-	DLLEXP string GetRTSPFmtpConfig();
+  DLLEXP _AUDIO_AAC();
+  DLLEXP virtual ~_AUDIO_AAC();
+  bool Init(const uint8_t *pBuffer, uint32_t length);
+  void Clear();
+  DLLEXP string GetRTSPFmtpConfig();
 
-	bool Serialize(IOBuffer & dest);
-	static bool Deserialize(IOBuffer &src, _AUDIO_AAC & dest);
-	operator string();
+  bool Serialize(IOBuffer & dest);
+  static bool Deserialize(IOBuffer &src, _AUDIO_AAC & dest);
+  operator string();
 };
 
 class DLLEXP StreamCapabilities {
 public:
-	uint64_t videoCodecId;
-	uint64_t audioCodecId;
-	_VIDEO_AVC avc;
-	_AUDIO_AAC aac;
-	uint32_t bandwidthHint;
+  uint64_t videoCodecId;
+  uint64_t audioCodecId;
+  _VIDEO_AVC avc;
+  _AUDIO_AAC aac;
+  uint32_t bandwidthHint;
 public:
-	StreamCapabilities();
-	virtual ~StreamCapabilities();
+  StreamCapabilities();
+  virtual ~StreamCapabilities();
 
-	bool InitAudioAAC(const uint8_t *pBuffer, uint32_t length);
-	bool InitAudioADTS();
-	bool InitAudioMP3();
-	bool InitAudioG711();
-	bool InitVideoH264(const uint8_t *pSPS, uint32_t spsLength, const uint8_t *pPPS,
-			uint32_t ppsLength);
+  bool InitAudioAAC(const uint8_t *pBuffer, uint32_t length);
+  bool InitAudioADTS();
+  bool InitAudioMP3();
+  bool InitAudioG711();
+  bool InitVideoH264(const uint8_t *pSPS, uint32_t spsLength, const uint8_t *pPPS,
+      uint32_t ppsLength);
 
-	void ClearVideo();
-	void ClearAudio();
-	void Clear();
+  void ClearVideo();
+  void ClearAudio();
+  void Clear();
 
-	bool Serialize(IOBuffer &dest);
-	static bool Deserialize(string seekFilePath, StreamCapabilities &capabilities);
-	static bool Deserialize(IOBuffer &src, StreamCapabilities &capabilities);
+  bool Serialize(IOBuffer &dest);
+  static bool Deserialize(string seekFilePath, StreamCapabilities &capabilities);
+  static bool Deserialize(IOBuffer &src, StreamCapabilities &capabilities);
 };
 
-#endif	/* _STRAMCAPABILITIES_H */
+#endif  /* _STRAMCAPABILITIES_H */
 

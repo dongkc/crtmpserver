@@ -19,19 +19,19 @@
 
 #ifdef HAS_PROTOCOL_RAWHTTPSTREAM
 #ifndef _RAWHTTPSTREAMAPPPROTOCOLHANDLER_H
-#define	_RAWHTTPSTREAMAPPPROTOCOLHANDLER_H
+#define  _RAWHTTPSTREAMAPPPROTOCOLHANDLER_H
 
 #include "protocols/rawhttpstream/baserawhttpstreamappprotocolhandler.h"
 
 namespace app_flvplayback {
 
-	class RawHTTPStreamAppProtocolHandler
-	: public BaseRawHTTPStreamAppProtocolHandler {
-	public:
-		RawHTTPStreamAppProtocolHandler(Variant &configuration);
-		virtual ~RawHTTPStreamAppProtocolHandler();
-	};
+  class RawHTTPStreamAppProtocolHandler
+  : public BaseRawHTTPStreamAppProtocolHandler {
+  public:
+    RawHTTPStreamAppProtocolHandler(Variant &configuration);
+    virtual ~RawHTTPStreamAppProtocolHandler();
+  };
 };
 
-#endif	/* _RAWHTTPSTREAMAPPPROTOCOLHANDLER_H */
+#endif  /* _RAWHTTPSTREAMAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_RAWHTTPSTREAM */

@@ -19,14 +19,14 @@
 
 #ifdef NET_EPOLL
 #ifndef _IOHANDLERMANAGERTOKEN_H
-#define	_IOHANDLERMANAGERTOKEN_H
+#define  _IOHANDLERMANAGERTOKEN_H
 
 typedef struct _IOHandlerManagerToken {
-	void *pPayload;
-	bool validPayload;
+  void *pPayload;
+  bool validPayload;
 } IOHandlerManagerToken;
 
-#endif	/* _IOHANDLERMANAGERTOKEN_H */
+#endif  /* _IOHANDLERMANAGERTOKEN_H */
 #endif /* NET_EPOLL */
 
 

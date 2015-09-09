@@ -23,77 +23,77 @@
 #include "protocols/baseprotocol.h"
 
 BaseStream::BaseStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
-		uint64_t type, string name) {
-	_pStreamsManager = pStreamsManager;
-	_type = type;
-	_uniqueId = _pStreamsManager->GenerateUniqueId();
-	_pProtocol = pProtocol;
-	_name = name;
-	_pStreamsManager->RegisterStream(this);
-	GETCLOCKS(_creationTimestamp);
-	_creationTimestamp /= (double) CLOCKS_PER_SECOND;
-	_creationTimestamp *= 1000.00;
+    uint64_t type, string name) {
+  _pStreamsManager = pStreamsManager;
+  _type = type;
+  _uniqueId = _pStreamsManager->GenerateUniqueId();
+  _pProtocol = pProtocol;
+  _name = name;
+  _pStreamsManager->RegisterStream(this);
+  GETCLOCKS(_creationTimestamp);
+  _creationTimestamp /= (double) CLOCKS_PER_SECOND;
+  _creationTimestamp *= 1000.00;
 }
 
 BaseStream::~BaseStream() {
-	_pStreamsManager->UnRegisterStream(this);
+  _pStreamsManager->UnRegisterStream(this);
 }
 
 StreamsManager *BaseStream::GetStreamsManager() {
-	return _pStreamsManager;
+  return _pStreamsManager;
 }
 
 uint64_t BaseStream::GetType() {
-	return _type;
+  return _type;
 }
 
 uint32_t BaseStream::GetUniqueId() {
-	return _uniqueId;
+  return _uniqueId;
 }
 
 double BaseStream::GetSpawnTimestamp() {
-	return _creationTimestamp;
+  return _creationTimestamp;
 }
 
 string BaseStream::GetName() {
-	return _name;
+  return _name;
 }
 
 void BaseStream::SetName(string name) {
-	if (_name != "") {
-		ASSERT("name already set");
-	}
-	_name = name;
+  if (_name != "") {
+    ASSERT("name already set");
+  }
+  _name = name;
 }
 
 void BaseStream::GetStats(Variant &info, uint32_t namespaceId) {
-	info["uniqueId"] = (((uint64_t) namespaceId) << 32) | _uniqueId;
-	info["type"] = tagToString(_type);
-	info["name"] = _name;
-	info["creationTimestamp"] = _creationTimestamp;
-	double queryTimestamp = 0;
-	GETCLOCKS(queryTimestamp);
-	queryTimestamp /= (double) CLOCKS_PER_SECOND;
-	queryTimestamp *= 1000.00;
-	info["queryTimestamp"] = queryTimestamp;
-	info["upTime"] = queryTimestamp - _creationTimestamp;
+  info["uniqueId"] = (((uint64_t) namespaceId) << 32) | _uniqueId;
+  info["type"] = tagToString(_type);
+  info["name"] = _name;
+  info["creationTimestamp"] = _creationTimestamp;
+  double queryTimestamp = 0;
+  GETCLOCKS(queryTimestamp);
+  queryTimestamp /= (double) CLOCKS_PER_SECOND;
+  queryTimestamp *= 1000.00;
+  info["queryTimestamp"] = queryTimestamp;
+  info["upTime"] = queryTimestamp - _creationTimestamp;
 }
 
 BaseProtocol * BaseStream::GetProtocol() {
-	return _pProtocol;
+  return _pProtocol;
 }
 
 bool BaseStream::IsEnqueueForDelete() {
-	if (_pProtocol != NULL)
-		return _pProtocol->IsEnqueueForDelete();
-	return false;
+  if (_pProtocol != NULL)
+    return _pProtocol->IsEnqueueForDelete();
+  return false;
 }
 
 void BaseStream::EnqueueForDelete() {
-	if (_pProtocol != NULL) {
-		_pProtocol->EnqueueForDelete();
-	} else {
-		delete this;
-	}
+  if (_pProtocol != NULL) {
+    _pProtocol->EnqueueForDelete();
+  } else {
+    delete this;
+  }
 }
 

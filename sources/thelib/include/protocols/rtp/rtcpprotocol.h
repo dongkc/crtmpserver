@@ -19,7 +19,7 @@
 
 #ifdef HAS_PROTOCOL_RTP
 #ifndef _RTCPPROTOCOL_H
-#define	_RTCPPROTOCOL_H
+#define  _RTCPPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
@@ -28,32 +28,32 @@ class InboundConnectivity;
 class DLLEXP RTCPProtocol
 : public BaseProtocol {
 private:
-	InboundConnectivity *_pConnectivity;
-	uint32_t _lsr;
-	uint8_t _buff[32];
-	sockaddr_in _lastAddress;
-	bool _isAudio;
-	uint32_t _ssrc;
-	bool _validLastAddress;
+  InboundConnectivity *_pConnectivity;
+  uint32_t _lsr;
+  uint8_t _buff[32];
+  sockaddr_in _lastAddress;
+  bool _isAudio;
+  uint32_t _ssrc;
+  bool _validLastAddress;
 public:
-	RTCPProtocol();
-	virtual ~RTCPProtocol();
+  RTCPProtocol();
+  virtual ~RTCPProtocol();
 
-	virtual bool Initialize(Variant &parameters);
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer, sockaddr_in *pPeerAddress);
-	virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool Initialize(Variant &parameters);
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer, sockaddr_in *pPeerAddress);
+  virtual bool SignalInputData(IOBuffer &buffer);
 
-	uint32_t GetLastSenderReport();
-	sockaddr_in *GetLastAddress();
-	uint32_t GetSSRC();
+  uint32_t GetLastSenderReport();
+  sockaddr_in *GetLastAddress();
+  uint32_t GetSSRC();
 
-	void SetInbboundConnectivity(InboundConnectivity *pConnectivity, bool isAudio);
+  void SetInbboundConnectivity(InboundConnectivity *pConnectivity, bool isAudio);
 };
 
 
-#endif	/* _RTCPPROTOCOL_H */
+#endif  /* _RTCPPROTOCOL_H */
 #endif /* HAS_PROTOCOL_RTP */
 

@@ -26,31 +26,31 @@
 class AtomABST
 : public VersionedAtom {
 private:
-	uint32_t _bootstrapInfoVersion;
-	uint8_t _profile;
-	bool _live;
-	bool _update;
-	uint32_t _timeScale;
-	uint64_t _currentMediaTime;
-	uint64_t _smpteTimeCodeOffset;
-	string _movieIdentifier;
-	uint8_t _serverEntryCount;
-	vector<string> _serverEntryTable;
-	uint8_t _qualityEntryCount;
-	vector<string> _qualityEntryTable;
-	string _drmData;
-	string _metaData;
-	uint8_t _segmentRunTableCount;
-	vector<BaseAtom*> _segmentRunTableEntries;
-	uint8_t _fragmentRunTableCount;
-	vector<BaseAtom*> _fragmentRunTableEntries;
+  uint32_t _bootstrapInfoVersion;
+  uint8_t _profile;
+  bool _live;
+  bool _update;
+  uint32_t _timeScale;
+  uint64_t _currentMediaTime;
+  uint64_t _smpteTimeCodeOffset;
+  string _movieIdentifier;
+  uint8_t _serverEntryCount;
+  vector<string> _serverEntryTable;
+  uint8_t _qualityEntryCount;
+  vector<string> _qualityEntryTable;
+  string _drmData;
+  string _metaData;
+  uint8_t _segmentRunTableCount;
+  vector<BaseAtom*> _segmentRunTableEntries;
+  uint8_t _fragmentRunTableCount;
+  vector<BaseAtom*> _fragmentRunTableEntries;
 public:
-	AtomABST(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomABST();
-	virtual string Hierarchy(uint32_t indent);
+  AtomABST(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomABST();
+  virtual string Hierarchy(uint32_t indent);
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
-#endif	/* _ATOMABST_H */
+#endif  /* _ATOMABST_H */
 #endif /* HAS_MEDIA_MP4 */

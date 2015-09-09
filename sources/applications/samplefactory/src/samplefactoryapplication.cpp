@@ -28,30 +28,30 @@ using namespace app_samplefactory;
 
 SampleFactoryApplication::SampleFactoryApplication(Variant &configuration)
 : BaseClientApplication(configuration) {
-	_pEchoHandler = NULL;
+  _pEchoHandler = NULL;
 }
 
 SampleFactoryApplication::~SampleFactoryApplication() {
-	UnRegisterAppProtocolHandler(PT_ECHO_PROTOCOL);
-	if (_pEchoHandler != NULL) {
-		delete _pEchoHandler;
-		_pEchoHandler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_ECHO_PROTOCOL);
+  if (_pEchoHandler != NULL) {
+    delete _pEchoHandler;
+    _pEchoHandler = NULL;
+  }
 }
 
 bool SampleFactoryApplication::Initialize() {
-	if (!BaseClientApplication::Initialize()) {
-		FATAL("Unable to initialize application");
-		return false;
-	}
-	//TODO: Add your app init code here
-	//Things like parsing custom sections inside _configuration for example,
-	//initialize the protocol handler(s)
+  if (!BaseClientApplication::Initialize()) {
+    FATAL("Unable to initialize application");
+    return false;
+  }
+  //TODO: Add your app init code here
+  //Things like parsing custom sections inside _configuration for example,
+  //initialize the protocol handler(s)
 
-	//1. Initialize the protocol handler(s)
-	_pEchoHandler = new EchoAppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_ECHO_PROTOCOL, _pEchoHandler);
+  //1. Initialize the protocol handler(s)
+  _pEchoHandler = new EchoAppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_ECHO_PROTOCOL, _pEchoHandler);
 
-	return true;
+  return true;
 }
 

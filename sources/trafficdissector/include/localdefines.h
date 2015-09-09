@@ -18,7 +18,7 @@
  */
 
 #ifndef _LOCALDEFINES_H
-#define	_LOCALDEFINES_H
+#define  _LOCALDEFINES_H
 
 #define PT_MONITORRTMP MAKE_TAG2('M','R')
 
@@ -26,5 +26,5 @@
 #define HSS_HS 1
 #define HSS_DONE 2
 
-#endif	/* _LOCALDEFINES_H */
+#endif  /* _LOCALDEFINES_H */
 

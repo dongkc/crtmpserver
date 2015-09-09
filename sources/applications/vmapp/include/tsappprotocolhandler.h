@@ -18,26 +18,26 @@
  */
 
 #ifndef _TSAPPPROTOCOLHANDLER_H
-#define	_TSAPPPROTOCOLHANDLER_H
+#define  _TSAPPPROTOCOLHANDLER_H
 
 #include "protocols/ts/basetsappprotocolhandler.h"
 
 namespace app_vmapp {
 
-	class BaseAppVirtualMachine;
+  class BaseAppVirtualMachine;
 
-	class TSAppProtocolHandler
-	: public BaseTSAppProtocolHandler {
-	private:
-		BaseAppVirtualMachine *_pAppVM;
-	public:
-		TSAppProtocolHandler(Variant &configuration, BaseAppVirtualMachine *pAppVM);
-		virtual ~TSAppProtocolHandler();
+  class TSAppProtocolHandler
+  : public BaseTSAppProtocolHandler {
+  private:
+    BaseAppVirtualMachine *_pAppVM;
+  public:
+    TSAppProtocolHandler(Variant &configuration, BaseAppVirtualMachine *pAppVM);
+    virtual ~TSAppProtocolHandler();
 
-		virtual void RegisterProtocol(BaseProtocol *pProtocol);
-		virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
-		virtual void ProgramSetupCompleted(InNetTSStream *pInNetTSStream);
-	};
+    virtual void RegisterProtocol(BaseProtocol *pProtocol);
+    virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+    virtual void ProgramSetupCompleted(InNetTSStream *pInNetTSStream);
+  };
 }
 
-#endif	/* _TSAPPPROTOCOLHANDLER_H */
+#endif  /* _TSAPPPROTOCOLHANDLER_H */

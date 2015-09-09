@@ -19,7 +19,7 @@
 
 
 #ifndef _NALUTYPES_H
-#define	_NALUTYPES_H
+#define  _NALUTYPES_H
 
 #include "common.h"
 
@@ -67,6 +67,6 @@
 
 DLLEXP string NALUToString(uint8_t naluType);
 
-#endif	/* _NALUTYPES_H */
+#endif  /* _NALUTYPES_H */
 
 

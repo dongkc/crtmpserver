@@ -29,11 +29,11 @@ AtomURL::~AtomURL() {
 }
 
 bool AtomURL::ReadData() {
-	if (!ReadString(_location, _size - 12)) {
-		FATAL("Unable to read location");
-		return false;
-	}
-	return true;
+  if (!ReadString(_location, _size - 12)) {
+    FATAL("Unable to read location");
+    return false;
+  }
+  return true;
 }
 
 #endif /* HAS_MEDIA_MP4 */

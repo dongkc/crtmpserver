@@ -32,21 +32,21 @@ class AtomMETA;
 class AtomMOOV
 : public BoxAtom {
 private:
-	AtomMVEX *_pMVEX;
-	AtomMVHD *_pMVHD;
-	vector<AtomTRAK *> _tracks;
-	AtomUDTA *_pUDTA;
-	AtomMETA *_pMETA;
+  AtomMVEX *_pMVEX;
+  AtomMVHD *_pMVHD;
+  vector<AtomTRAK *> _tracks;
+  AtomUDTA *_pUDTA;
+  AtomMETA *_pMETA;
 public:
-	AtomMOOV(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomMOOV();
+  AtomMOOV(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomMOOV();
 
-	vector<AtomTRAK *> GetTracks();
+  vector<AtomTRAK *> GetTracks();
 protected:
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
-#endif	/* _ATOMMOOV_H */
+#endif  /* _ATOMMOOV_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

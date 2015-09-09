@@ -23,42 +23,42 @@
 
 AtomMETA::AtomMETA(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : VersionedBoxAtom(pDocument, type, size, start) {
-	_pHDLR = NULL;
-	_pILST = NULL;
+  _pHDLR = NULL;
+  _pILST = NULL;
 }
 
 AtomMETA::~AtomMETA() {
 }
 
 bool AtomMETA::Read() {
-	if (_pParent == NULL)
-		return SkipRead(false);
-	if (_pParent->GetParentAtom() == NULL)
-		return SkipRead(false);
-	if (_pParent->GetTypeNumeric() != A_UDTA ||
-			_pParent->GetParentAtom()->GetTypeNumeric() != A_MOOV)
-		return SkipRead(false);
-	return VersionedBoxAtom::Read();
+  if (_pParent == NULL)
+    return SkipRead(false);
+  if (_pParent->GetParentAtom() == NULL)
+    return SkipRead(false);
+  if (_pParent->GetTypeNumeric() != A_UDTA ||
+      _pParent->GetParentAtom()->GetTypeNumeric() != A_MOOV)
+    return SkipRead(false);
+  return VersionedBoxAtom::Read();
 }
 
 bool AtomMETA::ReadData() {
-	return true;
+  return true;
 }
 
 bool AtomMETA::AtomCreated(BaseAtom *pAtom) {
-	switch (pAtom->GetTypeNumeric()) {
-		case A_HDLR:
-			_pHDLR = (AtomHDLR *) pAtom;
-			return true;
-		case A_ILST:
-			_pILST = (AtomILST *) pAtom;
-			return true;
-		default:
-		{
-			FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
-			return false;
-		}
-	}
+  switch (pAtom->GetTypeNumeric()) {
+    case A_HDLR:
+      _pHDLR = (AtomHDLR *) pAtom;
+      return true;
+    case A_ILST:
+      _pILST = (AtomILST *) pAtom;
+      return true;
+    default:
+    {
+      FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
+      return false;
+    }
+  }
 }
 
 #endif /* HAS_MEDIA_MP4 */

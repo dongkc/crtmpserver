@@ -23,7 +23,7 @@
 using namespace app_flvplayback;
 
 RawHTTPStreamAppProtocolHandler::RawHTTPStreamAppProtocolHandler(
-		Variant &configuration)
+    Variant &configuration)
 : BaseRawHTTPStreamAppProtocolHandler(configuration) {
 
 }

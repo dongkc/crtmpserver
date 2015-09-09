@@ -25,110 +25,110 @@
 
 /*#define ENABLE_WRITE_DATA \
 if (!_writeDataEnabled) { \
-	_writeDataEnabled = true; \
-	IOHandlerManager::EnableWriteData(this); \
+  _writeDataEnabled = true; \
+  IOHandlerManager::EnableWriteData(this); \
 }
 
 
 #define DISABLE_WRITE_DATA \
 if (_writeDataEnabled) { \
-	_writeDataEnabled = false; \
-	IOHandlerManager::DisableWriteData(this); \
-	_pProtocol->ReadyForSend(); \
+  _writeDataEnabled = false; \
+  IOHandlerManager::DisableWriteData(this); \
+  _pProtocol->ReadyForSend(); \
 }*/
 
 StdioCarrier *StdioCarrier::_pInstance = NULL;
 
 StdioCarrier::StdioCarrier()
 : IOHandler(fileno(stdin), fileno(stdout), IOHT_TCP_CARRIER) {
-	IOHandlerManager::EnableReadData(this);
-	_writeDataEnabled = false;
-	_ioAmount = 0;
+  IOHandlerManager::EnableReadData(this);
+  _writeDataEnabled = false;
+  _ioAmount = 0;
 }
 
 StdioCarrier *StdioCarrier::GetInstance(BaseProtocol *pProtocol) {
-	if (_pInstance == NULL) {
-		_pInstance = new StdioCarrier();
-		_pInstance->SetProtocol(pProtocol);
-		pProtocol->GetFarEndpoint()->SetIOHandler(_pInstance);
-		return _pInstance;
-	}
-	o_assert(_pInstance->_pProtocol != NULL);
-	o_assert(pProtocol != NULL);
-	if (_pInstance->_pProtocol->GetId() != pProtocol->GetId()) {
-		FATAL("Stdio carrier is already acquired");
-		return NULL;
-	}
-	return _pInstance;
+  if (_pInstance == NULL) {
+    _pInstance = new StdioCarrier();
+    _pInstance->SetProtocol(pProtocol);
+    pProtocol->GetFarEndpoint()->SetIOHandler(_pInstance);
+    return _pInstance;
+  }
+  o_assert(_pInstance->_pProtocol != NULL);
+  o_assert(pProtocol != NULL);
+  if (_pInstance->_pProtocol->GetId() != pProtocol->GetId()) {
+    FATAL("Stdio carrier is already acquired");
+    return NULL;
+  }
+  return _pInstance;
 }
 
 StdioCarrier::~StdioCarrier() {
-	_pInstance = NULL;
+  _pInstance = NULL;
 }
 
 bool StdioCarrier::OnEvent(struct epoll_event &event) {
-	//1. Read data
-	if ((event.events & EPOLLIN) != 0) {
-		IOBuffer *pInputBuffer = _pProtocol->GetInputBuffer();
-		o_assert(pInputBuffer != NULL);
-		if (!pInputBuffer->ReadFromStdio(_inboundFd, FD_READ_CHUNK, _ioAmount)) {
-			FATAL("Unable to read data");
-			return false;
-		}
-		ADD_IN_BYTES_MANAGED(_type, _ioAmount);
-		if (_ioAmount == 0) {
-			FATAL("Connection closed");
-			return false;
-		}
+  //1. Read data
+  if ((event.events & EPOLLIN) != 0) {
+    IOBuffer *pInputBuffer = _pProtocol->GetInputBuffer();
+    o_assert(pInputBuffer != NULL);
+    if (!pInputBuffer->ReadFromStdio(_inboundFd, FD_READ_CHUNK, _ioAmount)) {
+      FATAL("Unable to read data");
+      return false;
+    }
+    ADD_IN_BYTES_MANAGED(_type, _ioAmount);
+    if (_ioAmount == 0) {
+      FATAL("Connection closed");
+      return false;
+    }
 
-		if (!_pProtocol->SignalInputData(_ioAmount)) {
-			FATAL("Unable to signal data available");
-			return false;
-		}
-	}
+    if (!_pProtocol->SignalInputData(_ioAmount)) {
+      FATAL("Unable to signal data available");
+      return false;
+    }
+  }
 
-	/*//2. Write data
-	if ((event.events & EPOLLOUT) != 0) {
-		IOBuffer *pOutputBuffer = NULL;
-		while ((pOutputBuffer = _pProtocol->GetOutputBuffer()) != NULL) {
-			if (!pOutputBuffer->PutToStdio(_outboundFd, FD_WRITE_CHUNK,_ioAmount)) {
-				FATAL("Unable to send data");
-				IOHandlerManager::EnqueueForDelete(this);
-				return false;
-			}
-			ADD_OUT_BYTES_MANAGED(_type, _ioAmount);
-			if (GETAVAILABLEBYTESCOUNT(*pOutputBuffer) > 0) {
-				ENABLE_WRITE_DATA;
-				break;
-			}
-		}
+  /*//2. Write data
+  if ((event.events & EPOLLOUT) != 0) {
+    IOBuffer *pOutputBuffer = NULL;
+    while ((pOutputBuffer = _pProtocol->GetOutputBuffer()) != NULL) {
+      if (!pOutputBuffer->PutToStdio(_outboundFd, FD_WRITE_CHUNK,_ioAmount)) {
+        FATAL("Unable to send data");
+        IOHandlerManager::EnqueueForDelete(this);
+        return false;
+      }
+      ADD_OUT_BYTES_MANAGED(_type, _ioAmount);
+      if (GETAVAILABLEBYTESCOUNT(*pOutputBuffer) > 0) {
+        ENABLE_WRITE_DATA;
+        break;
+      }
+    }
 
-		if (pOutputBuffer == NULL) {
-			DISABLE_WRITE_DATA;
-		}
-	}*/
+    if (pOutputBuffer == NULL) {
+      DISABLE_WRITE_DATA;
+    }
+  }*/
 
-	return true;
+  return true;
 }
 
 bool StdioCarrier::SignalOutputData() {
-	IOBuffer *pOutputBuffer = NULL;
+  IOBuffer *pOutputBuffer = NULL;
 
-	while ((pOutputBuffer = _pProtocol->GetOutputBuffer()) != NULL) {
-		if (!pOutputBuffer->WriteToStdio(_outboundFd, FD_WRITE_CHUNK, _ioAmount)) {
-			FATAL("Unable to send data");
-			IOHandlerManager::EnqueueForDelete(this);
-			return false;
-		}
-		ADD_OUT_BYTES_MANAGED(_type, _ioAmount);
-	}
-	return true;
+  while ((pOutputBuffer = _pProtocol->GetOutputBuffer()) != NULL) {
+    if (!pOutputBuffer->WriteToStdio(_outboundFd, FD_WRITE_CHUNK, _ioAmount)) {
+      FATAL("Unable to send data");
+      IOHandlerManager::EnqueueForDelete(this);
+      return false;
+    }
+    ADD_OUT_BYTES_MANAGED(_type, _ioAmount);
+  }
+  return true;
 }
 
 StdioCarrier::operator string() {
-	if (_pProtocol != NULL)
-		return STR(*_pProtocol);
-	return format("IO(%d,%d)", _inboundFd, _outboundFd);
+  if (_pProtocol != NULL)
+    return STR(*_pProtocol);
+  return format("IO(%d,%d)", _inboundFd, _outboundFd);
 }
 
 void StdioCarrier::GetStats(Variant &info, uint32_t namespaceId) {

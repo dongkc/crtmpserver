@@ -137,10 +137,10 @@ typedef long long int int64_t;*/
 #define WRITE_FD _write
 #define CLOSE_SOCKET(fd) do{ if(fd>=0) closesocket(fd);fd=(SOCKET)-1;}while(0)
 #define LASTSOCKETERROR WSAGetLastError()
-#define SOCKERROR_CONNECT_IN_PROGRESS	WSAEWOULDBLOCK
-#define SOCKERROR_SEND_IN_PROGRESS		WSAEWOULDBLOCK
-#define SOCKERROR_RECV_IN_PROGRESS		WSAEWOULDBLOCK
-#define SOCKERROR_RECV_CONN_RESET		WSAECONNRESET
+#define SOCKERROR_CONNECT_IN_PROGRESS  WSAEWOULDBLOCK
+#define SOCKERROR_SEND_IN_PROGRESS    WSAEWOULDBLOCK
+#define SOCKERROR_RECV_IN_PROGRESS    WSAEWOULDBLOCK
+#define SOCKERROR_RECV_CONN_RESET    WSAECONNRESET
 #define SET_UNKNOWN 0
 #define SET_READ 1
 #define SET_WRITE 2
@@ -178,23 +178,23 @@ do { \
 
 #define GETNTP(result) \
 do { \
-	struct timeval tv; \
-	gettimeofday(&tv,NULL); \
-	result=(((uint64_t)tv.tv_sec + 2208988800U)<<32)|((((uint32_t)tv.tv_usec) << 12) + (((uint32_t)tv.tv_usec) << 8) - ((((uint32_t)tv.tv_usec) * 1825) >> 5)); \
+  struct timeval tv; \
+  gettimeofday(&tv,NULL); \
+  result=(((uint64_t)tv.tv_sec + 2208988800U)<<32)|((((uint32_t)tv.tv_usec) << 12) + (((uint32_t)tv.tv_usec) << 8) - ((((uint32_t)tv.tv_usec) * 1825) >> 5)); \
 }while (0);
 
 #define GETCUSTOMNTP(result,value) \
 do { \
-	struct timeval tv; \
-	tv.tv_sec=(long)(value/CLOCKS_PER_SECOND); \
-	tv.tv_usec=(long)(value-tv.tv_sec*CLOCKS_PER_SECOND); \
-	result=(((uint64_t)tv.tv_sec + 2208988800U)<<32)|((((uint32_t)tv.tv_usec) << 12) + (((uint32_t)tv.tv_usec) << 8) - ((((uint32_t)tv.tv_usec) * 1825) >> 5)); \
+  struct timeval tv; \
+  tv.tv_sec=(long)(value/CLOCKS_PER_SECOND); \
+  tv.tv_usec=(long)(value-tv.tv_sec*CLOCKS_PER_SECOND); \
+  result=(((uint64_t)tv.tv_sec + 2208988800U)<<32)|((((uint32_t)tv.tv_usec) << 12) + (((uint32_t)tv.tv_usec) << 8) - ((((uint32_t)tv.tv_usec) * 1825) >> 5)); \
 }while (0);
 
 typedef void (*SignalFnc)(void);
 
 typedef struct _select_event {
-	uint8_t type;
+  uint8_t type;
 } select_event;
 
 #define FD_COPY(f, t)   (void)(*(t) = *(f))
@@ -247,8 +247,8 @@ DLLEXP void splitFileName(string fileName, string &name, string &extension, char
 DLLEXP double getFileModificationDate(string path);
 DLLEXP string normalizePath(string base, string file);
 DLLEXP bool listFolder(string path, vector<string> &result,
-		bool normalizeAllPaths = true, bool includeFolders = false,
-		bool recursive = true);
+    bool normalizeAllPaths = true, bool includeFolders = false,
+    bool recursive = true);
 DLLEXP bool moveFile(string src, string dst);
 DLLEXP void installSignal(int sig, SignalFnc pSignalFnc);
 DLLEXP void installQuitSignal(SignalFnc pQuitSignalFnc);

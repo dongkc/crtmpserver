@@ -33,13 +33,13 @@ VariantAppProtocolHandler::~VariantAppProtocolHandler() {
 }
 
 bool VariantAppProtocolHandler::ProcessMessage(BaseVariantProtocol *pProtocol,
-		Variant &lastSent, Variant &lastReceived) {
-	if (pProtocol->GetFarProtocol()->GetType() == PT_INBOUND_HTTP) {
-		return pProtocol->Send(lastReceived);
-	} else {
-		FINEST("lastSent:\n%s\nlastReceived:\n%s", STR(lastSent.ToString()), STR(lastReceived.ToString()));
-		return true;
-	}
+    Variant &lastSent, Variant &lastReceived) {
+  if (pProtocol->GetFarProtocol()->GetType() == PT_INBOUND_HTTP) {
+    return pProtocol->Send(lastReceived);
+  } else {
+    FINEST("lastSent:\n%s\nlastReceived:\n%s", STR(lastSent.ToString()), STR(lastReceived.ToString()));
+    return true;
+  }
 }
-#endif	/* HAS_PROTOCOL_VAR */
+#endif  /* HAS_PROTOCOL_VAR */
 

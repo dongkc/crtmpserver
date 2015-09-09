@@ -18,12 +18,12 @@
  */
 
 #ifndef _LITTLE_ENDIAN_BYTE_ALIGNED_H
-#define	_LITTLE_ENDIAN_BYTE_ALIGNED_H
+#define  _LITTLE_ENDIAN_BYTE_ALIGNED_H
 
 //64 bit
 #ifndef DONT_DEFINE_HTONLL
 #define htonll(x) \
-					((uint64_t)( \
+          ((uint64_t)( \
                     ((((uint64_t)(x)) & 0xff00000000000000LL) >> 56) | \
                     ((((uint64_t)(x)) & 0x00ff000000000000LL) >> 40) | \
                     ((((uint64_t)(x)) & 0x0000ff0000000000LL) >> 24) | \
@@ -32,7 +32,7 @@
                     ((((uint64_t)(x)) & 0x0000000000ff0000LL) << 24) | \
                     ((((uint64_t)(x)) & 0x000000000000ff00LL) << 40) | \
                     ((((uint64_t)(x)) & 0x00000000000000ffLL) << 56) \
-					))
+          ))
 #define ntohll(x)   htonll(x)
 #endif /* DONT_DEFINE_HTONLL */
 
@@ -44,8 +44,8 @@
 #define EHTOND(hostDoubleVal,networkUI64Val) networkUI64Val=EHTONLL((*((uint64_t *)(&(hostDoubleVal)))))
 #define ENTOHD(networkUI64Val,hostDoubleVal) \
 do {\
-	uint64_t ___tempHostENTOHD=ENTOHLL(networkUI64Val); \
-	hostDoubleVal=(double)(*((double *)&___tempHostENTOHD)); \
+  uint64_t ___tempHostENTOHD=ENTOHLL(networkUI64Val); \
+  hostDoubleVal=(double)(*((double *)&___tempHostENTOHD)); \
 } while(0)
 
 //32 bit
@@ -80,5 +80,5 @@ do {\
 #define EHTONAP(pNetworkPointer,hostAdobeValue) (*((uint32_t*)(pNetworkPointer)) = EHTONA(hostAdobeValue))
 #define ENTOHAP(pNetworkPointer) ENTOHA(*((uint32_t *)(pNetworkPointer)))
 
-#endif	/* _LITTLE_ENDIAN_BYTE_ALIGNED_H */
+#endif  /* _LITTLE_ENDIAN_BYTE_ALIGNED_H */
 

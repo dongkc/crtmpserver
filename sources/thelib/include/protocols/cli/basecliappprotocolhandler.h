@@ -19,7 +19,7 @@
 
 #ifdef HAS_PROTOCOL_CLI
 #ifndef _BASECLIAPPPROTOCOLHANDLER_H
-#define	_BASECLIAPPPROTOCOLHANDLER_H
+#define  _BASECLIAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 
@@ -28,19 +28,19 @@ class BaseProtocol;
 class DLLEXP BaseCLIAppProtocolHandler
 : public BaseAppProtocolHandler {
 public:
-	BaseCLIAppProtocolHandler(Variant &configuration);
-	virtual ~BaseCLIAppProtocolHandler();
+  BaseCLIAppProtocolHandler(Variant &configuration);
+  virtual ~BaseCLIAppProtocolHandler();
 
-	void RegisterProtocol(BaseProtocol *pProtocol);
-	void UnRegisterProtocol(BaseProtocol *pProtocol);
+  void RegisterProtocol(BaseProtocol *pProtocol);
+  void UnRegisterProtocol(BaseProtocol *pProtocol);
 
-	virtual bool ProcessMessage(BaseProtocol *pFrom, Variant &message) = 0;
+  virtual bool ProcessMessage(BaseProtocol *pFrom, Variant &message) = 0;
 protected:
-	static bool SendFail(BaseProtocol *pTo, string description);
-	static bool SendSuccess(BaseProtocol *pTo, string description, Variant &data);
+  static bool SendFail(BaseProtocol *pTo, string description);
+  static bool SendSuccess(BaseProtocol *pTo, string description, Variant &data);
 private:
-	static bool Send(BaseProtocol *pTo, string status, string description, Variant &data);
+  static bool Send(BaseProtocol *pTo, string status, string description, Variant &data);
 };
 
-#endif	/* _BASECLIAPPPROTOCOLHANDLER_H */
+#endif  /* _BASECLIAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_CLI */

@@ -33,63 +33,63 @@ RTMPAppProtocolHandler::~RTMPAppProtocolHandler() {
 }
 
 bool RTMPAppProtocolHandler::ProcessInvokeConnect(BaseRTMPProtocol *pFrom, Variant &request) {
-	request["Buggy_node"] = "<map>&some other xml stuff</map>";
-	if (!Send("http://localhost/~shiretu/phpframework/input.php", request)) {
-		FATAL("Unable to send the variant request");
-		return false;
-	}
-	return true;
+  request["Buggy_node"] = "<map>&some other xml stuff</map>";
+  if (!Send("http://localhost/~shiretu/phpframework/input.php", request)) {
+    FATAL("Unable to send the variant request");
+    return false;
+  }
+  return true;
 }
 
 VariantAppProtocolHandler *RTMPAppProtocolHandler::GetVariantHandler(
-		VariantSerializer serializer) {
+    VariantSerializer serializer) {
 #ifdef HAS_PROTOCOL_VAR
-	switch (serializer) {
-		case VariantSerializer_BIN:
-			return (VariantAppProtocolHandler *) GetProtocolHandler(PT_BIN_VAR);
-		case VariantSerializer_XML:
-			return (VariantAppProtocolHandler *) GetProtocolHandler(PT_XML_VAR);
-		case VariantSerializer_JSON:
-			return (VariantAppProtocolHandler *) GetProtocolHandler(PT_JSON_VAR);
-		default:
-		{
-			ASSERT("Invalid variant serializer type: %d", serializer);
-			return NULL;
-		}
-	}
+  switch (serializer) {
+    case VariantSerializer_BIN:
+      return (VariantAppProtocolHandler *) GetProtocolHandler(PT_BIN_VAR);
+    case VariantSerializer_XML:
+      return (VariantAppProtocolHandler *) GetProtocolHandler(PT_XML_VAR);
+    case VariantSerializer_JSON:
+      return (VariantAppProtocolHandler *) GetProtocolHandler(PT_JSON_VAR);
+    default:
+    {
+      ASSERT("Invalid variant serializer type: %d", serializer);
+      return NULL;
+    }
+  }
 #else
-	FATAL("Variant protocol not available");
-	return NULL;
+  FATAL("Variant protocol not available");
+  return NULL;
 #endif /* HAS_PROTOCOL_VAR */
 }
 
 bool RTMPAppProtocolHandler::Send(string ip, uint16_t port, Variant &variant,
-		VariantSerializer serializer) {
+    VariantSerializer serializer) {
 #ifdef HAS_PROTOCOL_VAR
-	VariantAppProtocolHandler *pHandler = GetVariantHandler(serializer);
-	if (pHandler == NULL) {
-		FATAL("Unable to get the protocol handler");
-		return false;
-	}
-	return pHandler->Send(ip, port, variant, serializer);
+  VariantAppProtocolHandler *pHandler = GetVariantHandler(serializer);
+  if (pHandler == NULL) {
+    FATAL("Unable to get the protocol handler");
+    return false;
+  }
+  return pHandler->Send(ip, port, variant, serializer);
 #else
-	FATAL("Variant protocol not available");
-	return false;
+  FATAL("Variant protocol not available");
+  return false;
 #endif /* HAS_PROTOCOL_VAR */
 }
 
 bool RTMPAppProtocolHandler::Send(string url, Variant &variant,
-		VariantSerializer serializer) {
+    VariantSerializer serializer) {
 #ifdef HAS_PROTOCOL_VAR
-	VariantAppProtocolHandler *pHandler = GetVariantHandler(serializer);
-	if (pHandler == NULL) {
-		FATAL("Unable to get the protocol handler");
-		return false;
-	}
-	return pHandler->Send(url, variant, serializer);
+  VariantAppProtocolHandler *pHandler = GetVariantHandler(serializer);
+  if (pHandler == NULL) {
+    FATAL("Unable to get the protocol handler");
+    return false;
+  }
+  return pHandler->Send(url, variant, serializer);
 #else
-	FATAL("Variant protocol not available");
-	return false;
+  FATAL("Variant protocol not available");
+  return false;
 #endif /* HAS_PROTOCOL_VAR */
 }
 #endif /* HAS_PROTOCOL_RTMP */

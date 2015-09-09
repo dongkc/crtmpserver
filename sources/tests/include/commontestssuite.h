@@ -27,33 +27,33 @@
 class CommonTestsSuite
 : public BaseTestsSuite {
 public:
-	CommonTestsSuite();
-	virtual ~CommonTestsSuite();
+  CommonTestsSuite();
+  virtual ~CommonTestsSuite();
 
-	virtual void Run();
+  virtual void Run();
 private:
-	//genericfunctionality.h
-	void test_Endianess();
-	void test_isNumeric();
-	void test_lowerCase();
-	void test_upperCase();
-	void test_ltrim();
-	void test_rtrim();
-	void test_trim();
-	void test_replace();
-	void test_split();
-	void test_mapping();
-	void test_format();
-	void test_splitFileName();
-	void test_generateRandomString();
-	void test_GetHostByName();
-	void test_md5();
-	void test_HMACsha256();
-	void test_b64();
-	void test_unb64();
-	void test_unhex();
-	void test_ParseURL();
-	void test_setFdOptions();
+  //genericfunctionality.h
+  void test_Endianess();
+  void test_isNumeric();
+  void test_lowerCase();
+  void test_upperCase();
+  void test_ltrim();
+  void test_rtrim();
+  void test_trim();
+  void test_replace();
+  void test_split();
+  void test_mapping();
+  void test_format();
+  void test_splitFileName();
+  void test_generateRandomString();
+  void test_GetHostByName();
+  void test_md5();
+  void test_HMACsha256();
+  void test_b64();
+  void test_unb64();
+  void test_unhex();
+  void test_ParseURL();
+  void test_setFdOptions();
 };
 
 #endif /* __COMMONTESTSSUITE_H */

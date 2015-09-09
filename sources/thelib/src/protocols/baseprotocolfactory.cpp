@@ -22,14 +22,14 @@
 uint32_t BaseProtocolFactory::_idGenerator = 0;
 
 BaseProtocolFactory::BaseProtocolFactory() {
-	_id = ++_idGenerator;
+  _id = ++_idGenerator;
 }
 
 BaseProtocolFactory::~BaseProtocolFactory() {
 }
 
 uint32_t BaseProtocolFactory::GetId() {
-	return _id;
+  return _id;
 }
 
 

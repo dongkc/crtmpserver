@@ -32,79 +32,79 @@ InboundKeyProtocol::~InboundKeyProtocol() {
 }
 
 bool InboundKeyProtocol::AllowFarProtocol(uint64_t type) {
-	return type == PT_OUTBOUND_HTTP;
+  return type == PT_OUTBOUND_HTTP;
 }
 
 bool InboundKeyProtocol::AllowNearProtocol(uint64_t type) {
-	return false;
+  return false;
 }
 
 bool InboundKeyProtocol::SignalInputData(int32_t recvAmount) {
-	NYIR;
+  NYIR;
 }
 
 bool InboundKeyProtocol::SignalInputData(IOBuffer &buffer) {
-	//1. Get the context
-	ClientContext *pContext = GetContext();
-	if (pContext == NULL) {
-		FATAL("Unable to get the context");
-		return false;
-	}
+  //1. Get the context
+  ClientContext *pContext = GetContext();
+  if (pContext == NULL) {
+    FATAL("Unable to get the context");
+    return false;
+  }
 
-	//2. Get the transport
-	OutboundHTTPProtocol *pHttpProtocol = (OutboundHTTPProtocol *) GetFarProtocol();
-	o_assert(pHttpProtocol != NULL);
+  //2. Get the transport
+  OutboundHTTPProtocol *pHttpProtocol = (OutboundHTTPProtocol *) GetFarProtocol();
+  o_assert(pHttpProtocol != NULL);
 
-	//3. See if we have the 200 OK
-	if (!pHttpProtocol->Is200OK()) {
-		FATAL("The HTTP request failed");
-		return false;
-	}
+  //3. See if we have the 200 OK
+  if (!pHttpProtocol->Is200OK()) {
+    FATAL("The HTTP request failed");
+    return false;
+  }
 
-	//4. See if we have a complete transfer
-	if (!pHttpProtocol->TransferCompleted()) {
-		return true;
-	}
+  //4. See if we have a complete transfer
+  if (!pHttpProtocol->TransferCompleted()) {
+    return true;
+  }
 
-	//5. Get the string from the input buffer
-	string temp = string((char *) GETIBPOINTER(buffer),
-			GETAVAILABLEBYTESCOUNT(buffer));
-	buffer.IgnoreAll();
+  //5. Get the string from the input buffer
+  string temp = string((char *) GETIBPOINTER(buffer),
+      GETAVAILABLEBYTESCOUNT(buffer));
+  buffer.IgnoreAll();
 
-	//6. Unbase64 the encrypted key
-	string encryptedKey = unb64(temp);
-	if (encryptedKey.size() != 16) {
-		FATAL("Invalid key length: %"PRIz"u", encryptedKey.size());
-		return false;
-	}
+  //6. Unbase64 the encrypted key
+  string encryptedKey = unb64(temp);
+  if (encryptedKey.size() != 16) {
+    FATAL("Invalid key length: %"PRIz"u", encryptedKey.size());
+    return false;
+  }
 
-	//7. Unbase64 the key password
-	string keyPassword = unb64(pContext->GetConnectingString().keyPassword);
-	if (keyPassword.size() < 16) {
-		FATAL("Invalid key length");
-		return false;
-	}
+  //7. Unbase64 the key password
+  string keyPassword = unb64(pContext->GetConnectingString().keyPassword);
+  if (keyPassword.size() < 16) {
+    FATAL("Invalid key length");
+    return false;
+  }
 
-	//8. Decrypt the key
-	AES_KEY decKey;
-	AES_set_decrypt_key((unsigned char *) STR(keyPassword), 128, &decKey);
-	unsigned char finalKey[16];
-	unsigned char iv[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	AES_cbc_encrypt((unsigned char *) STR(encryptedKey), finalKey, 16, &decKey, iv, AES_DECRYPT);
+  //8. Decrypt the key
+  AES_KEY decKey;
+  AES_set_decrypt_key((unsigned char *) STR(keyPassword), 128, &decKey);
+  unsigned char finalKey[16];
+  unsigned char iv[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  AES_cbc_encrypt((unsigned char *) STR(encryptedKey), finalKey, 16, &decKey, iv, AES_DECRYPT);
 
-	//9. Store the key inside parameters
-	Variant &parameters = GetCustomParameters();
-	parameters["payload"]["key"] = string((char *) finalKey, 16);
+  //9. Store the key inside parameters
+  Variant &parameters = GetCustomParameters();
+  parameters["payload"]["key"] = string((char *) finalKey, 16);
 
-	//10. Signal the context about the new key
-	if (!pContext->SignalAESKeyAvailable(parameters)) {
-		FATAL("Unable to signal AES key available");
-		return false;
-	}
+  //10. Signal the context about the new key
+  if (!pContext->SignalAESKeyAvailable(parameters)) {
+    FATAL("Unable to signal AES key available");
+    return false;
+  }
 
-	//11. Job done. Disconnect
-	EnqueueForDelete();
+  //11. Job done. Disconnect
+  EnqueueForDelete();
 
-	//12. Done
-	return true;
+  //12. Done
+  return true;
 }

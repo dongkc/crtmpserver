@@ -19,25 +19,25 @@
 
 #ifdef ANDROID
 #ifndef _LOGCATLOGLOCATION_H
-#define	_LOGCATLOGLOCATION_H
+#define  _LOGCATLOGLOCATION_H
 
 #include "utils/logging/baseloglocation.h"
 
 class LogCatLogLocation
 : public BaseLogLocation {
 private:
-	static int _levelsMap[];
+  static int _levelsMap[];
 public:
-	LogCatLogLocation(Variant &configuration);
-	virtual ~LogCatLogLocation();
+  LogCatLogLocation(Variant &configuration);
+  virtual ~LogCatLogLocation();
 
-	virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, string message);
-	virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, Variant &le);
-	virtual void SignalFork();
+  virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, string message);
+  virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, Variant &le);
+  virtual void SignalFork();
 
 };
 
-#endif	/* _LOGCATLOGLOCATION_H */
+#endif  /* _LOGCATLOGLOCATION_H */
 #endif /* ANDROID */

@@ -26,16 +26,16 @@
 class AtomVMHD
 : public VersionedAtom {
 private:
-	uint16_t _graphicsMode;
-	uint8_t _opcolor[6];
+  uint16_t _graphicsMode;
+  uint8_t _opcolor[6];
 public:
-	AtomVMHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomVMHD();
+  AtomVMHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomVMHD();
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
-#endif	/* _ATOMVMHD_H */
+#endif  /* _ATOMVMHD_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

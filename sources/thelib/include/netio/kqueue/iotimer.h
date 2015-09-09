@@ -19,26 +19,26 @@
 
 #ifdef NET_KQUEUE
 #ifndef _IOTIMER_H
-#define	_IOTIMER_H
+#define  _IOTIMER_H
 
 #include "netio/kqueue/iohandler.h"
 
 class IOTimer
 : public IOHandler {
 private:
-	static int32_t _idGenerator;
+  static int32_t _idGenerator;
 public:
-	IOTimer();
-	virtual ~IOTimer();
+  IOTimer();
+  virtual ~IOTimer();
 
-	virtual bool SignalOutputData();
-	virtual bool OnEvent(struct kevent &event);
-	bool EnqueueForTimeEvent(uint32_t seconds);
-	virtual operator string();
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  virtual bool SignalOutputData();
+  virtual bool OnEvent(struct kevent &event);
+  bool EnqueueForTimeEvent(uint32_t seconds);
+  virtual operator string();
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
 };
 
-#endif	/* _TIMERIO_H */
+#endif  /* _TIMERIO_H */
 #endif /* NET_KQUEUE */
 
 

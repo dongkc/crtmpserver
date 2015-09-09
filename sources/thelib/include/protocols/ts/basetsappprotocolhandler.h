@@ -20,7 +20,7 @@
 
 #ifdef HAS_PROTOCOL_TS
 #ifndef _BASETSAPPPROTOCOLHANDLER_H
-#define	_BASETSAPPPROTOCOLHANDLER_H
+#define  _BASETSAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 
@@ -31,19 +31,19 @@ class InNetTSStream;
 class DLLEXP BaseTSAppProtocolHandler
 : public BaseAppProtocolHandler {
 private:
-	map<uint32_t, InboundTSProtocol *> _connections;
+  map<uint32_t, InboundTSProtocol *> _connections;
 public:
-	BaseTSAppProtocolHandler(Variant &configuration);
-	virtual ~BaseTSAppProtocolHandler();
+  BaseTSAppProtocolHandler(Variant &configuration);
+  virtual ~BaseTSAppProtocolHandler();
 
-	virtual void RegisterProtocol(BaseProtocol *pProtocol);
-	virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  virtual void RegisterProtocol(BaseProtocol *pProtocol);
+  virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
 
-	virtual void ProgramSetupCompleted(InNetTSStream *pInNetTSStream);
+  virtual void ProgramSetupCompleted(InNetTSStream *pInNetTSStream);
 };
 
 
-#endif	/* _BASETSAPPPROTOCOLHANDLER_H */
-#endif	/* HAS_PROTOCOL_TS */
+#endif  /* _BASETSAPPPROTOCOLHANDLER_H */
+#endif  /* HAS_PROTOCOL_TS */
 
 

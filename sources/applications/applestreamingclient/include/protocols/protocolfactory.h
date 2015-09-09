@@ -19,43 +19,43 @@
 
 
 #ifndef _PROTOCOLFACTORY_H
-#define	_PROTOCOLFACTORY_H
+#define  _PROTOCOLFACTORY_H
 
 #include "protocols/baseprotocolfactory.h"
 #include "protocols/protocoltypes.h"
 
-#define PT_INBOUND_MASTER_M3U8	MAKE_TAG6('I','M','M','3','U','8')
-#define PT_INBOUND_CHILD_M3U8	MAKE_TAG6('I','C','M','3','U','8')
-#define PT_INBOUND_KEY			MAKE_TAG4('I','K','E','Y')
-#define PT_HTTP_BUFF			MAKE_TAG5('H','B','U','F','F')
-#define PT_INBOUND_AES			MAKE_TAG4('I','A','E','S')
+#define PT_INBOUND_MASTER_M3U8  MAKE_TAG6('I','M','M','3','U','8')
+#define PT_INBOUND_CHILD_M3U8  MAKE_TAG6('I','C','M','3','U','8')
+#define PT_INBOUND_KEY      MAKE_TAG4('I','K','E','Y')
+#define PT_HTTP_BUFF      MAKE_TAG5('H','B','U','F','F')
+#define PT_INBOUND_AES      MAKE_TAG4('I','A','E','S')
 
-#define PC_MASTER_PLAYLIST	"outboundHttpInboundMasterM3U8"
-#define PC_CHILD_PLAYLIST	"outboundHttpInboundChildM3U8"
-#define PC_ITEM_KEY			"outboundHttpInboundKey"
-#define PC_ITEM_ENC_TS		"bufferedHttpEncTS"
-#define PC_ITEM_TS			"bufferedHttpTS"
-#define PC_ITEM_ENC			"bufferedHttpEnc"
-#define PC_ITEM				"bufferedHttp"
+#define PC_MASTER_PLAYLIST  "outboundHttpInboundMasterM3U8"
+#define PC_CHILD_PLAYLIST  "outboundHttpInboundChildM3U8"
+#define PC_ITEM_KEY      "outboundHttpInboundKey"
+#define PC_ITEM_ENC_TS    "bufferedHttpEncTS"
+#define PC_ITEM_TS      "bufferedHttpTS"
+#define PC_ITEM_ENC      "bufferedHttpEnc"
+#define PC_ITEM        "bufferedHttp"
 
 #ifdef HAS_MS_TIMER
-#define PT_FINE_TIMER		MAKE_TAG4('F','T','M','R')
-#define PC_FINE_TIMER		"fineTimer"
+#define PT_FINE_TIMER    MAKE_TAG4('F','T','M','R')
+#define PC_FINE_TIMER    "fineTimer"
 #endif /* HAS_MS_TIMER */
 
 namespace app_applestreamingclient {
 
-	class DLLEXP ProtocolFactory
-	: public BaseProtocolFactory {
-	public:
-		ProtocolFactory();
-		virtual ~ProtocolFactory();
+  class DLLEXP ProtocolFactory
+  : public BaseProtocolFactory {
+  public:
+    ProtocolFactory();
+    virtual ~ProtocolFactory();
 
-		virtual vector<uint64_t> HandledProtocols();
-		virtual vector<string> HandledProtocolChains();
-		virtual vector<uint64_t> ResolveProtocolChain(string name);
-		virtual BaseProtocol *SpawnProtocol(uint64_t type, Variant &parameters);
-	};
+    virtual vector<uint64_t> HandledProtocols();
+    virtual vector<string> HandledProtocolChains();
+    virtual vector<uint64_t> ResolveProtocolChain(string name);
+    virtual BaseProtocol *SpawnProtocol(uint64_t type, Variant &parameters);
+  };
 }
 
-#endif	/* _PROTOCOLFACTORY_H */
+#endif  /* _PROTOCOLFACTORY_H */

@@ -18,32 +18,32 @@
  */
 
 #ifndef _HTTPAUTHHELPER_H
-#define	_HTTPAUTHHELPER_H
+#define  _HTTPAUTHHELPER_H
 
 #include "common.h"
 
 class HTTPAuthHelper {
 public:
-	HTTPAuthHelper();
-	virtual ~HTTPAuthHelper();
+  HTTPAuthHelper();
+  virtual ~HTTPAuthHelper();
 
-	static bool GetAuthorizationHeader(string wwwAuthenticateHeader,
-			string username, string password, string uri, string method,
-			Variant &result);
-	static string GetWWWAuthenticateHeader(string type, string realmName);
-	static bool ValidateAuthRequest(string rawChallange, string rawResponse,
-			string method, string requestUri, Variant &realm);
+  static bool GetAuthorizationHeader(string wwwAuthenticateHeader,
+      string username, string password, string uri, string method,
+      Variant &result);
+  static string GetWWWAuthenticateHeader(string type, string realmName);
+  static bool ValidateAuthRequest(string rawChallange, string rawResponse,
+      string method, string requestUri, Variant &realm);
 private:
-	static bool ParseAuthLine(string challenge, Variant &result, bool isResponse);
-	static bool ValidateChallenge(Variant &challenge);
-	static bool ValidateResponse(Variant &response);
-	static bool GetAuthorizationHeaderBasic(Variant &result);
-	static bool GetAuthorizationHeaderDigest(Variant &result);
-	static string ComputeResponseMD5(string username, string password,
-			string realm, string method, string uri, string nonce);
+  static bool ParseAuthLine(string challenge, Variant &result, bool isResponse);
+  static bool ValidateChallenge(Variant &challenge);
+  static bool ValidateResponse(Variant &response);
+  static bool GetAuthorizationHeaderBasic(Variant &result);
+  static bool GetAuthorizationHeaderDigest(Variant &result);
+  static string ComputeResponseMD5(string username, string password,
+      string realm, string method, string uri, string nonce);
 };
 
 
 
-#endif	/* _HTTPAUTHHELPER_H */
+#endif  /* _HTTPAUTHHELPER_H */
 

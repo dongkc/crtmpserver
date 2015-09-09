@@ -18,10 +18,10 @@
  */
 
 #ifndef _LOCALDEFINES_H
-#define	_LOCALDEFINES_H
+#define  _LOCALDEFINES_H
 
-#define PT_ECHO_PROTOCOL			MAKE_TAG2('E','P')
-#define PT_HTTP_DOWNLOAD_PROTOCOL	MAKE_TAG7('H','T','T','P','D','L','D')
+#define PT_ECHO_PROTOCOL      MAKE_TAG2('E','P')
+#define PT_HTTP_DOWNLOAD_PROTOCOL  MAKE_TAG7('H','T','T','P','D','L','D')
 
-#endif	/* _LOCALDEFINES_H */
+#endif  /* _LOCALDEFINES_H */
 

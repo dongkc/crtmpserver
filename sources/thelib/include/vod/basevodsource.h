@@ -19,25 +19,25 @@
 
 #ifdef HAS_VOD_MANAGER
 #ifndef _BASEVODSOURCE_H
-#define	_BASEVODSOURCE_H
+#define  _BASEVODSOURCE_H
 
 #include "common.h"
 
 class BaseVODSource
 : public Variant {
 private:
-	Variant _metadata;
+  Variant _metadata;
 public:
-	BaseVODSource();
-	virtual ~BaseVODSource();
+  BaseVODSource();
+  virtual ~BaseVODSource();
 
-	VARIANT_GETSET(string, OriginMediaFilePath, "");
-	VARIANT_GETSET(string, OptimizedMediaFilePath, "");
-	VARIANT_GETSET(string, SeekFilePath, "");
-	VARIANT_GETSET(string, MetadataFilePath, "");
-	VARIANT_GETSET(Variant &, Metadata, _metadata);
+  VARIANT_GETSET(string, OriginMediaFilePath, "");
+  VARIANT_GETSET(string, OptimizedMediaFilePath, "");
+  VARIANT_GETSET(string, SeekFilePath, "");
+  VARIANT_GETSET(string, MetadataFilePath, "");
+  VARIANT_GETSET(Variant &, Metadata, _metadata);
 };
 
-#endif	/* _BASEVODSOURCE_H */
+#endif  /* _BASEVODSOURCE_H */
 #endif /* HAS_VOD_MANAGER */
 

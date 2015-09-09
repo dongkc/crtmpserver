@@ -21,5 +21,5 @@
 #include "protocols/ts/pidtypes.h"
 
 
-#endif	/* HAS_PROTOCOL_TS */
+#endif  /* HAS_PROTOCOL_TS */
 

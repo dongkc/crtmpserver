@@ -24,5 +24,5 @@
 using namespace app_stresstest;
 
 extern "C" BaseClientApplication *GetApplication_stresstest(Variant configuration) {
-	return new StressTestApplication(configuration);
+  return new StressTestApplication(configuration);
 }

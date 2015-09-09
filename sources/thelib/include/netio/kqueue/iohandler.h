@@ -19,7 +19,7 @@
 
 #ifdef NET_KQUEUE
 #ifndef _IOHANDLER_H
-#define	_IOHANDLER_H
+#define  _IOHANDLER_H
 
 #include "common.h"
 #include "netio/kqueue/iohandlermanagertoken.h"
@@ -29,33 +29,33 @@ class BaseProtocol;
 
 class IOHandler {
 protected:
-	static uint32_t _idGenerator;
-	uint32_t _id;
-	int32_t _inboundFd;
-	int32_t _outboundFd;
-	BaseProtocol *_pProtocol;
-	IOHandlerType _type;
+  static uint32_t _idGenerator;
+  uint32_t _id;
+  int32_t _inboundFd;
+  int32_t _outboundFd;
+  BaseProtocol *_pProtocol;
+  IOHandlerType _type;
 private:
-	IOHandlerManagerToken *_pToken;
+  IOHandlerManagerToken *_pToken;
 public:
-	IOHandler(int32_t inboundFd, int32_t outboundFd, IOHandlerType type);
-	virtual ~IOHandler();
-	void SetIOHandlerManagerToken(IOHandlerManagerToken *pToken);
-	IOHandlerManagerToken * GetIOHandlerManagerToken();
-	uint32_t GetId();
-	int32_t GetInboundFd();
-	int32_t GetOutboundFd();
-	IOHandlerType GetType();
-	void SetProtocol(BaseProtocol *pPotocol);
-	BaseProtocol *GetProtocol();
-	virtual bool SignalOutputData() = 0;
-	virtual bool OnEvent(struct kevent &event) = 0;
-	static string IOHTToString(IOHandlerType type);
-	virtual operator string() = 0;
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0) = 0;
+  IOHandler(int32_t inboundFd, int32_t outboundFd, IOHandlerType type);
+  virtual ~IOHandler();
+  void SetIOHandlerManagerToken(IOHandlerManagerToken *pToken);
+  IOHandlerManagerToken * GetIOHandlerManagerToken();
+  uint32_t GetId();
+  int32_t GetInboundFd();
+  int32_t GetOutboundFd();
+  IOHandlerType GetType();
+  void SetProtocol(BaseProtocol *pPotocol);
+  BaseProtocol *GetProtocol();
+  virtual bool SignalOutputData() = 0;
+  virtual bool OnEvent(struct kevent &event) = 0;
+  static string IOHTToString(IOHandlerType type);
+  virtual operator string() = 0;
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0) = 0;
 };
 
 
-#endif	/* _IOHANDLER_H */
+#endif  /* _IOHANDLER_H */
 #endif /* NET_KQUEUE */
 

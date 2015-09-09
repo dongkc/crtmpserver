@@ -19,12 +19,12 @@
 
 
 #ifndef _STRESSTEST_H
-#define	_STRESSTEST_H
+#define  _STRESSTEST_H
 
 #include "common.h"
 
 extern "C" DLLEXP BaseClientApplication *GetApplication_stresstest(Variant configuration);
 
-#endif	/* _STRESSTEST_H */
+#endif  /* _STRESSTEST_H */
 
 

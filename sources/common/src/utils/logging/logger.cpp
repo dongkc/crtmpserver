@@ -26,64 +26,64 @@ Logger *Logger::_pLogger = NULL;
 
 string Version::GetBuildNumber() {
 #ifdef CRTMPSERVER_VERSION_BUILD_NUMBER
-	return CRTMPSERVER_VERSION_BUILD_NUMBER;
+  return CRTMPSERVER_VERSION_BUILD_NUMBER;
 #else /* EVOSTREAM_VERSION_BUILD_NUMBER */
-	return "";
+  return "";
 #endif /* EVOSTREAM_VERSION_BUILD_NUMBER */
 }
 
 uint64_t Version::GetBuildDate() {
 #ifdef CRTMPSERVER_VERSION_BUILD_DATE
-	return CRTMPSERVER_VERSION_BUILD_DATE;
+  return CRTMPSERVER_VERSION_BUILD_DATE;
 #else /* EVOSTREAM_VERSION_BUILD_DATE */
-	return 0;
+  return 0;
 #endif /* EVOSTREAM_VERSION_BUILD_DATE */
 }
 
 string Version::GetBuildDateString() {
-	time_t buildDate = (time_t) GetBuildDate();
-	if (buildDate == 0) {
-		return "";
-	}
-	Timestamp *pTs = gmtime(&buildDate);
-	Variant v(*pTs);
-	return (string) v;
+  time_t buildDate = (time_t) GetBuildDate();
+  if (buildDate == 0) {
+    return "";
+  }
+  Timestamp *pTs = gmtime(&buildDate);
+  Variant v(*pTs);
+  return (string) v;
 }
 
 string Version::GetReleaseNumber() {
 #ifdef CRTMPSERVER_VERSION_RELEASE_NUMBER
-	return CRTMPSERVER_VERSION_RELEASE_NUMBER;
+  return CRTMPSERVER_VERSION_RELEASE_NUMBER;
 #else /* EVOSTREAM_VERSION_RELEASE_NUMBER */
-	return "";
+  return "";
 #endif /* EVOSTREAM_VERSION_RELEASE_NUMBER */
 }
 
 string Version::GetCodeName() {
 #ifdef CRTMPSERVER_VERSION_CODE_NAME
-	return CRTMPSERVER_VERSION_CODE_NAME;
+  return CRTMPSERVER_VERSION_CODE_NAME;
 #else /* EVOSTREAM_VERSION_CODE_NAME */
-	return "";
+  return "";
 #endif /* EVOSTREAM_VERSION_CODE_NAME */
 }
 
 string Version::GetBanner() {
-	string result = HTTP_HEADERS_SERVER_US;
-	if (GetReleaseNumber() != "")
-		result += " version " + GetReleaseNumber();
-	result += " build " + GetBuildNumber() + " - " + GetBuildDateString();
-	if (GetCodeName() != "")
-		result += " (" + GetCodeName() + ")";
-	return result;
+  string result = HTTP_HEADERS_SERVER_US;
+  if (GetReleaseNumber() != "")
+    result += " version " + GetReleaseNumber();
+  result += " build " + GetBuildNumber() + " - " + GetBuildDateString();
+  if (GetCodeName() != "")
+    result += " (" + GetCodeName() + ")";
+  return result;
 }
 
 Variant Version::GetAll() {
-	Variant result;
-	result["buildNumber"] = (string) GetBuildNumber();
-	result["buildDate"] = (uint64_t) GetBuildDate();
-	result["releaseNumber"] = (string) GetReleaseNumber();
-	result["codeName"] = (string) GetCodeName();
-	result["banner"] = (string) GetBanner();
-	return result;
+  Variant result;
+  result["buildNumber"] = (string) GetBuildNumber();
+  result["buildDate"] = (uint64_t) GetBuildDate();
+  result["releaseNumber"] = (string) GetReleaseNumber();
+  result["codeName"] = (string) GetCodeName();
+  result["banner"] = (string) GetBanner();
+  return result;
 }
 
 #ifdef HAS_SAFE_LOGGER
@@ -91,27 +91,27 @@ pthread_mutex_t *Logger::_pMutex = NULL;
 
 class LogLocker {
 private:
-	pthread_mutex_t *_pMutex;
+  pthread_mutex_t *_pMutex;
 public:
 
-	LogLocker(pthread_mutex_t *pMutex) {
-		if (pMutex == NULL) {
-			printf("Logger not initialized\n");
-			o_assert(false);
-		}
-		_pMutex = pMutex;
-		if (pthread_mutex_lock(_pMutex) != 0) {
-			printf("Unable to lock the logger");
-			o_assert(false);
-		}
-	};
+  LogLocker(pthread_mutex_t *pMutex) {
+    if (pMutex == NULL) {
+      printf("Logger not initialized\n");
+      o_assert(false);
+    }
+    _pMutex = pMutex;
+    if (pthread_mutex_lock(_pMutex) != 0) {
+      printf("Unable to lock the logger");
+      o_assert(false);
+    }
+  };
 
-	virtual ~LogLocker() {
-		if (pthread_mutex_unlock(_pMutex) != 0) {
-			printf("Unable to unlock the logger");
-			o_assert(false);
-		}
-	}
+  virtual ~LogLocker() {
+    if (pthread_mutex_unlock(_pMutex) != 0) {
+      printf("Unable to unlock the logger");
+      o_assert(false);
+    }
+  }
 };
 #define LOCK LogLocker __LogLocker__(Logger::_pMutex);
 #else
@@ -119,106 +119,106 @@ public:
 #endif /* HAS_SAFE_LOGGER */
 
 Logger::Logger() {
-	LOCK;
-	_freeAppenders = false;
+  LOCK;
+  _freeAppenders = false;
 }
 
 Logger::~Logger() {
-	LOCK;
-	if (_freeAppenders) {
+  LOCK;
+  if (_freeAppenders) {
 
-		FOR_VECTOR(_logLocations, i) {
-			delete _logLocations[i];
-		}
-		_logLocations.clear();
-	}
+    FOR_VECTOR(_logLocations, i) {
+      delete _logLocations[i];
+    }
+    _logLocations.clear();
+  }
 }
 
 void Logger::Init() {
 #ifdef HAS_SAFE_LOGGER
-	if (_pMutex != NULL) {
-		printf("logger already initialized");
-		o_assert(false);
-	}
-	_pMutex = new pthread_mutex_t;
-	if (pthread_mutex_init(_pMutex, NULL)) {
-		printf("Unable to init the logger mutex");
-		o_assert(false);
-	}
+  if (_pMutex != NULL) {
+    printf("logger already initialized");
+    o_assert(false);
+  }
+  _pMutex = new pthread_mutex_t;
+  if (pthread_mutex_init(_pMutex, NULL)) {
+    printf("Unable to init the logger mutex");
+    o_assert(false);
+  }
 #else
-	if (_pLogger != NULL)
-		return;
+  if (_pLogger != NULL)
+    return;
 #endif /* HAS_SAFE_LOGGER */
-	_pLogger = new Logger();
+  _pLogger = new Logger();
 }
 
 void Logger::Free(bool freeAppenders) {
-	LOCK;
-	if (_pLogger != NULL) {
-		_pLogger->_freeAppenders = freeAppenders;
-		delete _pLogger;
-		_pLogger = NULL;
-	}
+  LOCK;
+  if (_pLogger != NULL) {
+    _pLogger->_freeAppenders = freeAppenders;
+    delete _pLogger;
+    _pLogger = NULL;
+  }
 }
 
 void Logger::Log(int32_t level, string fileName, uint32_t lineNumber,
-		string functionName, string formatString, ...) {
-	LOCK;
-	if (_pLogger == NULL)
-		return;
+    string functionName, string formatString, ...) {
+  LOCK;
+  if (_pLogger == NULL)
+    return;
 
-	va_list arguments;
-	va_start(arguments, formatString);
-	string message = vFormat(formatString, arguments);
-	va_end(arguments);
+  va_list arguments;
+  va_start(arguments, formatString);
+  string message = vFormat(formatString, arguments);
+  va_end(arguments);
 
-	FOR_VECTOR(_pLogger->_logLocations, i) {
-		if (_pLogger->_logLocations[i]->EvalLogLevel(level, fileName, lineNumber,
-				functionName, formatString))
-			_pLogger->_logLocations[i]->Log(level, fileName,
-				lineNumber, functionName, message);
-	}
+  FOR_VECTOR(_pLogger->_logLocations, i) {
+    if (_pLogger->_logLocations[i]->EvalLogLevel(level, fileName, lineNumber,
+        functionName, formatString))
+      _pLogger->_logLocations[i]->Log(level, fileName,
+        lineNumber, functionName, message);
+  }
 }
 
 void Logger::LogProd(int32_t level, string fileName, uint32_t lineNumber, string functionName, Variant &le) {
-	LOCK;
-	if (_pLogger == NULL)
-		return;
+  LOCK;
+  if (_pLogger == NULL)
+    return;
 
-	FOR_VECTOR(_pLogger->_logLocations, i) {
-		if (_pLogger->_logLocations[i]->EvalLogLevel(level, fileName, lineNumber,
-				functionName, le))
-			_pLogger->_logLocations[i]->Log(level, fileName,
-				lineNumber, functionName, le);
-	}
+  FOR_VECTOR(_pLogger->_logLocations, i) {
+    if (_pLogger->_logLocations[i]->EvalLogLevel(level, fileName, lineNumber,
+        functionName, le))
+      _pLogger->_logLocations[i]->Log(level, fileName,
+        lineNumber, functionName, le);
+  }
 }
 
 bool Logger::AddLogLocation(BaseLogLocation *pLogLocation) {
-	LOCK;
-	if (_pLogger == NULL)
-		return false;
-	if (!pLogLocation->Init())
-		return false;
-	ADD_VECTOR_END(_pLogger->_logLocations, pLogLocation);
-	return true;
+  LOCK;
+  if (_pLogger == NULL)
+    return false;
+  if (!pLogLocation->Init())
+    return false;
+  ADD_VECTOR_END(_pLogger->_logLocations, pLogLocation);
+  return true;
 }
 
 void Logger::SignalFork() {
-	LOCK;
-	if (_pLogger == NULL)
-		return;
+  LOCK;
+  if (_pLogger == NULL)
+    return;
 
-	FOR_VECTOR(_pLogger->_logLocations, i) {
-		_pLogger->_logLocations[i]->SignalFork();
-	}
+  FOR_VECTOR(_pLogger->_logLocations, i) {
+    _pLogger->_logLocations[i]->SignalFork();
+  }
 }
 
 void Logger::SetLevel(int32_t level) {
-	LOCK;
-	if (_pLogger == NULL)
-		return;
+  LOCK;
+  if (_pLogger == NULL)
+    return;
 
-	FOR_VECTOR(_pLogger->_logLocations, i) {
-		_pLogger->_logLocations[i]->SetLevel(level);
-	}
+  FOR_VECTOR(_pLogger->_logLocations, i) {
+    _pLogger->_logLocations[i]->SetLevel(level);
+  }
 }

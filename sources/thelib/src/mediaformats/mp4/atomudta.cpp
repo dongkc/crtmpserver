@@ -24,37 +24,37 @@
 
 AtomUDTA::AtomUDTA(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : BoxAtom(pDocument, type, size, start) {
-	_metadata.IsArray(false);
+  _metadata.IsArray(false);
 }
 
 AtomUDTA::~AtomUDTA() {
 }
 
 Variant &AtomUDTA::GetMetadata() {
-	return _metadata;
+  return _metadata;
 }
 
 bool AtomUDTA::AtomCreated(BaseAtom *pAtom) {
-	if ((pAtom->GetTypeNumeric() >> 24) == 0xa9) {
-		AtomMetaField *pField = (AtomMetaField *) pAtom;
-		_metadata[pField->GetName()] = pField->GetValue();
-		return true;
-	}
-	switch (pAtom->GetTypeNumeric()) {
-		case A_META:
-			return true;
-		case A_NAME:
-		{
-			AtomMetaField *pField = (AtomMetaField *) pAtom;
-			_metadata[pField->GetName()] = pField->GetValue();
-			return true;
-		}
-		default:
-		{
-			FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
-			return false;
-		}
-	}
+  if ((pAtom->GetTypeNumeric() >> 24) == 0xa9) {
+    AtomMetaField *pField = (AtomMetaField *) pAtom;
+    _metadata[pField->GetName()] = pField->GetValue();
+    return true;
+  }
+  switch (pAtom->GetTypeNumeric()) {
+    case A_META:
+      return true;
+    case A_NAME:
+    {
+      AtomMetaField *pField = (AtomMetaField *) pAtom;
+      _metadata[pField->GetName()] = pField->GetValue();
+      return true;
+    }
+    default:
+    {
+      FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
+      return false;
+    }
+  }
 }
 
 #endif /* HAS_MEDIA_MP4 */

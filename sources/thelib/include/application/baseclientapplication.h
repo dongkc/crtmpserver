@@ -19,7 +19,7 @@
 
 
 #ifndef _BASECLIENTAPPLICATION_H
-#define	_BASECLIENTAPPLICATION_H
+#define  _BASECLIENTAPPLICATION_H
 
 #include "common.h"
 #include "streaming/streamsmanager.h"
@@ -34,156 +34,156 @@ class BaseVODManager;
 #endif /* HAS_VOD_MANAGER */
 
 /*!
-	@brief
+  @brief
  */
 class DLLEXP BaseClientApplication {
 private:
-	static uint32_t _idGenerator;
-	uint32_t _id;
-	string _name;
-	vector<string> _aliases;
-	map<uint64_t, BaseAppProtocolHandler *> _protocolsHandlers;
-	StreamsManager _streamsManager;
-	bool _allowDuplicateInboundNetworkStreams;
-	map<string, string> _streamAliases;
-	bool _hasStreamAliases;
+  static uint32_t _idGenerator;
+  uint32_t _id;
+  string _name;
+  vector<string> _aliases;
+  map<uint64_t, BaseAppProtocolHandler *> _protocolsHandlers;
+  StreamsManager _streamsManager;
+  bool _allowDuplicateInboundNetworkStreams;
+  map<string, string> _streamAliases;
+  bool _hasStreamAliases;
 #ifdef HAS_VOD_MANAGER
-	BaseVODManager *_pVODManager;
+  BaseVODManager *_pVODManager;
 #endif /* HAS_VOD_MANAGER */
 protected:
-	Variant _configuration;
-	bool _isDefault;
-	Variant _authSettings;
+  Variant _configuration;
+  bool _isDefault;
+  Variant _authSettings;
 public:
-	BaseClientApplication(Variant &configuration);
-	virtual ~BaseClientApplication();
+  BaseClientApplication(Variant &configuration);
+  virtual ~BaseClientApplication();
 
-	/*!
-		@brief Returns the application's id. The id is auto-generated in the constructor
-	 */
-	uint32_t GetId();
+  /*!
+    @brief Returns the application's id. The id is auto-generated in the constructor
+   */
+  uint32_t GetId();
 
-	/*!
-		@brief Returns the name of the application, taken from the configuration file.
-	 */
-	string GetName();
+  /*!
+    @brief Returns the name of the application, taken from the configuration file.
+   */
+  string GetName();
 
-	/*!
-		@brief Returns the variant that contains the configuration information about the application.
-	 */
-	Variant &GetConfiguration();
+  /*!
+    @brief Returns the variant that contains the configuration information about the application.
+   */
+  Variant &GetConfiguration();
 
-	/*!
-		@brief Returns the alias of the application from the configuration file
-	 */
-	vector<string> GetAliases();
+  /*!
+    @brief Returns the alias of the application from the configuration file
+   */
+  vector<string> GetAliases();
 
-	/*!
-		@brief Returns the boolean that tells if the application is the default application.
-	 */
-	bool IsDefault();
-	StreamsManager *GetStreamsManager();
+  /*!
+    @brief Returns the boolean that tells if the application is the default application.
+   */
+  bool IsDefault();
+  StreamsManager *GetStreamsManager();
 #ifdef HAS_VOD_MANAGER
-	BaseVODManager *GetVODManager();
+  BaseVODManager *GetVODManager();
 #endif /* HAS_VOD_MANAGER */
 
-	virtual bool Initialize();
+  virtual bool Initialize();
 
-	virtual bool ActivateAcceptors(vector<IOHandler *> &acceptors);
-	virtual bool ActivateAcceptor(IOHandler *pIOHandler);
-	string GetServicesInfo();
-	virtual bool AcceptTCPConnection(TCPAcceptor *pTCPAcceptor);
+  virtual bool ActivateAcceptors(vector<IOHandler *> &acceptors);
+  virtual bool ActivateAcceptor(IOHandler *pIOHandler);
+  string GetServicesInfo();
+  virtual bool AcceptTCPConnection(TCPAcceptor *pTCPAcceptor);
 
-	/*!
-		@brief Registers this application to the BaseAppProtocolHandler.
-		@protocolType - Type of protocol
-		@pAppProtocolHandler
-	 */
-	void RegisterAppProtocolHandler(uint64_t protocolType,
-			BaseAppProtocolHandler *pAppProtocolHandler);
-	/*!
-		@brief Erases this application to the BaseAppProtocolHandler by setting it to NULL.
-		@param protocolType - Type of protocol
-	 */
-	void UnRegisterAppProtocolHandler(uint64_t protocolType);
+  /*!
+    @brief Registers this application to the BaseAppProtocolHandler.
+    @protocolType - Type of protocol
+    @pAppProtocolHandler
+   */
+  void RegisterAppProtocolHandler(uint64_t protocolType,
+      BaseAppProtocolHandler *pAppProtocolHandler);
+  /*!
+    @brief Erases this application to the BaseAppProtocolHandler by setting it to NULL.
+    @param protocolType - Type of protocol
+   */
+  void UnRegisterAppProtocolHandler(uint64_t protocolType);
 
-	/*!
-		@brief Get the ability to handle duplicate inbound network streams
-	 */
-	bool GetAllowDuplicateInboundNetworkStreams();
+  /*!
+    @brief Get the ability to handle duplicate inbound network streams
+   */
+  bool GetAllowDuplicateInboundNetworkStreams();
 
-	/*!
-		@brief Checks and see if the duplicate inbound network streams are available. Always returns true if allowDuplicateNetworkStreams is set to true inside the config file
-		@param streamName - The stream name we want to see is free or not
-		@param pProtocol - The protocol associated with this request (can be NULL)
-	 */
-	virtual bool StreamNameAvailable(string streamName, BaseProtocol *pProtocol);
+  /*!
+    @brief Checks and see if the duplicate inbound network streams are available. Always returns true if allowDuplicateNetworkStreams is set to true inside the config file
+    @param streamName - The stream name we want to see is free or not
+    @param pProtocol - The protocol associated with this request (can be NULL)
+   */
+  virtual bool StreamNameAvailable(string streamName, BaseProtocol *pProtocol);
 
-	template<class T>
-	T *GetProtocolHandler(BaseProtocol *pProtocol) {
-		return (T *) GetProtocolHandler(pProtocol);
-	}
-	BaseAppProtocolHandler *GetProtocolHandler(BaseProtocol *pProtocol);
-	BaseAppProtocolHandler *GetProtocolHandler(uint64_t protocolType);
+  template<class T>
+  T *GetProtocolHandler(BaseProtocol *pProtocol) {
+    return (T *) GetProtocolHandler(pProtocol);
+  }
+  BaseAppProtocolHandler *GetProtocolHandler(BaseProtocol *pProtocol);
+  BaseAppProtocolHandler *GetProtocolHandler(uint64_t protocolType);
 
-	template<class T>
-	T *GetProtocolHandler(string &scheme) {
-		return (T *) GetProtocolHandler(scheme);
-	}
-	virtual BaseAppProtocolHandler *GetProtocolHandler(string &scheme);
+  template<class T>
+  T *GetProtocolHandler(string &scheme) {
+    return (T *) GetProtocolHandler(scheme);
+  }
+  virtual BaseAppProtocolHandler *GetProtocolHandler(string &scheme);
 
-	/*!
-		@brief This is called bt the framework when an outbound connection failed to connect
-		@param customParameters
-	 */
-	virtual bool OutboundConnectionFailed(Variant &customParameters);
+  /*!
+    @brief This is called bt the framework when an outbound connection failed to connect
+    @param customParameters
+   */
+  virtual bool OutboundConnectionFailed(Variant &customParameters);
 
-	/*!
-		@brief Registers the protocol to the client application
-		@param pProtocol
-	 */
-	virtual void RegisterProtocol(BaseProtocol *pProtocol);
+  /*!
+    @brief Registers the protocol to the client application
+    @param pProtocol
+   */
+  virtual void RegisterProtocol(BaseProtocol *pProtocol);
 
-	/*!
-		@brief Erases the protocol to the client application
-		@param pProtocol
-	 */
-	virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  /*!
+    @brief Erases the protocol to the client application
+    @param pProtocol
+   */
+  virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
 
-	/*!
-		@brief Displays the registered stream's ID, type, and name in the logs
-		@param pStream
-	 */
-	virtual void SignalStreamRegistered(BaseStream *pStream);
+  /*!
+    @brief Displays the registered stream's ID, type, and name in the logs
+    @param pStream
+   */
+  virtual void SignalStreamRegistered(BaseStream *pStream);
 
-	/*!
-		@brief Displays the unregistered stream's ID, type, and name in the logs
-		@param pStream
-	 */
-	virtual void SignalStreamUnRegistered(BaseStream *pStream);
+  /*!
+    @brief Displays the unregistered stream's ID, type, and name in the logs
+    @param pStream
+   */
+  virtual void SignalStreamUnRegistered(BaseStream *pStream);
 
-	virtual bool PullExternalStreams();
-	virtual bool PullExternalStream(Variant streamConfig);
-	virtual bool PushLocalStream(Variant streamConfig);
-	bool ParseAuthentication();
+  virtual bool PullExternalStreams();
+  virtual bool PullExternalStream(Variant streamConfig);
+  virtual bool PushLocalStream(Variant streamConfig);
+  bool ParseAuthentication();
 
-	virtual void SignalUnLinkingStreams(BaseInStream *pInStream, BaseOutStream *pOutStream);
+  virtual void SignalUnLinkingStreams(BaseInStream *pInStream, BaseOutStream *pOutStream);
 
-	/*!
-		@brief Deletes all active protocols and IOHandlers bound to the application.
-		@param pApplication
-	 */
-	static void Shutdown(BaseClientApplication *pApplication);
+  /*!
+    @brief Deletes all active protocols and IOHandlers bound to the application.
+    @param pApplication
+   */
+  static void Shutdown(BaseClientApplication *pApplication);
 
-	string GetStreamNameByAlias(string &streamName, bool remove = true);
-	void SetStreamAlias(string &streamName, string &streamAlias);
-	void RemoveStreamAlias(string &streamAlias);
-	map<string, string> & GetAllStreamAliases();
+  string GetStreamNameByAlias(string &streamName, bool remove = true);
+  void SetStreamAlias(string &streamName, string &streamAlias);
+  void RemoveStreamAlias(string &streamAlias);
+  map<string, string> & GetAllStreamAliases();
 private:
-	string GetServiceInfo(IOHandler *pIOHander);
+  string GetServiceInfo(IOHandler *pIOHander);
 };
 
 
-#endif	/* _BASECLIENTAPPLICATION_H */
+#endif  /* _BASECLIENTAPPLICATION_H */
 
 

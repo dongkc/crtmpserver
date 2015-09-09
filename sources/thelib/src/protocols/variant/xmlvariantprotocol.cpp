@@ -30,12 +30,12 @@ XmlVariantProtocol::~XmlVariantProtocol() {
 }
 
 bool XmlVariantProtocol::Serialize(string &rawData, Variant &variant) {
-	return variant.SerializeToXml(rawData, false);
+  return variant.SerializeToXml(rawData, false);
 }
 
 bool XmlVariantProtocol::Deserialize(uint8_t *pBuffer, uint32_t bufferLength,
-		Variant &result) {
-	return Variant::DeserializeFromXml(pBuffer, bufferLength, result);
+    Variant &result) {
+  return Variant::DeserializeFromXml(pBuffer, bufferLength, result);
 }
-#endif	/* HAS_PROTOCOL_VAR */
+#endif  /* HAS_PROTOCOL_VAR */
 

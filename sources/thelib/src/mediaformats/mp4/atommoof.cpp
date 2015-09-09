@@ -24,29 +24,29 @@
 
 AtomMOOF::AtomMOOF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : BoxAtom(pDocument, type, size, start) {
-	_pMFHD = NULL;
+  _pMFHD = NULL;
 }
 
 AtomMOOF::~AtomMOOF() {
 }
 
 map<uint32_t, AtomTRAF *> &AtomMOOF::GetTrafs() {
-	return _trafs;
+  return _trafs;
 }
 
 bool AtomMOOF::AtomCreated(BaseAtom *pAtom) {
-	switch (pAtom->GetTypeNumeric()) {
-		case A_MFHD:
-			_pMFHD = (AtomMFHD *) pAtom;
-			return true;
-		case A_TRAF:
-			_trafs[((AtomTRAF *) pAtom)->GetId()] = (AtomTRAF *) pAtom;
-			return true;
-		default:
-		{
-			FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
-			return false;
-		}
-	}
+  switch (pAtom->GetTypeNumeric()) {
+    case A_MFHD:
+      _pMFHD = (AtomMFHD *) pAtom;
+      return true;
+    case A_TRAF:
+      _trafs[((AtomTRAF *) pAtom)->GetId()] = (AtomTRAF *) pAtom;
+      return true;
+    default:
+    {
+      FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
+      return false;
+    }
+  }
 }
 #endif /* HAS_MEDIA_MP4 */

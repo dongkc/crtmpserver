@@ -26,15 +26,15 @@
 class AtomURL
 : public VersionedAtom {
 private:
-	string _location;
+  string _location;
 public:
-	AtomURL(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomURL();
+  AtomURL(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomURL();
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
-#endif	/* _ATOMURL_H */
+#endif  /* _ATOMURL_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

@@ -18,31 +18,31 @@
  */
 
 #ifndef _FORMATTER_H
-#define	_FORMATTER_H
+#define  _FORMATTER_H
 
 #include "common.h"
 
 class Formatter {
 private:
-	string _formatString;
+  string _formatString;
 
-	struct LogField {
-		bool isField;
-		string value;
+  struct LogField {
+    bool isField;
+    string value;
 
-		LogField() {
-			isField = false;
-			value = "";
-		}
-	};
-	vector<LogField *> _fields;
+    LogField() {
+      isField = false;
+      value = "";
+    }
+  };
+  vector<LogField *> _fields;
 private:
-	Formatter();
+  Formatter();
 public:
-	virtual ~Formatter();
-	static Formatter* GetInstance(string formatString);
-	bool Init(string formatString);
-	string Format(Variant &le);
+  virtual ~Formatter();
+  static Formatter* GetInstance(string formatString);
+  bool Init(string formatString);
+  string Format(Variant &le);
 };
 
-#endif	/* _FORMATTER_H */
+#endif  /* _FORMATTER_H */

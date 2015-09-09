@@ -23,91 +23,91 @@
 #include "streaming/streamstypes.h"
 
 RTMPStream::RTMPStream(BaseRTMPProtocol *pProtocol,
-		StreamsManager *pStreamsManager, uint32_t rtmpStreamId)
+    StreamsManager *pStreamsManager, uint32_t rtmpStreamId)
 : BaseStream(pProtocol, pStreamsManager, ST_NEUTRAL_RTMP, "") {
-	_rtmpStreamId = rtmpStreamId;
-	_clientSideBufer = 0;
+  _rtmpStreamId = rtmpStreamId;
+  _clientSideBufer = 0;
 }
 
 RTMPStream::~RTMPStream() {
 }
 
 StreamCapabilities * RTMPStream::GetCapabilities() {
-	ASSERT("Operation not supported");
-	return NULL;
+  ASSERT("Operation not supported");
+  return NULL;
 }
 
 void RTMPStream::SetClientSideBuffer(uint32_t value) {
-	_clientSideBufer = value;
+  _clientSideBufer = value;
 }
 
 uint32_t RTMPStream::GetClientSideBuffer() {
-	return _clientSideBufer;
+  return _clientSideBufer;
 }
 
 bool RTMPStream::Play(double absoluteTimestamp, double length) {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::Pause() {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::Resume() {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::Seek(double absoluteTimestamp) {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::Stop() {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::SignalPlay(double &absoluteTimestamp, double &length) {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::SignalPause() {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::SignalResume() {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::SignalSeek(double &absoluteTimestamp) {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::SignalStop() {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::FeedData(uint8_t *pData, uint32_t dataLength,
-		uint32_t processedLength, uint32_t totalLength,
-		double absoluteTimestamp, bool isAudio) {
-	ASSERT("Operation not supported");
-	return false;
+    uint32_t processedLength, uint32_t totalLength,
+    double absoluteTimestamp, bool isAudio) {
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool RTMPStream::IsCompatibleWithType(uint64_t type) {
-	return false;
+  return false;
 }
 
 void RTMPStream::ReadyForSend() {
-	ASSERT("Operation not supported");
+  ASSERT("Operation not supported");
 }
 
 

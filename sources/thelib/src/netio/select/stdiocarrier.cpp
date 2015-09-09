@@ -46,83 +46,83 @@ StdioCarrier *StdioCarrier::_pInstance = NULL;
 
 StdioCarrier::StdioCarrier()
 : IOHandler(fileno(stdin), fileno(stdout), IOHT_STDIO) {
-	IOHandlerManager::EnableReadData(this);
-	_writeDataEnabled = false;
-	_ioAmount = 0;
+  IOHandlerManager::EnableReadData(this);
+  _writeDataEnabled = false;
+  _ioAmount = 0;
 }
 
 StdioCarrier *StdioCarrier::GetInstance(BaseProtocol *pProtocol) {
-	if (_pInstance == NULL) {
-		_pInstance = new StdioCarrier();
-		_pInstance->SetProtocol(pProtocol);
-		pProtocol->GetFarEndpoint()->SetIOHandler(_pInstance);
-		return _pInstance;
-	}
-	o_assert(_pInstance->_pProtocol != NULL);
-	o_assert(pProtocol != NULL);
-	if (_pInstance->_pProtocol->GetId() != pProtocol->GetId()) {
-		FATAL("Stdio carrier is already acquired");
-		return NULL;
-	}
-	return _pInstance;
+  if (_pInstance == NULL) {
+    _pInstance = new StdioCarrier();
+    _pInstance->SetProtocol(pProtocol);
+    pProtocol->GetFarEndpoint()->SetIOHandler(_pInstance);
+    return _pInstance;
+  }
+  o_assert(_pInstance->_pProtocol != NULL);
+  o_assert(pProtocol != NULL);
+  if (_pInstance->_pProtocol->GetId() != pProtocol->GetId()) {
+    FATAL("Stdio carrier is already acquired");
+    return NULL;
+  }
+  return _pInstance;
 }
 
 StdioCarrier::~StdioCarrier() {
-	_pInstance = NULL;
+  _pInstance = NULL;
 }
 
 bool StdioCarrier::OnEvent(select_event &event) {
-	//3. Do the I/O
-	switch (event.type) {
-		case SET_READ:
-		{
-			IOBuffer *pInputBuffer = _pProtocol->GetInputBuffer();
-			o_assert(pInputBuffer != NULL);
-			if (!pInputBuffer->ReadFromStdio(_inboundFd, FD_READ_CHUNK, _ioAmount)) {
-				FATAL("Unable to read data");
-				return false;
-			}
-			ADD_IN_BYTES_MANAGED(_type, _ioAmount);
+  //3. Do the I/O
+  switch (event.type) {
+    case SET_READ:
+    {
+      IOBuffer *pInputBuffer = _pProtocol->GetInputBuffer();
+      o_assert(pInputBuffer != NULL);
+      if (!pInputBuffer->ReadFromStdio(_inboundFd, FD_READ_CHUNK, _ioAmount)) {
+        FATAL("Unable to read data");
+        return false;
+      }
+      ADD_IN_BYTES_MANAGED(_type, _ioAmount);
 
-			return _pProtocol->SignalInputData(_ioAmount);
-		}
-		case SET_WRITE:
-		{
-			IOBuffer *pOutputBuffer = NULL;
-			while ((pOutputBuffer = _pProtocol->GetOutputBuffer()) != NULL) {
-				if (!pOutputBuffer->WriteToStdio(_outboundFd, FD_WRITE_CHUNK, _ioAmount)) {
-					FATAL("Unable to send data");
-					IOHandlerManager::EnqueueForDelete(this);
-					return false;
-				}
-				ADD_OUT_BYTES_MANAGED(_type, _ioAmount);
-				if (GETAVAILABLEBYTESCOUNT(*pOutputBuffer) > 0) {
-					ENABLE_WRITE_DATA;
-					break;
-				}
-			}
-			if (pOutputBuffer == NULL) {
-				DISABLE_WRITE_DATA;
-			}
-			return true;
-		}
-		default:
-		{
-			ASSERT("Invalid state: %hhu", event.type);
-			return false;
-		}
-	}
+      return _pProtocol->SignalInputData(_ioAmount);
+    }
+    case SET_WRITE:
+    {
+      IOBuffer *pOutputBuffer = NULL;
+      while ((pOutputBuffer = _pProtocol->GetOutputBuffer()) != NULL) {
+        if (!pOutputBuffer->WriteToStdio(_outboundFd, FD_WRITE_CHUNK, _ioAmount)) {
+          FATAL("Unable to send data");
+          IOHandlerManager::EnqueueForDelete(this);
+          return false;
+        }
+        ADD_OUT_BYTES_MANAGED(_type, _ioAmount);
+        if (GETAVAILABLEBYTESCOUNT(*pOutputBuffer) > 0) {
+          ENABLE_WRITE_DATA;
+          break;
+        }
+      }
+      if (pOutputBuffer == NULL) {
+        DISABLE_WRITE_DATA;
+      }
+      return true;
+    }
+    default:
+    {
+      ASSERT("Invalid state: %hhu", event.type);
+      return false;
+    }
+  }
 }
 
 bool StdioCarrier::SignalOutputData() {
-	ENABLE_WRITE_DATA;
-	return true;
+  ENABLE_WRITE_DATA;
+  return true;
 }
 
 StdioCarrier::operator string() {
-	if (_pProtocol != NULL)
-		return STR(*_pProtocol);
-	return format("IO(%d,%d)", _inboundFd, _outboundFd);
+  if (_pProtocol != NULL)
+    return STR(*_pProtocol);
+  return format("IO(%d,%d)", _inboundFd, _outboundFd);
 }
 
 void StdioCarrier::GetStats(Variant &info, uint32_t namespaceId) {

@@ -18,7 +18,7 @@
  */
 
 #ifndef _BASEFEEDER_H
-#define	_BASEFEEDER_H
+#define  _BASEFEEDER_H
 
 #include "common.h"
 
@@ -30,25 +30,25 @@ class MonitorRTMPProtocol;
 
 class BaseFeeder {
 private:
-	File _client2ServerBin;
-	File _server2ClientBin;
-	File _allBin;
-	IOBuffer _client2ServerBuffer;
-	IOBuffer _server2ClientBuffer;
-	MonitorRTMPProtocol *_pClient2Server;
-	MonitorRTMPProtocol *_pServer2Client;
+  File _client2ServerBin;
+  File _server2ClientBin;
+  File _allBin;
+  IOBuffer _client2ServerBuffer;
+  IOBuffer _server2ClientBuffer;
+  MonitorRTMPProtocol *_pClient2Server;
+  MonitorRTMPProtocol *_pServer2Client;
 protected:
-	string _fileName;
+  string _fileName;
 public:
-	BaseFeeder();
-	virtual ~BaseFeeder();
+  BaseFeeder();
+  virtual ~BaseFeeder();
 
-	virtual bool Init(string fileName, MonitorRTMPProtocol *pFlash2Server,
-			MonitorRTMPProtocol *pServer2Flash);
-	virtual void Run() = 0;
+  virtual bool Init(string fileName, MonitorRTMPProtocol *pFlash2Server,
+      MonitorRTMPProtocol *pServer2Flash);
+  virtual void Run() = 0;
 protected:
-	bool Feed(const uint8_t *pBuffer, uint32_t length, uint8_t type);
+  bool Feed(const uint8_t *pBuffer, uint32_t length, uint8_t type);
 };
 
-#endif	/* _BASEFEEDER_H */
+#endif  /* _BASEFEEDER_H */
 

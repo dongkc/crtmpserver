@@ -19,25 +19,25 @@
 
 #ifdef HAS_MEDIA_MP4
 #ifndef _VERSIONEDATOM_H
-#define	_VERSIONEDATOM_H
+#define  _VERSIONEDATOM_H
 
 #include "mediaformats/mp4/baseatom.h"
 
 class VersionedAtom
 : public BaseAtom {
 protected:
-	uint8_t _version;
-	uint8_t _flags[3];
+  uint8_t _version;
+  uint8_t _flags[3];
 public:
-	VersionedAtom(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~VersionedAtom();
-	bool Read();
-	virtual string Hierarchy(uint32_t indent);
+  VersionedAtom(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~VersionedAtom();
+  bool Read();
+  virtual string Hierarchy(uint32_t indent);
 protected:
-	virtual bool ReadData() = 0;
+  virtual bool ReadData() = 0;
 };
 
-#endif	/* _VERSIONEDATOM_H */
+#endif  /* _VERSIONEDATOM_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

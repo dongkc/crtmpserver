@@ -23,6 +23,6 @@
 using namespace app_appselector;
 
 extern "C" BaseClientApplication *GetApplication_appselector(Variant configuration) {
-	return new AppSelectorApplication(configuration);
+  return new AppSelectorApplication(configuration);
 }
 

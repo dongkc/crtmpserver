@@ -19,54 +19,54 @@
 
 #ifdef HAS_LUA
 #ifndef _LUAAPPVIRTUALMACHINE_H
-#define	_LUAAPPVIRTUALMACHINE_H
+#define  _LUAAPPVIRTUALMACHINE_H
 
 #include "vm/baseappvirtualmachine.h"
 class BaseVMLua;
 
 namespace app_vmapp {
 
-	class LuaAppVirtualMachine
-	: public BaseAppVirtualMachine {
-		friend class BaseAppVirtualMachine;
-	private:
-		BaseVMLua *_pVM;
-		int _functionsMappingIds[APIFunctionID_size + 1];
-	protected:
-		LuaAppVirtualMachine();
-	public:
-		virtual ~LuaAppVirtualMachine();
-		virtual bool HasFunction(APIFunctionID functionId);
-		virtual bool Call(APIFunctionID functionId);
-		virtual bool Call(APIFunctionID functionId, Variant &variant);
-		virtual bool Call(APIFunctionID functionId, BaseStream *pBaseStream);
-		virtual bool Call(APIFunctionID functionId, InNetTSStream *pInNetTSStream);
-		virtual bool Call(APIFunctionID functionId, BaseProtocol *pProtocol);
-		virtual bool Call(APIFunctionID functionId, OutboundRTMPProtocol *pProtocol);
-		virtual bool Call(APIFunctionID functionId, BaseRTMPProtocol *pProtocol,
-				Variant &variant);
-		virtual bool Call(APIFunctionID functionId, BaseRTMPProtocol *pProtocol,
-				Variant &variant1, Variant &variant2);
-		virtual bool Call(APIFunctionID functionId, URI &uri, Variant &variant);
-		virtual bool Call(APIFunctionID functionId, BaseInStream *pInStream,
-				Variant &variant);
-	protected:
-		virtual bool BindAPI();
-		virtual bool Initialize(string script);
-	private:
-		bool BindAPIGenerics();
-		bool BindAPIApplication();
-		bool BindAPIProtocols();
-		bool BindAPIHandlers();
-		bool BindAPIHandlersRTMP();
-		bool BindAPIHandlersRTSP();
-		bool BindAPIHandlersMPEGTS();
-		bool BindAPIHandlersLiveFLV();
-		bool GetFunctionsMappings();
-		bool ValidateHandler(Variant &handler);
-		void Shutdown();
-	};
+  class LuaAppVirtualMachine
+  : public BaseAppVirtualMachine {
+    friend class BaseAppVirtualMachine;
+  private:
+    BaseVMLua *_pVM;
+    int _functionsMappingIds[APIFunctionID_size + 1];
+  protected:
+    LuaAppVirtualMachine();
+  public:
+    virtual ~LuaAppVirtualMachine();
+    virtual bool HasFunction(APIFunctionID functionId);
+    virtual bool Call(APIFunctionID functionId);
+    virtual bool Call(APIFunctionID functionId, Variant &variant);
+    virtual bool Call(APIFunctionID functionId, BaseStream *pBaseStream);
+    virtual bool Call(APIFunctionID functionId, InNetTSStream *pInNetTSStream);
+    virtual bool Call(APIFunctionID functionId, BaseProtocol *pProtocol);
+    virtual bool Call(APIFunctionID functionId, OutboundRTMPProtocol *pProtocol);
+    virtual bool Call(APIFunctionID functionId, BaseRTMPProtocol *pProtocol,
+        Variant &variant);
+    virtual bool Call(APIFunctionID functionId, BaseRTMPProtocol *pProtocol,
+        Variant &variant1, Variant &variant2);
+    virtual bool Call(APIFunctionID functionId, URI &uri, Variant &variant);
+    virtual bool Call(APIFunctionID functionId, BaseInStream *pInStream,
+        Variant &variant);
+  protected:
+    virtual bool BindAPI();
+    virtual bool Initialize(string script);
+  private:
+    bool BindAPIGenerics();
+    bool BindAPIApplication();
+    bool BindAPIProtocols();
+    bool BindAPIHandlers();
+    bool BindAPIHandlersRTMP();
+    bool BindAPIHandlersRTSP();
+    bool BindAPIHandlersMPEGTS();
+    bool BindAPIHandlersLiveFLV();
+    bool GetFunctionsMappings();
+    bool ValidateHandler(Variant &handler);
+    void Shutdown();
+  };
 }
 
-#endif	/* _LUAAPPVIRTUALMACHINE_H */
-#endif	/* HAS_LUA */
+#endif  /* _LUAAPPVIRTUALMACHINE_H */
+#endif  /* HAS_LUA */

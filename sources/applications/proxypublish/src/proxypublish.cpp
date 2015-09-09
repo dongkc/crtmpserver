@@ -24,5 +24,5 @@
 using namespace app_proxypublish;
 
 extern "C" BaseClientApplication *GetApplication_proxypublish(Variant configuration) {
-	return new ProxyPublishApplication(configuration);
+  return new ProxyPublishApplication(configuration);
 }

@@ -19,7 +19,7 @@
 
 #ifdef HAS_PROTOCOL_RTP
 #ifndef _RTSPPROTOCOL_H
-#define	_RTSPPROTOCOL_H
+#define  _RTSPPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 #include "protocols/timer/basetimerprotocol.h"
@@ -40,114 +40,114 @@ class DLLEXP RTSPProtocol
 : public BaseProtocol {
 private:
 
-	class RTSPKeepAliveTimer
-	: public BaseTimerProtocol {
-	private:
-		uint32_t _protocolId;
-	public:
-		RTSPKeepAliveTimer(uint32_t protocolId);
-		virtual ~RTSPKeepAliveTimer();
-		virtual bool TimePeriodElapsed();
-	};
+  class RTSPKeepAliveTimer
+  : public BaseTimerProtocol {
+  private:
+    uint32_t _protocolId;
+  public:
+    RTSPKeepAliveTimer(uint32_t protocolId);
+    virtual ~RTSPKeepAliveTimer();
+    virtual bool TimePeriodElapsed();
+  };
 protected:
-	uint32_t _state;
-	bool _rtpData;
-	uint32_t _rtpDataLength;
-	uint32_t _rtpDataChanel;
-	Variant _inboundHeaders;
-	string _inboundContent;
-	uint32_t _contentLength;
-	SDP _inboundSDP;
-	BaseRTSPAppProtocolHandler *_pProtocolHandler;
-	IOBuffer _outputBuffer;
+  uint32_t _state;
+  bool _rtpData;
+  uint32_t _rtpDataLength;
+  uint32_t _rtpDataChanel;
+  Variant _inboundHeaders;
+  string _inboundContent;
+  uint32_t _contentLength;
+  SDP _inboundSDP;
+  BaseRTSPAppProtocolHandler *_pProtocolHandler;
+  IOBuffer _outputBuffer;
 
-	Variant _responseHeaders;
-	string _responseContent;
+  Variant _responseHeaders;
+  string _responseContent;
 
-	Variant _requestHeaders;
-	string _requestContent;
-	uint32_t _requestSequence;
-	map<uint32_t, Variant> _pendingRequestHeaders;
-	map<uint32_t, string> _pendingRequestContent;
+  Variant _requestHeaders;
+  string _requestContent;
+  uint32_t _requestSequence;
+  map<uint32_t, Variant> _pendingRequestHeaders;
+  map<uint32_t, string> _pendingRequestContent;
 
-	OutboundConnectivity *_pOutboundConnectivity;
-	InboundConnectivity *_pInboundConnectivity;
+  OutboundConnectivity *_pOutboundConnectivity;
+  InboundConnectivity *_pInboundConnectivity;
 
-	Variant _authentication;
+  Variant _authentication;
 
-	uint32_t _keepAliveTimerId;
-	BaseOutStream *_pOutStream;
+  uint32_t _keepAliveTimerId;
+  BaseOutStream *_pOutStream;
 
-	string _keepAliveURI;
+  string _keepAliveURI;
 
-	string _sessionId;
-	bool _enableTearDown;
+  string _sessionId;
+  bool _enableTearDown;
 public:
-	RTSPProtocol();
-	virtual ~RTSPProtocol();
+  RTSPProtocol();
+  virtual ~RTSPProtocol();
 
-	virtual IOBuffer * GetOutputBuffer();
-	virtual bool Initialize(Variant &parameters);
-	virtual void SetApplication(BaseClientApplication *pApplication);
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
-	virtual void EnqueueForDelete();
+  virtual IOBuffer * GetOutputBuffer();
+  virtual bool Initialize(Variant &parameters);
+  virtual void SetApplication(BaseClientApplication *pApplication);
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  virtual void EnqueueForDelete();
 
-	string GetSessionId();
-	string GenerateSessionId();
-	bool SetSessionId(string sessionId);
+  string GetSessionId();
+  string GenerateSessionId();
+  bool SetSessionId(string sessionId);
 
-	bool SetAuthentication(string wwwAuthenticateHeader, string userName,
-			string password);
-	bool EnableKeepAlive(uint32_t period, string keepAliveURI);
-	void EnableTearDown();
-	bool SendKeepAliveOptions();
-	bool HasConnectivity();
+  bool SetAuthentication(string wwwAuthenticateHeader, string userName,
+      string password);
+  bool EnableKeepAlive(uint32_t period, string keepAliveURI);
+  void EnableTearDown();
+  bool SendKeepAliveOptions();
+  bool HasConnectivity();
 
-	SDP &GetInboundSDP();
+  SDP &GetInboundSDP();
 
-	//void ClearRequestMessage();
-	void PushRequestFirstLine(string method, string url, string version);
-	void PushRequestHeader(string name, string value);
-	void PushRequestContent(string outboundContent, bool append);
-	bool SendRequestMessage();
-	uint32_t LastRequestSequence();
-	bool GetRequest(uint32_t seqId, Variant &result, string &content);
+  //void ClearRequestMessage();
+  void PushRequestFirstLine(string method, string url, string version);
+  void PushRequestHeader(string name, string value);
+  void PushRequestContent(string outboundContent, bool append);
+  bool SendRequestMessage();
+  uint32_t LastRequestSequence();
+  bool GetRequest(uint32_t seqId, Variant &result, string &content);
 
-	void ClearResponseMessage();
-	void PushResponseFirstLine(string version, uint32_t code, string reason);
-	void PushResponseHeader(string name, string value);
-	void PushResponseContent(string outboundContent, bool append);
-	bool SendResponseMessage();
+  void ClearResponseMessage();
+  void PushResponseFirstLine(string version, uint32_t code, string reason);
+  void PushResponseHeader(string name, string value);
+  void PushResponseContent(string outboundContent, bool append);
+  bool SendResponseMessage();
 
-	OutboundConnectivity * GetOutboundConnectivity(BaseInNetStream *pInNetStream,
-			bool forceTcp);
-	void CloseOutboundConnectivity();
+  OutboundConnectivity * GetOutboundConnectivity(BaseInNetStream *pInNetStream,
+      bool forceTcp);
+  void CloseOutboundConnectivity();
 
-	InboundConnectivity *GetInboundConnectivity(string sdpStreamName,
-			uint32_t bandwidthHint, uint8_t rtcpDetectionInterval);
-	InboundConnectivity *GetInboundConnectivity();
-	//	InboundConnectivity *GetInboundConnectivity1(Variant &videoTrack,
-	//			Variant &audioTrack, string sdpStreamName, uint32_t bandwidthHint);
+  InboundConnectivity *GetInboundConnectivity(string sdpStreamName,
+      uint32_t bandwidthHint, uint8_t rtcpDetectionInterval);
+  InboundConnectivity *GetInboundConnectivity();
+  //  InboundConnectivity *GetInboundConnectivity1(Variant &videoTrack,
+  //      Variant &audioTrack, string sdpStreamName, uint32_t bandwidthHint);
 
-	void CloseInboundConnectivity();
+  void CloseInboundConnectivity();
 
-	bool SendRaw(uint8_t *pBuffer, uint32_t length);
-	bool SendRaw(MSGHDR *pMessage, uint16_t length, RTPClient *pClient,
-			bool isAudio, bool isData);
+  bool SendRaw(uint8_t *pBuffer, uint32_t length);
+  bool SendRaw(MSGHDR *pMessage, uint16_t length, RTPClient *pClient,
+      bool isAudio, bool isData);
 
-	void SetOutStream(BaseOutStream *pOutStream);
+  void SetOutStream(BaseOutStream *pOutStream);
 private:
-	bool SendMessage(Variant &headers, string &content);
-	bool ParseHeaders(IOBuffer &buffer);
-	bool ParseInterleavedHeaders(IOBuffer &buffer);
-	bool ParseNormalHeaders(IOBuffer &buffer);
-	bool ParseFirstLine(string &line);
-	bool HandleRTSPMessage(IOBuffer &buffer);
+  bool SendMessage(Variant &headers, string &content);
+  bool ParseHeaders(IOBuffer &buffer);
+  bool ParseInterleavedHeaders(IOBuffer &buffer);
+  bool ParseNormalHeaders(IOBuffer &buffer);
+  bool ParseFirstLine(string &line);
+  bool HandleRTSPMessage(IOBuffer &buffer);
 };
 
-#endif	/* _RTSPPROTOCOL_H */
+#endif  /* _RTSPPROTOCOL_H */
 #endif /* HAS_PROTOCOL_RTP */

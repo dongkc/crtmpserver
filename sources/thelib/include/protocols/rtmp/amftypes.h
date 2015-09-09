@@ -20,29 +20,29 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _AMFTYPES_H
-#define	_AMFTYPES_H
+#define  _AMFTYPES_H
 
 /*AMF0_P_Number = 0x00,
-	AMF0_P_Boolean = 0x01,
-	AMF0_P_String = 0x02,
-	AMF0_P_Object = 0x03,
-	AMF0_P_MovieClip = 0x04,
-	AMF0_P_Null = 0x05,
-	AMF0_P_Undefined = 0x06,
-	AMF0_P_Reference = 0x07,
-	AMF0_P_MixedArray = 0x08,
-	AMF0_P_EndOfObject = 0x09,
-	AMF0_P_Array = 0x0a,
-	AMF0_P_Date = 0x0b,
-	AMF0_P_LongString = 0x0c,
-	AMF0_P_Unsupported = 0x0d,
-	AMF0_P_Recordset = 0x0e,
-	AMF0_P_XML = 0x0f,
-	AMF0_P_TypedObject = 0x10,
-	AMF0_P_AMF3_data = 0x11,
-	AMF0_P_NS_Int16 = 0xf0,
-	AMF0_P_NS_Int32 = 0xf1,
-	AMF0_P_uninitialized = 0xff*/
+  AMF0_P_Boolean = 0x01,
+  AMF0_P_String = 0x02,
+  AMF0_P_Object = 0x03,
+  AMF0_P_MovieClip = 0x04,
+  AMF0_P_Null = 0x05,
+  AMF0_P_Undefined = 0x06,
+  AMF0_P_Reference = 0x07,
+  AMF0_P_MixedArray = 0x08,
+  AMF0_P_EndOfObject = 0x09,
+  AMF0_P_Array = 0x0a,
+  AMF0_P_Date = 0x0b,
+  AMF0_P_LongString = 0x0c,
+  AMF0_P_Unsupported = 0x0d,
+  AMF0_P_Recordset = 0x0e,
+  AMF0_P_XML = 0x0f,
+  AMF0_P_TypedObject = 0x10,
+  AMF0_P_AMF3_data = 0x11,
+  AMF0_P_NS_Int16 = 0xf0,
+  AMF0_P_NS_Int32 = 0xf1,
+  AMF0_P_uninitialized = 0xff*/
 
 #define AMF0_NUMBER         ((uint8_t)0x00)
 #define AMF0_BOOLEAN        ((uint8_t)0x01)
@@ -54,7 +54,7 @@
 #define AMF0_ARRAY          ((uint8_t)0x0a)
 #define AMF0_TIMESTAMP      ((uint8_t)0x0b)
 #define AMF0_LONG_STRING    ((uint8_t)0x0c)
-#define AMF0_TYPED_OBJECT	((uint8_t)0x10)
+#define AMF0_TYPED_OBJECT  ((uint8_t)0x10)
 #define AMF0_AMF3_OBJECT    ((uint8_t)0x11)
 
 #define AMF3_UNDEFINED      ((uint8_t)0x00)
@@ -80,7 +80,7 @@ do { \
     } \
 }while(0)
 
-#endif	/* _AMFTYPES_H */
+#endif  /* _AMFTYPES_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

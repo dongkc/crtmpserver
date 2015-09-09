@@ -19,7 +19,7 @@
 
 #ifdef HAS_PROTOCOL_LIVEFLV
 #ifndef _INBOUNDLIVEFLVPROTOCOL_H
-#define	_INBOUNDLIVEFLVPROTOCOL_H
+#define  _INBOUNDLIVEFLVPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
@@ -28,24 +28,24 @@ class InNetLiveFLVStream;
 class DLLEXP InboundLiveFLVProtocol
 : public BaseProtocol {
 private:
-	InNetLiveFLVStream *_pStream;
-	bool _headerParsed;
-	bool _waitForMetadata;
+  InNetLiveFLVStream *_pStream;
+  bool _headerParsed;
+  bool _waitForMetadata;
 public:
-	InboundLiveFLVProtocol();
-	virtual ~InboundLiveFLVProtocol();
+  InboundLiveFLVProtocol();
+  virtual ~InboundLiveFLVProtocol();
 
-	virtual bool Initialize(Variant &parameters);
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool Initialize(Variant &parameters);
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
 private:
-	bool InitializeStream(string streamName);
-	string ComputeStreamName(string suggestion);
+  bool InitializeStream(string streamName);
+  string ComputeStreamName(string suggestion);
 };
 
 
-#endif	/* _INBOUNDLIVEFLVPROTOCOL_H */
+#endif  /* _INBOUNDLIVEFLVPROTOCOL_H */
 #endif /* HAS_PROTOCOL_LIVEFLV */
 

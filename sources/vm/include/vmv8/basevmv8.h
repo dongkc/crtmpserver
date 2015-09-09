@@ -19,7 +19,7 @@
 
 #ifdef HAS_V8
 #ifndef _BASEVMV8_H
-#define	_BASEVMV8_H
+#define  _BASEVMV8_H
 
 #include "basevm.h"
 #include "v8.h"
@@ -28,27 +28,27 @@ using namespace v8;
 class BaseVMV8
 : public BaseVM {
 private:
-	Persistent<Context> _context;
+  Persistent<Context> _context;
 public:
-	BaseVMV8();
-	virtual ~BaseVMV8();
+  BaseVMV8();
+  virtual ~BaseVMV8();
 
-	virtual bool Supports64bit();
-	virtual bool SupportsUndefined();
-	virtual bool Initialize();
-	virtual bool Shutdown();
-	virtual bool LoadScriptFile(string scriptFileName, string scriptName);
-	virtual bool LoadScriptString(string scriptContent, string scriptName);
-	virtual bool HasFunction(string functionName);
-	virtual bool CallWithParams(string functionName, Variant &parameters, Variant &results);
-	virtual bool CallWithoutParams(string functionName, Variant &results);
+  virtual bool Supports64bit();
+  virtual bool SupportsUndefined();
+  virtual bool Initialize();
+  virtual bool Shutdown();
+  virtual bool LoadScriptFile(string scriptFileName, string scriptName);
+  virtual bool LoadScriptString(string scriptContent, string scriptName);
+  virtual bool HasFunction(string functionName);
+  virtual bool CallWithParams(string functionName, Variant &parameters, Variant &results);
+  virtual bool CallWithoutParams(string functionName, Variant &results);
 protected:
-	static string GetErrorString(TryCatch &tryCatch);
+  static string GetErrorString(TryCatch &tryCatch);
 private:
-	static bool VariantToV8Value(Variant &variant, Handle<Value> &val);
-	static bool V8ValueToVariant(Local<Value> &value, Variant &variant);
+  static bool VariantToV8Value(Variant &variant, Handle<Value> &val);
+  static bool V8ValueToVariant(Local<Value> &value, Variant &variant);
 };
 
-#endif	/* _BASEVMV8_H */
-#endif	/* HAS_V8 */
+#endif  /* _BASEVMV8_H */
+#endif  /* HAS_V8 */
 

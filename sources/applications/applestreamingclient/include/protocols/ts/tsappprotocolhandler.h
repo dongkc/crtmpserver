@@ -19,23 +19,23 @@
 
 
 #ifndef _TSAPPPROTOCOLHANDLER_H
-#define	_TSAPPPROTOCOLHANDLER_H
+#define  _TSAPPPROTOCOLHANDLER_H
 
 #include "protocols/ts/basetsappprotocolhandler.h"
 
 namespace app_applestreamingclient {
 
-	class TSAppProtocolHandler
-	: public BaseTSAppProtocolHandler {
-	public:
-		TSAppProtocolHandler(Variant &configuration);
-		virtual ~TSAppProtocolHandler();
+  class TSAppProtocolHandler
+  : public BaseTSAppProtocolHandler {
+  public:
+    TSAppProtocolHandler(Variant &configuration);
+    virtual ~TSAppProtocolHandler();
 
-		virtual void RegisterProtocol(BaseProtocol *pProtocol);
-	private:
-		bool DoHTTPRequest(BaseProtocol *pProtocol);
-	};
+    virtual void RegisterProtocol(BaseProtocol *pProtocol);
+  private:
+    bool DoHTTPRequest(BaseProtocol *pProtocol);
+  };
 }
 
-#endif	/* _TSAPPPROTOCOLHANDLER_H */
+#endif  /* _TSAPPPROTOCOLHANDLER_H */
 

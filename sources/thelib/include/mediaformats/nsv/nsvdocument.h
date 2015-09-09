@@ -20,7 +20,7 @@
 
 #ifdef HAS_MEDIA_NSV
 #ifndef _NSVDOCUMENTS_H
-#define	_NSVDOCUMENTS_H
+#define  _NSVDOCUMENTS_H
 
 #include "common.h"
 #include "mediaformats/basemediadocument.h"
@@ -28,40 +28,40 @@
 class NSVDocument
 : public BaseMediaDocument {
 private:
-	IOBuffer _buffer;
-	uint32_t _audioSamplesCount;
-	uint32_t _videoSamplesCount;
-	Variant _metadata;
-	vector<MediaFrame> binaryHeaders;
+  IOBuffer _buffer;
+  uint32_t _audioSamplesCount;
+  uint32_t _videoSamplesCount;
+  Variant _metadata;
+  vector<MediaFrame> binaryHeaders;
 
-	double _framerate;
-	uint32_t aux_plus_vidlen;
-	uint8_t num_aux;
-	uint16_t audio_len;
+  double _framerate;
+  uint32_t aux_plus_vidlen;
+  uint8_t num_aux;
+  uint16_t audio_len;
 
 public:
-	NSVDocument(Variant &metadata);
-	virtual ~NSVDocument();
+  NSVDocument(Variant &metadata);
+  virtual ~NSVDocument();
 
 protected:
-	virtual bool ParseDocument();
-	virtual bool BuildFrames();
-	virtual Variant GetRTMPMeta();
+  virtual bool ParseDocument();
+  virtual bool BuildFrames();
+  virtual Variant GetRTMPMeta();
 
 private:
-	bool ParseNSVs();
-	bool ReadPayLoadData();
-	double GetFrameRate(uint8_t framerate_index);
-	bool IsValidVideoType(uint32_t vidfmt);
-	bool IsValidAudioType(uint32_t audfmt);
+  bool ParseNSVs();
+  bool ReadPayLoadData();
+  double GetFrameRate(uint8_t framerate_index);
+  bool IsValidVideoType(uint32_t vidfmt);
+  bool IsValidAudioType(uint32_t audfmt);
 
-	void GetAudioFrame();
-	void ComputeMediaFrames(uint64_t currentCursor);
+  void GetAudioFrame();
+  void ComputeMediaFrames(uint64_t currentCursor);
 
-	int find_nal_unit(uint8_t* buf, uint32_t size, int* nal_start, int* nal_end);
+  int find_nal_unit(uint8_t* buf, uint32_t size, int* nal_start, int* nal_end);
 };
 
 
-#endif	/* _NSVDOCUMENTS_H */
+#endif  /* _NSVDOCUMENTS_H */
 #endif /* HAS_MEDIA_NSV */
 

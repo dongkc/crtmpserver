@@ -19,21 +19,21 @@
 
 
 #ifndef _BASEHTTPAPPPROTOCOLHANDLER_H
-#define	_BASEHTTPAPPPROTOCOLHANDLER_H
+#define  _BASEHTTPAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 
 class DLLEXP BaseHTTPAppProtocolHandler
 : public BaseAppProtocolHandler {
 public:
-	BaseHTTPAppProtocolHandler(Variant &configuration);
-	virtual ~BaseHTTPAppProtocolHandler();
+  BaseHTTPAppProtocolHandler(Variant &configuration);
+  virtual ~BaseHTTPAppProtocolHandler();
 
-	virtual void RegisterProtocol(BaseProtocol *pProtocol);
-	virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  virtual void RegisterProtocol(BaseProtocol *pProtocol);
+  virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
 };
 
 
-#endif	/* _BASEHTTPAPPPROTOCOLHANDLER_H */
+#endif  /* _BASEHTTPAPPPROTOCOLHANDLER_H */
 
 

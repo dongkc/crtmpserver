@@ -29,14 +29,14 @@ JsonVariantProtocol::~JsonVariantProtocol() {
 }
 
 bool JsonVariantProtocol::Serialize(string &rawData, Variant &variant) {
-	return variant.SerializeToJSON(rawData);
+  return variant.SerializeToJSON(rawData);
 }
 
 bool JsonVariantProtocol::Deserialize(uint8_t *pBuffer, uint32_t bufferLength,
-		Variant &result) {
-	string raw = string((char *) pBuffer, bufferLength);
-	uint32_t start = 0;
-	return Variant::DeserializeFromJSON(raw, result, start);
+    Variant &result) {
+  string raw = string((char *) pBuffer, bufferLength);
+  uint32_t start = 0;
+  return Variant::DeserializeFromJSON(raw, result, start);
 }
-#endif	/* HAS_PROTOCOL_VAR */
+#endif  /* HAS_PROTOCOL_VAR */
 

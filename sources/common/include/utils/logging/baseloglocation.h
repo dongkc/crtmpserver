@@ -25,36 +25,36 @@
 #include "utils/misc/variant.h"
 
 /*!
-	@class BaseLogLocation
-	@brief Base class that all logging must derive from.
+  @class BaseLogLocation
+  @brief Base class that all logging must derive from.
  */
 class DLLEXP BaseLogLocation {
 protected:
-	int32_t _level;
-	string _name;
-	int32_t _specificLevel;
-	bool _singleLine;
-	Variant _configuration;
+  int32_t _level;
+  string _name;
+  int32_t _specificLevel;
+  bool _singleLine;
+  Variant _configuration;
 public:
 
-	BaseLogLocation(Variant &configuration);
-	virtual ~BaseLogLocation();
-	int32_t GetLevel();
-	void SetLevel(int32_t level);
-	string GetName();
-	void SetName(string name);
-	virtual bool EvalLogLevel(int32_t level, string &fileName, uint32_t lineNumber,
-			string &functionName, string &message);
-	virtual bool EvalLogLevel(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, Variant &le);
-	virtual bool Init();
-	virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, string message) = 0;
-	virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, Variant &le) = 0;
-	virtual void SignalFork() = 0;
+  BaseLogLocation(Variant &configuration);
+  virtual ~BaseLogLocation();
+  int32_t GetLevel();
+  void SetLevel(int32_t level);
+  string GetName();
+  void SetName(string name);
+  virtual bool EvalLogLevel(int32_t level, string &fileName, uint32_t lineNumber,
+      string &functionName, string &message);
+  virtual bool EvalLogLevel(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, Variant &le);
+  virtual bool Init();
+  virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, string message) = 0;
+  virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, Variant &le) = 0;
+  virtual void SignalFork() = 0;
 private:
-	bool EvalLogLevel(int32_t level);
+  bool EvalLogLevel(int32_t level);
 };
 
 

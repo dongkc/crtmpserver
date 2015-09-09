@@ -20,30 +20,30 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _RTMPAPPPROTOCOLHANDLER_H
-#define	_RTMPAPPPROTOCOLHANDLER_H
+#define  _RTMPAPPPROTOCOLHANDLER_H
 
 #include "protocols/rtmp/basertmpappprotocolhandler.h"
 #include "protocols/variant/basevariantappprotocolhandler.h"
 
 namespace app_vptests {
-	class VariantAppProtocolHandler;
+  class VariantAppProtocolHandler;
 
-	class RTMPAppProtocolHandler
-	: public BaseRTMPAppProtocolHandler {
-	public:
-		RTMPAppProtocolHandler(Variant &configuration);
-		virtual ~RTMPAppProtocolHandler();
+  class RTMPAppProtocolHandler
+  : public BaseRTMPAppProtocolHandler {
+  public:
+    RTMPAppProtocolHandler(Variant &configuration);
+    virtual ~RTMPAppProtocolHandler();
 
-		virtual bool ProcessInvokeConnect(BaseRTMPProtocol *pFrom, Variant &request);
-	private:
-		VariantAppProtocolHandler *GetVariantHandler(
-				VariantSerializer serializer);
-		bool Send(string ip, uint16_t port, Variant &variant,
-				VariantSerializer serializer = VariantSerializer_XML);
-		bool Send(string url, Variant &variant,
-				VariantSerializer serializer = VariantSerializer_XML);
-	};
+    virtual bool ProcessInvokeConnect(BaseRTMPProtocol *pFrom, Variant &request);
+  private:
+    VariantAppProtocolHandler *GetVariantHandler(
+        VariantSerializer serializer);
+    bool Send(string ip, uint16_t port, Variant &variant,
+        VariantSerializer serializer = VariantSerializer_XML);
+    bool Send(string url, Variant &variant,
+        VariantSerializer serializer = VariantSerializer_XML);
+  };
 }
-#endif	/* _RTMPAPPPROTOCOLHANDLER_H */
+#endif  /* _RTMPAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_RTMP */
 

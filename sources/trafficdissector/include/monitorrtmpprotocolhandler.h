@@ -19,7 +19,7 @@
 
 
 #ifndef _MONITORRTMPPROTOCOLHANDLER_H
-#define	_MONITORRTMPPROTOCOLHANDLER_H
+#define  _MONITORRTMPPROTOCOLHANDLER_H
 
 #include "protocols/rtmp/basertmpappprotocolhandler.h"
 
@@ -28,10 +28,10 @@ class MonitorRTMPProtocol;
 class MonitorRTMPProtocolHandler
 : public BaseRTMPAppProtocolHandler {
 public:
-	MonitorRTMPProtocolHandler(Variant &configuration);
-	virtual ~MonitorRTMPProtocolHandler();
+  MonitorRTMPProtocolHandler(Variant &configuration);
+  virtual ~MonitorRTMPProtocolHandler();
 };
 
 
-#endif	/* _MONITORRTMPPROTOCOLHANDLER_H */
+#endif  /* _MONITORRTMPPROTOCOLHANDLER_H */
 

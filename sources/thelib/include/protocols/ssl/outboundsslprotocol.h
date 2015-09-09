@@ -18,20 +18,20 @@
  */
 
 #ifndef _OUTBOUNDSSLPROTOCOL_H
-#define	_OUTBOUNDSSLPROTOCOL_H
+#define  _OUTBOUNDSSLPROTOCOL_H
 
 #include "protocols/ssl/basesslprotocol.h"
 
 class OutboundSSLProtocol
 : public BaseSSLProtocol {
 public:
-	OutboundSSLProtocol();
-	virtual ~OutboundSSLProtocol();
+  OutboundSSLProtocol();
+  virtual ~OutboundSSLProtocol();
 protected:
-	virtual bool InitGlobalContext(Variant &parameters);
-	virtual bool DoHandshake();
+  virtual bool InitGlobalContext(Variant &parameters);
+  virtual bool DoHandshake();
 };
 
 
-#endif	/* _OUTBOUNDSSLPROTOCOL_H */
+#endif  /* _OUTBOUNDSSLPROTOCOL_H */
 

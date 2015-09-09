@@ -32,31 +32,31 @@ JobsTimerProtocol::~JobsTimerProtocol() {
 }
 
 bool JobsTimerProtocol::TimePeriodElapsed() {
-	DoPulls();
-	DoPushes();
-	_pullQueue.clear();
-	_pushQueue.clear();
-	return true;
+  DoPulls();
+  DoPushes();
+  _pullQueue.clear();
+  _pushQueue.clear();
+  return true;
 }
 
 void JobsTimerProtocol::EnqueuePush(Variant &push) {
-	ADD_VECTOR_END(_pushQueue, push);
+  ADD_VECTOR_END(_pushQueue, push);
 }
 
 void JobsTimerProtocol::EnqueuePull(Variant &pull) {
-	ADD_VECTOR_END(_pullQueue, pull);
+  ADD_VECTOR_END(_pullQueue, pull);
 }
 
 void JobsTimerProtocol::DoPulls() {
-	for (uint32_t i = 0; i < _pullQueue.size(); i++) {
-		Variant &parameters = _pullQueue[i];
-		GetApplication()->PullExternalStream(parameters);
-	}
+  for (uint32_t i = 0; i < _pullQueue.size(); i++) {
+    Variant &parameters = _pullQueue[i];
+    GetApplication()->PullExternalStream(parameters);
+  }
 }
 
 void JobsTimerProtocol::DoPushes() {
-	for (uint32_t i = 0; i < _pushQueue.size(); i++) {
-		Variant &parameters = _pushQueue[i];
-		GetApplication()->PushLocalStream(parameters);
-	}
+  for (uint32_t i = 0; i < _pushQueue.size(); i++) {
+    Variant &parameters = _pushQueue[i];
+    GetApplication()->PushLocalStream(parameters);
+  }
 }

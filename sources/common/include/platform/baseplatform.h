@@ -61,8 +61,8 @@ if(MAP_HAS1((m),(k1))){ \
 
 class BasePlatform {
 public:
-	BasePlatform();
-	virtual ~BasePlatform();
+  BasePlatform();
+  virtual ~BasePlatform();
 };
 
 #endif /* _BASEPLATFORM_H */

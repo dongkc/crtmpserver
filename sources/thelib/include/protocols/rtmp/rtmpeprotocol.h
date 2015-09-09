@@ -20,34 +20,34 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _RTMPEPROTOCOL_H
-#define	_RTMPEPROTOCOL_H
+#define  _RTMPEPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
 class DLLEXP RTMPEProtocol
 : public BaseProtocol {
 private:
-	IOBuffer _outputBuffer;
-	IOBuffer _inputBuffer;
-	RC4_KEY *_pKeyIn;
-	RC4_KEY *_pKeyOut;
-	uint32_t _skipBytes;
+  IOBuffer _outputBuffer;
+  IOBuffer _inputBuffer;
+  RC4_KEY *_pKeyIn;
+  RC4_KEY *_pKeyOut;
+  uint32_t _skipBytes;
 public:
-	RTMPEProtocol(RC4_KEY *pKeyIn, RC4_KEY *pKeyOut, uint32_t skipBytes = 0);
-	virtual ~RTMPEProtocol();
+  RTMPEProtocol(RC4_KEY *pKeyIn, RC4_KEY *pKeyOut, uint32_t skipBytes = 0);
+  virtual ~RTMPEProtocol();
 
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual IOBuffer * GetInputBuffer();
-	virtual IOBuffer * GetOutputBuffer();
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
-	virtual bool EnqueueForOutbound();
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual IOBuffer * GetInputBuffer();
+  virtual IOBuffer * GetOutputBuffer();
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool EnqueueForOutbound();
 
 };
 
 
-#endif	/* _RTMPEPROTOCOL_H */
+#endif  /* _RTMPEPROTOCOL_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

@@ -23,40 +23,40 @@
 #include "application/baseclientapplication.h"
 
 BaseAppProtocolHandler::BaseAppProtocolHandler(Variant &configuration) {
-	_configuration = configuration;
+  _configuration = configuration;
 }
 
 BaseAppProtocolHandler::~BaseAppProtocolHandler() {
 }
 
 bool BaseAppProtocolHandler::ParseAuthenticationNode(Variant &node, Variant &result) {
-	return false;
+  return false;
 }
 
 void BaseAppProtocolHandler::SetApplication(BaseClientApplication *pApplication) {
-	_pApplication = pApplication;
+  _pApplication = pApplication;
 }
 
 BaseClientApplication *BaseAppProtocolHandler::GetApplication() {
-	return _pApplication;
+  return _pApplication;
 }
 
 BaseAppProtocolHandler * BaseAppProtocolHandler::GetProtocolHandler(uint64_t protocolType) {
-	if (_pApplication == NULL)
-		return NULL;
-	return _pApplication->GetProtocolHandler(protocolType);
+  if (_pApplication == NULL)
+    return NULL;
+  return _pApplication->GetProtocolHandler(protocolType);
 }
 
 bool BaseAppProtocolHandler::PullExternalStream(URI uri, Variant streamConfig) {
-	WARN("Pulling in streams for scheme %s in application %s not yet implemented. Stream configuration was:\n%s",
-			STR(uri.scheme()),
-			STR(GetApplication()->GetName()),
-			STR(streamConfig.ToString()));
-	return false;
+  WARN("Pulling in streams for scheme %s in application %s not yet implemented. Stream configuration was:\n%s",
+      STR(uri.scheme()),
+      STR(GetApplication()->GetName()),
+      STR(streamConfig.ToString()));
+  return false;
 }
 
 bool BaseAppProtocolHandler::PushLocalStream(Variant streamConfig) {
-	WARN("Pushing out streams for this protocol handler in application %s not yet implemented.",
-			STR(GetApplication()->GetName()));
-	return false;
+  WARN("Pushing out streams for this protocol handler in application %s not yet implemented.",
+      STR(GetApplication()->GetName()));
+  return false;
 }

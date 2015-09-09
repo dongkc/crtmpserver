@@ -19,11 +19,11 @@
 
 
 #ifndef _APPLESTREAMINGCLIENT_H
-#define	_APPLESTREAMINGCLIENT_H
+#define  _APPLESTREAMINGCLIENT_H
 
 #include "common.h"
 
 extern "C" DLLEXP BaseClientApplication *GetApplication_applestreamingclient(Variant configuration);
 
-#endif	/* _APPLESTREAMINGCLIENT_H */
+#endif  /* _APPLESTREAMINGCLIENT_H */
 

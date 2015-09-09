@@ -20,7 +20,7 @@
 
 #ifdef HAS_PROTOCOL_TS
 #ifndef _INBOUNDTSPROTOCOL_H
-#define	_INBOUNDTSPROTOCOL_H
+#define  _INBOUNDTSPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 #include "protocols/ts/pidtypes.h"
@@ -39,51 +39,51 @@ class BaseTSAppProtocolHandler;
 class InNetTSStream;
 
 typedef struct _PIDDescriptor {
-	PIDType type;
-	uint16_t pid;
+  PIDType type;
+  uint16_t pid;
 
-	union {
-		uint32_t crc;
-		InNetTSStream *pStream;
-	} payload;
+  union {
+    uint32_t crc;
+    InNetTSStream *pStream;
+  } payload;
 } PIDDescriptor;
 
 class DLLEXP InboundTSProtocol
 : public BaseProtocol {
 private:
-	uint32_t _chunkSizeDetectionCount;
-	uint32_t _chunkSize;
-	map<uint16_t, PIDDescriptor *> _pidMapping;
-	BaseTSAppProtocolHandler *_pProtocolHandler;
-	bool _stepByStep;
-	map<uint16_t, uint16_t> _unknownPids;
+  uint32_t _chunkSizeDetectionCount;
+  uint32_t _chunkSize;
+  map<uint16_t, PIDDescriptor *> _pidMapping;
+  BaseTSAppProtocolHandler *_pProtocolHandler;
+  bool _stepByStep;
+  map<uint16_t, uint16_t> _unknownPids;
 public:
-	InboundTSProtocol();
-	virtual ~InboundTSProtocol();
+  InboundTSProtocol();
+  virtual ~InboundTSProtocol();
 
-	virtual bool Initialize(Variant &parameters);
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer, sockaddr_in *pPeerAddress);
-	virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool Initialize(Variant &parameters);
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer, sockaddr_in *pPeerAddress);
+  virtual bool SignalInputData(IOBuffer &buffer);
 
-	virtual void SetApplication(BaseClientApplication *pApplication);
-	BaseTSAppProtocolHandler *GetProtocolHandler();
-	uint32_t GetChunkSize();
-	void SetStepByStep(bool stepByStep);
+  virtual void SetApplication(BaseClientApplication *pApplication);
+  BaseTSAppProtocolHandler *GetProtocolHandler();
+  uint32_t GetChunkSize();
+  void SetStepByStep(bool stepByStep);
 private:
-	void FreePidDescriptor(PIDDescriptor *pPIDDescriptor);
-	bool DetermineChunkSize(IOBuffer &buffer);
-	bool ProcessPacket(uint32_t packetHeader, IOBuffer &buffer, uint32_t maxCursor);
-	bool ProcessPidTypePAT(uint32_t packetHeader,
-			PIDDescriptor &pidDescriptor, uint8_t *pBuffer, uint32_t &cursor,
-			uint32_t maxCursor);
-	bool ProcessPidTypePMT(uint32_t packetHeader, PIDDescriptor &pidDescriptor,
-			uint8_t *pBuffer, uint32_t &cursor, uint32_t maxCursor);
+  void FreePidDescriptor(PIDDescriptor *pPIDDescriptor);
+  bool DetermineChunkSize(IOBuffer &buffer);
+  bool ProcessPacket(uint32_t packetHeader, IOBuffer &buffer, uint32_t maxCursor);
+  bool ProcessPidTypePAT(uint32_t packetHeader,
+      PIDDescriptor &pidDescriptor, uint8_t *pBuffer, uint32_t &cursor,
+      uint32_t maxCursor);
+  bool ProcessPidTypePMT(uint32_t packetHeader, PIDDescriptor &pidDescriptor,
+      uint8_t *pBuffer, uint32_t &cursor, uint32_t maxCursor);
 };
 
 
-#endif	/* _INBOUNDTSPROTOCOL_H */
-#endif	/* HAS_PROTOCOL_TS */
+#endif  /* _INBOUNDTSPROTOCOL_H */
+#endif  /* HAS_PROTOCOL_TS */
 

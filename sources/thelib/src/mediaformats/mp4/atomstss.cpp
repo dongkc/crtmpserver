@@ -29,26 +29,26 @@ AtomSTSS::~AtomSTSS() {
 }
 
 vector<uint32_t> AtomSTSS::GetEntries() {
-	return _entries;
+  return _entries;
 }
 
 bool AtomSTSS::ReadData() {
-	uint32_t count;
-	if (!ReadUInt32(count)) {
-		FATAL("Unable to read count");
-		return false;
-	}
+  uint32_t count;
+  if (!ReadUInt32(count)) {
+    FATAL("Unable to read count");
+    return false;
+  }
 
-	for (uint32_t i = 0; i < count; i++) {
-		uint32_t sampleNumber;
-		if (!ReadUInt32(sampleNumber)) {
-			FATAL("Unable to read sample number");
-			return false;
-		}
+  for (uint32_t i = 0; i < count; i++) {
+    uint32_t sampleNumber;
+    if (!ReadUInt32(sampleNumber)) {
+      FATAL("Unable to read sample number");
+      return false;
+    }
 
-		ADD_VECTOR_END(_entries, sampleNumber);
-	}
-	return true;
+    ADD_VECTOR_END(_entries, sampleNumber);
+  }
+  return true;
 }
 
 #endif /* HAS_MEDIA_MP4 */

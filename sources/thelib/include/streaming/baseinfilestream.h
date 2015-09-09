@@ -19,7 +19,7 @@
 
 
 #ifndef _BASEINFILESTREAM_H
-#define	_BASEINFILESTREAM_H
+#define  _BASEINFILESTREAM_H
 
 #include "streaming/baseinstream.h"
 #include "mediaformats/mediaframe.h"
@@ -32,176 +32,176 @@
 #endif
 
 /*!
-	@class BaseInFileStream
-	@brief
+  @class BaseInFileStream
+  @brief
  */
 class DLLEXP BaseInFileStream
 : public BaseInStream {
 private:
 
-	class InFileStreamTimer
-	: public BaseTimerProtocol {
-	private:
-		BaseInFileStream *_pInFileStream;
-	public:
-		InFileStreamTimer(BaseInFileStream *pInFileStream);
-		virtual ~InFileStreamTimer();
-		void ResetStream();
-		virtual bool TimePeriodElapsed();
-	};
-	friend class InFileStreamTimer;
+  class InFileStreamTimer
+  : public BaseTimerProtocol {
+  private:
+    BaseInFileStream *_pInFileStream;
+  public:
+    InFileStreamTimer(BaseInFileStream *pInFileStream);
+    virtual ~InFileStreamTimer();
+    void ResetStream();
+    virtual bool TimePeriodElapsed();
+  };
+  friend class InFileStreamTimer;
 #ifndef HAS_MMAP
-	static map<string, pair<uint32_t, File *> > _fileCache;
+  static map<string, pair<uint32_t, File *> > _fileCache;
 #endif /* HAS_MMAP */
 
-	InFileStreamTimer *_pTimer;
+  InFileStreamTimer *_pTimer;
 
-	FileClass *_pSeekFile;
-	FileClass *_pFile;
+  FileClass *_pSeekFile;
+  FileClass *_pFile;
 
-	//frame info
-	uint32_t _totalFrames;
-	uint32_t _currentFrameIndex;
-	MediaFrame _currentFrame;
+  //frame info
+  uint32_t _totalFrames;
+  uint32_t _currentFrameIndex;
+  MediaFrame _currentFrame;
 
-	//timing info
-	uint32_t _totalSentTime;
-	uint32_t _totalSentTimeBase;
-	time_t _startFeedingTime;
+  //timing info
+  uint32_t _totalSentTime;
+  uint32_t _totalSentTimeBase;
+  time_t _startFeedingTime;
 
-	//buffering info
-	uint32_t _clientSideBufferLength;
-	IOBuffer _videoBuffer;
-	IOBuffer _audioBuffer;
+  //buffering info
+  uint32_t _clientSideBufferLength;
+  IOBuffer _videoBuffer;
+  IOBuffer _audioBuffer;
 
-	//current state info
-	uint8_t _streamingState;
-	bool _audioVideoCodecsSent;
+  //current state info
+  uint8_t _streamingState;
+  bool _audioVideoCodecsSent;
 
-	//seek offsets
-	uint64_t _seekBaseOffset;
-	uint64_t _framesBaseOffset;
-	uint64_t _timeToIndexOffset;
+  //seek offsets
+  uint64_t _seekBaseOffset;
+  uint64_t _framesBaseOffset;
+  uint64_t _timeToIndexOffset;
 
-	//stream capabilities
-	StreamCapabilities _streamCapabilities;
+  //stream capabilities
+  StreamCapabilities _streamCapabilities;
 
-	//when to stop playback
-	double _playLimit;
+  //when to stop playback
+  double _playLimit;
 
 #ifdef HAS_VOD_MANAGER
-	uint64_t _mediaFileSize;
-	uint64_t _servedBytes;
-	string _infoFilePath;
-	Variant _filePaths;
+  uint64_t _mediaFileSize;
+  uint64_t _servedBytes;
+  string _infoFilePath;
+  Variant _filePaths;
 #endif /* HAS_VOD_MANAGER */
 public:
-	BaseInFileStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
-			uint64_t type, string name);
-	virtual ~BaseInFileStream();
+  BaseInFileStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
+      uint64_t type, string name);
+  virtual ~BaseInFileStream();
 
-	void SetClientSideBuffer(uint32_t value);
-	uint32_t GetClientSideBuffer();
+  void SetClientSideBuffer(uint32_t value);
+  uint32_t GetClientSideBuffer();
 
-	bool StreamCompleted();
+  bool StreamCompleted();
 
-	/*!
-	  @brief Returns the stream capabilities. Specifically, codec and codec related info
-	 */
-	virtual StreamCapabilities * GetCapabilities();
+  /*!
+    @brief Returns the stream capabilities. Specifically, codec and codec related info
+   */
+  virtual StreamCapabilities * GetCapabilities();
 
-	/*!
-		@brief Extracts the complete metadata from partial metadata
-		@param metaData - the partial metadata containing at least the media file name
-	 */
-	static bool ResolveCompleteMetadata(Variant &metaData);
+  /*!
+    @brief Extracts the complete metadata from partial metadata
+    @param metaData - the partial metadata containing at least the media file name
+   */
+  static bool ResolveCompleteMetadata(Variant &metaData);
 
-	/*!
-		@brief This will initialize the stream internally.
-		@param clientSideBufferLength - the client side buffer length expressed in seconds
-	 */
+  /*!
+    @brief This will initialize the stream internally.
+    @param clientSideBufferLength - the client side buffer length expressed in seconds
+   */
 #ifdef HAS_VOD_MANAGER
-	virtual bool Initialize(Variant &medatada, int32_t clientSideBufferLength,
-			bool hasTimer);
+  virtual bool Initialize(Variant &medatada, int32_t clientSideBufferLength,
+      bool hasTimer);
 #else /* HAS_VOD_MANAGER */
-	virtual bool Initialize(int32_t clientSideBufferLength, bool hasTimer);
+  virtual bool Initialize(int32_t clientSideBufferLength, bool hasTimer);
 #endif /* HAS_VOD_MANAGER */
 
-	/*!
-		@brief Called when a play command was issued
-		@param absoluteTimestamp - the timestamp where we want to seek before start the feeding process
-	 */
-	virtual bool SignalPlay(double &absoluteTimestamp, double &length);
+  /*!
+    @brief Called when a play command was issued
+    @param absoluteTimestamp - the timestamp where we want to seek before start the feeding process
+   */
+  virtual bool SignalPlay(double &absoluteTimestamp, double &length);
 
-	/*!
-		@brief Called when a pasue command was issued
-	 */
-	virtual bool SignalPause();
+  /*!
+    @brief Called when a pasue command was issued
+   */
+  virtual bool SignalPause();
 
-	/*!
-		@brief Called when a resume command was issued
-	 */
-	virtual bool SignalResume();
+  /*!
+    @brief Called when a resume command was issued
+   */
+  virtual bool SignalResume();
 
-	/*!
-		@brief Called when a seek command was issued
-		@param absoluteTimestamp
-	 */
-	virtual bool SignalSeek(double &absoluteTimestamp);
+  /*!
+    @brief Called when a seek command was issued
+    @param absoluteTimestamp
+   */
+  virtual bool SignalSeek(double &absoluteTimestamp);
 
-	/*!
-		@brief Called when a stop command was issued
-	 */
-	virtual bool SignalStop();
+  /*!
+    @brief Called when a stop command was issued
+   */
+  virtual bool SignalStop();
 
-	/*!
-		@brief This is called by the framework. The networking layer signaled the availability for sending data
-	 */
-	virtual void ReadyForSend();
+  /*!
+    @brief This is called by the framework. The networking layer signaled the availability for sending data
+   */
+  virtual void ReadyForSend();
 
 protected:
-	virtual bool BuildFrame(FileClass *pFile, MediaFrame &mediaFrame,
-			IOBuffer &buffer) = 0;
-	virtual bool FeedMetaData(FileClass *pFile, MediaFrame &mediaFrame) = 0;
+  virtual bool BuildFrame(FileClass *pFile, MediaFrame &mediaFrame,
+      IOBuffer &buffer) = 0;
+  virtual bool FeedMetaData(FileClass *pFile, MediaFrame &mediaFrame) = 0;
 private:
-	/*!
-		@brief This will seek to the specified point in time.
-		@param absoluteTimestamp - the timestamp where we want to seek before start the feeding process
-	 */
-	bool InternalSeek(double &absoluteTimestamp);
+  /*!
+    @brief This will seek to the specified point in time.
+    @param absoluteTimestamp - the timestamp where we want to seek before start the feeding process
+   */
+  bool InternalSeek(double &absoluteTimestamp);
 
 public:
-	/*!
-		@brief This is the function that will actually do the feeding.
-		@discussion It is called by the framework and it must deliver one frame at a time to all subscribers
-	 */
+  /*!
+    @brief This is the function that will actually do the feeding.
+    @discussion It is called by the framework and it must deliver one frame at a time to all subscribers
+   */
 
-	virtual bool Feed();
+  virtual bool Feed();
 private:
-	/*!
-		@brief GetFile function will open a file and will cache it if is a regular file.
-		@discussion If the file is mmap based file, it will NOT cache it
-		ReleaseFile will do the opposite: It will close the file if the references
-		count will reach 0. This always happens in case of mmap file
-	 */
+  /*!
+    @brief GetFile function will open a file and will cache it if is a regular file.
+    @discussion If the file is mmap based file, it will NOT cache it
+    ReleaseFile will do the opposite: It will close the file if the references
+    count will reach 0. This always happens in case of mmap file
+   */
 #ifdef HAS_MMAP
-	static MmapFile* GetFile(string filePath, uint32_t windowSize);
-	static void ReleaseFile(MmapFile *pFile);
+  static MmapFile* GetFile(string filePath, uint32_t windowSize);
+  static void ReleaseFile(MmapFile *pFile);
 #else
-	static File* GetFile(string filePath, uint32_t windowSize);
-	static void ReleaseFile(File *pFile);
+  static File* GetFile(string filePath, uint32_t windowSize);
+  static void ReleaseFile(File *pFile);
 #endif /* HAS_MMAP */
 
-	/*!
-		@brief This function will ensure that the codec packets are sent. Also it preserves the current timings and frame index
-	 */
-	bool SendCodecs();
+  /*!
+    @brief This function will ensure that the codec packets are sent. Also it preserves the current timings and frame index
+   */
+  bool SendCodecs();
 
 #ifdef HAS_VOD_MANAGER
-	void UpdateServedBytesInfo();
-	void UpdateOpenCountInfo();
+  void UpdateServedBytesInfo();
+  void UpdateOpenCountInfo();
 #endif /* HAS_VOD_MANAGER */
 };
 
-#endif	/* _BASEINFILESTREAM_H */
+#endif  /* _BASEINFILESTREAM_H */
 

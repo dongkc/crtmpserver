@@ -19,18 +19,18 @@
 
 #ifdef HAS_PROTOCOL_MMS
 #ifndef _MMSAPPPROTOCOLHANDLER_H
-#define	_MMSAPPPROTOCOLHANDLER_H
+#define  _MMSAPPPROTOCOLHANDLER_H
 
 #include "protocols/mms/basemmsappprotocolhandler.h"
 
 namespace app_flvplayback {
 
-	class MMSAppProtocolHandler
-	: public BaseMMSAppProtocolHandler {
-	public:
-		MMSAppProtocolHandler(Variant &configuration);
-		virtual ~MMSAppProtocolHandler();
-	};
+  class MMSAppProtocolHandler
+  : public BaseMMSAppProtocolHandler {
+  public:
+    MMSAppProtocolHandler(Variant &configuration);
+    virtual ~MMSAppProtocolHandler();
+  };
 };
-#endif	/* _MMSAPPPROTOCOLHANDLER_H */
+#endif  /* _MMSAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_MMS */

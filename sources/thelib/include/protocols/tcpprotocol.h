@@ -19,7 +19,7 @@
 
 
 #ifndef _TCPPROTOCOL_H
-#define	_TCPPROTOCOL_H
+#define  _TCPPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
@@ -28,25 +28,25 @@ class IOHandler;
 class DLLEXP TCPProtocol
 : public BaseProtocol {
 private:
-	IOHandler *_pCarrier;
-	IOBuffer _inputBuffer;
-	uint64_t _decodedBytesCount;
+  IOHandler *_pCarrier;
+  IOBuffer _inputBuffer;
+  uint64_t _decodedBytesCount;
 public:
-	TCPProtocol();
-	virtual ~TCPProtocol();
-	virtual bool Initialize(Variant &parameters);
-	virtual IOHandler *GetIOHandler();
-	virtual void SetIOHandler(IOHandler *pIOHandler);
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual IOBuffer * GetInputBuffer();
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
-	virtual bool EnqueueForOutbound();
-	virtual uint64_t GetDecodedBytesCount();
+  TCPProtocol();
+  virtual ~TCPProtocol();
+  virtual bool Initialize(Variant &parameters);
+  virtual IOHandler *GetIOHandler();
+  virtual void SetIOHandler(IOHandler *pIOHandler);
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual IOBuffer * GetInputBuffer();
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool EnqueueForOutbound();
+  virtual uint64_t GetDecodedBytesCount();
 };
 
 
-#endif	/* _TCPPROTOCOL_H */
+#endif  /* _TCPPROTOCOL_H */
 
 

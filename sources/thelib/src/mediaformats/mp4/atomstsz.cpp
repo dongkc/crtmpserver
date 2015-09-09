@@ -29,36 +29,36 @@ AtomSTSZ::~AtomSTSZ() {
 }
 
 vector<uint64_t> AtomSTSZ::GetEntries() {
-	return _entries;
+  return _entries;
 }
 
 bool AtomSTSZ::ReadData() {
-	if (!ReadUInt32(_sampleSize)) {
-		FATAL("Unable to read sample size");
-		return false;
-	}
+  if (!ReadUInt32(_sampleSize)) {
+    FATAL("Unable to read sample size");
+    return false;
+  }
 
-	if (!ReadUInt32(_sampleCount)) {
-		FATAL("Unable to read sample count");
-		return false;
-	}
+  if (!ReadUInt32(_sampleCount)) {
+    FATAL("Unable to read sample count");
+    return false;
+  }
 
-	if (_sampleSize != 0) {
-		for (uint32_t i = 0; i < _sampleCount; i++) {
-			ADD_VECTOR_END(_entries, _sampleSize);
-		}
-		return true;
-	} else {
-		for (uint32_t i = 0; i < _sampleCount; i++) {
-			uint32_t size;
-			if (!ReadUInt32(size)) {
-				FATAL("Unable to read size");
-				return false;
-			}
-			ADD_VECTOR_END(_entries, size);
-		}
-		return true;
-	}
+  if (_sampleSize != 0) {
+    for (uint32_t i = 0; i < _sampleCount; i++) {
+      ADD_VECTOR_END(_entries, _sampleSize);
+    }
+    return true;
+  } else {
+    for (uint32_t i = 0; i < _sampleCount; i++) {
+      uint32_t size;
+      if (!ReadUInt32(size)) {
+        FATAL("Unable to read size");
+        return false;
+      }
+      ADD_VECTOR_END(_entries, size);
+    }
+    return true;
+  }
 }
 
 #endif /* HAS_MEDIA_MP4 */

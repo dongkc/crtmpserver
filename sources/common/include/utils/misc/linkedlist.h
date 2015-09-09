@@ -19,62 +19,62 @@
 
 
 #ifndef _LINKEDLIST_H
-#define	_LINKEDLIST_H
+#define  _LINKEDLIST_H
 
 #include <stdlib.h>
 
 template<typename T>
 struct LinkedListNode {
-	LinkedListNode<T> *pPrev;
-	LinkedListNode<T> *pNext;
-	T info;
+  LinkedListNode<T> *pPrev;
+  LinkedListNode<T> *pNext;
+  T info;
 };
 
 template<typename T>
 LinkedListNode<T> *AddLinkedList(LinkedListNode<T> *pTo, T info, bool after) {
-	LinkedListNode<T> *pResult = new LinkedListNode<T>;
-	pResult->pNext = NULL;
-	pResult->pPrev = NULL;
-	pResult->info = info;
+  LinkedListNode<T> *pResult = new LinkedListNode<T>;
+  pResult->pNext = NULL;
+  pResult->pPrev = NULL;
+  pResult->info = info;
 
-	if (pTo != NULL) {
-		if (after) {
-			pTo->pNext = pResult;
-			pResult->pPrev = pTo;
-		} else {
-			pResult->pNext = pTo;
-			pTo->pPrev = pResult;
-		}
-	}
+  if (pTo != NULL) {
+    if (after) {
+      pTo->pNext = pResult;
+      pResult->pPrev = pTo;
+    } else {
+      pResult->pNext = pTo;
+      pTo->pPrev = pResult;
+    }
+  }
 
-	return pResult;
+  return pResult;
 }
 
 template<typename T>
 LinkedListNode<T> *LastLinkedList(LinkedListNode<T> *pNode) {
-	while (pNode != NULL) {
-		if (pNode->pNext == NULL)
-			return pNode;
-		pNode = pNode->pNext;
-	}
-	return NULL;
+  while (pNode != NULL) {
+    if (pNode->pNext == NULL)
+      return pNode;
+    pNode = pNode->pNext;
+  }
+  return NULL;
 }
 
 template<typename T>
 LinkedListNode<T> *RemoveLinkedList(LinkedListNode<T> *pNode) {
-	LinkedListNode<T> *pPrev = pNode->pPrev;
-	LinkedListNode<T> *pNext = pNode->pNext;
-	if (pPrev != NULL)
-		pPrev->pNext = pNext;
-	if (pNext != NULL)
-		pNext->pPrev = pPrev;
-	delete pNode;
-	if (pPrev != NULL)
-		return LastLinkedList<T > (pPrev);
-	return LastLinkedList<T > (pNext);
+  LinkedListNode<T> *pPrev = pNode->pPrev;
+  LinkedListNode<T> *pNext = pNode->pNext;
+  if (pPrev != NULL)
+    pPrev->pNext = pNext;
+  if (pNext != NULL)
+    pNext->pPrev = pPrev;
+  delete pNode;
+  if (pPrev != NULL)
+    return LastLinkedList<T > (pPrev);
+  return LastLinkedList<T > (pNext);
 }
 
 
-#endif	/* _LINKEDLIST_H */
+#endif  /* _LINKEDLIST_H */
 
 

@@ -20,7 +20,7 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _OUTBOUNDRTMPPROTOCOL_H
-#define	_OUTBOUNDRTMPPROTOCOL_H
+#define  _OUTBOUNDRTMPPROTOCOL_H
 
 #include "protocols/rtmp/basertmpprotocol.h"
 
@@ -29,29 +29,29 @@ class DHWrapper;
 class DLLEXP OutboundRTMPProtocol
 : public BaseRTMPProtocol {
 private:
-	uint8_t *_pClientPublicKey;
-	uint8_t *_pOutputBuffer;
-	uint8_t *_pClientDigest;
-	RC4_KEY* _pKeyIn;
-	RC4_KEY* _pKeyOut;
-	DHWrapper *_pDHWrapper;
-	uint8_t _usedScheme;
-	IOBuffer _outputBuffer222;
+  uint8_t *_pClientPublicKey;
+  uint8_t *_pOutputBuffer;
+  uint8_t *_pClientDigest;
+  RC4_KEY* _pKeyIn;
+  RC4_KEY* _pKeyOut;
+  DHWrapper *_pDHWrapper;
+  uint8_t _usedScheme;
+  IOBuffer _outputBuffer222;
 public:
-	OutboundRTMPProtocol();
-	virtual ~OutboundRTMPProtocol();
+  OutboundRTMPProtocol();
+  virtual ~OutboundRTMPProtocol();
 protected:
-	virtual bool PerformHandshake(IOBuffer &buffer);
+  virtual bool PerformHandshake(IOBuffer &buffer);
 public:
-	static bool Connect(string ip, uint16_t port, Variant customParameters);
-	static bool SignalProtocolCreated(BaseProtocol *pProtocol, Variant customParameters);
+  static bool Connect(string ip, uint16_t port, Variant customParameters);
+  static bool SignalProtocolCreated(BaseProtocol *pProtocol, Variant customParameters);
 private:
-	bool PerformHandshakeStage1(bool encrypted);
-	bool VerifyServer(IOBuffer &inputBuffer);
-	bool PerformHandshakeStage2(IOBuffer &inputBuffer, bool encrypted);
+  bool PerformHandshakeStage1(bool encrypted);
+  bool VerifyServer(IOBuffer &inputBuffer);
+  bool PerformHandshakeStage2(IOBuffer &inputBuffer, bool encrypted);
 };
 
-#endif	/* _OUTBOUNDRTMPPROTOCOL_H */
+#endif  /* _OUTBOUNDRTMPPROTOCOL_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

@@ -19,34 +19,34 @@
 
 
 #ifndef _INBOUNDAESPROTOCOL_H
-#define	_INBOUNDAESPROTOCOL_H
+#define  _INBOUNDAESPROTOCOL_H
 
 #include "protocols/genericprotocol.h"
 
 namespace app_applestreamingclient {
 
-	class InboundAESProtocol
-	: public GenericProtocol {
-	private:
-		IOBuffer _tempBuffer;
-		IOBuffer _inputBuffer;
-		EVP_CIPHER_CTX _decContex;
-		bool _lastChunk;
-		uint8_t *_pIV;
-		uint8_t *_pKey;
-		uint32_t _totalDecrypted;
-	public:
-		InboundAESProtocol();
-		virtual ~InboundAESProtocol();
+  class InboundAESProtocol
+  : public GenericProtocol {
+  private:
+    IOBuffer _tempBuffer;
+    IOBuffer _inputBuffer;
+    EVP_CIPHER_CTX _decContex;
+    bool _lastChunk;
+    uint8_t *_pIV;
+    uint8_t *_pKey;
+    uint32_t _totalDecrypted;
+  public:
+    InboundAESProtocol();
+    virtual ~InboundAESProtocol();
 
-		virtual IOBuffer * GetInputBuffer();
+    virtual IOBuffer * GetInputBuffer();
 
-		virtual bool Initialize(Variant &parameters);
-		virtual bool AllowFarProtocol(uint64_t type);
-		virtual bool AllowNearProtocol(uint64_t type);
-		virtual bool SignalInputData(int32_t recvAmount);
-		virtual bool SignalInputData(IOBuffer &buffer);
-	};
+    virtual bool Initialize(Variant &parameters);
+    virtual bool AllowFarProtocol(uint64_t type);
+    virtual bool AllowNearProtocol(uint64_t type);
+    virtual bool SignalInputData(int32_t recvAmount);
+    virtual bool SignalInputData(IOBuffer &buffer);
+  };
 }
-#endif	/* _INBOUNDAESPROTOCOL_H */
+#endif  /* _INBOUNDAESPROTOCOL_H */
 

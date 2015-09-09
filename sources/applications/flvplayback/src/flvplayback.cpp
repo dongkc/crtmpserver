@@ -23,7 +23,7 @@
 using namespace app_flvplayback;
 
 extern "C" BaseClientApplication *GetApplication_flvplayback(Variant configuration) {
-	return new FLVPlaybackApplication(configuration);
+  return new FLVPlaybackApplication(configuration);
 }
 
 

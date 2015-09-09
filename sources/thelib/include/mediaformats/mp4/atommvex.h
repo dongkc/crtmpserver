@@ -19,7 +19,7 @@
 
 #ifdef HAS_MEDIA_MP4
 #ifndef _ATOMMVEX_H
-#define	_ATOMMVEX_H
+#define  _ATOMMVEX_H
 
 #include "mediaformats/mp4/boxatom.h"
 
@@ -28,14 +28,14 @@ class AtomTREX;
 class AtomMVEX
 : public BoxAtom {
 private:
-	map<uint32_t, AtomTREX *> _trex;
+  map<uint32_t, AtomTREX *> _trex;
 public:
-	AtomMVEX(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomMVEX();
+  AtomMVEX(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomMVEX();
 protected:
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
 
-#endif	/* _ATOMMVEX_H */
+#endif  /* _ATOMMVEX_H */
 #endif /* HAS_MEDIA_MP4 */

@@ -31,22 +31,22 @@ AtomMVEX::~AtomMVEX() {
 }
 
 bool AtomMVEX::AtomCreated(BaseAtom *pAtom) {
-	switch (pAtom->GetTypeNumeric()) {
-		case A_TREX:
-		{
-			AtomTREX *pTemp = (AtomTREX *) pAtom;
-			if (MAP_HAS1(_trex, pTemp->GetTrackID())) {
-				FATAL("Track already registered");
-				return false;
-			}
-			_trex[pTemp->GetTrackID()] = pTemp;
-			return true;
-		}
-		default:
-		{
-			FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
-			return false;
-		}
-	}
+  switch (pAtom->GetTypeNumeric()) {
+    case A_TREX:
+    {
+      AtomTREX *pTemp = (AtomTREX *) pAtom;
+      if (MAP_HAS1(_trex, pTemp->GetTrackID())) {
+        FATAL("Track already registered");
+        return false;
+      }
+      _trex[pTemp->GetTrackID()] = pTemp;
+      return true;
+    }
+    default:
+    {
+      FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
+      return false;
+    }
+  }
 }
 #endif /* HAS_MEDIA_MP4 */

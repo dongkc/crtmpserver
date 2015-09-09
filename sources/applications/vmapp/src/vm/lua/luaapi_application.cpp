@@ -24,35 +24,35 @@
 
 namespace app_vmapp {
 
-	int luaapi_application_getConfig(lua_State *L) {
-		LUA_GET_APPLICATION(pApp, L);
-		if (!PushVariant(L, pApp->GetConfiguration())) {
-			FATAL("Unable to push variant");
-			return 0;
-		}
-		return 1;
-	}
+  int luaapi_application_getConfig(lua_State *L) {
+    LUA_GET_APPLICATION(pApp, L);
+    if (!PushVariant(L, pApp->GetConfiguration())) {
+      FATAL("Unable to push variant");
+      return 0;
+    }
+    return 1;
+  }
 
-	int luaapi_application_outboundConnectionFailed(lua_State *L) {
-		NYIA;
-		return 0;
-	}
+  int luaapi_application_outboundConnectionFailed(lua_State *L) {
+    NYIA;
+    return 0;
+  }
 
-	int luaapi_application_pullExternalStream(lua_State *L) {
-		LUA_GET_APPLICATION(pApp, L);
-		LUA_INIT_PARAMS(params, L);
-		LUA_READ_PARAM(params, Variant, V_MAP, streamConfig, Variant(), 0, true);
-		Variant result = (bool)pApp->BaseClientApplication::PullExternalStream(streamConfig);
-		if (!PushVariant(L, result)) {
-			FATAL("Unable to push variant");
-			return 0;
-		}
-		return 1;
-	}
+  int luaapi_application_pullExternalStream(lua_State *L) {
+    LUA_GET_APPLICATION(pApp, L);
+    LUA_INIT_PARAMS(params, L);
+    LUA_READ_PARAM(params, Variant, V_MAP, streamConfig, Variant(), 0, true);
+    Variant result = (bool)pApp->BaseClientApplication::PullExternalStream(streamConfig);
+    if (!PushVariant(L, result)) {
+      FATAL("Unable to push variant");
+      return 0;
+    }
+    return 1;
+  }
 
-	int luaapi_application_pushLocalStream(lua_State *L) {
-		NYI;
-		return 0;
-	}
+  int luaapi_application_pushLocalStream(lua_State *L) {
+    NYI;
+    return 0;
+  }
 }
-#endif	/* HAS_LUA */
+#endif  /* HAS_LUA */

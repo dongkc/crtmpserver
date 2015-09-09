@@ -18,7 +18,7 @@
  */
 
 #ifndef _MODULE_H
-#define	_MODULE_H
+#define  _MODULE_H
 
 #include "common.h"
 
@@ -33,23 +33,23 @@ typedef BaseProtocolFactory * (*GetFactoryFunction_t)(Variant configuration);
 //typedef void (*ReleaseFactoryFunction_t)(BaseProtocolFactory *pFactory);
 
 struct Module {
-	Variant config;
-	GetApplicationFunction_t getApplication;
-	GetFactoryFunction_t getFactory;
-	BaseClientApplication *pApplication;
-	BaseProtocolFactory *pFactory;
-	LIB_HANDLER libHandler;
-	vector<IOHandler *> acceptors;
+  Variant config;
+  GetApplicationFunction_t getApplication;
+  GetFactoryFunction_t getFactory;
+  BaseClientApplication *pApplication;
+  BaseProtocolFactory *pFactory;
+  LIB_HANDLER libHandler;
+  vector<IOHandler *> acceptors;
 
-	Module();
-	void Release();
-	bool Load();
-	bool LoadLibrary();
-	bool ConfigFactory();
-	bool BindAcceptors();
-	bool BindAcceptor(Variant & node);
-	bool ConfigApplication();
+  Module();
+  void Release();
+  bool Load();
+  bool LoadLibrary();
+  bool ConfigFactory();
+  bool BindAcceptors();
+  bool BindAcceptor(Variant & node);
+  bool ConfigApplication();
 };
 
-#endif	/* _MODULE_H */
+#endif  /* _MODULE_H */
 

@@ -20,20 +20,20 @@
 
 #ifdef HAS_PROTOCOL_RTP
 #ifndef _BASERTPAPPPROTOCOLHANDLER_H
-#define	_BASERTPAPPPROTOCOLHANDLER_H
+#define  _BASERTPAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 
 class DLLEXP BaseRTPAppProtocolHandler
 : public BaseAppProtocolHandler {
 public:
-	BaseRTPAppProtocolHandler(Variant &configuration);
-	virtual ~BaseRTPAppProtocolHandler();
+  BaseRTPAppProtocolHandler(Variant &configuration);
+  virtual ~BaseRTPAppProtocolHandler();
 
-	virtual void RegisterProtocol(BaseProtocol *pProtocol);
-	virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  virtual void RegisterProtocol(BaseProtocol *pProtocol);
+  virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
 };
 
 
-#endif	/* _BASERTPAPPPROTOCOLHANDLER_H */
+#endif  /* _BASERTPAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_RTP */

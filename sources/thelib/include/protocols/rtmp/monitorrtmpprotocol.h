@@ -20,7 +20,7 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _MONITORRTMPPROTOCOL_H
-#define	_MONITORRTMPPROTOCOL_H
+#define  _MONITORRTMPPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 #include "protocols/rtmp/channel.h"
@@ -30,33 +30,33 @@
 class DLLEXP MonitorRTMPProtocol
 : public BaseProtocol {
 protected:
-	Channel *_channels;
-	int32_t _selectedChannel;
-	uint32_t _inboundChunkSize;
-	RTMPProtocolSerializer _rtmpProtocolSerializer;
-	IOBuffer _input;
-	uint32_t _maxStreamCount;
-	uint32_t _maxChannelsCount;
+  Channel *_channels;
+  int32_t _selectedChannel;
+  uint32_t _inboundChunkSize;
+  RTMPProtocolSerializer _rtmpProtocolSerializer;
+  IOBuffer _input;
+  uint32_t _maxStreamCount;
+  uint32_t _maxChannelsCount;
 public:
-	MonitorRTMPProtocol(uint32_t maxStreamIndex, uint32_t maxChannelIndex);
-	virtual ~MonitorRTMPProtocol();
+  MonitorRTMPProtocol(uint32_t maxStreamIndex, uint32_t maxChannelIndex);
+  virtual ~MonitorRTMPProtocol();
 
-	virtual bool Initialize(Variant &parameters);
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool Initialize(Variant &parameters);
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
 
-	bool SetInboundChunkSize(uint32_t chunkSize);
+  bool SetInboundChunkSize(uint32_t chunkSize);
 
-	bool Feed(IOBuffer &buffer);
+  bool Feed(IOBuffer &buffer);
 private:
-	bool ProcessBytes(IOBuffer &buffer);
+  bool ProcessBytes(IOBuffer &buffer);
 
 };
 
 
-#endif	/* _MONITORRTMPPROTOCOL_H */
+#endif  /* _MONITORRTMPPROTOCOL_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

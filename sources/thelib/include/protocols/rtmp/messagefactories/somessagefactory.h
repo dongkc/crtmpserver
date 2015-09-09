@@ -20,23 +20,23 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _SOMESSAGEFACTORY_H
-#define	_SOMESSAGEFACTORY_H
+#define  _SOMESSAGEFACTORY_H
 
 #include "protocols/rtmp/messagefactories/genericmessagefactory.h"
 
 class DLLEXP SOMessageFactory {
 public:
-	static Variant GetSharedObject(uint32_t channelId, uint32_t streamId,
-			double timeStamp, bool isAbsolute, string name, uint32_t version,
-			bool persistent);
-	static void AddSOPrimitiveConnect(Variant &message);
-	static void AddSOPrimitiveSend(Variant &message, Variant &params);
-	static void AddSOPrimitiveSetProperty(Variant &message, string &propName,
-			Variant &propValue);
+  static Variant GetSharedObject(uint32_t channelId, uint32_t streamId,
+      double timeStamp, bool isAbsolute, string name, uint32_t version,
+      bool persistent);
+  static void AddSOPrimitiveConnect(Variant &message);
+  static void AddSOPrimitiveSend(Variant &message, Variant &params);
+  static void AddSOPrimitiveSetProperty(Variant &message, string &propName,
+      Variant &propValue);
 };
 
 
-#endif	/* _SOMESSAGEFACTORY_H */
+#endif  /* _SOMESSAGEFACTORY_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

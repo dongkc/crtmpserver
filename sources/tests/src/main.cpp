@@ -23,11 +23,11 @@
 #include "thelibtestssuite.h"
 
 int main(void) {
-	TS_PRINT("Begin tests...\n");
-	EXECUTE_SUITE(CommonTestsSuite);
-	EXECUTE_SUITE(VariantTestsSuite);
-	EXECUTE_SUITE(TheLibTestsSuite);
-	TS_PRINT("A total of %u tests completed successfuly\n", BaseTestsSuite::_testsCount);
-	return 0;
+  TS_PRINT("Begin tests...\n");
+  EXECUTE_SUITE(CommonTestsSuite);
+  EXECUTE_SUITE(VariantTestsSuite);
+  EXECUTE_SUITE(TheLibTestsSuite);
+  TS_PRINT("A total of %u tests completed successfuly\n", BaseTestsSuite::_testsCount);
+  return 0;
 }
 

@@ -18,23 +18,23 @@
  */
 
 #ifndef _VARIANTCONNECTION_H
-#define	_VARIANTCONNECTION_H
+#define  _VARIANTCONNECTION_H
 
 #include "common.h"
 
 class VariantConnection {
 private:
-	int _fd;
-	IOBuffer _buffer;
+  int _fd;
+  IOBuffer _buffer;
 public:
-	VariantConnection();
-	virtual ~VariantConnection();
+  VariantConnection();
+  virtual ~VariantConnection();
 
-	bool Connect(sockaddr_in &address);
-	bool SendMessage(Variant &message, Variant &response);
+  bool Connect(sockaddr_in &address);
+  bool SendMessage(Variant &message, Variant &response);
 private:
-	void Close();
+  void Close();
 };
 
-#endif	/* _VARIANTCONNECTION_H */
+#endif  /* _VARIANTCONNECTION_H */
 

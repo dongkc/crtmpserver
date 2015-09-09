@@ -20,22 +20,22 @@
 
 #ifdef HAS_PROTOCOL_VAR
 #ifndef _BINVARIANTPROTOCOL_H
-#define	_BINVARIANTPROTOCOL_H
+#define  _BINVARIANTPROTOCOL_H
 
 #include "protocols/variant/basevariantprotocol.h"
 
 class DLLEXP BinVariantProtocol
 : public BaseVariantProtocol {
 public:
-	BinVariantProtocol();
-	virtual ~BinVariantProtocol();
+  BinVariantProtocol();
+  virtual ~BinVariantProtocol();
 protected:
-	virtual bool Serialize(string &rawData, Variant &variant);
-	virtual bool Deserialize(uint8_t *pBuffer, uint32_t bufferLength,
-			Variant &result);
+  virtual bool Serialize(string &rawData, Variant &variant);
+  virtual bool Deserialize(uint8_t *pBuffer, uint32_t bufferLength,
+      Variant &result);
 };
 
 
-#endif	/* _BINVARIANTPROTOCOL_H */
-#endif	/* HAS_PROTOCOL_VAR */
+#endif  /* _BINVARIANTPROTOCOL_H */
+#endif  /* HAS_PROTOCOL_VAR */
 

@@ -26,16 +26,16 @@
 class AtomILST
 : public BoxAtom {
 private:
-	Variant _metadata;
+  Variant _metadata;
 public:
-	AtomILST(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomILST();
-	Variant &GetMetadata();
+  AtomILST(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomILST();
+  Variant &GetMetadata();
 protected:
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
-#endif	/* _ATOMILST_H */
+#endif  /* _ATOMILST_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

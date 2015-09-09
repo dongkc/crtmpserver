@@ -24,30 +24,30 @@
 #include "protocols/rawhttpstream/inboundrawhttpstreamprotocol.h"
 
 OutNetRawStream::OutNetRawStream(BaseProtocol *pProtocol,
-		StreamsManager *pStreamsManager, string name)
+    StreamsManager *pStreamsManager, string name)
 : BaseOutNetStream(pProtocol, pStreamsManager, ST_OUT_NET_RAW, name) {
-	if (pProtocol == NULL) {
-		ASSERT("OutNetRawStream requires a protocol to host it");
-	}
-	if (_pProtocol->GetType() != PT_INBOUND_RAW_HTTP_STREAM) {
-		ASSERT("OutNetRawStream can be hosted only inside %s protocol",
-				STR(tagToString(PT_INBOUND_RAW_HTTP_STREAM)));
-	}
-	_bytesCount = 0;
-	_packetsCount = 0;
+  if (pProtocol == NULL) {
+    ASSERT("OutNetRawStream requires a protocol to host it");
+  }
+  if (_pProtocol->GetType() != PT_INBOUND_RAW_HTTP_STREAM) {
+    ASSERT("OutNetRawStream can be hosted only inside %s protocol",
+        STR(tagToString(PT_INBOUND_RAW_HTTP_STREAM)));
+  }
+  _bytesCount = 0;
+  _packetsCount = 0;
 }
 
 OutNetRawStream::~OutNetRawStream() {
 }
 
 void OutNetRawStream::GetStats(Variant &info, uint32_t namespaceId) {
-	BaseOutNetStream::GetStats(info, namespaceId);
-	info["video"]["bytesCount"] = _bytesCount;
-	info["video"]["packetsCount"] = _packetsCount;
-	info["video"]["droppedPacketsCount"] = 0;
-	info["audio"]["bytesCount"] = 0;
-	info["audio"]["packetsCount"] = 0;
-	info["audio"]["droppedPacketsCount"] = 0;
+  BaseOutNetStream::GetStats(info, namespaceId);
+  info["video"]["bytesCount"] = _bytesCount;
+  info["video"]["packetsCount"] = _packetsCount;
+  info["video"]["droppedPacketsCount"] = 0;
+  info["audio"]["bytesCount"] = 0;
+  info["audio"]["packetsCount"] = 0;
+  info["audio"]["droppedPacketsCount"] = 0;
 }
 
 void OutNetRawStream::SignalAttachedToInStream() {
@@ -55,46 +55,46 @@ void OutNetRawStream::SignalAttachedToInStream() {
 }
 
 void OutNetRawStream::SignalDetachedFromInStream() {
-	NYI;
+  NYI;
 }
 
 void OutNetRawStream::SignalStreamCompleted() {
-	NYI;
+  NYI;
 }
 
 bool OutNetRawStream::SignalPlay(double &absoluteTimestamp, double &length) {
-	NYIR;
+  NYIR;
 }
 
 bool OutNetRawStream::SignalPause() {
-	NYIR;
+  NYIR;
 }
 
 bool OutNetRawStream::SignalResume() {
-	NYIR;
+  NYIR;
 }
 
 bool OutNetRawStream::SignalSeek(double &absoluteTimestamp) {
-	NYIR;
+  NYIR;
 }
 
 bool OutNetRawStream::SignalStop() {
-	NYIR;
+  NYIR;
 }
 
 bool OutNetRawStream::FeedData(uint8_t *pData, uint32_t dataLength,
-		uint32_t processedLength, uint32_t totalLength,
-		double absoluteTimestamp, bool isAudio) {
-	_bytesCount += dataLength;
-	_packetsCount++;
-	if (_pProtocol != NULL) {
-		return ((InboundRawHTTPStreamProtocol *) _pProtocol)->PutData(pData, dataLength);
-	}
-	return false;
+    uint32_t processedLength, uint32_t totalLength,
+    double absoluteTimestamp, bool isAudio) {
+  _bytesCount += dataLength;
+  _packetsCount++;
+  if (_pProtocol != NULL) {
+    return ((InboundRawHTTPStreamProtocol *) _pProtocol)->PutData(pData, dataLength);
+  }
+  return false;
 }
 
 bool OutNetRawStream::IsCompatibleWithType(uint64_t type) {
-	//This stream is compatible with everything
-	return true;
+  //This stream is compatible with everything
+  return true;
 }
 #endif /* HAS_PROTOCOL_RAWHTTPSTREAM */

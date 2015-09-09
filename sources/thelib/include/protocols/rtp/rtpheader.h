@@ -33,23 +33,23 @@
 #define GET_RTP_SEQ(x) ((uint16_t)(((x)._flags)&0xffff))
 
 typedef struct DLLEXP _RTPHeader {
-	uint32_t _flags;
-	uint32_t _timestamp;
-	uint32_t _ssrc;
+  uint32_t _flags;
+  uint32_t _timestamp;
+  uint32_t _ssrc;
 
-	operator string() {
-		return format("f: %hhx; V: %hhu; P: %hhu; X: %hhu; CC: %hhu; M: %hhu; PT: %hhu; SEQ: %hu; TS: %u; SSRC: %x",
-				_flags,
-				GET_RTP_V(*this),
-				GET_RTP_P(*this),
-				GET_RTP_X(*this),
-				GET_RTP_CC(*this),
-				GET_RTP_M(*this),
-				GET_RTP_PT(*this),
-				GET_RTP_SEQ(*this),
-				_timestamp,
-				_ssrc);
-	};
+  operator string() {
+    return format("f: %hhx; V: %hhu; P: %hhu; X: %hhu; CC: %hhu; M: %hhu; PT: %hhu; SEQ: %hu; TS: %u; SSRC: %x",
+        _flags,
+        GET_RTP_V(*this),
+        GET_RTP_P(*this),
+        GET_RTP_X(*this),
+        GET_RTP_CC(*this),
+        GET_RTP_M(*this),
+        GET_RTP_PT(*this),
+        GET_RTP_SEQ(*this),
+        _timestamp,
+        _ssrc);
+  };
 } RTPHeader;
 
 #endif  /* _RTPHEADER_H */

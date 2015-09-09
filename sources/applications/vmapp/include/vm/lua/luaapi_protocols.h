@@ -19,13 +19,13 @@
 
 #ifdef HAS_LUA
 #ifndef _LUAAPI_PROTOCOLS_H
-#define	_LUAAPI_PROTOCOLS_H
+#define  _LUAAPI_PROTOCOLS_H
 
 namespace app_vmapp {
-	int luaapi_protocols_getConfig(lua_State *L);
-	int luaapi_protocols_enqueueForDelete(lua_State *L);
-	int luaapi_protocols_gracefullyEnqueueForDelete(lua_State *L);
+  int luaapi_protocols_getConfig(lua_State *L);
+  int luaapi_protocols_enqueueForDelete(lua_State *L);
+  int luaapi_protocols_gracefullyEnqueueForDelete(lua_State *L);
 }
 
-#endif	/* _LUAAPI_PROTOCOLS_H */
-#endif	/* HAS_LUA */
+#endif  /* _LUAAPI_PROTOCOLS_H */
+#endif  /* HAS_LUA */

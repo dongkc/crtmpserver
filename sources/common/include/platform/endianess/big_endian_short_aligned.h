@@ -19,7 +19,7 @@
 
 
 #ifndef _BIG_ENDIAN_SHORT_ALIGNED_H
-#define	_BIG_ENDIAN_SHORT_ALIGNED_H
+#define  _BIG_ENDIAN_SHORT_ALIGNED_H
 
 // For A Big Endian ARM system this should be htonll(x) (x)
 #define htonll(x)   (x)
@@ -40,8 +40,8 @@
 #define ntohlp(x) ((ptovl(x) << 24) | (ptovl(x + 1) << 16) | (ptovl(x + 2) << 8) | (ptovl(x + 3)))
 #define ntohap(x) ((ptovl(x) << 16) | (ptovl(x + 1) << 8) | (ptovl(x + 2)) | (ptovl(x + 3) << 24))
 #define ntohllp(x) \
-		((ptovll(x) << 56) | (ptovll(x + 1) << 48) | (ptovll(x + 2) << 40) | (ptovll(x + 3) << 32) | \
-		(ptovll(x + 4) << 24) | (ptovll(x + 5) << 16) | (ptovll(x + 6) << 8) | (ptovll(x + 7)))
+    ((ptovll(x) << 56) | (ptovll(x + 1) << 48) | (ptovll(x + 2) << 40) | (ptovll(x + 3) << 32) | \
+    (ptovll(x + 4) << 24) | (ptovll(x + 5) << 16) | (ptovll(x + 6) << 8) | (ptovll(x + 7)))
 
 #error put_htons in big_endian_short_aligned.h needs testing
 /* These should work as-is for both BE and LE systems */
@@ -61,6 +61,6 @@
 /* TODO: Do we need put_value methods for aligned access when not swapping bytes */
 /* TODO: Do we need put_htonll() or put_htona() */
 
-#endif	/* _BIG_ENDIAN_SHORT_ALIGNED_H */
+#endif  /* _BIG_ENDIAN_SHORT_ALIGNED_H */
 
 

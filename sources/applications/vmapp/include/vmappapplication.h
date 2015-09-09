@@ -24,33 +24,33 @@
 
 namespace app_vmapp {
 
-	class BaseAppVirtualMachine;
-	class RTMPAppProtocolHandler;
-	class RTPAppProtocolHandler;
-	class RTSPAppProtocolHandler;
-	class TSAppProtocolHandler;
+  class BaseAppVirtualMachine;
+  class RTMPAppProtocolHandler;
+  class RTPAppProtocolHandler;
+  class RTSPAppProtocolHandler;
+  class TSAppProtocolHandler;
 
-	class VMAppApplication
-	: public BaseClientApplication {
-	private:
-		BaseAppVirtualMachine *_pAppVM;
-		RTMPAppProtocolHandler *_pRTMPHandler;
-		RTPAppProtocolHandler *_pRTPHandler;
-		RTSPAppProtocolHandler *_pRTSPHandler;
-		TSAppProtocolHandler *_pTSHandler;
-	public:
-		VMAppApplication(Variant &configuration);
-		virtual ~VMAppApplication();
-		virtual bool Initialize();
-		virtual bool OutboundConnectionFailed(Variant &customParameters);
-		virtual void RegisterProtocol(BaseProtocol *pProtocol);
-		virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
-		virtual void SignalStreamRegistered(BaseStream *pStream);
-		virtual void SignalStreamUnRegistered(BaseStream *pStream);
-		virtual bool PullExternalStream(Variant streamConfig);
-		virtual bool PushLocalStream(Variant streamConfig);
-	};
+  class VMAppApplication
+  : public BaseClientApplication {
+  private:
+    BaseAppVirtualMachine *_pAppVM;
+    RTMPAppProtocolHandler *_pRTMPHandler;
+    RTPAppProtocolHandler *_pRTPHandler;
+    RTSPAppProtocolHandler *_pRTSPHandler;
+    TSAppProtocolHandler *_pTSHandler;
+  public:
+    VMAppApplication(Variant &configuration);
+    virtual ~VMAppApplication();
+    virtual bool Initialize();
+    virtual bool OutboundConnectionFailed(Variant &customParameters);
+    virtual void RegisterProtocol(BaseProtocol *pProtocol);
+    virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+    virtual void SignalStreamRegistered(BaseStream *pStream);
+    virtual void SignalStreamUnRegistered(BaseStream *pStream);
+    virtual bool PullExternalStream(Variant streamConfig);
+    virtual bool PushLocalStream(Variant streamConfig);
+  };
 }
 
-#endif	/* _VMAPPAPPLICATION_H */
+#endif  /* _VMAPPAPPLICATION_H */
 

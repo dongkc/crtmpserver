@@ -35,23 +35,23 @@ class AtomMETA;
 class AtomTRAK
 : public BoxAtom {
 private:
-	AtomTKHD *_pTKHD;
-	AtomMDIA *_pMDIA;
-	AtomHDLR *_pHDLR;
-	AtomMINF *_pMINF;
-	AtomDINF *_pDINF;
-	AtomSTBL *_pSTBL;
-	AtomUDTA *_pUDTA;
-	AtomMETA *_pMETA;
+  AtomTKHD *_pTKHD;
+  AtomMDIA *_pMDIA;
+  AtomHDLR *_pHDLR;
+  AtomMINF *_pMINF;
+  AtomDINF *_pDINF;
+  AtomSTBL *_pSTBL;
+  AtomUDTA *_pUDTA;
+  AtomMETA *_pMETA;
 public:
-	AtomTRAK(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomTRAK();
-	uint32_t GetId();
+  AtomTRAK(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomTRAK();
+  uint32_t GetId();
 protected:
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
-#endif	/* _ATOMTRAK_H */
+#endif  /* _ATOMTRAK_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

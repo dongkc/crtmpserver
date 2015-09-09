@@ -19,7 +19,7 @@
 
 #ifdef HAS_MEDIA_MP4
 #ifndef _ATOMMOOF_H
-#define	_ATOMMOOF_H
+#define  _ATOMMOOF_H
 
 #include "mediaformats/mp4/boxatom.h"
 
@@ -29,15 +29,15 @@ class AtomTRAF;
 class AtomMOOF
 : public BoxAtom {
 private:
-	AtomMFHD *_pMFHD;
-	map<uint32_t, AtomTRAF *> _trafs;
+  AtomMFHD *_pMFHD;
+  map<uint32_t, AtomTRAF *> _trafs;
 public:
-	AtomMOOF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomMOOF();
-	map<uint32_t, AtomTRAF *> &GetTrafs();
+  AtomMOOF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomMOOF();
+  map<uint32_t, AtomTRAF *> &GetTrafs();
 protected:
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
-#endif	/* _ATOMMOOF_H */
-#endif	/* HAS_MEDIA_MP4 */
+#endif  /* _ATOMMOOF_H */
+#endif  /* HAS_MEDIA_MP4 */

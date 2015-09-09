@@ -36,4 +36,4 @@ void BaseHTTPAppProtocolHandler::RegisterProtocol(BaseProtocol *pProtocol) {
 void BaseHTTPAppProtocolHandler::UnRegisterProtocol(BaseProtocol *pProtocol) {
 
 }
-#endif	/* HAS_PROTOCOL_HTTP */
+#endif  /* HAS_PROTOCOL_HTTP */

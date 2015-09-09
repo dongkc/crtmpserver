@@ -19,7 +19,7 @@
 
 #ifdef HAS_MEDIA_MP4
 #ifndef _ATOMMETAFIELD_H
-#define	_ATOMMETAFIELD_H
+#define  _ATOMMETAFIELD_H
 
 #include "mediaformats/mp4/boxatom.h"
 
@@ -28,21 +28,21 @@ class AtomDATA;
 class AtomMetaField
 : public BaseAtom {
 private:
-	string _name;
-	Variant _value;
+  string _name;
+  Variant _value;
 public:
-	AtomMetaField(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomMetaField();
+  AtomMetaField(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomMetaField();
 
-	string &GetName();
-	Variant &GetValue();
-	virtual bool Read();
-	string Hierarchy(uint32_t indent);
+  string &GetName();
+  Variant &GetValue();
+  virtual bool Read();
+  string Hierarchy(uint32_t indent);
 private:
-	bool ReadSimpleString();
+  bool ReadSimpleString();
 };
 
-#endif	/* _ATOMMETAFIELD_H */
+#endif  /* _ATOMMETAFIELD_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

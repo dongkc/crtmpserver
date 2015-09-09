@@ -19,7 +19,7 @@
 
 #ifdef NET_EPOLL
 #ifndef _IOTIMER_H
-#define	_IOTIMER_H
+#define  _IOTIMER_H
 
 #include "netio/epoll/iohandler.h"
 
@@ -27,22 +27,22 @@ class IOTimer
 : public IOHandler {
 private:
 #ifndef HAS_EPOLL_TIMERS
-	static int32_t _idGenerator;
+  static int32_t _idGenerator;
 #else /*  */
-	uint64_t _count;
+  uint64_t _count;
 #endif /* HAS_EPOLL_TIMERS */
 public:
-	IOTimer();
-	virtual ~IOTimer();
+  IOTimer();
+  virtual ~IOTimer();
 
-	virtual bool SignalOutputData();
-	virtual bool OnEvent(struct epoll_event &eventWrapper);
-	bool EnqueueForTimeEvent(uint32_t seconds);
-	virtual operator string();
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  virtual bool SignalOutputData();
+  virtual bool OnEvent(struct epoll_event &eventWrapper);
+  bool EnqueueForTimeEvent(uint32_t seconds);
+  virtual operator string();
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
 };
 
-#endif	/* _TIMERIO_H */
+#endif  /* _TIMERIO_H */
 #endif /* NET_EPOLL */
 
 

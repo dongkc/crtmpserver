@@ -20,7 +20,7 @@
 
 #ifdef HAS_PROTOCOL_TS
 #ifndef _STREAMDESCRIPTORS_H
-#define	_STREAMDESCRIPTORS_H
+#define  _STREAMDESCRIPTORS_H
 
 #include "common.h"
 
@@ -65,25 +65,25 @@
 #define DESCRIPTOR_TYPE_FMC_DESCRIPTOR 31
 
 typedef struct _StreamDescriptor {
-	uint8_t type;
-	uint8_t length;
+  uint8_t type;
+  uint8_t length;
 
-	union {
+  union {
 
-		struct {
-			uint32_t maximum_bitrate;
-		} maximum_bitrate_descriptor;
-	} payload;
+    struct {
+      uint32_t maximum_bitrate;
+    } maximum_bitrate_descriptor;
+  } payload;
 
-	operator string() {
-		return format("type: %hhu; length: %hhu", type, length);
-	};
+  operator string() {
+    return format("type: %hhu; length: %hhu", type, length);
+  };
 } StreamDescriptor;
 
 bool ReadStreamDescriptor(StreamDescriptor &descriptor,
-		uint8_t *pBuffer, uint32_t &cursor, uint32_t maxCursor);
+    uint8_t *pBuffer, uint32_t &cursor, uint32_t maxCursor);
 
 
-#endif	/* _STREAMDESCRIPTORS_H */
-#endif	/* HAS_PROTOCOL_TS */
+#endif  /* _STREAMDESCRIPTORS_H */
+#endif  /* HAS_PROTOCOL_TS */
 

@@ -25,16 +25,16 @@
 class AtomUUID
 : public BaseAtom {
 private:
-	Variant _metadata;
+  Variant _metadata;
 public:
-	AtomUUID(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomUUID();
+  AtomUUID(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomUUID();
 
-	virtual bool Read();
-	string Hierarchy(uint32_t indent);
+  virtual bool Read();
+  string Hierarchy(uint32_t indent);
 
-	Variant &GetMetadata();
+  Variant &GetMetadata();
 };
 
-#endif	/* _ATOMUUID_H */
+#endif  /* _ATOMUUID_H */
 

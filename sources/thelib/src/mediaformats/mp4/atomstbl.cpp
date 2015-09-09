@@ -23,50 +23,50 @@
 
 AtomSTBL::AtomSTBL(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : BoxAtom(pDocument, type, size, start) {
-	_pSTSD = NULL;
-	_pSTTS = NULL;
-	_pSTSC = NULL;
-	_pSTSZ = NULL;
-	_pSTCO = NULL;
-	_pCTTS = NULL;
-	_pSTSS = NULL;
+  _pSTSD = NULL;
+  _pSTTS = NULL;
+  _pSTSC = NULL;
+  _pSTSZ = NULL;
+  _pSTCO = NULL;
+  _pCTTS = NULL;
+  _pSTSS = NULL;
 }
 
 AtomSTBL::~AtomSTBL() {
 }
 
 bool AtomSTBL::AtomCreated(BaseAtom *pAtom) {
-	switch (pAtom->GetTypeNumeric()) {
-		case A_STSD:
-			_pSTSD = (AtomSTSD *) pAtom;
-			return true;
-		case A_STTS:
-			_pSTTS = (AtomSTTS *) pAtom;
-			return true;
-		case A_STSC:
-			_pSTSC = (AtomSTSC *) pAtom;
-			return true;
-		case A_STSZ:
-			_pSTSZ = (AtomSTSZ *) pAtom;
-			return true;
-		case A_STCO:
-			_pSTCO = (AtomSTCO *) pAtom;
-			return true;
-		case A_CO64:
-			_pCO64 = (AtomCO64 *) pAtom;
-			return true;
-		case A_CTTS:
-			_pCTTS = (AtomCTTS *) pAtom;
-			return true;
-		case A_STSS:
-			_pSTSS = (AtomSTSS *) pAtom;
-			return true;
-		default:
-		{
-			FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
-			return false;
-		}
-	}
+  switch (pAtom->GetTypeNumeric()) {
+    case A_STSD:
+      _pSTSD = (AtomSTSD *) pAtom;
+      return true;
+    case A_STTS:
+      _pSTTS = (AtomSTTS *) pAtom;
+      return true;
+    case A_STSC:
+      _pSTSC = (AtomSTSC *) pAtom;
+      return true;
+    case A_STSZ:
+      _pSTSZ = (AtomSTSZ *) pAtom;
+      return true;
+    case A_STCO:
+      _pSTCO = (AtomSTCO *) pAtom;
+      return true;
+    case A_CO64:
+      _pCO64 = (AtomCO64 *) pAtom;
+      return true;
+    case A_CTTS:
+      _pCTTS = (AtomCTTS *) pAtom;
+      return true;
+    case A_STSS:
+      _pSTSS = (AtomSTSS *) pAtom;
+      return true;
+    default:
+    {
+      FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
+      return false;
+    }
+  }
 }
 
 #endif /* HAS_MEDIA_MP4 */

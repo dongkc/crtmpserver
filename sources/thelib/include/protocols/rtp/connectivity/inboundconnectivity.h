@@ -19,7 +19,7 @@
 
 #ifdef HAS_PROTOCOL_RTP
 #ifndef _INBOUNDCONNECTIVITY_H
-#define	_INBOUNDCONNECTIVITY_H
+#define  _INBOUNDCONNECTIVITY_H
 
 #include "protocols/rtp/connectivity/baseconnectivity.h"
 
@@ -32,52 +32,52 @@ class BaseProtocol;
 class DLLEXP InboundConnectivity
 : public BaseConnectivity {
 private:
-	RTSPProtocol *_pRTSP;
+  RTSPProtocol *_pRTSP;
 
-	InboundRTPProtocol *_pRTPVideo;
-	RTCPProtocol *_pRTCPVideo;
-	uint8_t _videoRR[60];
-	Variant _videoTrack;
+  InboundRTPProtocol *_pRTPVideo;
+  RTCPProtocol *_pRTCPVideo;
+  uint8_t _videoRR[60];
+  Variant _videoTrack;
 
-	InboundRTPProtocol *_pRTPAudio;
-	RTCPProtocol *_pRTCPAudio;
-	uint8_t _audioRR[60];
-	Variant _audioTrack;
+  InboundRTPProtocol *_pRTPAudio;
+  RTCPProtocol *_pRTCPAudio;
+  uint8_t _audioRR[60];
+  Variant _audioTrack;
 
-	InNetRTPStream *_pInStream;
+  InNetRTPStream *_pInStream;
 
-	BaseProtocol *_pProtocols[256];
-	IOBuffer _inputBuffer;
-	sockaddr_in _dummyAddress;
+  BaseProtocol *_pProtocols[256];
+  IOBuffer _inputBuffer;
+  sockaddr_in _dummyAddress;
 
-	bool _forceTcp;
-	string _streamName;
-	uint32_t _bandwidthHint;
+  bool _forceTcp;
+  string _streamName;
+  uint32_t _bandwidthHint;
 
-	uint8_t _rtcpDetectionInterval;
+  uint8_t _rtcpDetectionInterval;
 public:
-	InboundConnectivity(RTSPProtocol *pRTSP, string streamName,
-			uint32_t bandwidthHint, uint8_t rtcpDetectionInterval);
-	virtual ~InboundConnectivity();
-	void EnqueueForDelete();
+  InboundConnectivity(RTSPProtocol *pRTSP, string streamName,
+      uint32_t bandwidthHint, uint8_t rtcpDetectionInterval);
+  virtual ~InboundConnectivity();
+  void EnqueueForDelete();
 
-	bool AddTrack(Variant &track, bool isAudio);
-	bool Initialize();
+  bool AddTrack(Variant &track, bool isAudio);
+  bool Initialize();
 
-	string GetTransportHeaderLine(bool isAudio, bool isClient);
+  string GetTransportHeaderLine(bool isAudio, bool isClient);
 
-	bool FeedData(uint32_t channelId, uint8_t *pBuffer, uint32_t bufferLength);
+  bool FeedData(uint32_t channelId, uint8_t *pBuffer, uint32_t bufferLength);
 
-	string GetAudioClientPorts();
-	string GetVideoClientPorts();
-	bool SendRR(bool isAudio);
-	void ReportSR(uint64_t ntpMicroseconds, uint32_t rtpTimestamp, bool isAudio);
+  string GetAudioClientPorts();
+  string GetVideoClientPorts();
+  bool SendRR(bool isAudio);
+  void ReportSR(uint64_t ntpMicroseconds, uint32_t rtpTimestamp, bool isAudio);
 private:
-	void Cleanup();
-	bool CreateCarriers(InboundRTPProtocol *pRTP, RTCPProtocol *pRTCP);
+  void Cleanup();
+  bool CreateCarriers(InboundRTPProtocol *pRTP, RTCPProtocol *pRTCP);
 };
 
 
-#endif	/* _INBOUNDCONNECTIVITY_H */
+#endif  /* _INBOUNDCONNECTIVITY_H */
 #endif /* HAS_PROTOCOL_RTP */
 

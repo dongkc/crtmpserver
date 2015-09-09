@@ -21,39 +21,39 @@
 #ifdef HAS_PROTOCOL_HTTP
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _INBOUNDHTTP4RTMP_H
-#define	_INBOUNDHTTP4RTMP_H
+#define  _INBOUNDHTTP4RTMP_H
 
 #include "protocols/baseprotocol.h"
 
 class DLLEXP InboundHTTP4RTMP
 : public BaseProtocol {
 private:
-	IOBuffer _inputBuffer;
-	IOBuffer _outputBuffer;
-	static map<string, string> _generatedSids;
-	static map<string, uint32_t> _protocolsBySid;
+  IOBuffer _inputBuffer;
+  IOBuffer _outputBuffer;
+  static map<string, string> _generatedSids;
+  static map<string, uint32_t> _protocolsBySid;
 public:
-	InboundHTTP4RTMP();
-	virtual ~InboundHTTP4RTMP();
+  InboundHTTP4RTMP();
+  virtual ~InboundHTTP4RTMP();
 
-	virtual bool Initialize(Variant &parameters);
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual IOBuffer * GetOutputBuffer();
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
-	virtual bool EnqueueForOutbound();
-	virtual void ReadyForSend();
+  virtual bool Initialize(Variant &parameters);
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual IOBuffer * GetOutputBuffer();
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool EnqueueForOutbound();
+  virtual void ReadyForSend();
 private:
-	BaseProtocol *Bind(string sid);
-	bool ProcessFcs(vector<string> &parts);
-	bool ProcessOpen(vector<string> &parts);
-	bool ProcessIdle(vector<string> &parts);
-	bool ProcessSend(vector<string> &parts);
+  BaseProtocol *Bind(string sid);
+  bool ProcessFcs(vector<string> &parts);
+  bool ProcessOpen(vector<string> &parts);
+  bool ProcessIdle(vector<string> &parts);
+  bool ProcessSend(vector<string> &parts);
 };
 
 
-#endif	/* _INBOUNDHTTP4RTMP_H */
+#endif  /* _INBOUNDHTTP4RTMP_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 #endif /* HAS_PROTOCOL_HTTP */

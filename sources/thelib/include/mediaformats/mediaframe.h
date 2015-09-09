@@ -18,7 +18,7 @@
  */
 
 #ifndef _MEDIAFRAME_H
-#define	_MEDIAFRAME_H
+#define  _MEDIAFRAME_H
 
 #include "common.h"
 
@@ -27,20 +27,20 @@
 #define MEDIAFRAME_TYPE_DATA 2
 
 typedef struct _MediaFrame {
-	uint64_t start;
-	uint64_t length;
-	uint8_t type;
-	double deltaTime;
-	bool isKeyFrame;
-	double absoluteTime;
-	bool isBinaryHeader;
-	int32_t compositionOffset;
+  uint64_t start;
+  uint64_t length;
+  uint8_t type;
+  double deltaTime;
+  bool isKeyFrame;
+  double absoluteTime;
+  bool isBinaryHeader;
+  int32_t compositionOffset;
 
-	operator string() {
-		return format("s: %"PRIx64"; l: %"PRIx64"; t: %hhu; dt: %.2f; kf: %hhu; at: %.2f; bh: %hhu",
-				start, length, type, deltaTime, isKeyFrame, absoluteTime, isBinaryHeader);
-	};
+  operator string() {
+    return format("s: %"PRIx64"; l: %"PRIx64"; t: %hhu; dt: %.2f; kf: %hhu; at: %.2f; bh: %hhu",
+        start, length, type, deltaTime, isKeyFrame, absoluteTime, isBinaryHeader);
+  };
 } MediaFrame;
 
-#endif	/* _MEDIAFRAME_H */
+#endif  /* _MEDIAFRAME_H */
 

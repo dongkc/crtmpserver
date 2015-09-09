@@ -19,26 +19,26 @@
 
 
 #ifndef _PROTOCOLFACTORY_H
-#define	_PROTOCOLFACTORY_H
+#define  _PROTOCOLFACTORY_H
 
 #include "protocols/baseprotocolfactory.h"
 #include "protocols/protocoltypes.h"
 
 namespace app_samplefactory {
 
-	class DLLEXP ProtocolFactory
-	: public BaseProtocolFactory {
-	public:
-		ProtocolFactory();
-		virtual ~ProtocolFactory();
+  class DLLEXP ProtocolFactory
+  : public BaseProtocolFactory {
+  public:
+    ProtocolFactory();
+    virtual ~ProtocolFactory();
 
-		virtual vector<uint64_t> HandledProtocols();
-		virtual vector<string> HandledProtocolChains();
-		virtual vector<uint64_t> ResolveProtocolChain(string name);
-		virtual BaseProtocol *SpawnProtocol(uint64_t type, Variant &parameters);
-	};
+    virtual vector<uint64_t> HandledProtocols();
+    virtual vector<string> HandledProtocolChains();
+    virtual vector<uint64_t> ResolveProtocolChain(string name);
+    virtual BaseProtocol *SpawnProtocol(uint64_t type, Variant &parameters);
+  };
 }
 
-#endif	/* _PROTOCOLFACTORY_H */
+#endif  /* _PROTOCOLFACTORY_H */
 
 

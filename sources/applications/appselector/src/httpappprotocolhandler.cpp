@@ -30,5 +30,5 @@ HTTPAppProtocolHandler::HTTPAppProtocolHandler(Variant &configuration)
 
 HTTPAppProtocolHandler::~HTTPAppProtocolHandler() {
 }
-#endif	/* HAS_PROTOCOL_HTTP */
+#endif  /* HAS_PROTOCOL_HTTP */
 

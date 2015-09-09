@@ -26,29 +26,29 @@
 
 namespace app_admin {
 #ifdef HAS_PROTOCOL_RTMP
-	class RTMPAppProtocolHandler;
+  class RTMPAppProtocolHandler;
 #endif /* HAS_PROTOCOL_RTMP */
 #ifdef HAS_PROTOCOL_CLI
-	class CLIAppProtocolHandler;
+  class CLIAppProtocolHandler;
 #endif /* HAS_PROTOCOL_CLI */
 
-	class AdminApplication
-	: public BaseClientApplication {
-	private:
+  class AdminApplication
+  : public BaseClientApplication {
+  private:
 #ifdef HAS_PROTOCOL_RTMP
-		RTMPAppProtocolHandler *_pRTMPHandler;
+    RTMPAppProtocolHandler *_pRTMPHandler;
 #endif /* HAS_PROTOCOL_RTMP */
 #ifdef HAS_PROTOCOL_CLI
-		CLIAppProtocolHandler *_pCLIHandler;
+    CLIAppProtocolHandler *_pCLIHandler;
 #endif /* HAS_PROTOCOL_CLI */
-	public:
-		AdminApplication(Variant &configuration);
-		virtual ~AdminApplication();
+  public:
+    AdminApplication(Variant &configuration);
+    virtual ~AdminApplication();
 
-		virtual bool Initialize();
-	};
+    virtual bool Initialize();
+  };
 }
 
-#endif	/* _ADMINAPPLICATION_H */
+#endif  /* _ADMINAPPLICATION_H */
 
 

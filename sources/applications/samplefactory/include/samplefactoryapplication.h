@@ -24,21 +24,21 @@
 #include "application/baseclientapplication.h"
 
 namespace app_samplefactory {
-	class ProtocolFactory;
-	class EchoAppProtocolHandler;
-	
-	class DLLEXP SampleFactoryApplication
-	: public BaseClientApplication {
-	private:
-		EchoAppProtocolHandler *_pEchoHandler;
-	public:
-		SampleFactoryApplication(Variant &configuration);
-		virtual ~SampleFactoryApplication();
+  class ProtocolFactory;
+  class EchoAppProtocolHandler;
+  
+  class DLLEXP SampleFactoryApplication
+  : public BaseClientApplication {
+  private:
+    EchoAppProtocolHandler *_pEchoHandler;
+  public:
+    SampleFactoryApplication(Variant &configuration);
+    virtual ~SampleFactoryApplication();
 
-		virtual bool Initialize();
-	};
+    virtual bool Initialize();
+  };
 }
 
-#endif	/* _SAMPLEFACTORYAPPLICATION_H */
+#endif  /* _SAMPLEFACTORYAPPLICATION_H */
 
 

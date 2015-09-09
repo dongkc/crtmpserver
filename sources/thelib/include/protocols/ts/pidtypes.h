@@ -20,7 +20,7 @@
 
 #ifdef HAS_PROTOCOL_TS
 #ifndef _PIDTYPES_H
-#define	_PIDTYPES_H
+#define  _PIDTYPES_H
 
 #include "common.h"
 
@@ -29,18 +29,18 @@
 //WARN: This are not the values from the table. This are types-over-types
 
 typedef enum _PIDType {
-	PID_TYPE_UNKNOWN,
-	PID_TYPE_PAT,
-	PID_TYPE_PMT,
-	PID_TYPE_NIT,
-	PID_TYPE_CAT,
-	PID_TYPE_TSDT,
-	PID_TYPE_RESERVED,
-	PID_TYPE_AUDIOSTREAM,
-	PID_TYPE_VIDEOSTREAM,
-	PID_TYPE_NULL
+  PID_TYPE_UNKNOWN,
+  PID_TYPE_PAT,
+  PID_TYPE_PMT,
+  PID_TYPE_NIT,
+  PID_TYPE_CAT,
+  PID_TYPE_TSDT,
+  PID_TYPE_RESERVED,
+  PID_TYPE_AUDIOSTREAM,
+  PID_TYPE_VIDEOSTREAM,
+  PID_TYPE_NULL
 } PIDType;
 
-#endif	/* _PIDTYPES_H */
-#endif	/* HAS_PROTOCOL_TS */
+#endif  /* _PIDTYPES_H */
+#endif  /* HAS_PROTOCOL_TS */
 

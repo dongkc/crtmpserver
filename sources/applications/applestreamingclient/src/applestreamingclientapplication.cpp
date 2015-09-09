@@ -40,189 +40,189 @@ using namespace app_applestreamingclient;
 AppleStreamingClientApplication::AppleStreamingClientApplication(Variant &configuration)
 : BaseClientApplication(configuration) {
 #ifdef HAS_PROTOCOL_RTMP
-	_pRTMPHandler = NULL;
+  _pRTMPHandler = NULL;
 #endif /* HAS_PROTOCOL_RTMP */
-	_pM3U8Handler = NULL;
-	_pKeyHandler = NULL;
-	_pTSHandler = NULL;
-	_pHTTPBuffHandler = NULL;
-	_pAESHandler = NULL;
-	_pRTSPHandler = NULL;
-	_pVariantHandler = NULL;
-	_pFactory = NULL;
+  _pM3U8Handler = NULL;
+  _pKeyHandler = NULL;
+  _pTSHandler = NULL;
+  _pHTTPBuffHandler = NULL;
+  _pAESHandler = NULL;
+  _pRTSPHandler = NULL;
+  _pVariantHandler = NULL;
+  _pFactory = NULL;
 }
 
 AppleStreamingClientApplication::~AppleStreamingClientApplication() {
-	CloseAllContexts();
+  CloseAllContexts();
 #ifdef HAS_PROTOCOL_RTMP
-	UnRegisterAppProtocolHandler(PT_INBOUND_RTMP);
-	UnRegisterAppProtocolHandler(PT_OUTBOUND_RTMP);
-	if (_pRTMPHandler != NULL) {
-		delete _pRTMPHandler;
-		_pRTMPHandler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_INBOUND_RTMP);
+  UnRegisterAppProtocolHandler(PT_OUTBOUND_RTMP);
+  if (_pRTMPHandler != NULL) {
+    delete _pRTMPHandler;
+    _pRTMPHandler = NULL;
+  }
 #endif /* HAS_PROTOCOL_RTMP */
 
-	UnRegisterAppProtocolHandler(PT_INBOUND_CHILD_M3U8);
-	UnRegisterAppProtocolHandler(PT_INBOUND_MASTER_M3U8);
-	if (_pM3U8Handler != NULL) {
-		delete _pM3U8Handler;
-		_pM3U8Handler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_INBOUND_CHILD_M3U8);
+  UnRegisterAppProtocolHandler(PT_INBOUND_MASTER_M3U8);
+  if (_pM3U8Handler != NULL) {
+    delete _pM3U8Handler;
+    _pM3U8Handler = NULL;
+  }
 
-	UnRegisterAppProtocolHandler(PT_INBOUND_KEY);
-	if (_pKeyHandler != NULL) {
-		delete _pKeyHandler;
-		_pKeyHandler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_INBOUND_KEY);
+  if (_pKeyHandler != NULL) {
+    delete _pKeyHandler;
+    _pKeyHandler = NULL;
+  }
 
-	UnRegisterAppProtocolHandler(PT_INBOUND_TS);
-	if (_pTSHandler != NULL) {
-		delete _pTSHandler;
-		_pTSHandler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_INBOUND_TS);
+  if (_pTSHandler != NULL) {
+    delete _pTSHandler;
+    _pTSHandler = NULL;
+  }
 
-	UnRegisterAppProtocolHandler(PT_HTTP_BUFF);
-	if (_pHTTPBuffHandler != NULL) {
-		delete _pHTTPBuffHandler;
-		_pHTTPBuffHandler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_HTTP_BUFF);
+  if (_pHTTPBuffHandler != NULL) {
+    delete _pHTTPBuffHandler;
+    _pHTTPBuffHandler = NULL;
+  }
 
-	UnRegisterAppProtocolHandler(PT_INBOUND_AES);
-	if (_pAESHandler != NULL) {
-		delete _pAESHandler;
-		_pAESHandler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_INBOUND_AES);
+  if (_pAESHandler != NULL) {
+    delete _pAESHandler;
+    _pAESHandler = NULL;
+  }
 
-	UnRegisterAppProtocolHandler(PT_RTSP);
-	if (_pRTSPHandler != NULL) {
-		delete _pRTSPHandler;
-		_pRTSPHandler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_RTSP);
+  if (_pRTSPHandler != NULL) {
+    delete _pRTSPHandler;
+    _pRTSPHandler = NULL;
+  }
 
-	UnRegisterAppProtocolHandler(PT_XML_VAR);
-	UnRegisterAppProtocolHandler(PT_BIN_VAR);
-	if (_pVariantHandler != NULL) {
-		delete _pVariantHandler;
-		_pVariantHandler = NULL;
-	}
+  UnRegisterAppProtocolHandler(PT_XML_VAR);
+  UnRegisterAppProtocolHandler(PT_BIN_VAR);
+  if (_pVariantHandler != NULL) {
+    delete _pVariantHandler;
+    _pVariantHandler = NULL;
+  }
 
-	if (_pFactory != NULL) {
-		ProtocolFactoryManager::UnRegisterProtocolFactory(_pFactory);
-		delete _pFactory;
-		_pFactory = NULL;
-	}
+  if (_pFactory != NULL) {
+    ProtocolFactoryManager::UnRegisterProtocolFactory(_pFactory);
+    delete _pFactory;
+    _pFactory = NULL;
+  }
 }
 
 void AppleStreamingClientApplication::CloseAllContexts() {
-	vector<uint32_t> contextIds = ClientContext::GetContextIds();
-	for (uint32_t i = 0; i < contextIds.size(); i++) {
-		ClientContext::ReleaseContext(contextIds[i]);
-	}
+  vector<uint32_t> contextIds = ClientContext::GetContextIds();
+  for (uint32_t i = 0; i < contextIds.size(); i++) {
+    ClientContext::ReleaseContext(contextIds[i]);
+  }
 }
 
 bool AppleStreamingClientApplication::Initialize() {
-	if (!BaseClientApplication::Initialize()) {
-		FATAL("Unable to initialize application");
-		return false;
-	}
-	//TODO: Add your app init code here
-	//Things like parsing custom sections inside _configuration for example,
-	//initialize the protocol handler(s)
+  if (!BaseClientApplication::Initialize()) {
+    FATAL("Unable to initialize application");
+    return false;
+  }
+  //TODO: Add your app init code here
+  //Things like parsing custom sections inside _configuration for example,
+  //initialize the protocol handler(s)
 
-	//1. Initialize the protocol handler(s)
+  //1. Initialize the protocol handler(s)
 #ifdef HAS_PROTOCOL_RTMP    
-	_pRTMPHandler = new RTMPAppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_INBOUND_RTMP, _pRTMPHandler);
-	RegisterAppProtocolHandler(PT_OUTBOUND_RTMP, _pRTMPHandler);
+  _pRTMPHandler = new RTMPAppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_INBOUND_RTMP, _pRTMPHandler);
+  RegisterAppProtocolHandler(PT_OUTBOUND_RTMP, _pRTMPHandler);
 #endif /* HAS_PROTOCOL_RTMP */
 
-	_pM3U8Handler = new M3U8AppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_INBOUND_CHILD_M3U8, _pM3U8Handler);
-	RegisterAppProtocolHandler(PT_INBOUND_MASTER_M3U8, _pM3U8Handler);
+  _pM3U8Handler = new M3U8AppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_INBOUND_CHILD_M3U8, _pM3U8Handler);
+  RegisterAppProtocolHandler(PT_INBOUND_MASTER_M3U8, _pM3U8Handler);
 
-	_pKeyHandler = new KeyAppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_INBOUND_KEY, _pKeyHandler);
+  _pKeyHandler = new KeyAppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_INBOUND_KEY, _pKeyHandler);
 
-	_pTSHandler = new TSAppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_INBOUND_TS, _pTSHandler);
+  _pTSHandler = new TSAppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_INBOUND_TS, _pTSHandler);
 
-	_pHTTPBuffHandler = new HTTPBuffAppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_HTTP_BUFF, _pHTTPBuffHandler);
+  _pHTTPBuffHandler = new HTTPBuffAppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_HTTP_BUFF, _pHTTPBuffHandler);
 
-	_pAESHandler = new AESAppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_INBOUND_AES, _pAESHandler);
+  _pAESHandler = new AESAppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_INBOUND_AES, _pAESHandler);
 
-	_pRTSPHandler = new RTSPAppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_RTSP, _pRTSPHandler);
+  _pRTSPHandler = new RTSPAppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_RTSP, _pRTSPHandler);
 
-	_pVariantHandler = new VariantAppProtocolHandler(_configuration);
-	RegisterAppProtocolHandler(PT_XML_VAR, _pVariantHandler);
-	RegisterAppProtocolHandler(PT_BIN_VAR, _pVariantHandler);
+  _pVariantHandler = new VariantAppProtocolHandler(_configuration);
+  RegisterAppProtocolHandler(PT_XML_VAR, _pVariantHandler);
+  RegisterAppProtocolHandler(PT_BIN_VAR, _pVariantHandler);
 
-	//2. Initialize our protocol factory
-	_pFactory = new ProtocolFactory();
-	ProtocolFactoryManager::RegisterProtocolFactory(_pFactory);
+  //2. Initialize our protocol factory
+  _pFactory = new ProtocolFactory();
+  ProtocolFactoryManager::RegisterProtocolFactory(_pFactory);
 
-	return true;
+  return true;
 }
 
 #ifdef HAS_MS_TIMER
 
 void AppleStreamingClientApplication::SetFineTimerId(uint32_t fineTimerId) {
-	_fineTimerId = fineTimerId;
+  _fineTimerId = fineTimerId;
 }
 
 FineTimer *AppleStreamingClientApplication::GetFineTimer() {
-	return (FineTimer *) ProtocolManager::GetProtocol(_fineTimerId);
+  return (FineTimer *) ProtocolManager::GetProtocol(_fineTimerId);
 }
 #endif /* HAS_MS_TIMER */
 
 #ifdef ANDROID
 
 void AppleStreamingClientApplication::SetJavaCallBackInterface(CallBackInfo ci) {
-	_ci = ci;
+  _ci = ci;
 }
 
 CallBackInfo &AppleStreamingClientApplication::GetJavaCallBackInterface() {
-	return _ci;
+  return _ci;
 }
 #endif /* ANDROID */
 
 void AppleStreamingClientApplication::SignalStreamRegistered(BaseStream *pStream) {
-	if (pStream->GetType() != ST_IN_NET_TS)
-		return;
+  if (pStream->GetType() != ST_IN_NET_TS)
+    return;
 
-	BaseProtocol *pProtocol = pStream->GetProtocol();
-	if (pProtocol == NULL) {
-		ASSERT("Protocol is NULL!!!");
-	}
-	uint32_t contextId = pProtocol->GetCustomParameters()["contextId"];
-	ClientContext *pContext = ClientContext::GetContext(contextId, 0, 0);
-	if (pContext == NULL) {
-		WARN("Context not available anymore");
-		pProtocol->EnqueueForDelete();
-		return;
-	}
+  BaseProtocol *pProtocol = pStream->GetProtocol();
+  if (pProtocol == NULL) {
+    ASSERT("Protocol is NULL!!!");
+  }
+  uint32_t contextId = pProtocol->GetCustomParameters()["contextId"];
+  ClientContext *pContext = ClientContext::GetContext(contextId, 0, 0);
+  if (pContext == NULL) {
+    WARN("Context not available anymore");
+    pProtocol->EnqueueForDelete();
+    return;
+  }
 
-	pContext->SignalStreamRegistered(pStream);
+  pContext->SignalStreamRegistered(pStream);
 }
 
 void AppleStreamingClientApplication::SignalStreamUnRegistered(BaseStream *pStream) {
-	if (pStream->GetType() != ST_IN_NET_TS)
-		return;
+  if (pStream->GetType() != ST_IN_NET_TS)
+    return;
 
-	BaseProtocol *pProtocol = pStream->GetProtocol();
-	if (pProtocol == NULL) {
-		ASSERT("Protocol is NULL!!!");
-	}
-	uint32_t contextId = pProtocol->GetCustomParameters()["contextId"];
-	ClientContext *pContext = ClientContext::GetContext(contextId, 0, 0);
-	if (pContext == NULL) {
-		WARN("Context not available anymore");
-		pProtocol->EnqueueForDelete();
-		return;
-	}
+  BaseProtocol *pProtocol = pStream->GetProtocol();
+  if (pProtocol == NULL) {
+    ASSERT("Protocol is NULL!!!");
+  }
+  uint32_t contextId = pProtocol->GetCustomParameters()["contextId"];
+  ClientContext *pContext = ClientContext::GetContext(contextId, 0, 0);
+  if (pContext == NULL) {
+    WARN("Context not available anymore");
+    pProtocol->EnqueueForDelete();
+    return;
+  }
 
-	pContext->SignalStreamUnRegistered(pStream);
+  pContext->SignalStreamUnRegistered(pStream);
 }

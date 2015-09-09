@@ -19,7 +19,7 @@
 
 
 #ifndef _NETIO_H
-#define	_NETIO_H
+#define  _NETIO_H
 
 #include "netio/iohandlertype.h"
 #include "netio/fdstats.h"
@@ -84,6 +84,6 @@
 #define NETWORK_REACTOR "iocp"
 #endif
 
-#endif	/* _NETIO_H */
+#endif  /* _NETIO_H */
 
 

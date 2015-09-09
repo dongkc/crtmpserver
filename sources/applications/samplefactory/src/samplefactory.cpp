@@ -24,11 +24,11 @@
 using namespace app_samplefactory;
 
 extern "C" BaseClientApplication *GetApplication_samplefactory(Variant configuration) {
-	return new SampleFactoryApplication(
-			configuration);
+  return new SampleFactoryApplication(
+      configuration);
 }
 
 extern "C" DLLEXP BaseProtocolFactory *GetFactory_samplefactory(Variant configuration) {
-	return new ProtocolFactory();
+  return new ProtocolFactory();
 }
 

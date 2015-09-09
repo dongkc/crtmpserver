@@ -20,7 +20,7 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _GENERICMESSAGEFACTORY_H
-#define	_GENERICMESSAGEFACTORY_H
+#define  _GENERICMESSAGEFACTORY_H
 
 #include "common.h"
 
@@ -76,38 +76,38 @@
 
 class DLLEXP GenericMessageFactory {
 public:
-	//channel specific
-	static Variant GetChunkSize(uint32_t chunkSize);
-	static Variant GetAck(uint64_t amount);
-	static Variant GetWinAckSize(uint32_t value);
-	static Variant GetPeerBW(uint32_t value, uint8_t type);
-	static Variant GetAbortMessage(uint32_t channelId);
+  //channel specific
+  static Variant GetChunkSize(uint32_t chunkSize);
+  static Variant GetAck(uint64_t amount);
+  static Variant GetWinAckSize(uint32_t value);
+  static Variant GetPeerBW(uint32_t value, uint8_t type);
+  static Variant GetAbortMessage(uint32_t channelId);
 
-	//invokes and notify
-	static Variant GetInvoke(uint32_t channelId, uint32_t streamId,
-			double timeStamp, bool isAbsolute, double requestId,
-			string functionName, Variant &parameters, bool insertNull = false);
-	static Variant GetNotify(uint32_t channelId,
-			uint32_t streamId, double timeStamp, bool isAbsolute,
-			string handlerName, Variant params);
+  //invokes and notify
+  static Variant GetInvoke(uint32_t channelId, uint32_t streamId,
+      double timeStamp, bool isAbsolute, double requestId,
+      string functionName, Variant &parameters, bool insertNull = false);
+  static Variant GetNotify(uint32_t channelId,
+      uint32_t streamId, double timeStamp, bool isAbsolute,
+      string handlerName, Variant params);
 
-	static Variant GetInvokeOnBWDone(double kbpsSpeed);
+  static Variant GetInvokeOnBWDone(double kbpsSpeed);
 
-	static Variant GetInvokeOnStatus(uint32_t channelId, uint32_t streamId,
-			double timeStamp, bool isAbsolute, double requestId, Variant &message);
+  static Variant GetInvokeOnStatus(uint32_t channelId, uint32_t streamId,
+      double timeStamp, bool isAbsolute, double requestId, Variant &message);
 
-	static Variant GetInvokeResult(uint32_t channelId, uint32_t streamId,
-			double requestId, Variant firstParam, Variant &secondParam);
-	static Variant GetInvokeResult(Variant &request, Variant &parameters);
+  static Variant GetInvokeResult(uint32_t channelId, uint32_t streamId,
+      double requestId, Variant firstParam, Variant &secondParam);
+  static Variant GetInvokeResult(Variant &request, Variant &parameters);
 
-	static Variant GetInvokeError(uint32_t channelId, uint32_t streamId,
-			double requestId, Variant firstParam, Variant &secondParam);
-	static Variant GetInvokeError(Variant &request, Variant &parameters);
-	static Variant GetInvokeCallFailedError(Variant &request);
+  static Variant GetInvokeError(uint32_t channelId, uint32_t streamId,
+      double requestId, Variant firstParam, Variant &secondParam);
+  static Variant GetInvokeError(Variant &request, Variant &parameters);
+  static Variant GetInvokeCallFailedError(Variant &request);
 };
 
 
-#endif	/* _GENERICMESSAGEFACTORY_H */
+#endif  /* _GENERICMESSAGEFACTORY_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

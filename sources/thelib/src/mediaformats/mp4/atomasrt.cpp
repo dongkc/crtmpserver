@@ -23,52 +23,52 @@
 
 AtomASRT::AtomASRT(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : VersionedAtom(pDocument, type, size, start) {
-	_qualityEntryCount = 0;
-	_segmentRunEntryCount = 0;
+  _qualityEntryCount = 0;
+  _segmentRunEntryCount = 0;
 }
 
 AtomASRT::~AtomASRT() {
 }
 
 bool AtomASRT::ReadData() {
-	//	FINEST("ASRT");
-	if (!ReadUInt8(_qualityEntryCount)) {
-		FATAL("Unable to read _qualityEntryCount");
-		return false;
-	}
-	//	FINEST("_qualityEntryCount: %"PRIu8, _qualityEntryCount);
+  //  FINEST("ASRT");
+  if (!ReadUInt8(_qualityEntryCount)) {
+    FATAL("Unable to read _qualityEntryCount");
+    return false;
+  }
+  //  FINEST("_qualityEntryCount: %"PRIu8, _qualityEntryCount);
 
-	for (uint8_t i = 0; i < _qualityEntryCount; i++) {
-		string temp;
-		if (!ReadNullTerminatedString(temp)) {
-			FATAL("Unable to read _qualitySegmentUrlModifiers");
-			return false;
-		}
-		//		FINEST("%"PRIu8": _qualitySegmentUrlModifiers: %s", i, STR(temp));
-		ADD_VECTOR_END(_qualitySegmentUrlModifiers, temp);
-	}
+  for (uint8_t i = 0; i < _qualityEntryCount; i++) {
+    string temp;
+    if (!ReadNullTerminatedString(temp)) {
+      FATAL("Unable to read _qualitySegmentUrlModifiers");
+      return false;
+    }
+    //    FINEST("%"PRIu8": _qualitySegmentUrlModifiers: %s", i, STR(temp));
+    ADD_VECTOR_END(_qualitySegmentUrlModifiers, temp);
+  }
 
-	if (!ReadUInt32(_segmentRunEntryCount)) {
-		FATAL("Unable to read _segmentRunEntryCount");
-		return false;
-	}
-	//	FINEST("_segmentRunEntryCount: %"PRIu32, _segmentRunEntryCount);
+  if (!ReadUInt32(_segmentRunEntryCount)) {
+    FATAL("Unable to read _segmentRunEntryCount");
+    return false;
+  }
+  //  FINEST("_segmentRunEntryCount: %"PRIu32, _segmentRunEntryCount);
 
-	for (uint32_t i = 0; i < _segmentRunEntryCount; i++) {
-		SEGMENTRUNENTRY temp;
-		if (!ReadUInt32(temp.firstSegment)) {
-			FATAL("Unable to read SEGMENTRUNENTRY.FirstSegment");
-			return false;
-		}
-		if (!ReadUInt32(temp.fragmentsPerSegment)) {
-			FATAL("Unable to read SEGMENTRUNENTRY.FragmentsPerSegment");
-			return false;
-		}
-		//		FINEST("%"PRIu32": SEGMENTRUNENTRY.FirstSegment: %"PRIu32"; SEGMENTRUNENTRY.FragmentsPerSegment: %"PRIu32,
-		//				i, temp.firstSegment, temp.fragmentsPerSegment);
-		ADD_VECTOR_END(_segmentRunEntryTable, temp);
-	}
+  for (uint32_t i = 0; i < _segmentRunEntryCount; i++) {
+    SEGMENTRUNENTRY temp;
+    if (!ReadUInt32(temp.firstSegment)) {
+      FATAL("Unable to read SEGMENTRUNENTRY.FirstSegment");
+      return false;
+    }
+    if (!ReadUInt32(temp.fragmentsPerSegment)) {
+      FATAL("Unable to read SEGMENTRUNENTRY.FragmentsPerSegment");
+      return false;
+    }
+    //    FINEST("%"PRIu32": SEGMENTRUNENTRY.FirstSegment: %"PRIu32"; SEGMENTRUNENTRY.FragmentsPerSegment: %"PRIu32,
+    //        i, temp.firstSegment, temp.fragmentsPerSegment);
+    ADD_VECTOR_END(_segmentRunEntryTable, temp);
+  }
 
-	return true;
+  return true;
 }
 #endif /* HAS_MEDIA_MP4 */

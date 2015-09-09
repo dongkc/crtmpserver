@@ -29,16 +29,16 @@ class AtomESDS;
 class AtomWAVE
 : public BoxAtom {
 private:
-	AtomMP4A *_pMP4A;
-	AtomESDS *_pESDS;
+  AtomMP4A *_pMP4A;
+  AtomESDS *_pESDS;
 public:
-	AtomWAVE(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomWAVE();
+  AtomWAVE(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomWAVE();
 
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
-#endif	/* _ATOMWAVE_H */
+#endif  /* _ATOMWAVE_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

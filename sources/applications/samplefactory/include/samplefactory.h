@@ -19,13 +19,13 @@
 
 
 #ifndef _SAMPLEFACTORY_H
-#define	_SAMPLEFACTORY_H
+#define  _SAMPLEFACTORY_H
 
 #include "common.h"
 
 extern "C" DLLEXP BaseClientApplication *GetApplication_samplefactory(Variant configuration);
 extern "C" DLLEXP BaseProtocolFactory * GetFactory_samplefactory(Variant configuration);
 
-#endif	/* _SAMPLEFACTORY_H */
+#endif  /* _SAMPLEFACTORY_H */
 
 

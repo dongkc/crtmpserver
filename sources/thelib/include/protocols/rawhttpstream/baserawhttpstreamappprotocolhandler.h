@@ -19,20 +19,20 @@
 
 #ifdef HAS_PROTOCOL_RAWHTTPSTREAM
 #ifndef _BASERAWHTTPSTREAMAPPPROTOCOLHANDLER_H
-#define	_BASERAWHTTPSTREAMAPPPROTOCOLHANDLER_H
+#define  _BASERAWHTTPSTREAMAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 
 class BaseRawHTTPStreamAppProtocolHandler
 : public BaseAppProtocolHandler {
 public:
-	BaseRawHTTPStreamAppProtocolHandler(Variant &configuration);
-	virtual ~BaseRawHTTPStreamAppProtocolHandler();
+  BaseRawHTTPStreamAppProtocolHandler(Variant &configuration);
+  virtual ~BaseRawHTTPStreamAppProtocolHandler();
 
-	virtual void RegisterProtocol(BaseProtocol *pProtocol);
-	virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  virtual void RegisterProtocol(BaseProtocol *pProtocol);
+  virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
 };
 
 
-#endif	/* _BASERAWHTTPSTREAMAPPPROTOCOLHANDLER_H */
+#endif  /* _BASERAWHTTPSTREAMAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_RAWHTTPSTREAM */

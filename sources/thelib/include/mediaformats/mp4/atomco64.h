@@ -26,17 +26,17 @@
 class AtomCO64
 : public VersionedAtom {
 private:
-	vector<uint64_t> _entries;
+  vector<uint64_t> _entries;
 public:
-	AtomCO64(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomCO64();
+  AtomCO64(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomCO64();
 
-	vector<uint64_t> GetEntries();
+  vector<uint64_t> GetEntries();
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
-#endif	/* _ATOMCO64_H */
+#endif  /* _ATOMCO64_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

@@ -18,7 +18,7 @@
  */
 
 #ifndef _INNETRAWSTREAM_H
-#define	_INNETRAWSTREAM_H
+#define  _INNETRAWSTREAM_H
 
 #include "streaming/baseinnetstream.h"
 #include "streaming/streamcapabilities.h"
@@ -26,32 +26,32 @@
 class InNetRawStream
 : public BaseInNetStream {
 private:
-	uint64_t _bytesCount;
-	uint64_t _packetsCount;
-	StreamCapabilities _capabilities;
-	File _witness;
+  uint64_t _bytesCount;
+  uint64_t _packetsCount;
+  StreamCapabilities _capabilities;
+  File _witness;
 public:
-	InNetRawStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
-			string name, uint64_t codecType);
-	virtual ~InNetRawStream();
+  InNetRawStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
+      string name, uint64_t codecType);
+  virtual ~InNetRawStream();
 
-	virtual bool IsCompatibleWithType(uint64_t type);
-	virtual StreamCapabilities * GetCapabilities();
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
-	virtual void ReadyForSend();
-	virtual void SignalOutStreamAttached(BaseOutStream *pOutStream);
-	virtual void SignalOutStreamDetached(BaseOutStream *pOutStream);
+  virtual bool IsCompatibleWithType(uint64_t type);
+  virtual StreamCapabilities * GetCapabilities();
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  virtual void ReadyForSend();
+  virtual void SignalOutStreamAttached(BaseOutStream *pOutStream);
+  virtual void SignalOutStreamDetached(BaseOutStream *pOutStream);
 
-	virtual bool SignalPlay(double &absoluteTimestamp, double &length);
-	virtual bool SignalPause();
-	virtual bool SignalResume();
-	virtual bool SignalSeek(double &absoluteTimestamp);
-	virtual bool SignalStop();
-	virtual bool FeedData(uint8_t *pData, uint32_t dataLength,
-			uint32_t processedLength, uint32_t totalLength,
-			double absoluteTimestamp, bool isAudio);
+  virtual bool SignalPlay(double &absoluteTimestamp, double &length);
+  virtual bool SignalPause();
+  virtual bool SignalResume();
+  virtual bool SignalSeek(double &absoluteTimestamp);
+  virtual bool SignalStop();
+  virtual bool FeedData(uint8_t *pData, uint32_t dataLength,
+      uint32_t processedLength, uint32_t totalLength,
+      double absoluteTimestamp, bool isAudio);
 };
 
 
-#endif	/* _INNETRAWSTREAM_H */
+#endif  /* _INNETRAWSTREAM_H */
 

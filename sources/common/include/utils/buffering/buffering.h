@@ -18,10 +18,10 @@
  */
 
 #ifndef _BUFFERING_H
-#define	_BUFFERING_H
+#define  _BUFFERING_H
 
 #include "utils/buffering/iobuffer.h"
 #include "utils/buffering/bitarray.h"
 
-#endif	/* _BUFFERING_H */
+#endif  /* _BUFFERING_H */
 

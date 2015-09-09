@@ -19,34 +19,34 @@
 
 #ifdef HAS_MEDIA_MP4
 #ifndef _ATOMTFHD_H
-#define	_ATOMTFHD_H
+#define  _ATOMTFHD_H
 
 #include "mediaformats/mp4/versionedatom.h"
 
 class AtomTFHD
 : public VersionedAtom {
 private:
-	int32_t _trackID;
-	int64_t _baseDataOffset;
-	int32_t _sampleDescriptionIndex;
-	int32_t _defaultSampleDuration;
-	int32_t _defaultSampleSize;
-	int32_t _defaultSampleFlags;
+  int32_t _trackID;
+  int64_t _baseDataOffset;
+  int32_t _sampleDescriptionIndex;
+  int32_t _defaultSampleDuration;
+  int32_t _defaultSampleSize;
+  int32_t _defaultSampleFlags;
 public:
-	AtomTFHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomTFHD();
-	uint32_t GetTrackId();
-	int64_t GetBaseDataOffset();
-	bool HasBaseDataOffset();
-	bool HasSampleDescriptionIndex();
-	bool HasDefaultSampleDuration();
-	bool HasDefaultSampleSize();
-	bool HasDefaultSampleFlags();
-	bool DurationIsEmpty();
+  AtomTFHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomTFHD();
+  uint32_t GetTrackId();
+  int64_t GetBaseDataOffset();
+  bool HasBaseDataOffset();
+  bool HasSampleDescriptionIndex();
+  bool HasDefaultSampleDuration();
+  bool HasDefaultSampleSize();
+  bool HasDefaultSampleFlags();
+  bool DurationIsEmpty();
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
 
-#endif	/* _ATOMTFHD_H */
+#endif  /* _ATOMTFHD_H */
 #endif /* HAS_MEDIA_MP4 */

@@ -29,25 +29,25 @@ AtomDREF::~AtomDREF() {
 }
 
 bool AtomDREF::ReadData() {
-	uint32_t count;
-	if (!ReadUInt32(count)) {
-		FATAL("Unable to read count");
-		return false;
-	}
-	return true;
+  uint32_t count;
+  if (!ReadUInt32(count)) {
+    FATAL("Unable to read count");
+    return false;
+  }
+  return true;
 }
 
 bool AtomDREF::AtomCreated(BaseAtom *pAtom) {
-	switch (pAtom->GetTypeNumeric()) {
-		case A_URL:
-			ADD_VECTOR_END(_urls, (AtomURL *) pAtom);
-			return true;
-		default:
-		{
-			FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
-			return false;
-		}
-	}
+  switch (pAtom->GetTypeNumeric()) {
+    case A_URL:
+      ADD_VECTOR_END(_urls, (AtomURL *) pAtom);
+      return true;
+    default:
+    {
+      FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
+      return false;
+    }
+  }
 }
 
 #endif /* HAS_MEDIA_MP4 */

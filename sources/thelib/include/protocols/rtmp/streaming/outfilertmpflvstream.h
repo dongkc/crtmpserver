@@ -19,7 +19,7 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _OUTFILERTMPFLVSTREAM_H
-#define	_OUTFILERTMPFLVSTREAM_H
+#define  _OUTFILERTMPFLVSTREAM_H
 
 #include "streaming/baseoutfilestream.h"
 
@@ -28,34 +28,34 @@ class BaseRTMPProtocol;
 class DLLEXP OutFileRTMPFLVStream
 : public BaseOutFileStream {
 private:
-	File _file;
-	double _timeBase;
-	IOBuffer _audioBuffer;
-	IOBuffer _videoBuffer;
-	uint32_t _prevTagSize;
+  File _file;
+  double _timeBase;
+  IOBuffer _audioBuffer;
+  IOBuffer _videoBuffer;
+  uint32_t _prevTagSize;
 public:
-	OutFileRTMPFLVStream(BaseRTMPProtocol *pProtocol, StreamsManager *pStreamsManager,
-			string name);
+  OutFileRTMPFLVStream(BaseRTMPProtocol *pProtocol, StreamsManager *pStreamsManager,
+      string name);
 
-	virtual ~OutFileRTMPFLVStream();
-	virtual bool SignalPlay(double &absoluteTimestamp, double &length);
-	virtual bool SignalPause();
-	virtual bool SignalResume();
-	virtual bool SignalSeek(double &absoluteTimestamp);
-	virtual bool SignalStop();
-	virtual bool FeedData(uint8_t *pData, uint32_t dataLength,
-			uint32_t processedLength, uint32_t totalLength,
-			double absoluteTimestamp, bool isAudio);
-	virtual bool IsCompatibleWithType(uint64_t type);
-	virtual void SignalAttachedToInStream();
-	virtual void SignalDetachedFromInStream();
-	virtual void SignalStreamCompleted();
+  virtual ~OutFileRTMPFLVStream();
+  virtual bool SignalPlay(double &absoluteTimestamp, double &length);
+  virtual bool SignalPause();
+  virtual bool SignalResume();
+  virtual bool SignalSeek(double &absoluteTimestamp);
+  virtual bool SignalStop();
+  virtual bool FeedData(uint8_t *pData, uint32_t dataLength,
+      uint32_t processedLength, uint32_t totalLength,
+      double absoluteTimestamp, bool isAudio);
+  virtual bool IsCompatibleWithType(uint64_t type);
+  virtual void SignalAttachedToInStream();
+  virtual void SignalDetachedFromInStream();
+  virtual void SignalStreamCompleted();
 private:
-	bool Initialize();
+  bool Initialize();
 };
 
 
-#endif	/* _OUTFILERTMPFLVSTREAM_H */
+#endif  /* _OUTFILERTMPFLVSTREAM_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

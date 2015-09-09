@@ -20,39 +20,39 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _OUTNETRTMP4TSSTREAM_H
-#define	_OUTNETRTMP4TSSTREAM_H
+#define  _OUTNETRTMP4TSSTREAM_H
 
 #include "protocols/rtmp/streaming/baseoutnetrtmpstream.h"
 
 class DLLEXP OutNetRTMP4TSStream
 : public BaseOutNetRTMPStream {
 private:
-	bool _audioCodecSent;
-	bool _audioIsG711;
-	bool _videoCodecSent;
-	IOBuffer _videoBuffer;
-	bool _inboundStreamIsRTP;
-	double _lastVideoTimestamp;
-	bool _isKeyFrame;
+  bool _audioCodecSent;
+  bool _audioIsG711;
+  bool _videoCodecSent;
+  IOBuffer _videoBuffer;
+  bool _inboundStreamIsRTP;
+  double _lastVideoTimestamp;
+  bool _isKeyFrame;
 public:
-	OutNetRTMP4TSStream(BaseRTMPProtocol *pProtocol, StreamsManager *pStreamsManager,
-			string name, uint32_t rtmpStreamId, uint32_t chunkSize);
-	virtual ~OutNetRTMP4TSStream();
+  OutNetRTMP4TSStream(BaseRTMPProtocol *pProtocol, StreamsManager *pStreamsManager,
+      string name, uint32_t rtmpStreamId, uint32_t chunkSize);
+  virtual ~OutNetRTMP4TSStream();
 
-	virtual bool IsCompatibleWithType(uint64_t type);
+  virtual bool IsCompatibleWithType(uint64_t type);
 
-	virtual bool FeedData(uint8_t *pData, uint32_t dataLength,
-			uint32_t processedLength, uint32_t totalLength,
-			double absoluteTimestamp, bool isAudio);
+  virtual bool FeedData(uint8_t *pData, uint32_t dataLength,
+      uint32_t processedLength, uint32_t totalLength,
+      double absoluteTimestamp, bool isAudio);
 private:
-	bool FeedAudioData(uint8_t *pData, uint32_t dataLength, double absoluteTimestamp);
-	bool FeedVideoData(uint8_t *pData, uint32_t dataLength, double absoluteTimestamp);
-	bool SendVideoCodec(double absoluteTimestamp);
-	bool SendAudioCodec(double absoluteTimestamp);
+  bool FeedAudioData(uint8_t *pData, uint32_t dataLength, double absoluteTimestamp);
+  bool FeedVideoData(uint8_t *pData, uint32_t dataLength, double absoluteTimestamp);
+  bool SendVideoCodec(double absoluteTimestamp);
+  bool SendAudioCodec(double absoluteTimestamp);
 };
 
 
-#endif	/* _OUTNETRTMP4TSSTREAM_H */
+#endif  /* _OUTNETRTMP4TSSTREAM_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

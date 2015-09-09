@@ -26,86 +26,86 @@ map<uint32_t, BaseProtocol *> ProtocolManager::_activeProtocols;
 map<uint32_t, BaseProtocol *> ProtocolManager::_deadProtocols;
 
 void ProtocolManager::RegisterProtocol(BaseProtocol *pProtocol) {
-	if (MAP_HAS1(_activeProtocols, pProtocol->GetId()))
-		return;
-	if (MAP_HAS1(_deadProtocols, pProtocol->GetId()))
-		return;
-	_activeProtocols[pProtocol->GetId()] = pProtocol;
+  if (MAP_HAS1(_activeProtocols, pProtocol->GetId()))
+    return;
+  if (MAP_HAS1(_deadProtocols, pProtocol->GetId()))
+    return;
+  _activeProtocols[pProtocol->GetId()] = pProtocol;
 }
 
 void ProtocolManager::UnRegisterProtocol(BaseProtocol *pProtocol) {
-	if (MAP_HAS1(_activeProtocols, pProtocol->GetId()))
-		_activeProtocols.erase(pProtocol->GetId());
-	if (MAP_HAS1(_deadProtocols, pProtocol->GetId()))
-		_deadProtocols.erase(pProtocol->GetId());
+  if (MAP_HAS1(_activeProtocols, pProtocol->GetId()))
+    _activeProtocols.erase(pProtocol->GetId());
+  if (MAP_HAS1(_deadProtocols, pProtocol->GetId()))
+    _deadProtocols.erase(pProtocol->GetId());
 }
 
 void ProtocolManager::EnqueueForDelete(BaseProtocol *pProtocol) {
-	if (pProtocol->GetNearProtocol() == NULL) {
-		FINEST("Enqueue for delete for protocol %s", STR(*pProtocol));
-	}
-	pProtocol->SetApplication(NULL);
-	if (MAP_HAS1(_activeProtocols, pProtocol->GetId()))
-		_activeProtocols.erase(pProtocol->GetId());
-	if (!MAP_HAS1(_deadProtocols, pProtocol->GetId()))
-		_deadProtocols[pProtocol->GetId()] = pProtocol;
+  if (pProtocol->GetNearProtocol() == NULL) {
+    FINEST("Enqueue for delete for protocol %s", STR(*pProtocol));
+  }
+  pProtocol->SetApplication(NULL);
+  if (MAP_HAS1(_activeProtocols, pProtocol->GetId()))
+    _activeProtocols.erase(pProtocol->GetId());
+  if (!MAP_HAS1(_deadProtocols, pProtocol->GetId()))
+    _deadProtocols[pProtocol->GetId()] = pProtocol;
 }
 
 uint32_t ProtocolManager::CleanupDeadProtocols() {
-	uint32_t result = 0;
-	while (_deadProtocols.size() > 0) {
-		BaseProtocol *pBaseProtocol = MAP_VAL(_deadProtocols.begin());
-		delete pBaseProtocol;
-		result++;
-	}
-	return result;
+  uint32_t result = 0;
+  while (_deadProtocols.size() > 0) {
+    BaseProtocol *pBaseProtocol = MAP_VAL(_deadProtocols.begin());
+    delete pBaseProtocol;
+    result++;
+  }
+  return result;
 }
 
 void ProtocolManager::Shutdown() {
-	while (_activeProtocols.size() > 0) {
-		EnqueueForDelete(MAP_VAL(_activeProtocols.begin()));
-	}
+  while (_activeProtocols.size() > 0) {
+    EnqueueForDelete(MAP_VAL(_activeProtocols.begin()));
+  }
 }
 
 BaseProtocol * ProtocolManager::GetProtocol(uint32_t id,
-		bool includeDeadProtocols) {
-	if (!includeDeadProtocols && MAP_HAS1(_deadProtocols, id))
-		return NULL;
-	if (MAP_HAS1(_activeProtocols, id))
-		return _activeProtocols[id];
-	if (MAP_HAS1(_deadProtocols, id))
-		return _deadProtocols[id];
-	return NULL;
+    bool includeDeadProtocols) {
+  if (!includeDeadProtocols && MAP_HAS1(_deadProtocols, id))
+    return NULL;
+  if (MAP_HAS1(_activeProtocols, id))
+    return _activeProtocols[id];
+  if (MAP_HAS1(_deadProtocols, id))
+    return _deadProtocols[id];
+  return NULL;
 }
 
 const map<uint32_t, BaseProtocol *> & ProtocolManager::GetActiveProtocols() {
-	return _activeProtocols;
+  return _activeProtocols;
 }
 
 void ProtocolManager::GetActiveProtocols(map<uint32_t, BaseProtocol *> &result,
-		protocolManagerFilter_f filter) {
-	result.clear();
-	if (filter == NULL) {
-		result = _activeProtocols;
-		return;
-	}
+    protocolManagerFilter_f filter) {
+  result.clear();
+  if (filter == NULL) {
+    result = _activeProtocols;
+    return;
+  }
 
-	FOR_MAP(_activeProtocols, uint32_t, BaseProtocol *, i) {
-		if (!filter(MAP_VAL(i)))
-			continue;
-		result[MAP_VAL(i)->GetId()] = MAP_VAL(i);
-	}
+  FOR_MAP(_activeProtocols, uint32_t, BaseProtocol *, i) {
+    if (!filter(MAP_VAL(i)))
+      continue;
+    result[MAP_VAL(i)->GetId()] = MAP_VAL(i);
+  }
 }
 
 bool protocolManagerNetworkedProtocolsFilter(BaseProtocol *pProtocol) {
-	IOHandler *pIOHandler = pProtocol->GetIOHandler();
-	if ((pIOHandler == NULL)
-			|| ((pIOHandler->GetType() != IOHT_TCP_CARRIER)
-			&& (pIOHandler->GetType() != IOHT_UDP_CARRIER)))
-		return false;
-	return true;
+  IOHandler *pIOHandler = pProtocol->GetIOHandler();
+  if ((pIOHandler == NULL)
+      || ((pIOHandler->GetType() != IOHT_TCP_CARRIER)
+      && (pIOHandler->GetType() != IOHT_UDP_CARRIER)))
+    return false;
+  return true;
 }
 
 bool protocolManagerNearProtocolsFilter(BaseProtocol *pProtocol) {
-	return pProtocol->GetNearProtocol() == NULL;
+  return pProtocol->GetNearProtocol() == NULL;
 }

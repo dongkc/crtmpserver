@@ -22,13 +22,13 @@
 #include <android/log.h>
 
 int LogCatLogLocation::_levelsMap[] = {
-	ANDROID_LOG_FATAL,
-	ANDROID_LOG_ERROR,
-	ANDROID_LOG_WARN,
-	ANDROID_LOG_INFO,
-	ANDROID_LOG_DEBUG,
-	ANDROID_LOG_VERBOSE,
-	ANDROID_LOG_VERBOSE
+  ANDROID_LOG_FATAL,
+  ANDROID_LOG_ERROR,
+  ANDROID_LOG_WARN,
+  ANDROID_LOG_INFO,
+  ANDROID_LOG_DEBUG,
+  ANDROID_LOG_VERBOSE,
+  ANDROID_LOG_VERBOSE
 };
 
 LogCatLogLocation::LogCatLogLocation(Variant &configuration)
@@ -40,18 +40,18 @@ LogCatLogLocation::~LogCatLogLocation() {
 }
 
 void LogCatLogLocation::Log(int32_t level, string fileName, uint32_t lineNumber,
-		string functionName, string message) {
-	if (_level < 0 || level > _level) {
-		return;
-	}
+    string functionName, string message) {
+  if (_level < 0 || level > _level) {
+    return;
+  }
 
-	__android_log_write(_levelsMap[level], "rtmpd",
-			STR(format("%s:%u %s", STR(fileName), lineNumber, STR(message))));
+  __android_log_write(_levelsMap[level], "rtmpd",
+      STR(format("%s:%u %s", STR(fileName), lineNumber, STR(message))));
 }
 
 void LogCatLogLocation::Log(int32_t level, string fileName, uint32_t lineNumber,
-		string functionName, Variant &le) {
-	return;
+    string functionName, Variant &le) {
+  return;
 }
 
 void LogCatLogLocation::SignalFork() {

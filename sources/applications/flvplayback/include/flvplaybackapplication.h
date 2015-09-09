@@ -25,61 +25,61 @@
 
 namespace app_flvplayback {
 #ifdef HAS_PROTOCOL_RTMP
-	class RTMPAppProtocolHandler;
+  class RTMPAppProtocolHandler;
 #endif /* HAS_PROTOCOL_RTMP */
 #ifdef HAS_PROTOCOL_LIVEFLV
-	class LiveFLVAppProtocolHandler;
+  class LiveFLVAppProtocolHandler;
 #endif /* HAS_PROTOCOL_LIVEFLV */
 #ifdef HAS_PROTOCOL_TS
-	class TSAppProtocolHandler;
+  class TSAppProtocolHandler;
 #endif /* HAS_PROTOCOL_TS */
 #ifdef HAS_PROTOCOL_RTP
-	class RTPAppProtocolHandler;
-	class RTSPAppProtocolHandler;
+  class RTPAppProtocolHandler;
+  class RTSPAppProtocolHandler;
 #endif /* HAS_PROTOCOL_RTP */
 #ifdef HAS_PROTOCOL_MMS
-	class MMSAppProtocolHandler;
+  class MMSAppProtocolHandler;
 #endif /* HAS_PROTOCOL_MMS */
 #ifdef HAS_PROTOCOL_RAWHTTPSTREAM
-	class RawHTTPStreamAppProtocolHandler;
+  class RawHTTPStreamAppProtocolHandler;
 #endif /* HAS_PROTOCOL_RAWHTTPSTREAM */
 #ifdef HAS_PROTOCOL_HTTP
-	class HTTPAppProtocolHandler;
+  class HTTPAppProtocolHandler;
 #endif /* HAS_PROTOCOL_HTTP */
 
-	class FLVPlaybackApplication
-	: public BaseClientApplication {
-	private:
+  class FLVPlaybackApplication
+  : public BaseClientApplication {
+  private:
 #ifdef HAS_PROTOCOL_RTMP
-		RTMPAppProtocolHandler *_pRTMPHandler;
+    RTMPAppProtocolHandler *_pRTMPHandler;
 #endif /* HAS_PROTOCOL_RTMP */
 #ifdef HAS_PROTOCOL_LIVEFLV
-		LiveFLVAppProtocolHandler *_pLiveFLVHandler;
+    LiveFLVAppProtocolHandler *_pLiveFLVHandler;
 #endif /* HAS_PROTOCOL_LIVEFLV */
 #ifdef HAS_PROTOCOL_TS
-		TSAppProtocolHandler *_pTSHandler;
+    TSAppProtocolHandler *_pTSHandler;
 #endif /* HAS_PROTOCOL_TS */
 #ifdef HAS_PROTOCOL_RTP
-		RTPAppProtocolHandler *_pRTPHandler;
-		RTSPAppProtocolHandler *_pRTSPHandler;
+    RTPAppProtocolHandler *_pRTPHandler;
+    RTSPAppProtocolHandler *_pRTSPHandler;
 #endif /* HAS_PROTOCOL_RTP */
 #ifdef HAS_PROTOCOL_MMS
-		MMSAppProtocolHandler *_pMMSHandler;
+    MMSAppProtocolHandler *_pMMSHandler;
 #endif /* HAS_PROTOCOL_MMS */
 #ifdef HAS_PROTOCOL_RAWHTTPSTREAM
-		RawHTTPStreamAppProtocolHandler *_pRawHTTPStreamHandler;
+    RawHTTPStreamAppProtocolHandler *_pRawHTTPStreamHandler;
 #endif /* HAS_PROTOCOL_RAWHTTPSTREAM */
 #ifdef HAS_PROTOCOL_HTTP
-		HTTPAppProtocolHandler *_pHTTPHandler;
+    HTTPAppProtocolHandler *_pHTTPHandler;
 #endif /* HAS_PROTOCOL_HTTP */
-	public:
-		FLVPlaybackApplication(Variant &configuration);
-		virtual ~FLVPlaybackApplication();
+  public:
+    FLVPlaybackApplication(Variant &configuration);
+    virtual ~FLVPlaybackApplication();
 
-		virtual bool Initialize();
-	};
+    virtual bool Initialize();
+  };
 }
 
-#endif	/* _FLVPLAYBACKAPPLICATION_H */
+#endif  /* _FLVPLAYBACKAPPLICATION_H */
 
 

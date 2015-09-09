@@ -24,8 +24,8 @@
 
 MonitorApplication::MonitorApplication(Variant &configuration)
 : BaseClientApplication(configuration) {
-	_pRTMPHandler = new MonitorRTMPProtocolHandler(configuration);
-	RegisterAppProtocolHandler(PT_MONITORRTMP, _pRTMPHandler);
+  _pRTMPHandler = new MonitorRTMPProtocolHandler(configuration);
+  RegisterAppProtocolHandler(PT_MONITORRTMP, _pRTMPHandler);
 }
 
 MonitorApplication::~MonitorApplication() {

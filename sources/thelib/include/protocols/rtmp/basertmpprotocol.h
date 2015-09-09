@@ -20,7 +20,7 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _BASERTMPPROTOCOL_H
-#define	_BASERTMPPROTOCOL_H
+#define  _BASERTMPPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 #include "protocols/rtmp/channel.h"
@@ -35,11 +35,11 @@
 #define MAX_AV_CHANNLES MAX_CHANNELS_COUNT
 
 typedef enum {
-	RTMP_STATE_NOT_INITIALIZED,
-	RTMP_STATE_CLIENT_REQUEST_RECEIVED,
-	RTMP_STATE_CLIENT_REQUEST_SENT,
-	RTMP_STATE_SERVER_RESPONSE_SENT,
-	RTMP_STATE_DONE
+  RTMP_STATE_NOT_INITIALIZED,
+  RTMP_STATE_CLIENT_REQUEST_RECEIVED,
+  RTMP_STATE_CLIENT_REQUEST_SENT,
+  RTMP_STATE_SERVER_RESPONSE_SENT,
+  RTMP_STATE_DONE
 } RTMPState;
 
 class BaseStream;
@@ -56,95 +56,95 @@ class MonitorRTMPProtocol;
 class DLLEXP BaseRTMPProtocol
 : public BaseProtocol {
 protected:
-	static uint8_t genuineFMSKey[];
-	static uint8_t genuineFPKey[];
-	bool _handshakeCompleted;
-	RTMPState _rtmpState;
-	IOBuffer _outputBuffer;
+  static uint8_t genuineFMSKey[];
+  static uint8_t genuineFPKey[];
+  bool _handshakeCompleted;
+  RTMPState _rtmpState;
+  IOBuffer _outputBuffer;
 #ifdef ENFORCE_RTMP_OUTPUT_CHECKS
-	IOBuffer _intermediateBuffer;
-	MonitorRTMPProtocol *_pMonitor;
+  IOBuffer _intermediateBuffer;
+  MonitorRTMPProtocol *_pMonitor;
 #endif /* ENFORCE_RTMP_OUTPUT_CHECKS */
-	uint64_t _nextReceivedBytesCountReport;
-	uint32_t _winAckSize;
-	Channel _channels[MAX_CHANNELS_COUNT];
-	int32_t _selectedChannel;
-	uint32_t _inboundChunkSize;
-	uint32_t _outboundChunkSize;
-	BaseRTMPAppProtocolHandler *_pProtocolHandler;
-	RTMPProtocolSerializer _rtmpProtocolSerializer;
-	BaseStream *_streams[MAX_STREAMS_COUNT];
-	vector<uint32_t> _channelsPool;
-	LinkedListNode<BaseOutNetRTMPStream *> *_pSignaledRTMPOutNetStream;
-	map<InFileRTMPStream *, InFileRTMPStream *> _inFileStreams;
-	uint64_t _rxInvokes;
-	uint64_t _txInvokes;
-	map<string, ClientSO *> _sos;
+  uint64_t _nextReceivedBytesCountReport;
+  uint32_t _winAckSize;
+  Channel _channels[MAX_CHANNELS_COUNT];
+  int32_t _selectedChannel;
+  uint32_t _inboundChunkSize;
+  uint32_t _outboundChunkSize;
+  BaseRTMPAppProtocolHandler *_pProtocolHandler;
+  RTMPProtocolSerializer _rtmpProtocolSerializer;
+  BaseStream *_streams[MAX_STREAMS_COUNT];
+  vector<uint32_t> _channelsPool;
+  LinkedListNode<BaseOutNetRTMPStream *> *_pSignaledRTMPOutNetStream;
+  map<InFileRTMPStream *, InFileRTMPStream *> _inFileStreams;
+  uint64_t _rxInvokes;
+  uint64_t _txInvokes;
+  map<string, ClientSO *> _sos;
 public:
-	BaseRTMPProtocol(uint64_t protocolType);
-	virtual ~BaseRTMPProtocol();
+  BaseRTMPProtocol(uint64_t protocolType);
+  virtual ~BaseRTMPProtocol();
 
-	ClientSO *GetSO(string &name);
-	bool CreateSO(string &name);
-	void SignalBeginSOProcess(string &name);
-	bool HandleSOPrimitive(string &name, Variant &primitive);
-	void SignalEndSOProcess(string &name, uint32_t versionNumber);
-	bool ClientSOSend(string &name, Variant &parameters);
-	bool ClientSOSetProperty(string &soName, string &propName, Variant &propValue);
+  ClientSO *GetSO(string &name);
+  bool CreateSO(string &name);
+  void SignalBeginSOProcess(string &name);
+  bool HandleSOPrimitive(string &name, Variant &primitive);
+  void SignalEndSOProcess(string &name, uint32_t versionNumber);
+  bool ClientSOSend(string &name, Variant &parameters);
+  bool ClientSOSetProperty(string &soName, string &propName, Variant &propValue);
 
-	virtual bool Initialize(Variant &parameters);
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual IOBuffer * GetOutputBuffer();
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
-	virtual bool TimePeriodElapsed();
-	virtual void ReadyForSend();
-	virtual void SetApplication(BaseClientApplication *pApplication);
+  virtual bool Initialize(Variant &parameters);
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual IOBuffer * GetOutputBuffer();
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool TimePeriodElapsed();
+  virtual void ReadyForSend();
+  virtual void SetApplication(BaseClientApplication *pApplication);
 
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
 
-	bool ResetChannel(uint32_t channelId);
+  bool ResetChannel(uint32_t channelId);
 
-	bool SendMessage(Variant &message);
-	bool SendRawData(Header &header, Channel &channel, uint8_t *pData, uint32_t length);
-	bool SendRawData(uint8_t *pData, uint32_t length);
+  bool SendMessage(Variant &message);
+  bool SendRawData(Header &header, Channel &channel, uint8_t *pData, uint32_t length);
+  bool SendRawData(uint8_t *pData, uint32_t length);
 
-	void SetWinAckSize(uint32_t winAckSize);
+  void SetWinAckSize(uint32_t winAckSize);
 
-	uint32_t GetOutboundChunkSize();
-	uint32_t GetInboundChunkSize();
-	bool SetInboundChunkSize(uint32_t chunkSize);
-	void TrySetOutboundChunkSize(uint32_t chunkSize);
+  uint32_t GetOutboundChunkSize();
+  uint32_t GetInboundChunkSize();
+  bool SetInboundChunkSize(uint32_t chunkSize);
+  void TrySetOutboundChunkSize(uint32_t chunkSize);
 
-	BaseStream * GetRTMPStream(uint32_t rtmpStreamId);
-	bool CloseStream(uint32_t streamId, bool createNeutralStream);
-	RTMPStream * CreateNeutralStream(uint32_t &streamId);
-	InNetRTMPStream * CreateINS(uint32_t channelId, uint32_t streamId, string streamName);
-	BaseOutNetRTMPStream * CreateONS(uint32_t streamId, string streamName,
-			uint64_t inStreamType, uint32_t &clientSideBuffer);
-	void SignalONS(BaseOutNetRTMPStream *pONS);
-	InFileRTMPStream * CreateIFS(Variant &metadata);
-	void RemoveIFS(InFileRTMPStream *pIFS);
+  BaseStream * GetRTMPStream(uint32_t rtmpStreamId);
+  bool CloseStream(uint32_t streamId, bool createNeutralStream);
+  RTMPStream * CreateNeutralStream(uint32_t &streamId);
+  InNetRTMPStream * CreateINS(uint32_t channelId, uint32_t streamId, string streamName);
+  BaseOutNetRTMPStream * CreateONS(uint32_t streamId, string streamName,
+      uint64_t inStreamType, uint32_t &clientSideBuffer);
+  void SignalONS(BaseOutNetRTMPStream *pONS);
+  InFileRTMPStream * CreateIFS(Variant &metadata);
+  void RemoveIFS(InFileRTMPStream *pIFS);
 
-	Channel *ReserveChannel();
-	void ReleaseChannel(Channel *pChannel);
-	virtual bool EnqueueForTimeEvent(uint32_t seconds);
+  Channel *ReserveChannel();
+  void ReleaseChannel(Channel *pChannel);
+  virtual bool EnqueueForTimeEvent(uint32_t seconds);
 protected:
-	virtual bool PerformHandshake(IOBuffer &buffer) = 0;
-	uint32_t GetDHOffset(uint8_t *pBuffer, uint8_t schemeNumber);
-	uint32_t GetDigestOffset(uint8_t *pBuffer, uint8_t schemeNumber);
+  virtual bool PerformHandshake(IOBuffer &buffer) = 0;
+  uint32_t GetDHOffset(uint8_t *pBuffer, uint8_t schemeNumber);
+  uint32_t GetDigestOffset(uint8_t *pBuffer, uint8_t schemeNumber);
 private:
-	uint32_t GetDHOffset0(uint8_t *pBuffer);
-	uint32_t GetDHOffset1(uint8_t *pBuffer);
-	uint32_t GetDigestOffset0(uint8_t *pBuffer);
-	uint32_t GetDigestOffset1(uint8_t *pBuffer);
-	bool ProcessBytes(IOBuffer &buffer);
+  uint32_t GetDHOffset0(uint8_t *pBuffer);
+  uint32_t GetDHOffset1(uint8_t *pBuffer);
+  uint32_t GetDigestOffset0(uint8_t *pBuffer);
+  uint32_t GetDigestOffset1(uint8_t *pBuffer);
+  bool ProcessBytes(IOBuffer &buffer);
 
 };
 
 
-#endif	/* _BASERTMPPROTOCOL_H */
+#endif  /* _BASERTMPPROTOCOL_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

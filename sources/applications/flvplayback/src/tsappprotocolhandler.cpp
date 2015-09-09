@@ -35,5 +35,5 @@ TSAppProtocolHandler::TSAppProtocolHandler(Variant &configuration)
 
 TSAppProtocolHandler::~TSAppProtocolHandler() {
 }
-#endif	/* HAS_PROTOCOL_TS */
+#endif  /* HAS_PROTOCOL_TS */
 

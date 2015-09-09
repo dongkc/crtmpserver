@@ -19,21 +19,21 @@
 
 
 #ifndef _AESAPPPROTOCOLHANDLER_H
-#define	_AESAPPPROTOCOLHANDLER_H
+#define  _AESAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 namespace app_applestreamingclient {
 
-	class AESAppProtocolHandler
-	: public BaseAppProtocolHandler {
-	public:
-		AESAppProtocolHandler(Variant &configuration);
-		virtual ~AESAppProtocolHandler();
+  class AESAppProtocolHandler
+  : public BaseAppProtocolHandler {
+  public:
+    AESAppProtocolHandler(Variant &configuration);
+    virtual ~AESAppProtocolHandler();
 
-		virtual void RegisterProtocol(BaseProtocol *pProtocol);
-		virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
-	};
+    virtual void RegisterProtocol(BaseProtocol *pProtocol);
+    virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  };
 }
 
-#endif	/* _AESAPPPROTOCOLHANDLER_H */
+#endif  /* _AESAPPPROTOCOLHANDLER_H */
 

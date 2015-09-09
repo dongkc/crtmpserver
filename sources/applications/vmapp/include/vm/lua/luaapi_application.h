@@ -19,16 +19,16 @@
 
 #ifdef HAS_LUA
 #ifndef _LUAAPI_APPLICATION_H
-#define	_LUAAPI_APPLICATION_H
+#define  _LUAAPI_APPLICATION_H
 
 #include "common.h"
 
 namespace app_vmapp {
-	int luaapi_application_getConfig(lua_State *L);
-	int luaapi_application_outboundConnectionFailed(lua_State *L);
-	int luaapi_application_pullExternalStream(lua_State *L);
-	int luaapi_application_pushLocalStream(lua_State *L);
+  int luaapi_application_getConfig(lua_State *L);
+  int luaapi_application_outboundConnectionFailed(lua_State *L);
+  int luaapi_application_pullExternalStream(lua_State *L);
+  int luaapi_application_pushLocalStream(lua_State *L);
 };
 
-#endif	/* _LUAAPI_APPLICATION_H */
-#endif	/* HAS_LUA */
+#endif  /* _LUAAPI_APPLICATION_H */
+#endif  /* HAS_LUA */

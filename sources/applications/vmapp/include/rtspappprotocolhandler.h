@@ -19,18 +19,18 @@
 
 
 #ifndef _RTSPAPPPROTOCOLHANDLER_H
-#define	_RTSPAPPPROTOCOLHANDLER_H
+#define  _RTSPAPPPROTOCOLHANDLER_H
 
 #include "protocols/rtp/basertspappprotocolhandler.h"
 
 namespace app_vmapp {
 
-	class RTSPAppProtocolHandler
-	: public BaseRTSPAppProtocolHandler {
-	public:
-		RTSPAppProtocolHandler(Variant &configuration);
-		virtual ~RTSPAppProtocolHandler();
-	};
+  class RTSPAppProtocolHandler
+  : public BaseRTSPAppProtocolHandler {
+  public:
+    RTSPAppProtocolHandler(Variant &configuration);
+    virtual ~RTSPAppProtocolHandler();
+  };
 }
 
-#endif	/* _RTSPAPPPROTOCOLHANDLER_H */
+#endif  /* _RTSPAPPPROTOCOLHANDLER_H */

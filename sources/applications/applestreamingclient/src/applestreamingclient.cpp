@@ -23,6 +23,6 @@
 using namespace app_applestreamingclient;
 
 extern "C" BaseClientApplication *GetApplication_applestreamingclient(Variant configuration) {
-	return new AppleStreamingClientApplication(configuration);
+  return new AppleStreamingClientApplication(configuration);
 }
 

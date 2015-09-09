@@ -20,14 +20,14 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _MESSAGEFACTORIES_H
-#define	_MESSAGEFACTORIES_H
+#define  _MESSAGEFACTORIES_H
 
 #include "protocols/rtmp/messagefactories/genericmessagefactory.h"
 #include "protocols/rtmp/messagefactories/connectionmessagefactory.h"
 #include "protocols/rtmp/messagefactories/streammessagefactory.h"
 #include "protocols/rtmp/messagefactories/somessagefactory.h"
 
-#endif	/* _MESSAGEFACTORIES_H */
+#endif  /* _MESSAGEFACTORIES_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

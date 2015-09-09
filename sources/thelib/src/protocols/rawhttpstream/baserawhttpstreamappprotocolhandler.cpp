@@ -22,7 +22,7 @@
 #include "protocols/rawhttpstream/baserawhttpstreamappprotocolhandler.h"
 
 BaseRawHTTPStreamAppProtocolHandler::BaseRawHTTPStreamAppProtocolHandler(
-		Variant &configuration)
+    Variant &configuration)
 : BaseAppProtocolHandler(configuration) {
 
 }

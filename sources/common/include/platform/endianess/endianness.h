@@ -19,7 +19,7 @@
 
 
 #ifndef _ENDIANESS_H
-#define	_ENDIANESS_H
+#define  _ENDIANESS_H
 
 //LITTLE ENDIAN SYSTEMS
 #ifdef LITTLE_ENDIAN_BYTE_ALIGNED
@@ -38,6 +38,6 @@
 #include "platform/endianess/big_endian_short_aligned.h"
 #endif
 
-#endif	/* _ENDIANESS_H */
+#endif  /* _ENDIANESS_H */
 
 

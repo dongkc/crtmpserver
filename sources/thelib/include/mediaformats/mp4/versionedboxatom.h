@@ -19,7 +19,7 @@
 
 #ifdef HAS_MEDIA_MP4
 #ifndef _VERSIONEDBOXATOM_H
-#define	_VERSIONEDBOXATOM_H
+#define  _VERSIONEDBOXATOM_H
 
 
 #include "mediaformats/mp4/boxatom.h"
@@ -27,18 +27,18 @@
 class VersionedBoxAtom
 : public BoxAtom {
 protected:
-	uint8_t _version;
-	uint8_t _flags[3];
+  uint8_t _version;
+  uint8_t _flags[3];
 public:
-	VersionedBoxAtom(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~VersionedBoxAtom();
+  VersionedBoxAtom(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~VersionedBoxAtom();
 protected:
-	virtual bool Read();
-	virtual bool ReadData() = 0;
+  virtual bool Read();
+  virtual bool ReadData() = 0;
 };
 
 
-#endif	/* _VERSIONEDBOXATOM_H */
+#endif  /* _VERSIONEDBOXATOM_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

@@ -23,27 +23,27 @@
 #include "protocols/ts/tsboundscheck.h"
 
 bool ReadStreamDescriptor(StreamDescriptor &descriptor,
-		uint8_t *pBuffer, uint32_t &cursor, uint32_t maxCursor) {
-	CHECK_BOUNDS(2);
-	descriptor.type = pBuffer[cursor++];
-	descriptor.length = pBuffer[cursor++];
-	CHECK_BOUNDS(descriptor.length);
+    uint8_t *pBuffer, uint32_t &cursor, uint32_t maxCursor) {
+  CHECK_BOUNDS(2);
+  descriptor.type = pBuffer[cursor++];
+  descriptor.length = pBuffer[cursor++];
+  CHECK_BOUNDS(descriptor.length);
 
-	//iso13818-1.pdf Table 2-39, page 81/174
-	switch (descriptor.type) {
-		case 14://Maximum_bitrate_descriptor
-		{
-			CHECK_BOUNDS(3);
-			descriptor.payload.maximum_bitrate_descriptor.maximum_bitrate =
-					(((pBuffer[cursor] << 16) | (pBuffer[cursor + 1] << 8) | (pBuffer[cursor + 2]))&0x3fffff) * 50 * 8 / 1024;
-			break;
-		}
-		default:
-			break;
-	}
+  //iso13818-1.pdf Table 2-39, page 81/174
+  switch (descriptor.type) {
+    case 14://Maximum_bitrate_descriptor
+    {
+      CHECK_BOUNDS(3);
+      descriptor.payload.maximum_bitrate_descriptor.maximum_bitrate =
+          (((pBuffer[cursor] << 16) | (pBuffer[cursor + 1] << 8) | (pBuffer[cursor + 2]))&0x3fffff) * 50 * 8 / 1024;
+      break;
+    }
+    default:
+      break;
+  }
 
-	cursor += descriptor.length;
-	return true;
+  cursor += descriptor.length;
+  return true;
 }
-#endif	/* HAS_PROTOCOL_TS */
+#endif  /* HAS_PROTOCOL_TS */
 

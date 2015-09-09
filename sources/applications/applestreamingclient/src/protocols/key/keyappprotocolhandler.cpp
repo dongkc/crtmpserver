@@ -30,14 +30,14 @@ KeyAppProtocolHandler::~KeyAppProtocolHandler() {
 }
 
 void KeyAppProtocolHandler::RegisterProtocol(BaseProtocol *pProtocol) {
-	//1. Get the proper protocol type
-	InboundKeyProtocol *pKeyProtocol = (InboundKeyProtocol *) pProtocol;
+  //1. Get the proper protocol type
+  InboundKeyProtocol *pKeyProtocol = (InboundKeyProtocol *) pProtocol;
 
-	//2. Do the HTTP request
-	if (!pKeyProtocol->DoHTTPRequest()) {
-		FATAL("Unable to do the HTTP request");
-		pProtocol->EnqueueForDelete();
-	}
+  //2. Do the HTTP request
+  if (!pKeyProtocol->DoHTTPRequest()) {
+    FATAL("Unable to do the HTTP request");
+    pProtocol->EnqueueForDelete();
+  }
 }
 
 void KeyAppProtocolHandler::UnRegisterProtocol(BaseProtocol *pProtocol) {

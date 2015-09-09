@@ -19,25 +19,25 @@
 
 
 #ifndef _VARIANTMAP_H
-#define	_VARIANTMAP_H
+#define  _VARIANTMAP_H
 
 struct VariantMap {
-	string typeName;
-	map<string, Variant> children;
-	bool isArray;
+  string typeName;
+  map<string, Variant> children;
+  bool isArray;
 
-	VariantMap(VariantMap & variantMap) {
-		typeName = variantMap.typeName;
-		children = variantMap.children;
-		isArray = variantMap.isArray;
-	}
+  VariantMap(VariantMap & variantMap) {
+    typeName = variantMap.typeName;
+    children = variantMap.children;
+    isArray = variantMap.isArray;
+  }
 
-	VariantMap() {
-		isArray = false;
-	}
+  VariantMap() {
+    isArray = false;
+  }
 };
 
 
-#endif	/* _VARIANTMAP_H */
+#endif  /* _VARIANTMAP_H */
 
 

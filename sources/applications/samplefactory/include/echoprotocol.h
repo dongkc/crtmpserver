@@ -18,28 +18,28 @@
  */
 
 #ifndef _ECHOPROTOCOL_H
-#define	_ECHOPROTOCOL_H
+#define  _ECHOPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
 namespace app_samplefactory {
 
-	class EchoProtocol
-	: public BaseProtocol {
-	private:
-		IOBuffer _outputBuffer;
-	public:
-		EchoProtocol();
-		virtual ~EchoProtocol();
+  class EchoProtocol
+  : public BaseProtocol {
+  private:
+    IOBuffer _outputBuffer;
+  public:
+    EchoProtocol();
+    virtual ~EchoProtocol();
 
-		virtual bool Initialize(Variant &parameters);
-		virtual IOBuffer * GetOutputBuffer();
-		virtual bool AllowFarProtocol(uint64_t type);
-		virtual bool AllowNearProtocol(uint64_t type);
-		virtual bool SignalInputData(int32_t recvAmount);
-		virtual bool SignalInputData(IOBuffer &buffer);
-	};
+    virtual bool Initialize(Variant &parameters);
+    virtual IOBuffer * GetOutputBuffer();
+    virtual bool AllowFarProtocol(uint64_t type);
+    virtual bool AllowNearProtocol(uint64_t type);
+    virtual bool SignalInputData(int32_t recvAmount);
+    virtual bool SignalInputData(IOBuffer &buffer);
+  };
 }
 
-#endif	/* _ECHOPROTOCOL_H */
+#endif  /* _ECHOPROTOCOL_H */
 

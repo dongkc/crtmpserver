@@ -20,25 +20,25 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _RTMPAPPPROTOCOLHANDLER_H
-#define	_RTMPAPPPROTOCOLHANDLER_H
+#define  _RTMPAPPPROTOCOLHANDLER_H
 
 #include "protocols/rtmp/basertmpappprotocolhandler.h"
 
 namespace app_flvplayback {
 
-	class RTMPAppProtocolHandler
-	: public BaseRTMPAppProtocolHandler {
-	public:
-		RTMPAppProtocolHandler(Variant &configuration);
-		virtual ~RTMPAppProtocolHandler();
+  class RTMPAppProtocolHandler
+  : public BaseRTMPAppProtocolHandler {
+  public:
+    RTMPAppProtocolHandler(Variant &configuration);
+    virtual ~RTMPAppProtocolHandler();
 
-		virtual bool ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
-				Variant &request);
-	private:
-		bool ProcessGetAvailableFlvs(BaseRTMPProtocol *pFrom, Variant &request);
-		bool ProcessInsertMetadata(BaseRTMPProtocol *pFrom, Variant &request);
-	};
+    virtual bool ProcessInvokeGeneric(BaseRTMPProtocol *pFrom,
+        Variant &request);
+  private:
+    bool ProcessGetAvailableFlvs(BaseRTMPProtocol *pFrom, Variant &request);
+    bool ProcessInsertMetadata(BaseRTMPProtocol *pFrom, Variant &request);
+  };
 }
-#endif	/* _RTMPAPPPROTOCOLHANDLER_H */
+#endif  /* _RTMPAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_RTMP */
 

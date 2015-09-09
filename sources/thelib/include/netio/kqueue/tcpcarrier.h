@@ -19,44 +19,44 @@
 
 #ifdef NET_KQUEUE
 #ifndef _TCPCARRIER_H
-#define	_TCPCARRIER_H
+#define  _TCPCARRIER_H
 
 #include "netio/kqueue/iohandler.h"
 
 class TCPCarrier
 : public IOHandler {
 private:
-	bool _writeDataEnabled;
-	bool _enableWriteDataCalled;
-	sockaddr_in _farAddress;
-	string _farIp;
-	uint16_t _farPort;
-	sockaddr_in _nearAddress;
-	string _nearIp;
-	uint16_t _nearPort;
-	uint64_t _rx;
-	uint64_t _tx;
-	int32_t _ioAmount;
+  bool _writeDataEnabled;
+  bool _enableWriteDataCalled;
+  sockaddr_in _farAddress;
+  string _farIp;
+  uint16_t _farPort;
+  sockaddr_in _nearAddress;
+  string _nearIp;
+  uint16_t _nearPort;
+  uint64_t _rx;
+  uint64_t _tx;
+  int32_t _ioAmount;
 public:
-	TCPCarrier(int32_t fd);
-	virtual ~TCPCarrier();
-	virtual bool OnEvent(struct kevent &event);
-	virtual bool SignalOutputData();
-	virtual operator string();
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  TCPCarrier(int32_t fd);
+  virtual ~TCPCarrier();
+  virtual bool OnEvent(struct kevent &event);
+  virtual bool SignalOutputData();
+  virtual operator string();
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
 
-	sockaddr_in &GetFarEndpointAddress();
-	string GetFarEndpointAddressIp();
-	uint16_t GetFarEndpointPort();
-	sockaddr_in &GetNearEndpointAddress();
-	string GetNearEndpointAddressIp();
-	uint16_t GetNearEndpointPort();
+  sockaddr_in &GetFarEndpointAddress();
+  string GetFarEndpointAddressIp();
+  uint16_t GetFarEndpointPort();
+  sockaddr_in &GetNearEndpointAddress();
+  string GetNearEndpointAddressIp();
+  uint16_t GetNearEndpointPort();
 private:
-	bool GetEndpointsInfo();
+  bool GetEndpointsInfo();
 };
 
 
-#endif	/* _TCPCARRIER_H */
+#endif  /* _TCPCARRIER_H */
 #endif /* NET_KQUEUE */
 
 

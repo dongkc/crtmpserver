@@ -19,26 +19,26 @@
 
 #ifdef NET_SELECT
 #ifndef _IOTIMER_H
-#define	_IOTIMER_H
+#define  _IOTIMER_H
 
 #include "netio/select/iohandler.h"
 
 class DLLEXP IOTimer
 : public IOHandler {
 private:
-	static int32_t _idGenerator;
+  static int32_t _idGenerator;
 public:
-	IOTimer();
-	virtual ~IOTimer();
+  IOTimer();
+  virtual ~IOTimer();
 
-	virtual bool SignalOutputData();
-	virtual bool OnEvent(select_event &event);
-	bool EnqueueForTimeEvent(uint32_t seconds);
-	virtual operator string();
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  virtual bool SignalOutputData();
+  virtual bool OnEvent(select_event &event);
+  bool EnqueueForTimeEvent(uint32_t seconds);
+  virtual operator string();
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
 };
 
-#endif	/* _TIMERIO_H */
+#endif  /* _TIMERIO_H */
 #endif /* NET_SELECT */
 
 

@@ -18,33 +18,33 @@
  */
 
 #ifndef _HTTPDOWNLOADPROTOCOL_H
-#define	_HTTPDOWNLOADPROTOCOL_H
+#define  _HTTPDOWNLOADPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
 namespace app_samplefactory {
 
-	class HTTPDownloadProtocol
-	: public BaseProtocol {
-	private:
-		IOBuffer _outputBuffer;
-	public:
-		HTTPDownloadProtocol();
-		virtual ~HTTPDownloadProtocol();
-		
-		virtual bool Initialize(Variant &parameters);
-		virtual IOBuffer * GetOutputBuffer();
-		virtual bool AllowFarProtocol(uint64_t type);
-		virtual bool AllowNearProtocol(uint64_t type);
-		virtual bool SignalInputData(int32_t recvAmount);
-		virtual bool SignalInputData(IOBuffer &buffer);
-		
-		static bool DoSimpleGETRequestWithSomePayload(string stringUri, string payload);
-		static bool SignalProtocolCreated(BaseProtocol *pProtocol, Variant &parameters);
-	private:
-		bool SendRequest(Variant &parameters);
-	};
+  class HTTPDownloadProtocol
+  : public BaseProtocol {
+  private:
+    IOBuffer _outputBuffer;
+  public:
+    HTTPDownloadProtocol();
+    virtual ~HTTPDownloadProtocol();
+    
+    virtual bool Initialize(Variant &parameters);
+    virtual IOBuffer * GetOutputBuffer();
+    virtual bool AllowFarProtocol(uint64_t type);
+    virtual bool AllowNearProtocol(uint64_t type);
+    virtual bool SignalInputData(int32_t recvAmount);
+    virtual bool SignalInputData(IOBuffer &buffer);
+    
+    static bool DoSimpleGETRequestWithSomePayload(string stringUri, string payload);
+    static bool SignalProtocolCreated(BaseProtocol *pProtocol, Variant &parameters);
+  private:
+    bool SendRequest(Variant &parameters);
+  };
 }
 
-#endif	/* _HTTPDOWNLOADPROTOCOL_H */
+#endif  /* _HTTPDOWNLOADPROTOCOL_H */
 

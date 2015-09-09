@@ -24,33 +24,33 @@
 #include "mediaformats/mp4/versionedatom.h"
 
 struct AFRAENTRY {
-	uint64_t time;
-	uint64_t offset;
+  uint64_t time;
+  uint64_t offset;
 };
 
 struct GLOBALAFRAENTRY {
-	uint64_t time;
-	uint32_t segment;
-	uint32_t fragment;
-	uint64_t afraOffset;
-	uint64_t offsetFromAfra;
+  uint64_t time;
+  uint32_t segment;
+  uint32_t fragment;
+  uint64_t afraOffset;
+  uint64_t offsetFromAfra;
 };
 
 class AtomAFRA
 : public VersionedAtom {
 private:
-	uint8_t _flags;
-	uint32_t _timeScale;
-	uint32_t _entryCount;
-	uint32_t _globalEntryCount;
-	vector<AFRAENTRY> _localAccessEntries;
-	vector<GLOBALAFRAENTRY> _globalAccessEntries;
+  uint8_t _flags;
+  uint32_t _timeScale;
+  uint32_t _entryCount;
+  uint32_t _globalEntryCount;
+  vector<AFRAENTRY> _localAccessEntries;
+  vector<GLOBALAFRAENTRY> _globalAccessEntries;
 public:
-	AtomAFRA(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomAFRA();
+  AtomAFRA(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomAFRA();
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
-#endif	/* _ATOMAFRA_H */
+#endif  /* _ATOMAFRA_H */
 #endif /* HAS_MEDIA_MP4 */

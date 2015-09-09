@@ -23,39 +23,39 @@
 
 AtomMINF::AtomMINF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : BoxAtom(pDocument, type, size, start) {
-	_pSMHD = NULL;
-	_pDINF = NULL;
-	_pSTBL = NULL;
-	_pVMHD = NULL;
-	_pHDLR = NULL;
+  _pSMHD = NULL;
+  _pDINF = NULL;
+  _pSTBL = NULL;
+  _pVMHD = NULL;
+  _pHDLR = NULL;
 }
 
 AtomMINF::~AtomMINF() {
 }
 
 bool AtomMINF::AtomCreated(BaseAtom *pAtom) {
-	switch (pAtom->GetTypeNumeric()) {
-		case A_SMHD:
-			_pSMHD = (AtomSMHD *) pAtom;
-			return true;
-		case A_DINF:
-			_pDINF = (AtomDINF *) pAtom;
-			return true;
-		case A_STBL:
-			_pSTBL = (AtomSTBL *) pAtom;
-			return true;
-		case A_VMHD:
-			_pVMHD = (AtomVMHD *) pAtom;
-			return true;
-		case A_HDLR:
-			_pHDLR = (AtomHDLR *) pAtom;
-			return true;
-		default:
-		{
-			FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
-			return false;
-		}
-	}
+  switch (pAtom->GetTypeNumeric()) {
+    case A_SMHD:
+      _pSMHD = (AtomSMHD *) pAtom;
+      return true;
+    case A_DINF:
+      _pDINF = (AtomDINF *) pAtom;
+      return true;
+    case A_STBL:
+      _pSTBL = (AtomSTBL *) pAtom;
+      return true;
+    case A_VMHD:
+      _pVMHD = (AtomVMHD *) pAtom;
+      return true;
+    case A_HDLR:
+      _pHDLR = (AtomHDLR *) pAtom;
+      return true;
+    default:
+    {
+      FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
+      return false;
+    }
+  }
 }
 
 

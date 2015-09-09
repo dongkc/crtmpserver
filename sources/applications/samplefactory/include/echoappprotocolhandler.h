@@ -18,22 +18,22 @@
  */
 
 #ifndef _ECHOAPPPROTOCOLHANDLER_H
-#define	_ECHOAPPPROTOCOLHANDLER_H
+#define  _ECHOAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 
 namespace app_samplefactory {
 
-	class EchoAppProtocolHandler
-	: public BaseAppProtocolHandler {
-	public:
-		EchoAppProtocolHandler(Variant &configuration);
-		virtual ~EchoAppProtocolHandler();
+  class EchoAppProtocolHandler
+  : public BaseAppProtocolHandler {
+  public:
+    EchoAppProtocolHandler(Variant &configuration);
+    virtual ~EchoAppProtocolHandler();
 
-		virtual void RegisterProtocol(BaseProtocol *pProtocol);
-		virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
-	};
+    virtual void RegisterProtocol(BaseProtocol *pProtocol);
+    virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  };
 }
 
-#endif	/* _ECHOAPPPROTOCOLHANDLER_H */
+#endif  /* _ECHOAPPPROTOCOLHANDLER_H */
 

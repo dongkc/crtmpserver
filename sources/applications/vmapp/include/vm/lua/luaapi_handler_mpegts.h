@@ -19,13 +19,13 @@
 
 #ifdef HAS_LUA
 #ifndef _LUAAPI_HANDLER_MPEGTS_H
-#define	_LUAAPI_HANDLER_MPEGTS_H
+#define  _LUAAPI_HANDLER_MPEGTS_H
 
 #include "common.h"
 
 namespace app_vmapp {
-	
+  
 };
 
-#endif	/* _LUAAPI_HANDLER_MPEGTS_H */
-#endif	/* HAS_LUA */
+#endif  /* _LUAAPI_HANDLER_MPEGTS_H */
+#endif  /* HAS_LUA */

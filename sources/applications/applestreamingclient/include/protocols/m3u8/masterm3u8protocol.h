@@ -20,23 +20,23 @@
 
 
 #ifndef _MASTERM3U8PROTOCOL_H
-#define	_MASTERM3U8PROTOCOL_H
+#define  _MASTERM3U8PROTOCOL_H
 
 #include "protocols/m3u8/basem3u8protocol.h"
 
 namespace app_applestreamingclient {
 
-	class MasterM3U8Protocol
-	: public BaseM3U8Protocol {
-	public:
-		MasterM3U8Protocol();
-		virtual ~MasterM3U8Protocol();
-	protected:
-		virtual Playlist *GetPlaylist();
-		virtual bool SignalPlaylistAvailable();
-		virtual bool SignalPlaylistFailed();
-	};
+  class MasterM3U8Protocol
+  : public BaseM3U8Protocol {
+  public:
+    MasterM3U8Protocol();
+    virtual ~MasterM3U8Protocol();
+  protected:
+    virtual Playlist *GetPlaylist();
+    virtual bool SignalPlaylistAvailable();
+    virtual bool SignalPlaylistFailed();
+  };
 }
 
-#endif	/* _MASTERM3U8PROTOCOL_H */
+#endif  /* _MASTERM3U8PROTOCOL_H */
 

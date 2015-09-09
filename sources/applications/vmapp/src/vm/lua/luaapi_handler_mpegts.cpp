@@ -22,4 +22,4 @@
 namespace app_vmapp {
 
 }
-#endif	/* HAS_LUA */
+#endif  /* HAS_LUA */

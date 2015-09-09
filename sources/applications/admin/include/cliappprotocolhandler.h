@@ -19,21 +19,21 @@
 
 #ifdef HAS_PROTOCOL_CLI
 #ifndef _CLIAPPPROTOCOLHANDLER_H
-#define	_CLIAPPPROTOCOLHANDLER_H
+#define  _CLIAPPPROTOCOLHANDLER_H
 
 #include "protocols/cli/basecliappprotocolhandler.h"
 
 namespace app_admin {
 
-	class CLIAppProtocolHandler
-	: public BaseCLIAppProtocolHandler {
-	public:
-		CLIAppProtocolHandler(Variant &configuration);
-		virtual ~CLIAppProtocolHandler();
+  class CLIAppProtocolHandler
+  : public BaseCLIAppProtocolHandler {
+  public:
+    CLIAppProtocolHandler(Variant &configuration);
+    virtual ~CLIAppProtocolHandler();
 
-		virtual bool ProcessMessage(BaseProtocol *pFrom, Variant &message);
-	};
+    virtual bool ProcessMessage(BaseProtocol *pFrom, Variant &message);
+  };
 }
 
-#endif	/* _CLIAPPPROTOCOLHANDLER_H */
-#endif	/* HAS_PROTOCOL_CLI */
+#endif  /* _CLIAPPPROTOCOLHANDLER_H */
+#endif  /* HAS_PROTOCOL_CLI */

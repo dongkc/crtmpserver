@@ -19,7 +19,7 @@
 
 #ifdef HAS_VOD_MANAGER
 #ifndef _BASEVODMANAGER_H
-#define	_BASEVODMANAGER_H
+#define  _BASEVODMANAGER_H
 
 #include "common.h"
 
@@ -27,28 +27,28 @@ class BaseClientApplication;
 
 class BaseVODManager {
 private:
-	BaseClientApplication *_pApplication;
-	Variant _configuration;
-	Variant _seekSettings;
-	string _metadataFolder;
-	vector<string> _origins;
-	vector<string> _speedCache;
+  BaseClientApplication *_pApplication;
+  Variant _configuration;
+  Variant _seekSettings;
+  string _metadataFolder;
+  vector<string> _origins;
+  vector<string> _speedCache;
 public:
-	BaseVODManager(BaseClientApplication *pApplication, Variant &configuration);
-	virtual ~BaseVODManager();
+  BaseVODManager(BaseClientApplication *pApplication, Variant &configuration);
+  virtual ~BaseVODManager();
 
-	bool Initialize();
-	bool GetVODSourceByFileName(string type, string fileName,
-			Variant &metaData);
-	bool GetVODSourceByAdobeNotation(string streamName, Variant &metaData);
-	bool GetAsyncVODSourceByFile(string originFilePath, Variant &parameters);
-	bool GetAsyncVODSourceByAdobeNotation(string streamName, Variant &parameters);
+  bool Initialize();
+  bool GetVODSourceByFileName(string type, string fileName,
+      Variant &metaData);
+  bool GetVODSourceByAdobeNotation(string streamName, Variant &metaData);
+  bool GetAsyncVODSourceByFile(string originFilePath, Variant &parameters);
+  bool GetAsyncVODSourceByAdobeNotation(string streamName, Variant &parameters);
 private:
-	bool GetVODSource(string &type, string &originFolder,
-			string &originFilePath, Variant &metaData);
-	bool GenerateMetaAndSeekFiles(Variant &metaData);
+  bool GetVODSource(string &type, string &originFolder,
+      string &originFilePath, Variant &metaData);
+  bool GenerateMetaAndSeekFiles(Variant &metaData);
 };
 
-#endif	/* _BASEVODMANAGER_H */
+#endif  /* _BASEVODMANAGER_H */
 #endif /* HAS_VOD_MANAGER */
 

@@ -22,84 +22,84 @@
 
 AtomTFHD::AtomTFHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : VersionedAtom(pDocument, type, size, start) {
-	_trackID = 0;
-	_baseDataOffset = 0;
-	_sampleDescriptionIndex = 0;
-	_defaultSampleDuration = 0;
-	_defaultSampleSize = 0;
-	_defaultSampleFlags = 0;
+  _trackID = 0;
+  _baseDataOffset = 0;
+  _sampleDescriptionIndex = 0;
+  _defaultSampleDuration = 0;
+  _defaultSampleSize = 0;
+  _defaultSampleFlags = 0;
 }
 
 AtomTFHD::~AtomTFHD() {
 }
 
 uint32_t AtomTFHD::GetTrackId() {
-	return _trackID;
+  return _trackID;
 }
 
 int64_t AtomTFHD::GetBaseDataOffset() {
-	return _baseDataOffset;
+  return _baseDataOffset;
 }
 
 bool AtomTFHD::HasBaseDataOffset() {
-	return (_flags[2]&0x01) != 0;
+  return (_flags[2]&0x01) != 0;
 }
 
 bool AtomTFHD::HasSampleDescriptionIndex() {
-	return (_flags[2]&0x02) != 0;
+  return (_flags[2]&0x02) != 0;
 }
 
 bool AtomTFHD::HasDefaultSampleDuration() {
-	return (_flags[2]&0x08) != 0;
+  return (_flags[2]&0x08) != 0;
 }
 
 bool AtomTFHD::HasDefaultSampleSize() {
-	return (_flags[2]&0x10) != 0;
+  return (_flags[2]&0x10) != 0;
 }
 
 bool AtomTFHD::HasDefaultSampleFlags() {
-	return (_flags[2]&0x20) != 0;
+  return (_flags[2]&0x20) != 0;
 }
 
 bool AtomTFHD::DurationIsEmpty() {
-	return (_flags[0]&0x01) != 0;
+  return (_flags[0]&0x01) != 0;
 }
 
 bool AtomTFHD::ReadData() {
-	if (!ReadInt32(_trackID)) {
-		FATAL("Unable to read track ID");
-		return false;
-	}
-	if (HasBaseDataOffset()) {
-		if (!ReadInt64(_baseDataOffset)) {
-			FATAL("Unable to read base data offset");
-			return false;
-		}
-	}
-	if (HasSampleDescriptionIndex()) {
-		if (!ReadInt32(_sampleDescriptionIndex)) {
-			FATAL("Unable to read sample description index");
-			return false;
-		}
-	}
-	if (HasDefaultSampleDuration()) {
-		if (!ReadInt32(_defaultSampleDuration)) {
-			FATAL("Unable to read default sample duration");
-			return false;
-		}
-	}
-	if (HasDefaultSampleSize()) {
-		if (!ReadInt32(_defaultSampleSize)) {
-			FATAL("Unable to read default sample size");
-			return false;
-		}
-	}
-	if (HasDefaultSampleFlags()) {
-		if (!ReadInt32(_defaultSampleFlags)) {
-			FATAL("Unable to read default sample flags");
-			return false;
-		}
-	}
-	return true;
+  if (!ReadInt32(_trackID)) {
+    FATAL("Unable to read track ID");
+    return false;
+  }
+  if (HasBaseDataOffset()) {
+    if (!ReadInt64(_baseDataOffset)) {
+      FATAL("Unable to read base data offset");
+      return false;
+    }
+  }
+  if (HasSampleDescriptionIndex()) {
+    if (!ReadInt32(_sampleDescriptionIndex)) {
+      FATAL("Unable to read sample description index");
+      return false;
+    }
+  }
+  if (HasDefaultSampleDuration()) {
+    if (!ReadInt32(_defaultSampleDuration)) {
+      FATAL("Unable to read default sample duration");
+      return false;
+    }
+  }
+  if (HasDefaultSampleSize()) {
+    if (!ReadInt32(_defaultSampleSize)) {
+      FATAL("Unable to read default sample size");
+      return false;
+    }
+  }
+  if (HasDefaultSampleFlags()) {
+    if (!ReadInt32(_defaultSampleFlags)) {
+      FATAL("Unable to read default sample flags");
+      return false;
+    }
+  }
+  return true;
 }
 #endif /* HAS_MEDIA_MP4 */

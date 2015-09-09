@@ -23,16 +23,16 @@
 Variant LogEventFactory::_result;
 
 Variant& LogEventFactory::CreateLE(string loggerName, Variant &stats,
-		string operation, uint32_t statusCode, Variant &fields) {
-	_result["loggerName"] = (loggerName == "") ? "generic" : loggerName;
-	if (stats.HasKeyChain(V_MAP, false, 1, "carrier"))
-		_result["carrier"] = stats["carrier"];
-	else
-		_result["carrier"].IsArray(false);
-	_result["operation"] = operation;
-	_result["statusCode"] = statusCode;
-	_result["fields"] = fields;
-	_result["fields"].IsArray(false);
+    string operation, uint32_t statusCode, Variant &fields) {
+  _result["loggerName"] = (loggerName == "") ? "generic" : loggerName;
+  if (stats.HasKeyChain(V_MAP, false, 1, "carrier"))
+    _result["carrier"] = stats["carrier"];
+  else
+    _result["carrier"].IsArray(false);
+  _result["operation"] = operation;
+  _result["statusCode"] = statusCode;
+  _result["fields"] = fields;
+  _result["fields"].IsArray(false);
 
-	return _result;
+  return _result;
 }

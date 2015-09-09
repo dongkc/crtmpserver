@@ -26,16 +26,16 @@
 class AtomUDTA
 : public BoxAtom {
 private:
-	Variant _metadata;
+  Variant _metadata;
 public:
-	AtomUDTA(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomUDTA();
-	Variant &GetMetadata();
+  AtomUDTA(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomUDTA();
+  Variant &GetMetadata();
 protected:
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
-#endif	/* _ATOMUDTA_H */
+#endif  /* _ATOMUDTA_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

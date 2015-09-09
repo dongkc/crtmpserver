@@ -26,24 +26,24 @@
 class AtomDATA
 : public BaseAtom {
 private:
-	uint32_t _type;
-	uint32_t _unknown;
+  uint32_t _type;
+  uint32_t _unknown;
 
-	string _dataString;
-	vector<uint16_t> _dataUI16;
-	vector<uint8_t> _dataUI8;
-	string _dataImg;
+  string _dataString;
+  vector<uint16_t> _dataUI16;
+  vector<uint8_t> _dataUI8;
+  string _dataImg;
 public:
-	AtomDATA(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomDATA();
+  AtomDATA(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomDATA();
 
-	Variant GetVariant();
+  Variant GetVariant();
 
-	virtual bool Read();
-	string Hierarchy(uint32_t indent);
+  virtual bool Read();
+  string Hierarchy(uint32_t indent);
 };
 
-#endif	/* _ATOMDATA_H */
+#endif  /* _ATOMDATA_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

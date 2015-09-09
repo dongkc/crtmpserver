@@ -20,22 +20,22 @@
 
 #ifdef HAS_PROTOCOL_VAR
 #ifndef _XMLVARIANTPROTOCOL_H
-#define	_XMLVARIANTPROTOCOL_H
+#define  _XMLVARIANTPROTOCOL_H
 
 #include "protocols/variant/basevariantprotocol.h"
 
 class DLLEXP XmlVariantProtocol
 : public BaseVariantProtocol {
 public:
-	XmlVariantProtocol();
-	virtual ~XmlVariantProtocol();
+  XmlVariantProtocol();
+  virtual ~XmlVariantProtocol();
 protected:
-	virtual bool Serialize(string &rawData, Variant &variant);
-	virtual bool Deserialize(uint8_t *pBuffer, uint32_t bufferLength,
-			Variant &result);
+  virtual bool Serialize(string &rawData, Variant &variant);
+  virtual bool Deserialize(uint8_t *pBuffer, uint32_t bufferLength,
+      Variant &result);
 };
 
-#endif	/* _XMLVARIANTPROTOCOL_H */
-#endif	/* HAS_PROTOCOL_VAR */
+#endif  /* _XMLVARIANTPROTOCOL_H */
+#endif  /* HAS_PROTOCOL_VAR */
 
 

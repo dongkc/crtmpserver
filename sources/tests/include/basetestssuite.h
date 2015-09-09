@@ -19,7 +19,7 @@
 
 
 #ifndef _BASETESTSSUITE_H
-#define	_BASETESTSSUITE_H
+#define  _BASETESTSSUITE_H
 
 #include <assert.h>
 
@@ -61,14 +61,14 @@ do { \
 
 class BaseTestsSuite {
 public:
-	static int _testsCount;
+  static int _testsCount;
 public:
-	BaseTestsSuite();
-	virtual ~BaseTestsSuite();
+  BaseTestsSuite();
+  virtual ~BaseTestsSuite();
 
-	virtual void Run() = 0;
+  virtual void Run() = 0;
 };
 
 
-#endif	/* _BASETESTSSUITE_H */
+#endif  /* _BASETESTSSUITE_H */
 

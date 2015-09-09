@@ -19,7 +19,7 @@
 
 #ifdef HAS_PROTOCOL_MMS
 #ifndef _MMSPROTOCOL_H
-#define	_MMSPROTOCOL_H
+#define  _MMSPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 #include <iconv.h>
@@ -33,57 +33,57 @@ class InNetMP3Stream;
 class MMSProtocol
 : public BaseProtocol {
 private:
-	string _player;
-	IOBuffer _outputBuffer;
-	IOBuffer _msgBuffer;
-	IOBuffer _asfData;
-	iconv_t _ic;
-	uint16_t _seq;
-	uint32_t _openFileId;
-	Transcoder *_pTranscoder;
-	uint32_t _packetSize;
+  string _player;
+  IOBuffer _outputBuffer;
+  IOBuffer _msgBuffer;
+  IOBuffer _asfData;
+  iconv_t _ic;
+  uint16_t _seq;
+  uint32_t _openFileId;
+  Transcoder *_pTranscoder;
+  uint32_t _packetSize;
 
-	InNetRawStream *_pRawAACStream;
-	bool _enableRawAAC;
-	string _rawAACStreamName;
+  InNetRawStream *_pRawAACStream;
+  bool _enableRawAAC;
+  string _rawAACStreamName;
 
-	InNetAACStream *_pAACStream;
-	bool _enableAAC;
-	string _aacStreamName;
+  InNetAACStream *_pAACStream;
+  bool _enableAAC;
+  string _aacStreamName;
 
-	InNetRawStream *_pRawMP3Stream;
-	bool _enableRawMP3;
-	string _rawMP3StreamName;
+  InNetRawStream *_pRawMP3Stream;
+  bool _enableRawMP3;
+  string _rawMP3StreamName;
 
-	InNetMP3Stream *_pMP3Stream;
-	bool _enableMP3;
-	string _mp3StreamName;
+  InNetMP3Stream *_pMP3Stream;
+  bool _enableMP3;
+  string _mp3StreamName;
 public:
-	MMSProtocol();
-	virtual ~MMSProtocol();
+  MMSProtocol();
+  virtual ~MMSProtocol();
 
-	virtual bool Initialize(Variant &parameters);
-	virtual IOBuffer * GetOutputBuffer();
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool Initialize(Variant &parameters);
+  virtual IOBuffer * GetOutputBuffer();
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
 
-	bool Start();
+  bool Start();
 private:
-	bool ProcessMessage(IOBuffer &buffer);
-	bool ProcessData(IOBuffer &buffer);
-	bool SendLinkViewerToMacConnect();
-	bool SendLinkViewerToMacConnectFunnel();
-	bool SendLinkViewerToMacOpenFile();
-	bool SendLinkViewerToMacReadBlock();
-	bool SendLinkViewerToMacStreamSwitch();
-	bool SendLinkViewerToMacStartPlaying();
-	bool SendLinkViewerToMacPong();
-	bool SendMessage(uint32_t MID);
-	bool EncodeUTF16(IOBuffer &dest, string &src);
-	bool ParseASFHeader();
+  bool ProcessMessage(IOBuffer &buffer);
+  bool ProcessData(IOBuffer &buffer);
+  bool SendLinkViewerToMacConnect();
+  bool SendLinkViewerToMacConnectFunnel();
+  bool SendLinkViewerToMacOpenFile();
+  bool SendLinkViewerToMacReadBlock();
+  bool SendLinkViewerToMacStreamSwitch();
+  bool SendLinkViewerToMacStartPlaying();
+  bool SendLinkViewerToMacPong();
+  bool SendMessage(uint32_t MID);
+  bool EncodeUTF16(IOBuffer &dest, string &src);
+  bool ParseASFHeader();
 };
 
-#endif	/* _MMSPROTOCOL_H */
+#endif  /* _MMSPROTOCOL_H */
 #endif /* HAS_PROTOCOL_MMS */

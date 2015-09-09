@@ -27,40 +27,40 @@ BaseAppVirtualMachine::BaseAppVirtualMachine() {
 }
 
 BaseAppVirtualMachine *BaseAppVirtualMachine::GetVM(string type, string script,
-		BaseClientApplication *pApplication) {
-	BaseAppVirtualMachine *pResult = NULL;
+    BaseClientApplication *pApplication) {
+  BaseAppVirtualMachine *pResult = NULL;
 
-	//1. Instantiate the VM
-	if (false) {
+  //1. Instantiate the VM
+  if (false) {
 
-	}
+  }
 #ifdef HAS_LUA
-	else if (type == "lua") {
-		pResult = new LuaAppVirtualMachine();
-		pResult->_pApplication = pApplication;
-	}
+  else if (type == "lua") {
+    pResult = new LuaAppVirtualMachine();
+    pResult->_pApplication = pApplication;
+  }
 #endif /* HAS_LUA */
-	if (pResult == NULL) {
-		FATAL("No machine with type %s available", STR(type));
-		return NULL;
-	}
+  if (pResult == NULL) {
+    FATAL("No machine with type %s available", STR(type));
+    return NULL;
+  }
 
-	//2. Bind the API
-	if (!pResult->BindAPI()) {
-		FATAL("Unable to bind API");
-		delete pResult;
-		return NULL;
-	}
+  //2. Bind the API
+  if (!pResult->BindAPI()) {
+    FATAL("Unable to bind API");
+    delete pResult;
+    return NULL;
+  }
 
-	//3. Initialize the virtual machine
-	if (!pResult->Initialize(script)) {
-		FATAL("Unable to initialize virtual machine with script %s", STR(script));
-		delete pResult;
-		return NULL;
-	}
+  //3. Initialize the virtual machine
+  if (!pResult->Initialize(script)) {
+    FATAL("Unable to initialize virtual machine with script %s", STR(script));
+    delete pResult;
+    return NULL;
+  }
 
-	//3. Done :)
-	return pResult;
+  //3. Done :)
+  return pResult;
 }
 
 BaseAppVirtualMachine::~BaseAppVirtualMachine() {

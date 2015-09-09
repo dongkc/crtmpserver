@@ -18,32 +18,32 @@
  */
 
 #ifndef _JOBSTIMERPROTOCOL_H
-#define	_JOBSTIMERPROTOCOL_H
+#define  _JOBSTIMERPROTOCOL_H
 
 #include "protocols/timer/basetimerprotocol.h"
 
 namespace app_proxypublish {
 
-	class JobsTimerProtocol
-	: public BaseTimerProtocol {
-	private:
-		vector<Variant> _pushQueue;
-		vector<Variant> _pullQueue;
-	public:
-		JobsTimerProtocol();
-		virtual ~JobsTimerProtocol();
+  class JobsTimerProtocol
+  : public BaseTimerProtocol {
+  private:
+    vector<Variant> _pushQueue;
+    vector<Variant> _pullQueue;
+  public:
+    JobsTimerProtocol();
+    virtual ~JobsTimerProtocol();
 
-		virtual bool TimePeriodElapsed();
+    virtual bool TimePeriodElapsed();
 
-		void EnqueuePush(Variant &push);
-		void EnqueuePull(Variant &pull);
-	private:
-		void DoPulls();
-		void DoPushes();
-	};
+    void EnqueuePush(Variant &push);
+    void EnqueuePull(Variant &pull);
+  private:
+    void DoPulls();
+    void DoPushes();
+  };
 
 }
 
 
-#endif	/* _JOBSTIMERPROTOCOL_H */
+#endif  /* _JOBSTIMERPROTOCOL_H */
 

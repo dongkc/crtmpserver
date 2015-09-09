@@ -19,40 +19,40 @@
 
 #ifdef HAS_LUA
 #ifndef _BASEVMLUA_H
-#define	_BASEVMLUA_H
+#define  _BASEVMLUA_H
 
 #include "basevm.h"
 
 class DLLEXP BaseVMLua
 : public BaseVM {
 private:
-	lua_State *_pGlobalState;
-	void *_pOpaque;
-	Variant _dummy;
+  lua_State *_pGlobalState;
+  void *_pOpaque;
+  Variant _dummy;
 public:
-	BaseVMLua();
-	virtual ~BaseVMLua();
+  BaseVMLua();
+  virtual ~BaseVMLua();
 
-	void SetOpaque(void *pOpaque);
-	virtual bool Supports64bit();
-	virtual bool SupportsUndefined();
-	virtual bool Initialize();
-	virtual bool Shutdown();
-	virtual bool LoadScriptFile(string scriptFileName, string scriptName);
-	virtual bool LoadScriptString(string scriptContent, string scriptName);
-	virtual bool HasFunction(string functionName);
-	virtual bool CallWithParams(string functionName, Variant &parameters, Variant &results);
-	virtual bool CallWithoutParams(string functionName, Variant &results);
-	virtual bool CallWithParams(int functionRef, Variant &parameters, Variant &results);
-	virtual bool CallWithoutParams(int functionRef, Variant &results);
-	bool AddPackagePath(string path);
-	bool RegisterAPI(string name, luaL_Reg *pAPI);
-	int GetFunctionReference(string path);
+  void SetOpaque(void *pOpaque);
+  virtual bool Supports64bit();
+  virtual bool SupportsUndefined();
+  virtual bool Initialize();
+  virtual bool Shutdown();
+  virtual bool LoadScriptFile(string scriptFileName, string scriptName);
+  virtual bool LoadScriptString(string scriptContent, string scriptName);
+  virtual bool HasFunction(string functionName);
+  virtual bool CallWithParams(string functionName, Variant &parameters, Variant &results);
+  virtual bool CallWithoutParams(string functionName, Variant &results);
+  virtual bool CallWithParams(int functionRef, Variant &parameters, Variant &results);
+  virtual bool CallWithoutParams(int functionRef, Variant &results);
+  bool AddPackagePath(string path);
+  bool RegisterAPI(string name, luaL_Reg *pAPI);
+  int GetFunctionReference(string path);
 private:
-	bool Call(bool hasParams, Variant &parameters, Variant &results);
+  bool Call(bool hasParams, Variant &parameters, Variant &results);
 };
 
 
-#endif	/* _BASEVMLUA_H */
+#endif  /* _BASEVMLUA_H */
 #endif /* HAS_LUA */
 

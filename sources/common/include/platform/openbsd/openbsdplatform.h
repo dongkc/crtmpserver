@@ -77,9 +77,9 @@ using namespace std;
 #define READ_FD read
 #define WRITE_FD write
 #define SOCKET int32_t
-#define LASTSOCKETERROR					errno
-#define SOCKERROR_CONNECT_IN_PROGRESS	EINPROGRESS
-#define SOCKERROR_SEND_IN_PROGRESS		EAGAIN
+#define LASTSOCKETERROR          errno
+#define SOCKERROR_CONNECT_IN_PROGRESS  EINPROGRESS
+#define SOCKERROR_SEND_IN_PROGRESS    EAGAIN
 #define LIB_HANDLER void *
 #define FREE_LIBRARY(libHandler) dlclose((libHandler))
 #define LOAD_LIBRARY(file,flags) dlopen((file), (flags))
@@ -117,30 +117,30 @@ do { \
 
 #define GETNTP(result) \
 do { \
-	struct timeval tv; \
-	gettimeofday(&tv,NULL); \
-	result=(((uint64_t)tv.tv_sec + 2208988800U)<<32)|((((uint32_t)tv.tv_usec) << 12) + (((uint32_t)tv.tv_usec) << 8) - ((((uint32_t)tv.tv_usec) * 1825) >> 5)); \
+  struct timeval tv; \
+  gettimeofday(&tv,NULL); \
+  result=(((uint64_t)tv.tv_sec + 2208988800U)<<32)|((((uint32_t)tv.tv_usec) << 12) + (((uint32_t)tv.tv_usec) << 8) - ((((uint32_t)tv.tv_usec) * 1825) >> 5)); \
 }while (0);
 
 #define GETCUSTOMNTP(result,value) \
 do { \
-	struct timeval tv; \
-	tv.tv_sec=value/CLOCKS_PER_SECOND; \
-	tv.tv_usec=value-tv.tv_sec*CLOCKS_PER_SECOND; \
-	result=(((uint64_t)tv.tv_sec + 2208988800U)<<32)|((((uint32_t)tv.tv_usec) << 12) + (((uint32_t)tv.tv_usec) << 8) - ((((uint32_t)tv.tv_usec) * 1825) >> 5)); \
+  struct timeval tv; \
+  tv.tv_sec=value/CLOCKS_PER_SECOND; \
+  tv.tv_usec=value-tv.tv_sec*CLOCKS_PER_SECOND; \
+  result=(((uint64_t)tv.tv_sec + 2208988800U)<<32)|((((uint32_t)tv.tv_usec) << 12) + (((uint32_t)tv.tv_usec) << 8) - ((((uint32_t)tv.tv_usec) * 1825) >> 5)); \
 }while (0);
 
 class OpenBSDPlatform
 : public BasePlatform {
 public:
-	OpenBSDPlatform();
-	virtual ~OpenBSDPlatform();
+  OpenBSDPlatform();
+  virtual ~OpenBSDPlatform();
 };
 
 typedef void (*SignalFnc)(void);
 
 typedef struct _select_event {
-	uint8_t type;
+  uint8_t type;
 } select_event;
 
 #define MSGHDR struct msghdr
@@ -190,8 +190,8 @@ void splitFileName(string fileName, string &name, string &extension, char separa
 double getFileModificationDate(string path);
 string normalizePath(string base, string file);
 bool listFolder(string path, vector<string> &result,
-		bool normalizeAllPaths = true, bool includeFolders = false,
-		bool recursive = true);
+    bool normalizeAllPaths = true, bool includeFolders = false,
+    bool recursive = true);
 bool ParseURL(string stringUrl, string &host, uint16_t &port, string &user, string &pwd, string & doc);
 bool moveFile(string src, string dst);
 void installSignal(int sig, SignalFnc pSignalFnc);

@@ -24,6 +24,6 @@
 using namespace app_admin;
 
 extern "C" BaseClientApplication *GetApplication_admin(Variant configuration) {
-	return new AdminApplication(configuration);
+  return new AdminApplication(configuration);
 }
 

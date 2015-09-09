@@ -19,12 +19,12 @@
 
 
 #ifndef _PROXYPUBLISH_H
-#define	_PROXYPUBLISH_H
+#define  _PROXYPUBLISH_H
 
 #include "common.h"
 
 extern "C" DLLEXP BaseClientApplication *GetApplication_proxypublish(Variant configuration);
 
-#endif	/* _PROXYPUBLISH_H */
+#endif  /* _PROXYPUBLISH_H */
 
 

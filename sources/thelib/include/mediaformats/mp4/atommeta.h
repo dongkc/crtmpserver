@@ -29,20 +29,20 @@ class AtomILST;
 class AtomMETA
 : public VersionedBoxAtom {
 private:
-	AtomHDLR *_pHDLR;
-	AtomILST *_pILST;
+  AtomHDLR *_pHDLR;
+  AtomILST *_pILST;
 public:
-	AtomMETA(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomMETA();
+  AtomMETA(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomMETA();
 
-	virtual bool Read();
+  virtual bool Read();
 
 protected:
-	virtual bool ReadData();
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool ReadData();
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
-#endif	/* _ATOMMETA_H */
+#endif  /* _ATOMMETA_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

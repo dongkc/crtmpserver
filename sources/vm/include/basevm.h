@@ -19,28 +19,28 @@
 
 
 #ifndef _BASEVM_H
-#define	_BASEVM_H
+#define  _BASEVM_H
 
 #include "common.h"
 
 class DLLEXP BaseVM {
 private:
-	Variant _emptyParams;
+  Variant _emptyParams;
 public:
-	BaseVM();
-	virtual ~BaseVM();
+  BaseVM();
+  virtual ~BaseVM();
 
-	virtual bool Supports64bit() = 0;
-	virtual bool SupportsUndefined() = 0;
-	virtual bool Initialize() = 0;
-	virtual bool Shutdown() = 0;
-	virtual bool LoadScriptFile(string scriptFileName, string scriptName) = 0;
-	virtual bool LoadScriptString(string scriptContent, string scriptName) = 0;
-	virtual bool HasFunction(string functionName) = 0;
-	virtual bool CallWithParams(string functionName, Variant &parameters, Variant &results) = 0;
-	virtual bool CallWithoutParams(string functionName, Variant &results) = 0;
+  virtual bool Supports64bit() = 0;
+  virtual bool SupportsUndefined() = 0;
+  virtual bool Initialize() = 0;
+  virtual bool Shutdown() = 0;
+  virtual bool LoadScriptFile(string scriptFileName, string scriptName) = 0;
+  virtual bool LoadScriptString(string scriptContent, string scriptName) = 0;
+  virtual bool HasFunction(string functionName) = 0;
+  virtual bool CallWithParams(string functionName, Variant &parameters, Variant &results) = 0;
+  virtual bool CallWithoutParams(string functionName, Variant &results) = 0;
 };
 
-#endif	/* _BASEVM_H */
+#endif  /* _BASEVM_H */
 
 

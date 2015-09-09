@@ -19,33 +19,33 @@
 
 #ifdef HAS_PROTOCOL_VAR
 #ifndef _VARIANTEVENTSINK_H
-#define	_VARIANTEVENTSINK_H
+#define  _VARIANTEVENTSINK_H
 
 #include "eventsink/baseeventsink.h"
 namespace app_applestreamingclient {
 
-	class VariantEventSink
-	: public BaseEventSink {
-	private:
-		map<string, string> _streamNames;
-		string _rtspHost;
-	public:
-		VariantEventSink(uint32_t contextId);
-		virtual ~VariantEventSink();
+  class VariantEventSink
+  : public BaseEventSink {
+  private:
+    map<string, string> _streamNames;
+    string _rtspHost;
+  public:
+    VariantEventSink(uint32_t contextId);
+    virtual ~VariantEventSink();
 
-		virtual bool SignalStreamRegistered(string streamName);
-		virtual bool SignalStreamUnRegistered(string streamName);
-		virtual bool SignalUpgradeBandwidth(uint32_t oldBw, uint32_t newBw);
-		virtual bool SignalDowngradeBandwidth(uint32_t oldBw, uint32_t newBw);
-		vector<string> GetStreamNames();
-	private:
+    virtual bool SignalStreamRegistered(string streamName);
+    virtual bool SignalStreamUnRegistered(string streamName);
+    virtual bool SignalUpgradeBandwidth(uint32_t oldBw, uint32_t newBw);
+    virtual bool SignalDowngradeBandwidth(uint32_t oldBw, uint32_t newBw);
+    vector<string> GetStreamNames();
+  private:
 #ifdef ANDROID
-		bool CallJava(Variant &message);
-		string GetRTSPHost();
+    bool CallJava(Variant &message);
+    string GetRTSPHost();
 #endif
-	};
+  };
 }
 
-#endif	/* _VARIANTEVENTSINK_H */
+#endif  /* _VARIANTEVENTSINK_H */
 #endif /* HAS_PROTOCOL_VAR */
 

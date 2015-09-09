@@ -30,12 +30,12 @@ BinVariantProtocol::~BinVariantProtocol() {
 }
 
 bool BinVariantProtocol::Serialize(string &rawData, Variant &variant) {
-	return variant.SerializeToBin(rawData);
+  return variant.SerializeToBin(rawData);
 }
 
 bool BinVariantProtocol::Deserialize(uint8_t *pBuffer, uint32_t bufferLength,
-		Variant &result) {
-	return Variant::DeserializeFromBin(pBuffer, bufferLength, result);
+    Variant &result) {
+  return Variant::DeserializeFromBin(pBuffer, bufferLength, result);
 }
-#endif	/* HAS_PROTOCOL_VAR */
+#endif  /* HAS_PROTOCOL_VAR */
 

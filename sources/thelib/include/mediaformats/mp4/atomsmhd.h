@@ -26,17 +26,17 @@
 class AtomSMHD
 : public VersionedAtom {
 private:
-	uint16_t _balance;
-	uint16_t _reserved;
+  uint16_t _balance;
+  uint16_t _reserved;
 public:
-	AtomSMHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomSMHD();
+  AtomSMHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomSMHD();
 
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
-#endif	/* _ATOMSMHD_H */
+#endif  /* _ATOMSMHD_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

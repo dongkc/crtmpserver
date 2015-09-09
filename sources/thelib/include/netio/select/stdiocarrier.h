@@ -20,27 +20,27 @@
 
 #ifdef NET_SELECT
 #ifndef _STDIOCARRIER_H
-#define	_STDIOCARRIER_H
+#define  _STDIOCARRIER_H
 
 #include "netio/select/iohandler.h"
 
 class DLLEXP StdioCarrier
 : public IOHandler {
 private:
-	static StdioCarrier *_pInstance;
-	bool _writeDataEnabled;
-	int32_t _ioAmount;
+  static StdioCarrier *_pInstance;
+  bool _writeDataEnabled;
+  int32_t _ioAmount;
 private:
-	StdioCarrier();
+  StdioCarrier();
 public:
-	static StdioCarrier *GetInstance(BaseProtocol *pProtocol);
-	virtual ~StdioCarrier();
-	virtual bool OnEvent(select_event &event);
-	virtual bool SignalOutputData();
-	virtual operator string();
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  static StdioCarrier *GetInstance(BaseProtocol *pProtocol);
+  virtual ~StdioCarrier();
+  virtual bool OnEvent(select_event &event);
+  virtual bool SignalOutputData();
+  virtual operator string();
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
 };
 
-#endif	/* _STDIOCARRIER_H */
+#endif  /* _STDIOCARRIER_H */
 #endif /* NET_SELECT */
 

@@ -19,15 +19,15 @@
 
 #ifdef HAS_LUA
 #ifndef _LUAAPI_GENERICS_H
-#define	_LUAAPI_GENERICS_H
+#define  _LUAAPI_GENERICS_H
 
 #include "common.h"
 
 namespace app_vmapp {
-	int luaapi_generics_listFolder(lua_State *L);
-	int luaapi_generics_normalizePath(lua_State *L);
-	int luaapi_generics_splitFileName(lua_State *L);
+  int luaapi_generics_listFolder(lua_State *L);
+  int luaapi_generics_normalizePath(lua_State *L);
+  int luaapi_generics_splitFileName(lua_State *L);
 };
 
-#endif	/* _LUAAPI_GENERICS_H */
-#endif	/* HAS_LUA */
+#endif  /* _LUAAPI_GENERICS_H */
+#endif  /* HAS_LUA */

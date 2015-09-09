@@ -21,31 +21,31 @@
 #include "mediaformats/mp4/versionedatom.h"
 
 VersionedAtom::VersionedAtom(MP4Document *pDocument, uint32_t type,
-		uint64_t size, uint64_t start)
+    uint64_t size, uint64_t start)
 : BaseAtom(pDocument, type, size, start) {
-	_version = 0;
-	memset(_flags, 0, 3);
+  _version = 0;
+  memset(_flags, 0, 3);
 }
 
 VersionedAtom::~VersionedAtom() {
 }
 
 bool VersionedAtom::Read() {
-	if (!ReadUInt8(_version)) {
-		FATAL("Unable to read version");
-		return false;
-	}
+  if (!ReadUInt8(_version)) {
+    FATAL("Unable to read version");
+    return false;
+  }
 
-	if (!ReadArray(_flags, 3)) {
-		FATAL("Unable to read flags");
-		return false;
-	}
+  if (!ReadArray(_flags, 3)) {
+    FATAL("Unable to read flags");
+    return false;
+  }
 
-	return ReadData();
+  return ReadData();
 }
 
 string VersionedAtom::Hierarchy(uint32_t indent) {
-	return string(4 * indent, ' ') + GetTypeString();
+  return string(4 * indent, ' ') + GetTypeString();
 }
 
 #endif /* HAS_MEDIA_MP4 */

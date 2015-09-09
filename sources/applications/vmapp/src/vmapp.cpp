@@ -23,5 +23,5 @@
 using namespace app_vmapp;
 
 extern "C" BaseClientApplication *GetApplication_vmapp(Variant configuration) {
-	return new VMAppApplication(configuration);
+  return new VMAppApplication(configuration);
 }

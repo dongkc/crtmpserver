@@ -19,29 +19,29 @@
 
 #ifdef HAS_MEDIA_MP4
 #ifndef _BOXATOM_H
-#define	_BOXATOM_H
+#define  _BOXATOM_H
 
 #include "mediaformats/mp4/baseatom.h"
 
 class BoxAtom
 : public BaseAtom {
 private:
-	vector<BaseAtom *> _subAtoms;
+  vector<BaseAtom *> _subAtoms;
 public:
-	BoxAtom(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~BoxAtom();
+  BoxAtom(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~BoxAtom();
 
-	virtual bool Read();
-	virtual string Hierarchy(uint32_t indent);
+  virtual bool Read();
+  virtual string Hierarchy(uint32_t indent);
 
-	BaseAtom * GetPath(uint8_t depth, ...);
-	virtual BaseAtom * GetPath(vector<uint32_t> path);
+  BaseAtom * GetPath(uint8_t depth, ...);
+  virtual BaseAtom * GetPath(vector<uint32_t> path);
 protected:
-	virtual bool AtomCreated(BaseAtom *pAtom) = 0;
+  virtual bool AtomCreated(BaseAtom *pAtom) = 0;
 };
 
 
-#endif	/* _BOXATOM_H */
+#endif  /* _BOXATOM_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

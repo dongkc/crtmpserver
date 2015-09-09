@@ -28,17 +28,17 @@ class AtomURL;
 class AtomDREF
 : public VersionedBoxAtom {
 private:
-	vector<AtomURL *> _urls;
+  vector<AtomURL *> _urls;
 public:
-	AtomDREF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomDREF();
+  AtomDREF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomDREF();
 
 protected:
-	virtual bool ReadData();
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool ReadData();
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
-#endif	/* _ATOMDREF_H */
+#endif  /* _ATOMDREF_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

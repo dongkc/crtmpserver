@@ -20,11 +20,11 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _AMFSERIALIZER_H
-#define	_AMFSERIALIZER_H
+#define  _AMFSERIALIZER_H
 
 #include "amf0serializer.h"
 
-#endif	/* _AMFSERIALIZER_H */
+#endif  /* _AMFSERIALIZER_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

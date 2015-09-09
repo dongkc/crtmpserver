@@ -31,6 +31,6 @@ CLIAppProtocolHandler::~CLIAppProtocolHandler() {
 }
 
 bool CLIAppProtocolHandler::ProcessMessage(BaseProtocol *pFrom, Variant &message) {
-	return SendFail(pFrom, "Not yet implemented");
+  return SendFail(pFrom, "Not yet implemented");
 }
-#endif	/* HAS_PROTOCOL_CLI */
+#endif  /* HAS_PROTOCOL_CLI */

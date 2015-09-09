@@ -29,26 +29,26 @@ AtomCO64::~AtomCO64() {
 }
 
 vector<uint64_t> AtomCO64::GetEntries() {
-	return _entries;
+  return _entries;
 }
 
 bool AtomCO64::ReadData() {
-	uint32_t count;
+  uint32_t count;
 
-	if (!ReadUInt32(count)) {
-		FATAL("Unable to read count");
-		return false;
-	}
+  if (!ReadUInt32(count)) {
+    FATAL("Unable to read count");
+    return false;
+  }
 
-	for (uint32_t i = 0; i < count; i++) {
-		uint64_t offset;
-		if (!ReadUInt64(offset)) {
-			FATAL("Unable to read offset");
-			return false;
-		}
-		ADD_VECTOR_END(_entries, offset);
-	}
-	return true;
+  for (uint32_t i = 0; i < count; i++) {
+    uint64_t offset;
+    if (!ReadUInt64(offset)) {
+      FATAL("Unable to read offset");
+      return false;
+    }
+    ADD_VECTOR_END(_entries, offset);
+  }
+  return true;
 }
 
 

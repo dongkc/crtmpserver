@@ -19,27 +19,27 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _RTMPEVENTSINK_H
-#define	_RTMPEVENTSINK_H
+#define  _RTMPEVENTSINK_H
 
 #include "eventsink/baseeventsink.h"
 namespace app_applestreamingclient {
 
-	class RTMPEventSink
-	: public BaseEventSink {
-	private:
-		uint32_t _protocolId;
-		string _streamName;
-	public:
-		RTMPEventSink(uint32_t contextId);
-		virtual ~RTMPEventSink();
+  class RTMPEventSink
+  : public BaseEventSink {
+  private:
+    uint32_t _protocolId;
+    string _streamName;
+  public:
+    RTMPEventSink(uint32_t contextId);
+    virtual ~RTMPEventSink();
 
-		void SetProtocolId(uint32_t protocolId);
+    void SetProtocolId(uint32_t protocolId);
 
-		virtual bool SignalStreamRegistered(string streamName);
-		virtual bool SignalStreamUnRegistered(string streamName);
-		virtual bool SignalUpgradeBandwidth(uint32_t oldBw, uint32_t newBw);
-		virtual bool SignalDowngradeBandwidth(uint32_t oldBw, uint32_t newBw);
-	};
+    virtual bool SignalStreamRegistered(string streamName);
+    virtual bool SignalStreamUnRegistered(string streamName);
+    virtual bool SignalUpgradeBandwidth(uint32_t oldBw, uint32_t newBw);
+    virtual bool SignalDowngradeBandwidth(uint32_t oldBw, uint32_t newBw);
+  };
 }
-#endif	/* _RTMPEVENTSINK_H */
+#endif  /* _RTMPEVENTSINK_H */
 #endif /* HAS_PROTOCOL_RTMP */

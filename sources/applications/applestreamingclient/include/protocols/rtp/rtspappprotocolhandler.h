@@ -18,27 +18,27 @@
  */
 
 #ifndef _RTSPAPPPROTOCOLHANDLER_H
-#define	_RTSPAPPPROTOCOLHANDLER_H
+#define  _RTSPAPPPROTOCOLHANDLER_H
 
 #include "protocols/rtp/basertspappprotocolhandler.h"
 
 namespace app_applestreamingclient {
-	class ClientContext;
+  class ClientContext;
 
-	class RTSPAppProtocolHandler
-	: public BaseRTSPAppProtocolHandler {
-	public:
-		RTSPAppProtocolHandler(Variant &configuration);
-		virtual ~RTSPAppProtocolHandler();
+  class RTSPAppProtocolHandler
+  : public BaseRTSPAppProtocolHandler {
+  public:
+    RTSPAppProtocolHandler(Variant &configuration);
+    virtual ~RTSPAppProtocolHandler();
 
-		virtual void RegisterProtocol(BaseProtocol *pProtocol);
+    virtual void RegisterProtocol(BaseProtocol *pProtocol);
 
-		virtual bool HandleRTSPRequest(RTSPProtocol *pFrom, Variant &requestHeaders,
-				string &content);
-	private:
-		ClientContext *GetContext(uint32_t contextId, uint64_t protocolType);
-	};
+    virtual bool HandleRTSPRequest(RTSPProtocol *pFrom, Variant &requestHeaders,
+        string &content);
+  private:
+    ClientContext *GetContext(uint32_t contextId, uint64_t protocolType);
+  };
 }
 
-#endif	/* _RTSPAPPPROTOCOLHANDLER_H */
+#endif  /* _RTSPAPPPROTOCOLHANDLER_H */
 

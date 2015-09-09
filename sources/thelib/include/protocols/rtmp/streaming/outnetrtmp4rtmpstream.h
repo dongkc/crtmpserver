@@ -20,22 +20,22 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _OUTNETRTMP4RTMPSTREAM_H
-#define	_OUTNETRTMP4RTMPSTREAM_H
+#define  _OUTNETRTMP4RTMPSTREAM_H
 
 #include "protocols/rtmp/streaming/baseoutnetrtmpstream.h"
 
 class DLLEXP OutNetRTMP4RTMPStream
 : public BaseOutNetRTMPStream {
 public:
-	OutNetRTMP4RTMPStream(BaseRTMPProtocol *pProtocol, StreamsManager *pStreamsManager,
-			string name, uint32_t rtmpStreamId, uint32_t chunkSize);
-	virtual ~OutNetRTMP4RTMPStream();
+  OutNetRTMP4RTMPStream(BaseRTMPProtocol *pProtocol, StreamsManager *pStreamsManager,
+      string name, uint32_t rtmpStreamId, uint32_t chunkSize);
+  virtual ~OutNetRTMP4RTMPStream();
 
-	virtual bool IsCompatibleWithType(uint64_t type);
+  virtual bool IsCompatibleWithType(uint64_t type);
 };
 
 
-#endif	/* _OUTNETRTMP4RTMPSTREAM_H */
+#endif  /* _OUTNETRTMP4RTMPSTREAM_H */
 
 #endif /* HAS_PROTOCOL_RTMP */
 

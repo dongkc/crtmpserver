@@ -19,20 +19,20 @@
 
 #ifdef HAS_MEDIA_MP4
 #ifndef _ATOMMFHD_H
-#define	_ATOMMFHD_H
+#define  _ATOMMFHD_H
 
 #include "mediaformats/mp4/versionedatom.h"
 
 class AtomMFHD
 : public VersionedAtom {
 private:
-	int32_t _sequenceNumber;
+  int32_t _sequenceNumber;
 public:
-	AtomMFHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomMFHD();
+  AtomMFHD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomMFHD();
 protected:
-	virtual bool ReadData();
+  virtual bool ReadData();
 };
 
-#endif	/* _ATOMMFHD_H */
+#endif  /* _ATOMMFHD_H */
 #endif /* HAS_MEDIA_MP4 */

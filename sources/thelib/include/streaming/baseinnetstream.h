@@ -19,17 +19,17 @@
 
 
 #ifndef _BASEINNETSTREAM_H
-#define	_BASEINNETSTREAM_H
+#define  _BASEINNETSTREAM_H
 
 #include "streaming/baseinstream.h"
 
 class DLLEXP BaseInNetStream
 : public BaseInStream {
 public:
-	BaseInNetStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
-			uint64_t type, string name);
-	virtual ~BaseInNetStream();
+  BaseInNetStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
+      uint64_t type, string name);
+  virtual ~BaseInNetStream();
 };
 
-#endif	/* _BASEINNETSTREAM_H */
+#endif  /* _BASEINNETSTREAM_H */
 

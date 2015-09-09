@@ -30,59 +30,59 @@ ChildM3U8Protocol::~ChildM3U8Protocol() {
 }
 
 bool ChildM3U8Protocol::Initialize(Variant &parameters) {
-	if (!BaseM3U8Protocol::Initialize(parameters)) {
-		FATAL("Unable to initialize child playlist protocol");
-		return false;
-	}
-	_bw = parameters["payload"]["bw"];
-	if (_bw == 0) {
-		FATAL("Invalid bandwidth: %u", _bw);
-		return false;
-	}
-	return true;
+  if (!BaseM3U8Protocol::Initialize(parameters)) {
+    FATAL("Unable to initialize child playlist protocol");
+    return false;
+  }
+  _bw = parameters["payload"]["bw"];
+  if (_bw == 0) {
+    FATAL("Invalid bandwidth: %u", _bw);
+    return false;
+  }
+  return true;
 }
 
 Playlist *ChildM3U8Protocol::GetPlaylist() {
-	ClientContext *pContext = GetContext();
-	if (pContext == NULL) {
-		FATAL("Unable to get the context");
-		return NULL;
-	}
-	return pContext->ChildPlaylist(_bw);
+  ClientContext *pContext = GetContext();
+  if (pContext == NULL) {
+    FATAL("Unable to get the context");
+    return NULL;
+  }
+  return pContext->ChildPlaylist(_bw);
 }
 
 bool ChildM3U8Protocol::SignalPlaylistAvailable() {
-	//1. Get the context
-	ClientContext *pContext = GetContext();
-	if (pContext == NULL) {
-		FATAL("Unable to get the context");
-		return false;
-	}
+  //1. Get the context
+  ClientContext *pContext = GetContext();
+  if (pContext == NULL) {
+    FATAL("Unable to get the context");
+    return false;
+  }
 
-	//2. Signal the context about the new playlist
-	if (!pContext->SignalChildPlaylistAvailable(_bw)) {
-		FATAL("Unable to signal master M3U8 playlist available");
-		return false;
-	}
+  //2. Signal the context about the new playlist
+  if (!pContext->SignalChildPlaylistAvailable(_bw)) {
+    FATAL("Unable to signal master M3U8 playlist available");
+    return false;
+  }
 
-	//3. Done
-	return true;
+  //3. Done
+  return true;
 }
 
 bool ChildM3U8Protocol::SignalPlaylistFailed() {
-	//1. Get the context
-	ClientContext *pContext = GetContext();
-	if (pContext == NULL) {
-		FATAL("Unable to get the context");
-		return false;
-	}
+  //1. Get the context
+  ClientContext *pContext = GetContext();
+  if (pContext == NULL) {
+    FATAL("Unable to get the context");
+    return false;
+  }
 
-	//2. Signal the context about the new playlist
-	if (!pContext->SignalChildPlaylistNotAvailable(_bw)) {
-		FATAL("Unable to signal master M3U8 playlist available");
-		return false;
-	}
+  //2. Signal the context about the new playlist
+  if (!pContext->SignalChildPlaylistNotAvailable(_bw)) {
+    FATAL("Unable to signal master M3U8 playlist available");
+    return false;
+  }
 
-	//3. Done
-	return true;
+  //3. Done
+  return true;
 }

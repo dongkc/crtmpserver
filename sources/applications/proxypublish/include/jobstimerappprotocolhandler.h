@@ -18,22 +18,22 @@
  */
 
 #ifndef _JOBSTIMERAPPPROTOCOLHANDLER_H
-#define	_JOBSTIMERAPPPROTOCOLHANDLER_H
+#define  _JOBSTIMERAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 
 namespace app_proxypublish {
 
-	class JobsTimerAppProtocolHandler
-	: public BaseAppProtocolHandler {
-	public:
-		JobsTimerAppProtocolHandler(Variant &configuration);
-		virtual ~JobsTimerAppProtocolHandler();
-		virtual void RegisterProtocol(BaseProtocol *pProtocol);
-		virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
-	};
+  class JobsTimerAppProtocolHandler
+  : public BaseAppProtocolHandler {
+  public:
+    JobsTimerAppProtocolHandler(Variant &configuration);
+    virtual ~JobsTimerAppProtocolHandler();
+    virtual void RegisterProtocol(BaseProtocol *pProtocol);
+    virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  };
 }
 
 
-#endif	/* _JOBSTIMERAPPPROTOCOLHANDLER_H */
+#endif  /* _JOBSTIMERAPPPROTOCOLHANDLER_H */
 

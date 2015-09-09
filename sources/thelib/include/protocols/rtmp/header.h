@@ -20,7 +20,7 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _HEADER_H
-#define	_HEADER_H
+#define  _HEADER_H
 
 //#define ENFORCE_RTMP_OUTPUT_CHECKS
 
@@ -42,5 +42,5 @@
 #endif
 
 
-#endif	/* _HEADER_H */
+#endif  /* _HEADER_H */
 #endif /* HAS_PROTOCOL_RTMP */

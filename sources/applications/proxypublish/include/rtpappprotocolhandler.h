@@ -20,19 +20,19 @@
 
 #ifdef HAS_PROTOCOL_RTP
 #ifndef _RTPAPPPROTOCOLHANDLER_H
-#define	_RTPAPPPROTOCOLHANDLER_H
+#define  _RTPAPPPROTOCOLHANDLER_H
 
 #include "protocols/rtp/basertpappprotocolhandler.h"
 namespace app_proxypublish {
 
-	class RTPAppProtocolHandler
-	: public BaseRTPAppProtocolHandler {
-	public:
-		RTPAppProtocolHandler(Variant &configuration);
-		virtual ~RTPAppProtocolHandler();
-	};
+  class RTPAppProtocolHandler
+  : public BaseRTPAppProtocolHandler {
+  public:
+    RTPAppProtocolHandler(Variant &configuration);
+    virtual ~RTPAppProtocolHandler();
+  };
 }
 
-#endif	/* _RTPAPPPROTOCOLHANDLER_H */
+#endif  /* _RTPAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_RTP */
 

@@ -22,57 +22,57 @@
 
 AtomTREX::AtomTREX(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : VersionedAtom(pDocument, type, size, start) {
-	_trackID = 0;
-	_defaultSampleDescriptionIndex = 0;
-	_defaultSampleDuration = 0;
-	_defaultSampleSize = 0;
-	_defaultSampleFlags = 0;
+  _trackID = 0;
+  _defaultSampleDescriptionIndex = 0;
+  _defaultSampleDuration = 0;
+  _defaultSampleSize = 0;
+  _defaultSampleFlags = 0;
 }
 
 AtomTREX::~AtomTREX() {
 }
 
 uint32_t AtomTREX::GetTrackID() {
-	return _trackID;
+  return _trackID;
 }
 
 uint32_t AtomTREX::GetDefaultSampleDescriptionIndex() {
-	return _defaultSampleDescriptionIndex;
+  return _defaultSampleDescriptionIndex;
 }
 
 uint32_t AtomTREX::GetDefaultSampleDuration() {
-	return _defaultSampleDuration;
+  return _defaultSampleDuration;
 }
 
 uint32_t AtomTREX::GetDefaultSampleSize() {
-	return _defaultSampleSize;
+  return _defaultSampleSize;
 }
 
 uint32_t AtomTREX::GetDefaultSampleFlags() {
-	return _defaultSampleFlags;
+  return _defaultSampleFlags;
 }
 
 bool AtomTREX::ReadData() {
-	if (!ReadUInt32(_trackID)) {
-		FATAL("Unable to read count");
-		return false;
-	}
-	if (!ReadUInt32(_defaultSampleDescriptionIndex)) {
-		FATAL("Unable to read count");
-		return false;
-	}
-	if (!ReadUInt32(_defaultSampleDuration)) {
-		FATAL("Unable to read count");
-		return false;
-	}
-	if (!ReadUInt32(_defaultSampleSize)) {
-		FATAL("Unable to read count");
-		return false;
-	}
-	if (!ReadUInt32(_defaultSampleFlags)) {
-		FATAL("Unable to read count");
-		return false;
-	}
-	return true;
+  if (!ReadUInt32(_trackID)) {
+    FATAL("Unable to read count");
+    return false;
+  }
+  if (!ReadUInt32(_defaultSampleDescriptionIndex)) {
+    FATAL("Unable to read count");
+    return false;
+  }
+  if (!ReadUInt32(_defaultSampleDuration)) {
+    FATAL("Unable to read count");
+    return false;
+  }
+  if (!ReadUInt32(_defaultSampleSize)) {
+    FATAL("Unable to read count");
+    return false;
+  }
+  if (!ReadUInt32(_defaultSampleFlags)) {
+    FATAL("Unable to read count");
+    return false;
+  }
+  return true;
 }
 #endif /* HAS_MEDIA_MP4 */

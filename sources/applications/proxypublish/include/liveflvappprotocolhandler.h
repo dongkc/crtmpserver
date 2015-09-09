@@ -19,19 +19,19 @@
 
 #ifdef HAS_PROTOCOL_LIVEFLV
 #ifndef _LIVEFLVAPPPROTOCOLHANDLER_H
-#define	_LIVEFLVAPPPROTOCOLHANDLER_H
+#define  _LIVEFLVAPPPROTOCOLHANDLER_H
 
 #include "protocols/liveflv/baseliveflvappprotocolhandler.h"
 namespace app_proxypublish {
 
-	class LiveFLVAppProtocolHandler
-	: public BaseLiveFLVAppProtocolHandler {
-	public:
-		LiveFLVAppProtocolHandler(Variant &configuration);
-		virtual ~LiveFLVAppProtocolHandler();
-	};
+  class LiveFLVAppProtocolHandler
+  : public BaseLiveFLVAppProtocolHandler {
+  public:
+    LiveFLVAppProtocolHandler(Variant &configuration);
+    virtual ~LiveFLVAppProtocolHandler();
+  };
 }
 
-#endif	/* _LIVEFLVAPPPROTOCOLHANDLER_H */
+#endif  /* _LIVEFLVAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_LIVEFLV */
 

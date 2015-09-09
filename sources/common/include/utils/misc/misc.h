@@ -18,7 +18,7 @@
  */
 
 #ifndef _MISC_H
-#define	_MISC_H
+#define  _MISC_H
 
 #include "utils/misc/crypto.h"
 #include "utils/misc/file.h"
@@ -28,5 +28,5 @@
 #include "utils/misc/variant.h"
 #include "utils/misc/uri.h"
 
-#endif	/* _MISC_H */
+#endif  /* _MISC_H */
 

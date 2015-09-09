@@ -19,7 +19,7 @@
 
 #ifdef HAS_MEDIA_MP4
 #ifndef _ATOMTRAF_H
-#define	_ATOMTRAF_H
+#define  _ATOMTRAF_H
 
 #include "mediaformats/mp4/boxatom.h"
 
@@ -29,17 +29,17 @@ class AtomTRUN;
 class AtomTRAF
 : public BoxAtom {
 private:
-	AtomTFHD *_pTFHD;
-	vector<AtomTRUN *> _runs;
+  AtomTFHD *_pTFHD;
+  vector<AtomTRUN *> _runs;
 public:
-	AtomTRAF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomTRAF();
-	uint32_t GetId();
-	vector<AtomTRUN *> &GetRuns();
+  AtomTRAF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomTRAF();
+  uint32_t GetId();
+  vector<AtomTRUN *> &GetRuns();
 protected:
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
 
-#endif	/* _ATOMTRAF_H */
+#endif  /* _ATOMTRAF_H */
 #endif /* HAS_MEDIA_MP4 */

@@ -19,21 +19,21 @@
 
 
 #ifndef _KEYAPPPROTOCOLHANDLER_H
-#define	_KEYAPPPROTOCOLHANDLER_H
+#define  _KEYAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 
 namespace app_applestreamingclient {
 
-	class KeyAppProtocolHandler
-	: public BaseAppProtocolHandler {
-	public:
-		KeyAppProtocolHandler(Variant &configuration);
-		virtual ~KeyAppProtocolHandler();
+  class KeyAppProtocolHandler
+  : public BaseAppProtocolHandler {
+  public:
+    KeyAppProtocolHandler(Variant &configuration);
+    virtual ~KeyAppProtocolHandler();
 
-		virtual void RegisterProtocol(BaseProtocol *pProtocol);
-		virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
-	};
+    virtual void RegisterProtocol(BaseProtocol *pProtocol);
+    virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  };
 }
-#endif	/* _KEYAPPPROTOCOLHANDLER_H */
+#endif  /* _KEYAPPPROTOCOLHANDLER_H */
 

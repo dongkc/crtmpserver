@@ -30,6 +30,6 @@ TestVMLua::TestVMLua()
 TestVMLua::~TestVMLua() {
 }
 
-#endif	/* HAS_LUA */
+#endif  /* HAS_LUA */
 
 

@@ -20,52 +20,52 @@
 
 #ifdef NET_KQUEUE
 #ifndef _UDPCARRIER_H
-#define	_UDPCARRIER_H
+#define  _UDPCARRIER_H
 
 #include "netio/kqueue/iohandler.h"
 
 class UDPCarrier
 : public IOHandler {
 private:
-	sockaddr_in _peerAddress;
-	sockaddr_in _nearAddress;
-	string _nearIp;
-	uint16_t _nearPort;
-	uint64_t _rx;
-	uint64_t _tx;
-	Variant _parameters;
-	int32_t _ioAmount;
+  sockaddr_in _peerAddress;
+  sockaddr_in _nearAddress;
+  string _nearIp;
+  uint16_t _nearPort;
+  uint64_t _rx;
+  uint64_t _tx;
+  Variant _parameters;
+  int32_t _ioAmount;
 private:
-	UDPCarrier(int32_t fd);
+  UDPCarrier(int32_t fd);
 public:
-	virtual ~UDPCarrier();
+  virtual ~UDPCarrier();
 
-	virtual bool OnEvent(struct kevent &event);
-	virtual bool SignalOutputData();
-	virtual operator string();
-	virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
+  virtual bool OnEvent(struct kevent &event);
+  virtual bool SignalOutputData();
+  virtual operator string();
+  virtual void GetStats(Variant &info, uint32_t namespaceId = 0);
 
-	Variant &GetParameters();
-	void SetParameters(Variant parameters);
-	bool StartAccept();
+  Variant &GetParameters();
+  void SetParameters(Variant parameters);
+  bool StartAccept();
 
-	string GetFarEndpointAddress();
-	uint16_t GetFarEndpointPort();
-	string GetNearEndpointAddress();
-	uint16_t GetNearEndpointPort();
+  string GetFarEndpointAddress();
+  uint16_t GetFarEndpointPort();
+  string GetNearEndpointAddress();
+  uint16_t GetNearEndpointPort();
 
-	static UDPCarrier* Create(string bindIp, uint16_t bindPort,
-			uint16_t ttl = 256, uint16_t tos = 256);
-	static UDPCarrier* Create(string bindIp, uint16_t bindPort,
-			BaseProtocol *pProtocol, uint16_t ttl = 256,
-			uint16_t tos = 256);
+  static UDPCarrier* Create(string bindIp, uint16_t bindPort,
+      uint16_t ttl = 256, uint16_t tos = 256);
+  static UDPCarrier* Create(string bindIp, uint16_t bindPort,
+      BaseProtocol *pProtocol, uint16_t ttl = 256,
+      uint16_t tos = 256);
 private:
-	bool Setup(Variant &settings);
-	bool GetEndpointsInfo();
+  bool Setup(Variant &settings);
+  bool GetEndpointsInfo();
 
 };
 
 
-#endif	/* _UDPCARRIER_H */
+#endif  /* _UDPCARRIER_H */
 #endif /* NET_KQUEUE */
 

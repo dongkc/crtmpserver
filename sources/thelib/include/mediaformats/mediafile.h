@@ -18,7 +18,7 @@
  */
 
 #ifndef _MEDIAFILE_H
-#define	_MEDIAFILE_H
+#define  _MEDIAFILE_H
 
 #include "common.h"
 
@@ -30,4 +30,4 @@
 #define MediaFile File
 #endif /* HAS_MMAP */
 
-#endif	/* _MEDIAFILE_H */
+#endif  /* _MEDIAFILE_H */

@@ -18,20 +18,20 @@
  */
 
 #ifndef _INBOUNDSSLPROTOCOL_H
-#define	_INBOUNDSSLPROTOCOL_H
+#define  _INBOUNDSSLPROTOCOL_H
 
 #include "protocols/ssl/basesslprotocol.h"
 
 class InboundSSLProtocol
 : public BaseSSLProtocol {
 public:
-	InboundSSLProtocol();
-	virtual ~InboundSSLProtocol();
+  InboundSSLProtocol();
+  virtual ~InboundSSLProtocol();
 protected:
-	virtual bool InitGlobalContext(Variant &parameters);
-	virtual bool DoHandshake();
+  virtual bool InitGlobalContext(Variant &parameters);
+  virtual bool DoHandshake();
 };
 
 
-#endif	/* _INBOUNDSSLPROTOCOL_H */
+#endif  /* _INBOUNDSSLPROTOCOL_H */
 

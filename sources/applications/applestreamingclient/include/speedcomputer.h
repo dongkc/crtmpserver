@@ -19,7 +19,7 @@
 
 
 #ifndef _SPEEDCOMPUTER_H
-#define	_SPEEDCOMPUTER_H
+#define  _SPEEDCOMPUTER_H
 
 #include "common.h"
 
@@ -28,30 +28,30 @@
 
 namespace app_applestreamingclient {
 
-	class SpeedComputer {
-	private:
-		uint32_t _historyLength;
-		uint8_t _historyLengthUnit;
-		double _totalAmount;
-		double _totalTransferTime;
-		vector<pair<double, double> > _entries;
-	public:
-		SpeedComputer(uint32_t historyLength = 300, uint8_t historyLengthUnit = HLU_COUNT);
-		virtual ~SpeedComputer();
+  class SpeedComputer {
+  private:
+    uint32_t _historyLength;
+    uint8_t _historyLengthUnit;
+    double _totalAmount;
+    double _totalTransferTime;
+    vector<pair<double, double> > _entries;
+  public:
+    SpeedComputer(uint32_t historyLength = 300, uint8_t historyLengthUnit = HLU_COUNT);
+    virtual ~SpeedComputer();
 
-		uint32_t GetHistoryLength();
-		void SetHistoryLength(uint32_t historyLength);
-		uint8_t GetHistoryLengthUnit();
-		void SetHistoryLengthUnit(uint8_t historyLengthUnit);
+    uint32_t GetHistoryLength();
+    void SetHistoryLength(uint32_t historyLength);
+    uint8_t GetHistoryLengthUnit();
+    void SetHistoryLengthUnit(uint8_t historyLengthUnit);
 
-		double GetMeanSpeed();
+    double GetMeanSpeed();
 
-		void PushAmount(double amount, double transferTime);
-	private:
-		void UpdateEntries();
-		double CurrentHistoryLength();
-	};
+    void PushAmount(double amount, double transferTime);
+  private:
+    void UpdateEntries();
+    double CurrentHistoryLength();
+  };
 };
 
-#endif	/* _SPEEDCOMPUTER_H */
+#endif  /* _SPEEDCOMPUTER_H */
 

@@ -29,19 +29,19 @@ class AtomMP4A;
 class AtomSTSD
 : public VersionedBoxAtom {
 private:
-	AtomAVC1 *_pAVC1;
-	AtomMP4A *_pMP4A;
+  AtomAVC1 *_pAVC1;
+  AtomMP4A *_pMP4A;
 public:
-	AtomSTSD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomSTSD();
+  AtomSTSD(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomSTSD();
 
 
 protected:
-	virtual bool ReadData();
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool ReadData();
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
-#endif	/* _ATOMSTSD_H */
+#endif  /* _ATOMSTSD_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

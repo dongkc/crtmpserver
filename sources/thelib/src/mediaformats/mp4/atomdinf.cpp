@@ -23,23 +23,23 @@
 
 AtomDINF::AtomDINF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start)
 : BoxAtom(pDocument, type, size, start) {
-	_pDREF = NULL;
+  _pDREF = NULL;
 }
 
 AtomDINF::~AtomDINF() {
 }
 
 bool AtomDINF::AtomCreated(BaseAtom *pAtom) {
-	switch (pAtom->GetTypeNumeric()) {
-		case A_DREF:
-			_pDREF = (AtomDREF *) pAtom;
-			return true;
-		default:
-		{
-			FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
-			return false;
-		}
-	}
+  switch (pAtom->GetTypeNumeric()) {
+    case A_DREF:
+      _pDREF = (AtomDREF *) pAtom;
+      return true;
+    default:
+    {
+      FATAL("Invalid atom type: %s", STR(pAtom->GetTypeString()));
+      return false;
+    }
+  }
 }
 
 

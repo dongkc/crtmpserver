@@ -26,37 +26,37 @@ int32_t IOTimer::_idGenerator;
 
 IOTimer::IOTimer()
 : IOHandler(0, 0, IOHT_TIMER) {
-	_outboundFd = _inboundFd = ++_idGenerator;
+  _outboundFd = _inboundFd = ++_idGenerator;
 }
 
 IOTimer::~IOTimer() {
-	IOHandlerManager::DisableTimer(this);
+  IOHandlerManager::DisableTimer(this);
 }
 
 bool IOTimer::SignalOutputData() {
-	ASSERT("Operation not supported");
-	return false;
+  ASSERT("Operation not supported");
+  return false;
 }
 
 bool IOTimer::OnEvent(select_event &event) {
-	if (!_pProtocol->IsEnqueueForDelete()) {
-		if (!_pProtocol->TimePeriodElapsed()) {
-			FATAL("Unable to handle TimeElapsed event");
-			IOHandlerManager::EnqueueForDelete(this);
-			return false;
-		}
-	}
-	return true;
+  if (!_pProtocol->IsEnqueueForDelete()) {
+    if (!_pProtocol->TimePeriodElapsed()) {
+      FATAL("Unable to handle TimeElapsed event");
+      IOHandlerManager::EnqueueForDelete(this);
+      return false;
+    }
+  }
+  return true;
 }
 
 bool IOTimer::EnqueueForTimeEvent(uint32_t seconds) {
-	return IOHandlerManager::EnableTimer(this, seconds);
+  return IOHandlerManager::EnableTimer(this, seconds);
 }
 
 IOTimer::operator string() {
-	if (_pProtocol != NULL)
-		return STR(*_pProtocol);
-	return format("T(%d)", _inboundFd);
+  if (_pProtocol != NULL)
+    return STR(*_pProtocol);
+  return format("T(%d)", _inboundFd);
 }
 
 void IOTimer::GetStats(Variant &info, uint32_t namespaceId) {

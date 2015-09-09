@@ -19,10 +19,10 @@
 
 
 #ifndef _APPSELECTOR_H
-#define	_APPSELECTOR_H
+#define  _APPSELECTOR_H
 
 extern "C" DLLEXP BaseClientApplication *GetApplication_appselector(Variant configuration);
 
-#endif	/* _APPSELECTOR_H */
+#endif  /* _APPSELECTOR_H */
 
 

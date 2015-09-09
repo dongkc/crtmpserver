@@ -20,18 +20,18 @@
 
 #ifdef HAS_PROTOCOL_RTMP
 #ifndef _RTMPAPPPROTOCOLHANDLER_H
-#define	_RTMPAPPPROTOCOLHANDLER_H
+#define  _RTMPAPPPROTOCOLHANDLER_H
 
 #include "protocols/rtmp/basertmpappprotocolhandler.h"
 namespace app_proxypublish {
 
-	class RTMPAppProtocolHandler
-	: public BaseRTMPAppProtocolHandler {
-	public:
-		RTMPAppProtocolHandler(Variant &configuration);
-		virtual ~RTMPAppProtocolHandler();
-	};
+  class RTMPAppProtocolHandler
+  : public BaseRTMPAppProtocolHandler {
+  public:
+    RTMPAppProtocolHandler(Variant &configuration);
+    virtual ~RTMPAppProtocolHandler();
+  };
 }
-#endif	/* _RTMPAPPPROTOCOLHANDLER_H */
+#endif  /* _RTMPAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_RTMP */
 

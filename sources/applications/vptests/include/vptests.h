@@ -19,10 +19,10 @@
 
 
 #ifndef _VPTESTS_H
-#define	_VPTESTS_H
+#define  _VPTESTS_H
 
 #include "common.h"
 
 extern "C" DLLEXP BaseClientApplication *GetApplication_vptests(Variant configuration);
 
-#endif	/* _VPTESTS_H */
+#endif  /* _VPTESTS_H */

@@ -27,53 +27,53 @@ class BaseInStream;
 
 namespace app_proxypublish {
 #ifdef HAS_PROTOCOL_RTMP
-	class RTMPAppProtocolHandler;
+  class RTMPAppProtocolHandler;
 #endif /* HAS_PROTOCOL_RTMP */
 #ifdef HAS_PROTOCOL_LIVEFLV
-	class LiveFLVAppProtocolHandler;
+  class LiveFLVAppProtocolHandler;
 #endif /* HAS_PROTOCOL_LIVEFLV */
 #ifdef HAS_PROTOCOL_RTP
-	class RTPAppProtocolHandler;
-	class RTSPAppProtocolHandler;
+  class RTPAppProtocolHandler;
+  class RTSPAppProtocolHandler;
 #endif /* HAS_PROTOCOL_RTP */
-	class JobsTimerAppProtocolHandler;
+  class JobsTimerAppProtocolHandler;
 
-	class ProxyPublishApplication
-	: public BaseClientApplication {
-	private:
+  class ProxyPublishApplication
+  : public BaseClientApplication {
+  private:
 #ifdef HAS_PROTOCOL_RTMP
-		RTMPAppProtocolHandler *_pRTMPHandler;
+    RTMPAppProtocolHandler *_pRTMPHandler;
 #endif /* HAS_PROTOCOL_RTMP */
 #ifdef HAS_PROTOCOL_LIVEFLV
-		LiveFLVAppProtocolHandler *_pLiveFLVHandler;
+    LiveFLVAppProtocolHandler *_pLiveFLVHandler;
 #endif /* HAS_PROTOCOL_LIVEFLV */
 #ifdef HAS_PROTOCOL_RTP
-		RTPAppProtocolHandler *_pRTPHandler;
-		RTSPAppProtocolHandler *_pRTSPHandler;
+    RTPAppProtocolHandler *_pRTPHandler;
+    RTSPAppProtocolHandler *_pRTSPHandler;
 #endif /* HAS_PROTOCOL_RTP */
-		JobsTimerAppProtocolHandler *_pJobsHandler;
-		map<uint32_t, uint32_t> _protocolsToStream;
-		map<uint32_t, map<uint32_t, uint32_t> >_streamToProtocols;
-		Variant _targetServers;
-		bool _abortOnConnectError;
-		uint32_t _jobsTimerProtocolId;
-	public:
-		ProxyPublishApplication(Variant &configuration);
-		virtual ~ProxyPublishApplication();
+    JobsTimerAppProtocolHandler *_pJobsHandler;
+    map<uint32_t, uint32_t> _protocolsToStream;
+    map<uint32_t, map<uint32_t, uint32_t> >_streamToProtocols;
+    Variant _targetServers;
+    bool _abortOnConnectError;
+    uint32_t _jobsTimerProtocolId;
+  public:
+    ProxyPublishApplication(Variant &configuration);
+    virtual ~ProxyPublishApplication();
 
-		virtual bool Initialize();
+    virtual bool Initialize();
 
-		virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+    virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
 
-		virtual void SignalStreamRegistered(BaseStream *pStream);
-	private:
-		void EnqueuePush(Variant &parameters);
-		void EnqueuePull(Variant &parameters);
-		bool InitiateForwardingStream(BaseInStream *pStream);
-		bool InitiateForwardingStream(BaseInStream *pStream, Variant &target);
-	};
+    virtual void SignalStreamRegistered(BaseStream *pStream);
+  private:
+    void EnqueuePush(Variant &parameters);
+    void EnqueuePull(Variant &parameters);
+    bool InitiateForwardingStream(BaseInStream *pStream);
+    bool InitiateForwardingStream(BaseInStream *pStream, Variant &target);
+  };
 }
 
-#endif	/* _PROXYPUBLISHAPPLICATION_H */
+#endif  /* _PROXYPUBLISHAPPLICATION_H */
 
 

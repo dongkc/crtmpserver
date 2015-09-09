@@ -19,17 +19,17 @@
 
 
 #ifndef _BASEOUTFILESTREAM_H
-#define	_BASEOUTFILESTREAM_H
+#define  _BASEOUTFILESTREAM_H
 
 #include "streaming/baseoutstream.h"
 
 class DLLEXP BaseOutFileStream
 : public BaseOutStream {
 public:
-	BaseOutFileStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
-			uint64_t type, string name);
-	virtual ~BaseOutFileStream();
+  BaseOutFileStream(BaseProtocol *pProtocol, StreamsManager *pStreamsManager,
+      uint64_t type, string name);
+  virtual ~BaseOutFileStream();
 };
 
-#endif	/* _BASEOUTFILESTREAM_H */
+#endif  /* _BASEOUTFILESTREAM_H */
 

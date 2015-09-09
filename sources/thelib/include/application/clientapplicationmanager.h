@@ -19,7 +19,7 @@
 
 
 #ifndef _CLIENTAPPLICATIONMANAGER_H
-#define	_CLIENTAPPLICATIONMANAGER_H
+#define  _CLIENTAPPLICATIONMANAGER_H
 
 
 #include "common.h"
@@ -28,52 +28,52 @@
 class BaseClientApplication;
 
 /*!
-	@brief
+  @brief
  */
 class DLLEXP ClientApplicationManager {
 private:
-	static map<uint32_t, BaseClientApplication *> _applicationsById;
-	static map<string, BaseClientApplication *> _applicationsByName;
-	static BaseClientApplication *_pDefaultApplication;
+  static map<uint32_t, BaseClientApplication *> _applicationsById;
+  static map<string, BaseClientApplication *> _applicationsByName;
+  static BaseClientApplication *_pDefaultApplication;
 public:
-	/*!
-		@brief Deletes applications registered to the base client application
-	 */
-	static void Shutdown();
+  /*!
+    @brief Deletes applications registered to the base client application
+   */
+  static void Shutdown();
 
-	/*!
-		@brief Registers the application using its id, name, and/or alias
-		@param pClientApplication
-	 */
-	static bool RegisterApplication(BaseClientApplication *pClientApplication);
+  /*!
+    @brief Registers the application using its id, name, and/or alias
+    @param pClientApplication
+   */
+  static bool RegisterApplication(BaseClientApplication *pClientApplication);
 
-	/*!
-		@brief Erases the application using its id, name, and/or alias
-		@param pClientApplication
-	 */
-	static void UnRegisterApplication(BaseClientApplication *pClientApplication);
-	/*!
-		@brief Gets the default application based on what was indicated in the configuration file
-	 */
-	static BaseClientApplication *GetDefaultApplication();
+  /*!
+    @brief Erases the application using its id, name, and/or alias
+    @param pClientApplication
+   */
+  static void UnRegisterApplication(BaseClientApplication *pClientApplication);
+  /*!
+    @brief Gets the default application based on what was indicated in the configuration file
+   */
+  static BaseClientApplication *GetDefaultApplication();
 
-	/*!
-		@brief Returns the application name in string form
-		@param appName
-	 */
-	static BaseClientApplication *FindAppByName(string appName);
+  /*!
+    @brief Returns the application name in string form
+    @param appName
+   */
+  static BaseClientApplication *FindAppByName(string appName);
 
-	/*!
-		@brief Returns the application's id
-		@param id
-	 */
-	static BaseClientApplication *FindAppById(uint32_t id);
+  /*!
+    @brief Returns the application's id
+    @param id
+   */
+  static BaseClientApplication *FindAppById(uint32_t id);
 
-	/*!
-		@brief Returns all applications by id.
-	 */
-	static map<uint32_t, BaseClientApplication *> GetAllApplications();
+  /*!
+    @brief Returns all applications by id.
+   */
+  static map<uint32_t, BaseClientApplication *> GetAllApplications();
 };
 
 
-#endif	/* _CLIENTAPPLICATIONMANAGER_H */
+#endif  /* _CLIENTAPPLICATIONMANAGER_H */

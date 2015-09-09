@@ -26,17 +26,17 @@
 class DLLEXP ConsoleLogLocation
 : public BaseLogLocation {
 private:
-	bool _allowColors;
-	vector<COLOR_TYPE> _colors;
+  bool _allowColors;
+  vector<COLOR_TYPE> _colors;
 public:
-	ConsoleLogLocation(Variant &configuration);
-	virtual ~ConsoleLogLocation();
-	virtual bool Init();
-	virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, string message);
-	virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, Variant &le);
-	virtual void SignalFork();
+  ConsoleLogLocation(Variant &configuration);
+  virtual ~ConsoleLogLocation();
+  virtual bool Init();
+  virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, string message);
+  virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, Variant &le);
+  virtual void SignalFork();
 };
 
 #endif /*CONSOLELOGLOCATION_H_*/

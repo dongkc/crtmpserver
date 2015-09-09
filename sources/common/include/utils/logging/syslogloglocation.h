@@ -19,7 +19,7 @@
 
 #ifdef HAS_SYSLOG
 #ifndef _SYSLOGLOGLOCATION_H
-#define	_SYSLOGLOGLOCATION_H
+#define  _SYSLOGLOGLOCATION_H
 
 #include "utils/logging/baseloglocation.h"
 
@@ -28,28 +28,28 @@ class Formatter;
 class SyslogLogLocation
 : public BaseLogLocation {
 private:
-	bool _appendSourceFileLine;
-	string _identifier;
-	map<uint32_t, int> _priorities;
-	bool _enforceLoggerName;
+  bool _appendSourceFileLine;
+  string _identifier;
+  map<uint32_t, int> _priorities;
+  bool _enforceLoggerName;
 
-	map<string, Formatter *> _formatters;
-	Formatter *_pDefualtFormatter;
+  map<string, Formatter *> _formatters;
+  Formatter *_pDefualtFormatter;
 public:
-	SyslogLogLocation(Variant &configuration, string identifier = "",
-			bool appendSourceFileLine = true, int32_t specificLevel = 0);
-	virtual ~SyslogLogLocation();
-	virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, string message);
-	virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, Variant &le);
-	virtual void SignalFork();
+  SyslogLogLocation(Variant &configuration, string identifier = "",
+      bool appendSourceFileLine = true, int32_t specificLevel = 0);
+  virtual ~SyslogLogLocation();
+  virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, string message);
+  virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, Variant &le);
+  virtual void SignalFork();
 private:
-	void InitFormatters();
-	string ComputeMessage(Variant &le);
+  void InitFormatters();
+  string ComputeMessage(Variant &le);
 };
 
 
-#endif	/* _SYSLOGLOGLOCATION_H */
+#endif  /* _SYSLOGLOGLOCATION_H */
 #endif /* HAS_SYSLOG */
 

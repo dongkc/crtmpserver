@@ -19,7 +19,7 @@
 
 #ifdef HAS_PROTOCOL_RAWHTTPSTREAM
 #ifndef _INBOUNDRAWHTTPSTREAMPROTOCOL_H
-#define	_INBOUNDRAWHTTPSTREAMPROTOCOL_H
+#define  _INBOUNDRAWHTTPSTREAMPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
@@ -29,29 +29,29 @@ class InboundHTTPProtocol;
 class InboundRawHTTPStreamProtocol
 : public BaseProtocol {
 private:
-	bool _streamNameAcquired;
-	string _streamName;
-	string _crossDomainFile;
-	bool _headersSent;
-	IOBuffer _outputBuffer;
-	OutNetRawStream *_pOutStream;
+  bool _streamNameAcquired;
+  string _streamName;
+  string _crossDomainFile;
+  bool _headersSent;
+  IOBuffer _outputBuffer;
+  OutNetRawStream *_pOutStream;
 public:
-	InboundRawHTTPStreamProtocol();
-	virtual ~InboundRawHTTPStreamProtocol();
+  InboundRawHTTPStreamProtocol();
+  virtual ~InboundRawHTTPStreamProtocol();
 
-	virtual bool Initialize(Variant &parameters);
-	virtual IOBuffer * GetOutputBuffer();
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
-	bool PutData(uint8_t *pBuffer, uint32_t length);
+  virtual bool Initialize(Variant &parameters);
+  virtual IOBuffer * GetOutputBuffer();
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
+  bool PutData(uint8_t *pBuffer, uint32_t length);
 private:
-	bool AcquireStreamName(IOBuffer &buffer);
-	bool Send404NotFound();
-	bool SendCrossDomain();
+  bool AcquireStreamName(IOBuffer &buffer);
+  bool Send404NotFound();
+  bool SendCrossDomain();
 };
 
 
-#endif	/* _INBOUNDRAWHTTPSTREAMPROTOCOL_H */
+#endif  /* _INBOUNDRAWHTTPSTREAMPROTOCOL_H */
 #endif /* HAS_PROTOCOL_RAWHTTPSTREAM */

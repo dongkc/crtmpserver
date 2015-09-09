@@ -19,26 +19,26 @@
 
 
 #ifndef _GENERICPROTOCOL_H
-#define	_GENERICPROTOCOL_H
+#define  _GENERICPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
 namespace app_applestreamingclient {
-	class ClientContext;
+  class ClientContext;
 
-	class GenericProtocol
-	: public BaseProtocol {
-	private:
-		uint32_t _contextId;
-	public:
-		GenericProtocol(uint64_t type);
-		virtual ~GenericProtocol();
+  class GenericProtocol
+  : public BaseProtocol {
+  private:
+    uint32_t _contextId;
+  public:
+    GenericProtocol(uint64_t type);
+    virtual ~GenericProtocol();
 
-		virtual bool Initialize(Variant &parameters);
-		ClientContext *GetContext();
-		bool DoHTTPRequest();
-	};
+    virtual bool Initialize(Variant &parameters);
+    ClientContext *GetContext();
+    bool DoHTTPRequest();
+  };
 }
 
-#endif	/* _GENERICPROTOCOL_H */
+#endif  /* _GENERICPROTOCOL_H */
 

@@ -19,7 +19,7 @@
 
 
 #ifndef _DEFAULTPROTOCOLFACTORY_H
-#define	_DEFAULTPROTOCOLFACTORY_H
+#define  _DEFAULTPROTOCOLFACTORY_H
 
 #include "protocols/baseprotocolfactory.h"
 
@@ -28,16 +28,16 @@ class BaseProtocol;
 class DLLEXP DefaultProtocolFactory
 : public BaseProtocolFactory {
 public:
-	DefaultProtocolFactory();
-	virtual ~DefaultProtocolFactory();
+  DefaultProtocolFactory();
+  virtual ~DefaultProtocolFactory();
 
-	virtual vector<uint64_t> HandledProtocols();
-	virtual vector<string> HandledProtocolChains();
-	virtual vector<uint64_t> ResolveProtocolChain(string name);
-	virtual BaseProtocol *SpawnProtocol(uint64_t type, Variant &parameters);
+  virtual vector<uint64_t> HandledProtocols();
+  virtual vector<string> HandledProtocolChains();
+  virtual vector<uint64_t> ResolveProtocolChain(string name);
+  virtual BaseProtocol *SpawnProtocol(uint64_t type, Variant &parameters);
 };
 
 
-#endif	/* _DEFAULTPROTOCOLFACTORY_H */
+#endif  /* _DEFAULTPROTOCOLFACTORY_H */
 
 

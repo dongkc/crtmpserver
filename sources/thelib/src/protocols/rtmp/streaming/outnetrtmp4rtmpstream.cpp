@@ -22,8 +22,8 @@
 #include "streaming/streamstypes.h"
 
 OutNetRTMP4RTMPStream::OutNetRTMP4RTMPStream(BaseRTMPProtocol *pProtocol,
-		StreamsManager *pStreamsManager, string name, uint32_t rtmpStreamId,
-		uint32_t chunkSize)
+    StreamsManager *pStreamsManager, string name, uint32_t rtmpStreamId,
+    uint32_t chunkSize)
 : BaseOutNetRTMPStream(pProtocol, pStreamsManager, ST_OUT_NET_RTMP_4_RTMP,
 name, rtmpStreamId, chunkSize) {
 
@@ -33,10 +33,10 @@ OutNetRTMP4RTMPStream::~OutNetRTMP4RTMPStream() {
 }
 
 bool OutNetRTMP4RTMPStream::IsCompatibleWithType(uint64_t type) {
-	return TAG_KIND_OF(type, ST_IN_NET_RTMP)
-			|| TAG_KIND_OF(type, ST_IN_NET_LIVEFLV)
-			|| TAG_KIND_OF(type, ST_IN_FILE_RTMP)
-			|| TAG_KIND_OF(type, ST_IN_NET_MP3);
+  return TAG_KIND_OF(type, ST_IN_NET_RTMP)
+      || TAG_KIND_OF(type, ST_IN_NET_LIVEFLV)
+      || TAG_KIND_OF(type, ST_IN_FILE_RTMP)
+      || TAG_KIND_OF(type, ST_IN_NET_MP3);
 }
 #endif /* HAS_PROTOCOL_RTMP */
 

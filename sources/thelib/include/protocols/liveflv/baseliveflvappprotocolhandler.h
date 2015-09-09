@@ -21,7 +21,7 @@
 #ifdef HAS_PROTOCOL_LIVEFLV
 
 #ifndef _BASELIVEFLVAPPPROTOCOLHANDLER_H
-#define	_BASELIVEFLVAPPPROTOCOLHANDLER_H
+#define  _BASELIVEFLVAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 
@@ -30,16 +30,16 @@ class InboundLiveFLVProtocol;
 class DLLEXP BaseLiveFLVAppProtocolHandler
 : public BaseAppProtocolHandler {
 private:
-	map<uint32_t, InboundLiveFLVProtocol *> _protocols;
+  map<uint32_t, InboundLiveFLVProtocol *> _protocols;
 public:
-	BaseLiveFLVAppProtocolHandler(Variant &configuration);
-	virtual ~BaseLiveFLVAppProtocolHandler();
+  BaseLiveFLVAppProtocolHandler(Variant &configuration);
+  virtual ~BaseLiveFLVAppProtocolHandler();
 
-	virtual void RegisterProtocol(BaseProtocol *pProtocol);
-	virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  virtual void RegisterProtocol(BaseProtocol *pProtocol);
+  virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
 };
 
-#endif	/* _BASELIVEFLVAPPPROTOCOLHANDLER_H */
+#endif  /* _BASELIVEFLVAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_LIVEFLV */
 
 

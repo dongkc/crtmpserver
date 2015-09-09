@@ -19,7 +19,7 @@
 
 
 #ifndef _THELIBTESTSSUITE_H
-#define	_THELIBTESTSSUITE_H
+#define  _THELIBTESTSSUITE_H
 
 #include "common.h"
 #include "basetestssuite.h"
@@ -27,16 +27,16 @@
 class TheLibTestsSuite
 : public BaseTestsSuite {
 public:
-	TheLibTestsSuite();
-	virtual ~TheLibTestsSuite();
+  TheLibTestsSuite();
+  virtual ~TheLibTestsSuite();
 
-	virtual void Run();
+  virtual void Run();
 private:
 #ifdef HAS_PROTOCOL_RTMP
-	void test_Header();
+  void test_Header();
 #endif /* HAS_PROTOCOL_RTMP */
 };
 
 
-#endif	/* _THELIBTESTSSUITE_H */
+#endif  /* _THELIBTESTSSUITE_H */
 

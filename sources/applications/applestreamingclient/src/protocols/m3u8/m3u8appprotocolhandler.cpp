@@ -33,14 +33,14 @@ M3U8AppProtocolHandler::~M3U8AppProtocolHandler() {
 }
 
 void M3U8AppProtocolHandler::RegisterProtocol(BaseProtocol *pProtocol) {
-	//1. Get the proper protocol type
-	BaseM3U8Protocol *pM3U8Protocol = (BaseM3U8Protocol *) pProtocol;
+  //1. Get the proper protocol type
+  BaseM3U8Protocol *pM3U8Protocol = (BaseM3U8Protocol *) pProtocol;
 
-	//2. Do the HTTP request
-	if (!pM3U8Protocol->DoHTTPRequest()) {
-		FATAL("Unable to do the HTTP request");
-		pProtocol->EnqueueForDelete();
-	}
+  //2. Do the HTTP request
+  if (!pM3U8Protocol->DoHTTPRequest()) {
+    FATAL("Unable to do the HTTP request");
+    pProtocol->EnqueueForDelete();
+  }
 }
 
 void M3U8AppProtocolHandler::UnRegisterProtocol(BaseProtocol *pProtocol) {

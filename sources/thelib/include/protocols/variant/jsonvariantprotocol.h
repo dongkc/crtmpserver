@@ -19,20 +19,20 @@
 
 #ifdef HAS_PROTOCOL_VAR
 #ifndef _JSONVARIANTPROTOCOL_H
-#define	_JSONVARIANTPROTOCOL_H
+#define  _JSONVARIANTPROTOCOL_H
 
 #include "protocols/variant/basevariantprotocol.h"
 
 class DLLEXP JsonVariantProtocol
 : public BaseVariantProtocol {
 public:
-	JsonVariantProtocol();
-	virtual ~JsonVariantProtocol();
+  JsonVariantProtocol();
+  virtual ~JsonVariantProtocol();
 protected:
-	virtual bool Serialize(string &rawData, Variant &variant);
-	virtual bool Deserialize(uint8_t *pBuffer, uint32_t bufferLength,
-			Variant &result);
+  virtual bool Serialize(string &rawData, Variant &variant);
+  virtual bool Deserialize(uint8_t *pBuffer, uint32_t bufferLength,
+      Variant &result);
 };
 
-#endif	/* _JSONVARIANTPROTOCOL_H */
-#endif	/* HAS_PROTOCOL_VAR */
+#endif  /* _JSONVARIANTPROTOCOL_H */
+#endif  /* HAS_PROTOCOL_VAR */

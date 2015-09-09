@@ -21,20 +21,20 @@
 #ifdef HAS_LUA
 
 #ifndef _TESTVMLUA_H
-#define	_TESTVMLUA_H
+#define  _TESTVMLUA_H
 
 #include "vmlua/basevmlua.h"
 
 class TestVMLua
 : public BaseVMLua {
 public:
-	TestVMLua();
-	virtual ~TestVMLua();
+  TestVMLua();
+  virtual ~TestVMLua();
 private:
 
 };
 
 
-#endif	/* _TESTVMLUA_H */
-#endif	/* HAS_LUA */
+#endif  /* _TESTVMLUA_H */
+#endif  /* HAS_LUA */
 

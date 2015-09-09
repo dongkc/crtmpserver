@@ -30,37 +30,37 @@ class BaseLogLocation;
 
 class DLLEXP Version {
 public:
-	static string GetBuildNumber();
-	static uint64_t GetBuildDate();
-	static string GetBuildDateString();
-	static string GetReleaseNumber();
-	static string GetCodeName();
-	static string GetBanner();
-	static Variant GetAll();
+  static string GetBuildNumber();
+  static uint64_t GetBuildDate();
+  static string GetBuildDateString();
+  static string GetReleaseNumber();
+  static string GetCodeName();
+  static string GetBanner();
+  static Variant GetAll();
 };
 
 class DLLEXP Logger {
 private:
-	static Logger *_pLogger; //! Pointer to the Logger class.
-	vector<BaseLogLocation *> _logLocations; //! Vector that stores the location of the log file.
-	bool _freeAppenders; //! Boolean that releases the logger.
+  static Logger *_pLogger; //! Pointer to the Logger class.
+  vector<BaseLogLocation *> _logLocations; //! Vector that stores the location of the log file.
+  bool _freeAppenders; //! Boolean that releases the logger.
 #ifdef HAS_SAFE_LOGGER
 public:
-	static pthread_mutex_t *_pMutex;
+  static pthread_mutex_t *_pMutex;
 #endif
 public:
-	Logger();
-	virtual ~Logger();
+  Logger();
+  virtual ~Logger();
 
-	static void Init();
-	static void Free(bool freeAppenders);
-	static void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, string formatString, ...);
-	static void LogProd(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, Variant &le);
-	static bool AddLogLocation(BaseLogLocation *pLogLocation);
-	static void SignalFork();
-	static void SetLevel(int32_t level);
+  static void Init();
+  static void Free(bool freeAppenders);
+  static void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, string formatString, ...);
+  static void LogProd(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, Variant &le);
+  static bool AddLogLocation(BaseLogLocation *pLogLocation);
+  static void SignalFork();
+  static void SetLevel(int32_t level);
 };
 
 #endif /* _LOGGER_H */

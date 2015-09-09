@@ -19,7 +19,7 @@
 
 
 #ifndef _FILELOGLOCATION_H
-#define	_FILELOGLOCATION_H
+#define  _FILELOGLOCATION_H
 
 #include "utils/logging/baseloglocation.h"
 
@@ -28,35 +28,35 @@ class File;
 class DLLEXP FileLogLocation
 : public BaseLogLocation {
 private:
-	File *_fileStream;
-	bool _canLog;
-	uint32_t _counter;
-	string _newLineCharacters;
-	string _fileName;
-	uint32_t _fileHistorySize;
-	uint32_t _fileLength;
-	uint32_t _currentLength;
-	vector<string> _history;
-	bool _fileIsClosed;
+  File *_fileStream;
+  bool _canLog;
+  uint32_t _counter;
+  string _newLineCharacters;
+  string _fileName;
+  uint32_t _fileHistorySize;
+  uint32_t _fileLength;
+  uint32_t _currentLength;
+  vector<string> _history;
+  bool _fileIsClosed;
 public:
-	FileLogLocation(Variant &configuration);
-	virtual ~FileLogLocation();
+  FileLogLocation(Variant &configuration);
+  virtual ~FileLogLocation();
 
-	virtual bool Init();
-	virtual bool EvalLogLevel(int32_t level, string &fileName, uint32_t lineNumber,
-			string &functionName, string &message);
-	virtual bool EvalLogLevel(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, Variant &le);
-	virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, string message);
-	virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
-			string functionName, Variant &le);
-	virtual void SignalFork();
+  virtual bool Init();
+  virtual bool EvalLogLevel(int32_t level, string &fileName, uint32_t lineNumber,
+      string &functionName, string &message);
+  virtual bool EvalLogLevel(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, Variant &le);
+  virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, string message);
+  virtual void Log(int32_t level, string fileName, uint32_t lineNumber,
+      string functionName, Variant &le);
+  virtual void SignalFork();
 private:
-	bool OpenFile();
-	void CloseFile();
+  bool OpenFile();
+  void CloseFile();
 };
 
 
-#endif	/* _FILELOGLOCATION_H */
+#endif  /* _FILELOGLOCATION_H */
 

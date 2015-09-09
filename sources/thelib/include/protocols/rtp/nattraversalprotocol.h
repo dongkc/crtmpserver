@@ -19,26 +19,26 @@
 
 #ifdef HAS_PROTOCOL_RTP
 #ifndef _NATTRAVERSALPROTOCOL_H
-#define	_NATTRAVERSALPROTOCOL_H
+#define  _NATTRAVERSALPROTOCOL_H
 
 #include "protocols/baseprotocol.h"
 
 class NATTraversalProtocol
 : public BaseProtocol {
-	sockaddr_in *_pOutboundAddress;
+  sockaddr_in *_pOutboundAddress;
 public:
-	NATTraversalProtocol();
-	virtual ~NATTraversalProtocol();
+  NATTraversalProtocol();
+  virtual ~NATTraversalProtocol();
 
-	virtual bool Initialize(Variant &parameters);
-	virtual bool AllowFarProtocol(uint64_t type);
-	virtual bool AllowNearProtocol(uint64_t type);
-	virtual bool SignalInputData(int32_t recvAmount);
-	virtual bool SignalInputData(IOBuffer &buffer);
-	virtual bool SignalInputData(IOBuffer &buffer, sockaddr_in *pPeerAddress);
+  virtual bool Initialize(Variant &parameters);
+  virtual bool AllowFarProtocol(uint64_t type);
+  virtual bool AllowNearProtocol(uint64_t type);
+  virtual bool SignalInputData(int32_t recvAmount);
+  virtual bool SignalInputData(IOBuffer &buffer);
+  virtual bool SignalInputData(IOBuffer &buffer, sockaddr_in *pPeerAddress);
 
-	void SetOutboundAddress(sockaddr_in *pOutboundAddress);
+  void SetOutboundAddress(sockaddr_in *pOutboundAddress);
 };
 
-#endif	/* _NATTRAVERSALPROTOCOL_H */
+#endif  /* _NATTRAVERSALPROTOCOL_H */
 #endif /* HAS_PROTOCOL_RTP */

@@ -32,20 +32,20 @@ class AtomHDLR;
 class AtomMINF
 : public BoxAtom {
 private:
-	AtomSMHD *_pSMHD;
-	AtomDINF *_pDINF;
-	AtomSTBL *_pSTBL;
-	AtomVMHD *_pVMHD;
-	AtomHDLR *_pHDLR;
+  AtomSMHD *_pSMHD;
+  AtomDINF *_pDINF;
+  AtomSTBL *_pSTBL;
+  AtomVMHD *_pVMHD;
+  AtomHDLR *_pHDLR;
 public:
-	AtomMINF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
-	virtual ~AtomMINF();
+  AtomMINF(MP4Document *pDocument, uint32_t type, uint64_t size, uint64_t start);
+  virtual ~AtomMINF();
 
 protected:
-	virtual bool AtomCreated(BaseAtom *pAtom);
+  virtual bool AtomCreated(BaseAtom *pAtom);
 };
 
-#endif	/* _ATOMMINF_H */
+#endif  /* _ATOMMINF_H */
 
 
 #endif /* HAS_MEDIA_MP4 */

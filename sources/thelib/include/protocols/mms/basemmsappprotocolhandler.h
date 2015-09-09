@@ -19,24 +19,24 @@
 
 #ifdef HAS_PROTOCOL_MMS
 #ifndef _BASEMMSAPPPROTOCOLHANDLER_H
-#define	_BASEMMSAPPPROTOCOLHANDLER_H
+#define  _BASEMMSAPPPROTOCOLHANDLER_H
 
 #include "application/baseappprotocolhandler.h"
 
 class BaseMMSAppProtocolHandler
 : public BaseAppProtocolHandler {
 public:
-	BaseMMSAppProtocolHandler(Variant &configuration);
-	virtual ~BaseMMSAppProtocolHandler();
+  BaseMMSAppProtocolHandler(Variant &configuration);
+  virtual ~BaseMMSAppProtocolHandler();
 
-	virtual void RegisterProtocol(BaseProtocol *pProtocol);
-	virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
+  virtual void RegisterProtocol(BaseProtocol *pProtocol);
+  virtual void UnRegisterProtocol(BaseProtocol *pProtocol);
 
-	virtual bool PullExternalStream(URI uri, Variant streamConfig);
-	static bool SignalProtocolCreated(BaseProtocol *pProtocol,
-			Variant &parameters);
+  virtual bool PullExternalStream(URI uri, Variant streamConfig);
+  static bool SignalProtocolCreated(BaseProtocol *pProtocol,
+      Variant &parameters);
 };
 
 
-#endif	/* _BASEMMSAPPPROTOCOLHANDLER_H */
+#endif  /* _BASEMMSAPPPROTOCOLHANDLER_H */
 #endif /* HAS_PROTOCOL_MMS */

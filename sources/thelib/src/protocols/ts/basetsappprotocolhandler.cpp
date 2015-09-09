@@ -32,19 +32,19 @@ BaseTSAppProtocolHandler::~BaseTSAppProtocolHandler() {
 }
 
 void BaseTSAppProtocolHandler::RegisterProtocol(BaseProtocol *pProtocol) {
-	if (MAP_HAS1(_connections, pProtocol->GetId())) {
-		ASSERT("Protocol already registered");
-	}
-	_connections[pProtocol->GetId()] = (InboundTSProtocol *) pProtocol;
+  if (MAP_HAS1(_connections, pProtocol->GetId())) {
+    ASSERT("Protocol already registered");
+  }
+  _connections[pProtocol->GetId()] = (InboundTSProtocol *) pProtocol;
 }
 
 void BaseTSAppProtocolHandler::UnRegisterProtocol(BaseProtocol *pProtocol) {
-	_connections.erase(pProtocol->GetId());
+  _connections.erase(pProtocol->GetId());
 }
 
 void BaseTSAppProtocolHandler::ProgramSetupCompleted(InNetTSStream *pInNetTSStream) {
-	INFO("Stream available (%u): %s", pInNetTSStream->GetUniqueId(),
-			STR(pInNetTSStream->GetName()));
+  INFO("Stream available (%u): %s", pInNetTSStream->GetUniqueId(),
+      STR(pInNetTSStream->GetName()));
 }
-#endif	/* HAS_PROTOCOL_TS */
+#endif  /* HAS_PROTOCOL_TS */
 

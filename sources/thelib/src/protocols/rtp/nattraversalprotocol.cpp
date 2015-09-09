@@ -22,62 +22,62 @@
 
 NATTraversalProtocol::NATTraversalProtocol()
 : BaseProtocol(PT_RTP_NAT_TRAVERSAL) {
-	_pOutboundAddress = NULL;
+  _pOutboundAddress = NULL;
 }
 
 NATTraversalProtocol::~NATTraversalProtocol() {
 }
 
 bool NATTraversalProtocol::Initialize(Variant &parameters) {
-	GetCustomParameters() = parameters;
-	return true;
+  GetCustomParameters() = parameters;
+  return true;
 }
 
 bool NATTraversalProtocol::AllowFarProtocol(uint64_t type) {
-	return type == PT_UDP;
+  return type == PT_UDP;
 }
 
 bool NATTraversalProtocol::AllowNearProtocol(uint64_t type) {
-	return false;
+  return false;
 }
 
 bool NATTraversalProtocol::SignalInputData(int32_t recvAmount) {
-	NYIR;
+  NYIR;
 }
 
 bool NATTraversalProtocol::SignalInputData(IOBuffer &buffer) {
-	NYIR;
+  NYIR;
 }
 
 bool NATTraversalProtocol::SignalInputData(IOBuffer &buffer, sockaddr_in *pPeerAddress) {
-	//FINEST("_inputBuffer:\n%s", STR(buffer));
-	buffer.IgnoreAll();
-	if (_pOutboundAddress == NULL)
-		return true;
-	if (_pOutboundAddress->sin_addr.s_addr != pPeerAddress->sin_addr.s_addr) {
-		WARN("Attempt to divert traffic. DoS attack!?");
-		return true;
-	}
-	string ipAddress = inet_ntoa(_pOutboundAddress->sin_addr);
-	if (_pOutboundAddress->sin_port == pPeerAddress->sin_port) {
-		INFO("The client has public endpoint: %s:%"PRIu16,
-				STR(ipAddress),
-				ENTOHS(_pOutboundAddress->sin_port));
-	} else {
+  //FINEST("_inputBuffer:\n%s", STR(buffer));
+  buffer.IgnoreAll();
+  if (_pOutboundAddress == NULL)
+    return true;
+  if (_pOutboundAddress->sin_addr.s_addr != pPeerAddress->sin_addr.s_addr) {
+    WARN("Attempt to divert traffic. DoS attack!?");
+    return true;
+  }
+  string ipAddress = inet_ntoa(_pOutboundAddress->sin_addr);
+  if (_pOutboundAddress->sin_port == pPeerAddress->sin_port) {
+    INFO("The client has public endpoint: %s:%"PRIu16,
+        STR(ipAddress),
+        ENTOHS(_pOutboundAddress->sin_port));
+  } else {
 
-		INFO("The client is behind firewall: %s:%"PRIu16" -> %s:%"PRIu16,
-				STR(ipAddress),
-				ENTOHS(_pOutboundAddress->sin_port),
-				STR(ipAddress),
-				ENTOHS(pPeerAddress->sin_port));
-		_pOutboundAddress->sin_port = pPeerAddress->sin_port;
-	}
-	_pOutboundAddress = NULL;
-	return true;
+    INFO("The client is behind firewall: %s:%"PRIu16" -> %s:%"PRIu16,
+        STR(ipAddress),
+        ENTOHS(_pOutboundAddress->sin_port),
+        STR(ipAddress),
+        ENTOHS(pPeerAddress->sin_port));
+    _pOutboundAddress->sin_port = pPeerAddress->sin_port;
+  }
+  _pOutboundAddress = NULL;
+  return true;
 }
 
 void NATTraversalProtocol::SetOutboundAddress(sockaddr_in *pOutboundAddress) {
-	_pOutboundAddress = pOutboundAddress;
+  _pOutboundAddress = pOutboundAddress;
 }
 
 #endif /* HAS_PROTOCOL_RTP */
