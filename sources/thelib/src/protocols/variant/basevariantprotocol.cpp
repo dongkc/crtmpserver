@@ -97,7 +97,7 @@ bool BaseVariantProtocol::SignalInputData(IOBuffer &buffer) {
     }
 
     buffer.Ignore(pHTTPProtocol->GetContentLength());
-    
+
     return _pProtocolHandler->ProcessMessage(this, _lastSent, _lastReceived);
 #else
     FATAL("HTTP protocol not supported");

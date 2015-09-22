@@ -1,4 +1,4 @@
-/* 
+/*
  *  Copyright (c) 2010,
  *  Gavriloaie Eugen-Andrei (shiretu@gmail.com)
  *
@@ -138,7 +138,7 @@ if (GETAVAILABLEBYTESCOUNT((x)) < (y)){ \
     WARN("Not enough data (%u - %u)", \
         GETAVAILABLEBYTESCOUNT((x)),(uint32_t)(y)); \
     return false; \
-} 
+}
 
 bool ID3Parser::ParseTags(IOBuffer &buffer) {
   IOBuffer tagBuffer;

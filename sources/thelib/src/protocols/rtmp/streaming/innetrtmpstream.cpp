@@ -193,7 +193,7 @@ bool InNetRTMPStream::SendOnStatusStreamPublished() {
 }
 
 bool InNetRTMPStream::Record(BaseOutFileStream *pOutStream) {
-  
+
   _pOutFileRTMPFLVStream = pOutStream;
   return _pOutFileRTMPFLVStream->Link(this);
 }

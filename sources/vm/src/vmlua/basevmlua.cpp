@@ -1,4 +1,4 @@
-/* 
+/*
  *  Copyright (c) 2010,
  *  Gavriloaie Eugen-Andrei (shiretu@gmail.com)
  *
@@ -159,7 +159,7 @@ bool BaseVMLua::AddPackagePath(string path) {
   //4. get the value
   string temp = lua_tostring(_pGlobalState, -1);
 
-  //5. remove the value from stack 
+  //5. remove the value from stack
   lua_pop(_pGlobalState, 1);
   //stack: package
 

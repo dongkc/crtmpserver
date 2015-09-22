@@ -1,18 +1,18 @@
-/* 
+/*
  *  Copyright (c) 2010,
  *  Gavriloaie Eugen-Andrei (shiretu@gmail.com)
- *  
+ *
  *  This file is part of crtmpserver.
  *  crtmpserver is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  crtmpserver is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- *  
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with crtmpserver.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -73,7 +73,7 @@ bool EchoProtocol::SignalInputData(int32_t recvAmount) {
 
 bool EchoProtocol::SignalInputData(IOBuffer &buffer) {
   //PREAMBLE
-  //First, check the transport type. If it is a 
+  //First, check the transport type. If it is a
   //http transport, wait for it to finish the request
   //before doing stuff with it. This is not mandatory.
   //We can start consume the buffer right away, but since
@@ -136,12 +136,12 @@ bool EchoProtocol::SignalInputData(IOBuffer &buffer) {
 
     //10. Ignore the input buffer now.
     buffer.IgnoreAll();
-    
+
     //11. for demonstration purposes, whenever I get the string "testHttpRequest"
     //I'm just going to do a request to "http://www.rtmpd.com" and print out
     //the page on console. This should illustrate how to use the outbound HTTP protocol
     HTTPDownloadProtocol::DoSimpleGETRequestWithSomePayload("http://www.rtmpd.com/resources","Some data.... Hello World!");
-    
+
 
     //11. We are done. Enqueue the stack for outbound I/O
     return EnqueueForOutbound();

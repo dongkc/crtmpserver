@@ -1,4 +1,4 @@
-/* 
+/*
  *  Copyright (c) 2010,
  *  Gavriloaie Eugen-Andrei (shiretu@gmail.com)
  *
@@ -131,7 +131,7 @@ bool AppleStreamingClientApplication::Initialize() {
   //initialize the protocol handler(s)
 
   //1. Initialize the protocol handler(s)
-#ifdef HAS_PROTOCOL_RTMP    
+#ifdef HAS_PROTOCOL_RTMP
   _pRTMPHandler = new RTMPAppProtocolHandler(_configuration);
   RegisterAppProtocolHandler(PT_INBOUND_RTMP, _pRTMPHandler);
   RegisterAppProtocolHandler(PT_OUTBOUND_RTMP, _pRTMPHandler);
