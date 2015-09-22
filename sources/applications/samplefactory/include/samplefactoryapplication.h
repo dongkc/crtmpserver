@@ -1,4 +1,4 @@
-/* 
+/*
  *  Copyright (c) 2010,
  *  Gavriloaie Eugen-Andrei (shiretu@gmail.com)
  *
@@ -26,7 +26,7 @@
 namespace app_samplefactory {
   class ProtocolFactory;
   class EchoAppProtocolHandler;
-  
+
   class DLLEXP SampleFactoryApplication
   : public BaseClientApplication {
   private:
